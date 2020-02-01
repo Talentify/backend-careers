@@ -19,4 +19,5 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'v1/jobs'], function () use ($router){
    $router->post('/', 'JobsController@create');
+   $router->patch('/{id}', 'JobsController@update');
 });

@@ -37,4 +37,20 @@ class Job extends Model
 
         return number_format($this->attributes['salary'], 2, '.', '');
     }
+
+    public function getWorkplaceAttribute()
+    {
+        if($this->attributes['workplace'] === null){
+            return null;
+        }
+
+        return json_decode($this->attributes['workplace'], true);
+    }
+
+    public function setWorkplaceAttribute($value)
+    {
+        $this->attributes['workplace'] = ($value !== null) ? json_encode($value) : $value;
+
+        return json_encode($value);
+    }
 }
