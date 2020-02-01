@@ -1,0 +1,57 @@
+version: "3"
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.70.1.0/16
+
+services:
+
+  php:
+    container_name: work_king_php
+    build:
+      context: docker/php
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: 172.70.1.2
+      DB_PORT: 3306
+      DB_DATABASE: work_king
+      DB_USERNAME: root
+      DB_PASSWORD: secret
+    volumes:
+      - .:/opt/work_king
+    networks:
+      default:
+         ipv4_address: 172.70.1.1
+
+  mysql:
+    container_name: work_king_mysql
+    image: mysql:8.0.19
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: work_king
+      MYSQL_USER: user
+      MYSQL_PASSWORD: secret
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3307:3306
+    networks:
+      default:
+         ipv4_address: 172.70.1.2
+
+  web:
+    container_name: work_king_web
+    image: nginx:latest
+    volumes:
+      - ./:/opt/work_king
+      - ./docker/nginx/site.conf:/etc/nginx/conf.d/site.conf
+    depends_on:
+      - php
+    ports:
+      - 8080:8080
+    networks:
+      default:
+         ipv4_address: 172.70.1.3
+
