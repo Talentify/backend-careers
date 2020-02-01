@@ -98,4 +98,30 @@ class JobsController extends Controller
 
         return new JsonResponse($job->toArray(), Response::HTTP_OK);
     }
+
+    /**
+     * @param $id
+     * @param JobsService $jobsService
+     * @return mixed
+     */
+    public function get($id, JobsService $jobsService)
+    {
+        return $jobsService->get($id);
+    }
+
+    /**
+     * @param $id
+     * @param JobsService $jobsService
+     * @return mixed
+     */
+    public function delete($id, JobsService $jobsService)
+    {
+        $jobsService->delete($id);
+        return new JsonResponse([], Response::HTTP_NO_CONTENT);
+    }
+
+    public function getAll(Request $request, JobsService $jobsService)
+    {
+        return new JsonResponse($jobsService->getAll($request->all()), Response::HTTP_OK);
+    }
 }
