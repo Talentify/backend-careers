@@ -34,8 +34,14 @@ class JobsService
         $job->title = $fields['title'] ?? $job->title;
         $job->description = $fields['description'] ?? $job->description;
         $job->status = $fields['status'] ?? $job->status;
-        $job->salary = $fields['salary'] ?? $job->salary;
-        $job->workplace = $fields['workplace'] ?? $job->workplace;
+
+        if(array_key_exists('salary', $fields)){
+            $job->salary = $fields['salary'];
+        }
+
+        if(array_key_exists('workplace', $fields)){
+            $job->workplace = $fields['workplace'];
+        }
 
         $job->save();
 

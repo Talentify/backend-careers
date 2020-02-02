@@ -21,7 +21,7 @@ services:
       DB_USERNAME: root
       DB_PASSWORD: secret
     volumes:
-      - .:/opt/work_king
+      - .:/opt/work_king:cached
     networks:
       default:
          ipv4_address: 172.70.1.1
@@ -35,6 +35,8 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: secret
     command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./docker/mysql:/var/lib/mysql:cached
     ports:
       - 3307:3306
     networks:
@@ -45,7 +47,7 @@ services:
     container_name: work_king_web
     image: nginx:latest
     volumes:
-      - ./:/opt/work_king
+      - ./:/opt/work_king:cached
       - ./docker/nginx/site.conf:/etc/nginx/conf.d/site.conf
     depends_on:
       - php
