@@ -8,6 +8,14 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 
+/**
+ * App\User
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User query()
+ * @mixin \Eloquent
+ */
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable;

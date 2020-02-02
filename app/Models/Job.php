@@ -5,6 +5,40 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * App\Models\Job
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $description
+ * @property string $status
+ * @property mixed|null $workplace
+ * @property float|null $salary
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job newQuery()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Job onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job query()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job orderBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereRaw($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereJsonContains($json, $value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereSalary($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereWorkplace($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Job withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Job withoutTrashed()
+ * @mixin \Eloquent
+ */
 class Job extends Model
 {
     use SoftDeletes;

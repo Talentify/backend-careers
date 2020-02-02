@@ -5,3 +5,6 @@ Homestead.yaml
 .env
 docker/mysql/*
 docker/mysql/.gitkeep
+.phpstorm.meta.php
+lumen_ide_helper.php
+_ide_helper.php
