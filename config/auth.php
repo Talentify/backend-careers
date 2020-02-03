@@ -1,34 +1,25 @@
 <?php
 
-use App\Models\User;
-
 return [
-    'defaults' => [
-        'guard' => 'api',
-        'passwords' => 'users',
-    ],
-
     'guards' => [
-        'api' => [
-            'driver'   => 'token',
-            'provider' => 'users',
-            'hash'     => true
-        ],
         'admin' => [
-            'driver'   => 'token',
+            'driver'   => 'admin',
             'provider' => 'admins',
-            'hash'     => true
+        ],
+        'user'   => [
+            'driver'   => 'user',
+            'provider' => 'users',
         ],
     ],
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => User::class
-        ],
         'admins' => [
             'driver' => 'eloquent',
-            'model' => Admin::class
-        ]
-    ]
+            'model'  => App\Models\Admin::class,
+        ],
+        'users'   => [
+            'driver' => 'eloquent',
+            'model'  => App\Models\User::class,
+        ],
+    ],
 ];

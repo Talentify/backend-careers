@@ -7,7 +7,7 @@ use App\Services\UsersService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class UsersController extends Controller
+class AdminsController extends Controller
 {
 
     public function register(Request $request, UsersService $usersService)

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * App\Models\Job
@@ -18,26 +19,25 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @method static bool|null forceDelete()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job newQuery()
+ * @method static Builder|\App\Models\Job newModelQuery()
+ * @method static Builder|\App\Models\Job newQuery()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Job onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job query()
+ * @method static Builder|\App\Models\Job query()
  * @method static bool|null restore()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job orderBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereRaw($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereJsonContains($json, $value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereSalary($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Job whereWorkplace($value)
+ * @method static Builder|\App\Models\Job whereCreatedAt($value)
+ * @method static Builder|\App\Models\Job orderBy($value)
+ * @method static Builder|\App\Models\Job whereDeletedAt($value)
+ * @method static Builder|\App\Models\Job whereDescription($value)
+ * @method static Builder|\App\Models\Job whereId($value)
+ * @method static Builder|\App\Models\Job whereRaw($value)
+ * @method static Builder|\App\Models\Job whereJsonContains($json, $value)
+ * @method static Builder|\App\Models\Job whereSalary($value)
+ * @method static Builder|\App\Models\Job whereStatus($value)
+ * @method static Builder|\App\Models\Job whereTitle($value)
+ * @method static Builder|\App\Models\Job whereUpdatedAt($value)
+ * @method static Builder|\App\Models\Job whereWorkplace($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Job withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Job withoutTrashed()
- * @mixin \Eloquent
  */
 class Job extends Model
 {
@@ -55,7 +55,7 @@ class Job extends Model
     ];
 
     protected $hidden = [
-        'deleted_at'
+        'deleted_at', 'pivot'
     ];
 
     protected $dates = [

@@ -21,8 +21,6 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-$app->configure('auth');
-
 $app->withFacades();
 
 $app->withEloquent();

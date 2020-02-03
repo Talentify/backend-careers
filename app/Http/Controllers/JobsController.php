@@ -10,6 +10,7 @@ use Illuminate\Http\Response;
 use App\Rules\Double;
 use App\Services\JobsService;
 use Illuminate\Validation\Rule;
+use App\Services\UsersService;
 
 /**
  * Class JobsController
@@ -120,8 +121,24 @@ class JobsController extends Controller
         return new JsonResponse([], Response::HTTP_NO_CONTENT);
     }
 
+    /**
+     * @param Request $request
+     * @param JobsService $jobsService
+     * @return JsonResponse
+     */
     public function getAll(Request $request, JobsService $jobsService)
     {
         return new JsonResponse($jobsService->getAll($request->all()), Response::HTTP_OK);
+    }
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @param UsersService $usersService
+     * @return JsonResponse
+     */
+    public function apply($id, Request $request, UsersService $usersService)
+    {
+        return new JsonResponse($usersService->apply($id), Response::HTTP_OK);
     }
 }
