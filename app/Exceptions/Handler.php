@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
         if($exception instanceof ValidationException){
             $response = [
                 'error'   => 'One or more fields are invalid',
-                'message' => $exception->validator->errors()->all()
+                'message' => $exception->validator->errors()->messages()
             ];
             return new JsonResponse($response, Response::HTTP_BAD_REQUEST);
         }

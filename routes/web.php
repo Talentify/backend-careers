@@ -31,3 +31,10 @@ $router->group(
         $router->delete('/{id}', 'JobsController@delete');
     }
 );
+
+$router->group(
+    ['prefix' => 'v1/users'],
+    function () use ($router) {
+        $router->post('/', 'UsersController@register');
+    }
+);

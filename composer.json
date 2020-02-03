@@ -6,6 +6,8 @@
     "type": "project",
     "require": {
         "php": "^7.2",
+        "ext-json": "*",
+        "ext-pdo": "*",
         "laravel/lumen-framework": "^6.0"
     },
     "require-dev": {
@@ -22,7 +24,8 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Test\\": "tests/"
         }
     },
     "autoload-dev": {
