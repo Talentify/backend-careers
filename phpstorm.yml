@@ -1,0 +1,23 @@
+version: "3"
+
+networks:
+  default:
+    external:
+      name: workking_default
+
+services:
+  phpstorm:
+    container_name: work_king_phpstorm
+    build:
+      context: docker/php
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: 172.70.1.2
+      DB_PORT: 3306
+      DB_DATABASE: work_king
+      DB_USERNAME: root
+      DB_PASSWORD: secret
+    volumes:
+      - .:/opt/work_king:cached
+    networks:
+      - default

@@ -8,5 +8,4 @@ docker/mysql/.gitkeep
 .phpstorm.meta.php
 lumen_ide_helper.php
 _ide_helper.php
-phpstorm.yml
 .phpunit.result.cache
