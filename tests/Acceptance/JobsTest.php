@@ -94,7 +94,13 @@ class JobsTest extends TestCase
         factory('App\Models\Job')->times(30)->create();
         $this->json(
             'GET',
-            '/v1/jobs?page=2&perPage=5'
+            '/v1/jobs',
+            [
+            ],
+            [
+                'perpage' => 5,
+                'page' => 2
+            ]
         )->seeStatusCode(Response::HTTP_OK);
 
         $response = json_decode($this->response->getContent(), true);
