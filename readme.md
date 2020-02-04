@@ -52,7 +52,7 @@ For run tests follow this steps:
 ## Usage
  The token of admin user is 'API_TOKEN', so you need pass in header "token:API_TOKEN".
 
-**Important: The Tokens expires in one hour, you need generate new token in endpoints of login**
+**Important: The Tokens expires in two hours, you need generate new token in endpoints of login**
 
 Access this URL for docs of endpoints:
  
