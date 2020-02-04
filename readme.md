@@ -46,7 +46,7 @@ For run tests follow this steps:
 * run this command to create database test:
     * `docker-compose exec php php artisan create-database:test`
 * run this command to run acceptance tests:    
-    * `docker-compose exec php composer acceptance`
+    * `docker-compose exec php composer tests`
 
 
 ## Usage

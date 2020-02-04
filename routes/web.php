@@ -46,41 +46,34 @@ $router->group(
     function () use ($router) {
         $router->post('/', 'UsersController@register');
         $router->post('/login', 'UsersController@login');
+    
+        $router->group(
+            ['middleware' => 'auth:admin'],
+            function () use ($router) {
+                $router->delete('/{id}',  'UsersController@delete');
+            });
         
         $router->group(
             ['middleware' => 'auth:user'],
             function () use ($router) {
-                $router->get('/logout', 'UsersController@logout');
                 $router->patch('/', 'UsersController@update');
                 $router->get('/', 'UsersController@get');
             });
-
-        $router->group(
-            ['middleware' => 'auth:admin'],
-            function () use ($router) {
-                $router->patch('/{id}/update',  'UsersController@updateById');
-                $router->get('/{id}', 'UsersController@getById');
-                $router->get('/all',  'UsersController@getAll');
-                $router->delete('/{id}',  'UsersController@delete');
-            });
-
+    
+        ;
     }
 );
 
 $router->group(
     ['prefix' => 'v1/admins'],
     function () use ($router) {
-
+        $router->post('/login', 'AdminsController@login');
         $router->group(
             ['middleware' => 'auth:admin'],
             function () use ($router) {
                 $router->post('/', 'AdminsController@register');
-                $router->get('/login', 'AdminsController@login');
-                $router->get('/logout', 'AdminsController@logout');
                 $router->patch('/', 'AdminsController@update');
                 $router->get('/', 'AdminsController@get');
-                $router->get('/all', 'AdminsController@getAll');
-                $router->get('/{id}', 'AdminsController@delete');
             });
 
     }

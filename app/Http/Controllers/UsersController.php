@@ -71,5 +71,18 @@ class UsersController extends Controller
         
         return new JsonResponse($user, Response::HTTP_OK);
     }
+    
+    /**
+     * @param $id
+     * @param UsersService $usersService
+     * @return JsonResponse
+     */
+    public function delete($id, UsersService $usersService)
+    {
+        
+        $usersService->delete($id);
+        
+        return new JsonResponse([],Response::HTTP_NO_CONTENT);
+    }
 
 }

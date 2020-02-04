@@ -15,6 +15,121 @@ components:
 security:
     - ApiKeyAuth: []
 paths:
+    /admins/login:
+        post:
+            parameters:
+                - $ref: './schemas/parameters/contentType.yaml#/parameters/json'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Admins
+            summary: Login with Admin User.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                email:
+                                    type: string
+                                    description: A valid E-mail
+                                    example: email@site.com.br
+                                password:
+                                    type: string
+                                    minimum: 6
+                                    example: 123456
+            responses:
+                '401':
+                    description: Invalid Credentials
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Unauthorized
+                                    message:
+                                        type: string
+                                        example: Invalid Credentials
+                '200':
+                    description: Jobs
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/users.yaml#/components/schema'
+
+    /admins:
+        get:
+            parameters:
+                - $ref: './schemas/parameters/token.yaml#/parameters/token_admin'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Admins
+            summary: Get Admin Information.
+            responses:
+                '401':
+                    $ref: "./schemas/response/unautorizedError.yaml#/responses/UnauthorizedError"
+                '200':
+                    description: Jobs
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/users.yaml#/components/schema'
+        post:
+            parameters:
+                - $ref: './schemas/parameters/token.yaml#/parameters/token_admin'
+                - $ref: './schemas/parameters/contentType.yaml#/parameters/json'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Admins
+            summary: Create a Admin User.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            allOf:
+                                - $ref: './schemas/request/users.yaml#/components/schema'
+                                - required:
+                                      - name
+                                      - email
+                                      - password
+            responses:
+                '201':
+                    description: Create Job
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/users.yaml#/components/schema'
+        patch:
+            parameters:
+                - $ref: './schemas/parameters/token.yaml#/parameters/token_admin'
+                - $ref: './schemas/parameters/contentType.yaml#/parameters/json'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Admins
+            summary: Update a Admin User.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: './schemas/request/users.yaml#/components/schema'
+
+            responses:
+                '401':
+                    $ref: "./schemas/response/unautorizedError.yaml#/responses/UnauthorizedError"
+                '201':
+                    description: Jobs
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/users.yaml#/components/schema'
     /users/login:
         post:
             parameters:
@@ -59,6 +174,23 @@ paths:
                         application/json:
                             schema:
                                 $ref: './schemas/response/users.yaml#/components/schema'
+    /users/{id}:
+        delete:
+            parameters:
+            - $ref: './schemas/parameters/token.yaml#/parameters/token_admin'
+            - $ref: './schemas/parameters/id.yaml#/parameters/userId'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Users
+            summary: Delete a User.
+            responses:
+                '401':
+                    $ref: "./schemas/response/unautorizedError.yaml#/responses/UnauthorizedError"
+                '404':
+                    $ref: "./schemas/response/notFound.yaml"
+                '204':
+                    $ref: './schemas/response/delete.yaml'
     /users:
         get:
             parameters:

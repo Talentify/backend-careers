@@ -132,5 +132,30 @@ class UsersTest extends TestCase
         );
         
     }
+    
+    /**
+     * Test Delete User
+     * @covers \App\Http\Controllers\UsersController::delete
+     */
+    public function testDeleteUser()
+    {
+        $admin = factory('App\Models\Admin')->create();
+        $this->be($admin, 'admin');
+        $user = factory('App\Models\User')->create();
+
+        
+        $this->json(
+            'DELETE',
+            '/v1/users/'.$user->id
+        )->seeStatusCode(Response::HTTP_NO_CONTENT)
+        ->notSeeInDatabase(
+            'users',
+            [
+                'id' => $user->id,
+                'deleted_at' => null
+            ]
+        );
+        
+    }
    
 }

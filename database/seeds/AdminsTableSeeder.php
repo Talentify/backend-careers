@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Admin;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class AdminsTableSeeder extends Seeder
 {
@@ -19,7 +20,7 @@ class AdminsTableSeeder extends Seeder
                 'email'         => 'admin@workking.com',
                 'api_token'     => 'API_TOKEN',
                 'expires_token' => Carbon::now()->addHours(10),
-                'password'      => 'Workking@admin'
+                'password'      => Hash::make('Workking@admin')
             ]
         );
     }

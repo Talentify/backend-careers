@@ -105,4 +105,13 @@ class UsersService
         $user->save();
         return $user;
     }
+    
+    public function delete($id)
+    {
+        /**
+         * @var User $user
+         */
+        $user = User::findOrFail($id);
+        $user->delete();
+    }
 }

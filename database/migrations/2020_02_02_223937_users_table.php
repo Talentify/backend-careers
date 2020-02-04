@@ -24,6 +24,7 @@ class UsersTable extends Migration
                 ->default(null);
             $table->dateTime('expires_token');
             $table->timestamps();
+            $table->softDeletes();
 
         });
     }
