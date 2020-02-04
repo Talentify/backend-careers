@@ -1,0 +1,19 @@
+parameters:
+  token_admin:
+    name: token
+    in: header
+    description: This token is generated in endpoints of login for admins
+    schema:
+      type: string
+      format: uuid
+      example: asdfghjklç123456
+    required: true
+  token_user:
+    name: token
+    in: header
+    description: This token is generated in endpoints of login for users
+    schema:
+      type: string
+      format: uuid
+      example: asdfghjklç123456
+    required: true

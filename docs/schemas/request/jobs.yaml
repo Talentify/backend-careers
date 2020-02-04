@@ -1,0 +1,37 @@
+components:
+  schema:
+    type: object
+    properties:
+      title:
+        type: string
+        example: Title of Job
+      description:
+        type: string
+        example: Description of Job
+      status:
+        type: string
+        enum: [enable, disable]
+        example: enable
+      salary:
+        type: number
+        example: "1000.00"
+      workplace:
+        type: object
+        properties:
+          street:
+            type: string
+            example: Avenida Brasil
+          number:
+            type: integer
+            example: 1000
+          city:
+            type: string
+            example: São Paulo
+          state:
+            type: string
+            example: São Paulo
+          country:
+            type: string
+            example: Brasil
+
+

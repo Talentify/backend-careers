@@ -1,0 +1,46 @@
+components:
+  schema:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+      title:
+        type: string
+        example: Title of Job
+      description:
+        type: string
+        example: Description of Job
+      status:
+        type: string
+        enum: [enable, disable]
+        example: enable
+      salary:
+        type: number
+        example: "1000.00"
+      workplace:
+        type: object
+        properties:
+          street:
+            type: string
+            example: Avenida Brasil
+          number:
+            type: integer
+            example: 1000
+          city:
+            type: string
+            example: São Paulo
+          state:
+            type: string
+            example: São Paulo
+          country:
+            type: string
+            example: Brasil
+      updated_at:
+        type: string
+        example: "2020-02-04 01:03:22"
+        pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
+      created_at:
+        type: string
+        example: "2020-02-04 01:03:22"
+        pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'

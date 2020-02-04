@@ -1,0 +1,28 @@
+components:
+  schema:
+    type: object
+    properties:
+      name:
+        type: string
+        example: João da Silva
+      email:
+        type: string
+        description: A valid E-mail
+        example: email@site.com.br
+      api_token:
+        type: string
+        description: Token used for authetications
+        example: A3PAhDstTWn4fkpQAudXwa4lA02QogghtwBcDMcU
+      expires_token:
+        type: string
+        description: When Token Expires
+        example: "2020-02-04T04:40:02.705984Z"
+        pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{6}Z$'
+      updated_at:
+        type: string
+        example: "2020-02-04 01:03:22"
+        pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
+      created_at:
+        type: string
+        example: "2020-02-04 01:03:22"
+        pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'

@@ -1,0 +1,505 @@
+openapi: 3.0.0
+info:
+    title: Work King API
+    description: This API is responsible for management of job opportunities, you can create new jobs opportunities or apply for this opportunities.
+    version: 1.0.0
+servers:
+    - url: http://localhost:8080/v1
+      description: Development Server
+components:
+    securitySchemes:
+        ApiKeyAuth:
+            type: apiKey
+            in: header
+            name: token
+security:
+    - ApiKeyAuth: []
+paths:
+    /admins/login:
+        post:
+            parameters:
+                - $ref: './schemas/parameters/contentType.yaml#/parameters/json'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Admins
+            summary: Login with Admin User.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                email:
+                                    type: string
+                                    description: A valid E-mail
+                                    example: email@site.com.br
+                                password:
+                                    type: string
+                                    minimum: 6
+                                    example: 123456
+            responses:
+                '401':
+                    description: Invalid Credentials
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Unauthorized
+                                    message:
+                                        type: string
+                                        example: Invalid Credentials
+                '200':
+                    description: Jobs
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/users.yaml#/components/schema'
+
+    /admins:
+        get:
+            parameters:
+                - $ref: './schemas/parameters/token.yaml#/parameters/token_admin'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Admins
+            summary: Get Admin Information.
+            responses:
+                '401':
+                    $ref: "./schemas/response/unautorizedError.yaml#/responses/UnauthorizedError"
+                '200':
+                    description: Jobs
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/users.yaml#/components/schema'
+        post:
+            parameters:
+                - $ref: './schemas/parameters/token.yaml#/parameters/token_admin'
+                - $ref: './schemas/parameters/contentType.yaml#/parameters/json'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Admins
+            summary: Create a Admin User.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            allOf:
+                                - $ref: './schemas/request/users.yaml#/components/schema'
+                                - required:
+                                      - name
+                                      - email
+                                      - password
+            responses:
+                '201':
+                    description: Create Job
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/users.yaml#/components/schema'
+        patch:
+            parameters:
+                - $ref: './schemas/parameters/token.yaml#/parameters/token_admin'
+                - $ref: './schemas/parameters/contentType.yaml#/parameters/json'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Admins
+            summary: Update a Admin User.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: './schemas/request/users.yaml#/components/schema'
+
+            responses:
+                '401':
+                    $ref: "./schemas/response/unautorizedError.yaml#/responses/UnauthorizedError"
+                '201':
+                    description: Jobs
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/users.yaml#/components/schema'
+    /users/login:
+        post:
+            parameters:
+                - $ref: './schemas/parameters/contentType.yaml#/parameters/json'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Users
+            summary: Login with User.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                email:
+                                    type: string
+                                    description: A valid E-mail
+                                    example: email@site.com.br
+                                password:
+                                    type: string
+                                    minimum: 6
+                                    example: 123456
+            responses:
+                '401':
+                    description: Invalid Credentials
+                    content:
+                        application/json:
+                            schema:
+                              type: object
+                              properties:
+                                error:
+                                  type: string
+                                  example: Unauthorized
+                                message:
+                                    type: string
+                                    example: Invalid Credentials
+                '200':
+                    description: Jobs
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/users.yaml#/components/schema'
+    /users/{id}:
+        delete:
+            parameters:
+            - $ref: './schemas/parameters/token.yaml#/parameters/token_admin'
+            - $ref: './schemas/parameters/id.yaml#/parameters/userId'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Users
+            summary: Delete a User.
+            responses:
+                '401':
+                    $ref: "./schemas/response/unautorizedError.yaml#/responses/UnauthorizedError"
+                '404':
+                    $ref: "./schemas/response/notFound.yaml"
+                '204':
+                    $ref: './schemas/response/delete.yaml'
+    /users:
+        get:
+            parameters:
+                - $ref: './schemas/parameters/token.yaml#/parameters/token_user'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Users
+            summary: Get User Information.
+            responses:
+                '401':
+                    $ref: "./schemas/response/unautorizedError.yaml#/responses/UnauthorizedError"
+                '200':
+                    description: Jobs
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/users.yaml#/components/schema'
+        post:
+            parameters:
+                - $ref: './schemas/parameters/contentType.yaml#/parameters/json'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Users
+            summary: Create a User.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            allOf:
+                                - $ref: './schemas/request/users.yaml#/components/schema'
+                                - required:
+                                  - name
+                                  - email
+                                  - password
+            responses:
+                '201':
+                    description: Create Job
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/users.yaml#/components/schema'
+        patch:
+            parameters:
+                - $ref: './schemas/parameters/token.yaml#/parameters/token_user'
+                - $ref: './schemas/parameters/contentType.yaml#/parameters/json'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Users
+            summary: Update a User.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: './schemas/request/users.yaml#/components/schema'
+
+            responses:
+                '401':
+                    $ref: "./schemas/response/unautorizedError.yaml#/responses/UnauthorizedError"
+                '201':
+                    description: Jobs
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/users.yaml#/components/schema'
+    /jobs:
+        post:
+            parameters:
+                - $ref: './schemas/parameters/token.yaml#/parameters/token_admin'
+                - $ref: './schemas/parameters/contentType.yaml#/parameters/json'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Jobs
+            summary: Create a job.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            allOf:
+                              - $ref: './schemas/request/jobs.yaml#/components/schema'
+                              - required:
+                                    - title
+                                    - description
+                                    - status
+            responses:
+                '401':
+                    $ref: "./schemas/response/unautorizedError.yaml#/responses/UnauthorizedError"
+                '201':
+                    description: Jobs
+                    content:
+                        application/json:
+                            schema:
+                               $ref: './schemas/response/jobs.yaml#/components/schema'
+
+        get:
+            summary: Returns a list of jobs.
+            parameters:
+                - in: header
+                  name: page
+                  schema:
+                      type: integer
+                      default: 1
+                  description: Current Page
+                - in: header
+                  name: perpage
+                  schema:
+                      type: integer
+                      default: 10
+                  description: Items per Page
+                - in: query
+                  name: title
+                  schema:
+                      type: string
+                      example: PHP
+                  description: Filter by Title
+                - in: query
+                  name: description
+                  schema:
+                      type: string
+                      example: PHP
+                  description: Filter by Description
+                - in: query
+                  name: street
+                  schema:
+                      type: string
+                      example: Avenida Brasil
+                  description: Filter by Street
+                - in: query
+                  name: city
+                  schema:
+                      type: string
+                      example: São Paulo
+                  description: Filter by City
+                - in: query
+                  name: state
+                  schema:
+                      type: string
+                      example: São Paulo
+                  description: Filter by State
+                - in: query
+                  name: country
+                  schema:
+                      type: string
+                      example: Brasil
+                  description: Filter by Country
+                - in: query
+                  name: order
+                  schema:
+                      type: string
+                      enum: [title, description, salary]
+                      default: title
+                      example: title
+                  description: Sort by field
+            tags:
+                - Jobs
+            responses:
+                '200':
+                    description: Jobs
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    current_page:
+                                        type: integer
+                                        example: 1
+                                        description: Current Page
+                                    data:
+                                        type: array
+                                        items:
+                                            $ref: './schemas/response/jobs.yaml#/components/schema'
+                                    first_page_url:
+                                        type: string
+                                        example: http://localhost:8080/v1/jobs?page=1
+                                        description: URL First Page
+                                    from:
+                                        type: integer
+                                        example: 11
+                                        description: Number of First job
+                                    last_page:
+                                        type: integer
+                                        example: 3
+                                        description: Number of Last Page
+                                    last_page_url:
+                                        type: string
+                                        example: http://localhost:8080/v1/jobs?page=2
+                                        description: URL Last Page
+                                    next_page_url:
+                                        type: string
+                                        example: http://localhost:8080/v1/jobs?page=3
+                                        description: URL Next Page
+                                    path:
+                                        type: string
+                                        example: http://localhost:8080/v1/jobs
+                                        description: URL
+                                    per_page:
+                                        type: integer
+                                        example: 10
+                                        description: Number itens per page
+                                    prev_page_url:
+                                        type: integer
+                                        example: http://localhost:8080/v1/jobs?page=1
+                                        description: URL Next Page
+                                    to:
+                                        type: integer
+                                        example: 20
+                                        description: Number last item of page
+                                    total:
+                                        type: integer
+                                        example: 30
+                                        description: Total number itens
+
+    /jobs/{id}:
+        patch:
+            parameters:
+                - $ref: './schemas/parameters/token.yaml#/parameters/token_admin'
+                - $ref: './schemas/parameters/contentType.yaml#/parameters/json'
+                - $ref: './schemas/parameters/id.yaml#/parameters/jobId'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Jobs
+            summary: Update a job.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: './schemas/request/jobs.yaml#/components/schema'
+
+
+
+            responses:
+                '401':
+                    $ref: "./schemas/response/unautorizedError.yaml#/responses/UnauthorizedError"
+                '404':
+                    $ref: "./schemas/response/notFound.yaml"
+                '201':
+                    description: Jobs
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/jobs.yaml#/components/schema'
+        get:
+            summary: Return job by Id.
+            parameters:
+                - $ref: './schemas/parameters/id.yaml#/parameters/jobId'
+            tags:
+                - Jobs
+            responses:
+                '404':
+                    $ref: "./schemas/response/notFound.yaml"
+                '200':
+                    description: Jobs
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/jobs.yaml#/components/schema'
+        delete:
+            parameters:
+                - $ref: './schemas/parameters/token.yaml#/parameters/token_admin'
+                - $ref: './schemas/parameters/id.yaml#/parameters/jobId'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Jobs
+            summary: Delete a job.
+            responses:
+                '401':
+                    $ref: "./schemas/response/unautorizedError.yaml#/responses/UnauthorizedError"
+                '404':
+                    $ref: "./schemas/response/notFound.yaml"
+                '204':
+                    $ref: './schemas/response/delete.yaml'
+    /jobs/{id}/apply:
+        post:
+            parameters:
+                - $ref: './schemas/parameters/token.yaml#/parameters/token_user'
+                - $ref: './schemas/parameters/id.yaml#/parameters/jobId'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Jobs
+            summary: Apply to a Job
+            responses:
+                '401':
+                    $ref: "./schemas/response/unautorizedError.yaml#/responses/UnauthorizedError"
+                '404':
+                    $ref: "./schemas/response/notFound.yaml"
+                '201':
+                    description: Jobs
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                  - $ref: './schemas/response/users.yaml#/components/schema'
+                                  - type: object
+                                    properties:
+                                      jobs:
+                                          type: array
+                                          items:
+                                              $ref: './schemas/response/jobs.yaml#/components/schema'
+
+
+
+
