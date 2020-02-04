@@ -13,6 +13,8 @@ For install is necessary follow this steps:
 **Install using Docker**
 
 * Acess the directory of project
+* give permissions for logs:
+    * `sudo chmod 777 -R storage`
 * run this command to install libraries
     * docker run --rm --interactive --tty \     
          --volume $PWD:/app \         
@@ -25,28 +27,34 @@ For install is necessary follow this steps:
     * `docker-compose exec php php artisan migrate`
 * run this command for create admin user
     * `docker-compose exec php php artisan db:seed`
-* give permissions for logs:
-    * `sudo chmod 777 -R storage`
+
 
 
 **Install without Docker**
 * Configure nginx (or apache), php and mysql;
 * Acess the directory of project
+* give permissions for logs:
+    * `sudo chmod 777 -R storage`
 * run this command to install libraries
     *  `composer install`
 * run this command to create tables
     * `php artisan migrate`
 * run this command to create admin user
     * `php artisan db:seed`
-* give permissions for logs:
-    * `sudo chmod 777 -R storage`
+
 
 ## Tests
-For run tests follow this steps:
+For run tests follow this steps in directory of project:
 * run this command to create database test:
     * `docker-compose exec php php artisan create-database:test`
 * run this command to run acceptance tests:    
     * `docker-compose exec php composer tests`
+
+If you don't user Docker to Install use this commands in directory of project:
+* run this command to create database test:
+    * `php artisan create-database:tes`t
+* run this command to run acceptance tests:    
+    * `php composer tests`
 
 
 ## Usage
