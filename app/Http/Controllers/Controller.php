@@ -10,4 +10,12 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function root() {
+        return response()->json([], 204);
+    }
+
+    public function fallback() {
+        return response()->json(['message' => 'Not found'], 404);
+    }
 }
