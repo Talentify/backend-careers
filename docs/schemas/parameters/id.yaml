@@ -1,0 +1,9 @@
+parameters:
+  jobId:
+    in: path
+    name: id
+    required: true
+    schema:
+      type: integer
+      minimum: 1
+    description: The Job ID

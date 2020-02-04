@@ -1,0 +1,9 @@
+parameters:
+  json:
+    name: content-type
+    in: header
+    description: Content Type JSON
+    schema:
+      type: string
+      example: application/json
+    required: true

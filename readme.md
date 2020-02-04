@@ -1,21 +1,65 @@
-# Lumen PHP Framework
+# Work King
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+This API is responsible for management of job opportunities, 
+you can create new jobs opportunities or apply for this opportunities.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Install
 
-## Official Documentation
+This System uses Docker, so it is necessary Docker 
+and Docker Compose installed to run this project, but you can configure nginx (or apache), php and mysql.
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+For install is necessary follow this steps:
 
-## Security Vulnerabilities
+**Install using Docker**
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+* Acess the directory of project
+* run this command to install libraries
+    * docker run --rm --interactive --tty \     
+         --volume $PWD:/app \         
+         --user $(id -u):$(id -g) \         
+         composer install
+* run this commands for install and start docker
+    * `docker-compose build`
+    * `docker-compose up -d`
+* run this command for create tables
+    * `docker-compose exec php php artisan migrate`
+* run this command for create admin user
+    * `docker-compose exec php php artisan db:seed`
+* give permissions for logs:
+    * `sudo chmod 777 -R storage`
 
-## License
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Install without Docker**
+* Configure nginx (or apache), php and mysql;
+* Acess the directory of project
+* run this command to install libraries
+    *  `composer install`
+* run this command to create tables
+    * `php artisan migrate`
+* run this command to create admin user
+    * `php artisan db:seed`
+* give permissions for logs:
+    * `sudo chmod 777 -R storage`
+
+## Tests
+For run tests follow this steps:
+* run this command to create database test:
+    * `docker-compose exec php php artisan create-database:test`
+* run this command to run acceptance tests:    
+    * `docker-compose exec php composer acceptance`
+
+
+## Usage
+ The token of admin user is 'API_TOKEN', so you need pass in header "token:API_TOKEN".
+
+**Important: The Tokens expires in one hour, you need generate new token in endpoints of login**
+
+Access this URL for docs of endpoints:
+ 
+ * **URL:** http://localhost:7080
+ 
+Access this URL for API of endpoints:
+  
+  * **URL:** http://localhost:8080
+ 
+

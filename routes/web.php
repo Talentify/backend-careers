@@ -85,3 +85,10 @@ $router->group(
 
     }
 );
+
+$router->get(
+    'v1/docs',
+    function () use ($router) {
+        return $router->app->version();
+    }
+);

@@ -1,0 +1,17 @@
+components:
+  schema:
+    type: object
+    properties:
+      name:
+        type: string
+        example: João da Silva
+      email:
+        type: string
+        description: A valid E-mail
+        example: email@site.com.br
+      password:
+        type: string
+        minimum: 6
+        example: 123456
+
+

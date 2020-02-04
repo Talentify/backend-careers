@@ -60,7 +60,7 @@ class JobsService
     /**
      * @return mixed
      */
-    public function getAll(?array $filters)
+    public function getAll(?array $filters, ?array $headers)
     {
        $jobs = Job::orderBy($filters['order'] ?? 'title');
 
@@ -79,12 +79,15 @@ class JobsService
         if (array_key_exists('state', $filters)) {
             $jobs->whereJsonContains('workplace->state', $filters['state']);
         }
+        if (array_key_exists('country', $filters)) {
+            $jobs->whereJsonContains('workplace->country', $filters['state']);
+        }
 
         return $jobs->paginate(
-            $filters['perPage'] ?? 10,
+            $headers['perpage'][0] ?? 10,
             ['*'],
             'page',
-            $filters['page'] ?? 1
+            $headers['page'][0] ?? 1
         );
     }
 

@@ -1,0 +1,20 @@
+responses:
+  UnauthorizedError:
+    description: Token is missing, invalid or expired
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+              example: "Unauthorized"
+            message:
+              type: string
+              enum: ["Token Invalid or Expired.", "Token is required in headers."]
+              example: "Token Invalid or Expired."
+    headers:
+      token:
+        schema:
+          type: string
+          example: asdfghjkl123456789

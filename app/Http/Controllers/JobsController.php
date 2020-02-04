@@ -128,7 +128,7 @@ class JobsController extends Controller
      */
     public function getAll(Request $request, JobsService $jobsService)
     {
-        return new JsonResponse($jobsService->getAll($request->all()), Response::HTTP_OK);
+        return new JsonResponse($jobsService->getAll($request->all(), $request->header()), Response::HTTP_OK);
     }
 
     /**
