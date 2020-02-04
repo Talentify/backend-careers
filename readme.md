@@ -54,12 +54,22 @@ For run tests follow this steps:
 
 **Important: The Tokens expires in two hours, you need generate new token in endpoints of login**
 
-Access this URL for docs of endpoints:
+**There is a collection of Postman with all routes 
+in the main directory of project with name 'Work King.postman_collection.json'**
+
+Access this URL for docs of endpoints (this URL is only if you use Docker to install project):
  
  * **URL:** http://localhost:7080
  
-Access this URL for API of endpoints:
+Access this URL for API of endpoints ((this URL is only if you use Docker to install project):
   
   * **URL:** http://localhost:8080
- 
+
+_if you don't use Docker to install system you need configure the URL;_  
+
+_if you don't use Docker to install, follow this steps to generate documentation:_
+
+* _access this site https://editor.swagger.io/_
+* _select File -> Import File
+    * _select this file (directory of project)/docs/swagger.yaml__
 
