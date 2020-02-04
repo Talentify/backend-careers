@@ -64,4 +64,7 @@ services:
       API_URL: http://173.70.1.4:8080/v1/docs/swagger.yaml
     ports:
       - "7080:8080"
+    networks:
+      default:
+        ipv4_address: 173.70.1.5
 
