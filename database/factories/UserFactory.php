@@ -23,7 +23,7 @@ $factory->define(
             'email'         => $faker->email,
             'password'      => $faker->password,
             'api_token'     => $faker->uuid,
-            'expires_token' => \Carbon\Carbon::now()->addHours(1)
+            'expires_token' => \Carbon\Carbon::now()->addHours(2)
         ];
     }
 );

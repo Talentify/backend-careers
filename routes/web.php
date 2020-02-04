@@ -45,13 +45,13 @@ $router->group(
     ['prefix' => 'v1/users'],
     function () use ($router) {
         $router->post('/', 'UsersController@register');
-
+        $router->post('/login', 'UsersController@login');
+        
         $router->group(
             ['middleware' => 'auth:user'],
             function () use ($router) {
-                $router->get('/login', 'UsersController@login');
                 $router->get('/logout', 'UsersController@logout');
-                $router->patch('/update', 'UsersController@update');
+                $router->patch('/', 'UsersController@update');
                 $router->get('/', 'UsersController@get');
             });
 
@@ -60,7 +60,7 @@ $router->group(
             function () use ($router) {
                 $router->patch('/{id}/update',  'UsersController@updateById');
                 $router->get('/{id}', 'UsersController@getById');
-                $router->get('/',  'UsersController@getAll');
+                $router->get('/all',  'UsersController@getAll');
                 $router->delete('/{id}',  'UsersController@delete');
             });
 
@@ -77,18 +77,11 @@ $router->group(
                 $router->post('/', 'AdminsController@register');
                 $router->get('/login', 'AdminsController@login');
                 $router->get('/logout', 'AdminsController@logout');
-                $router->patch('/update', 'AdminsController@update');
+                $router->patch('/', 'AdminsController@update');
                 $router->get('/', 'AdminsController@get');
                 $router->get('/all', 'AdminsController@getAll');
                 $router->get('/{id}', 'AdminsController@delete');
             });
 
-    }
-);
-
-$router->get(
-    'v1/docs',
-    function () use ($router) {
-        return $router->app->version();
     }
 );

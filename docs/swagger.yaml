@@ -15,7 +15,68 @@ components:
 security:
     - ApiKeyAuth: []
 paths:
+    /users/login:
+        post:
+            parameters:
+                - $ref: './schemas/parameters/contentType.yaml#/parameters/json'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Users
+            summary: Login with User.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                email:
+                                    type: string
+                                    description: A valid E-mail
+                                    example: email@site.com.br
+                                password:
+                                    type: string
+                                    minimum: 6
+                                    example: 123456
+            responses:
+                '401':
+                    description: Invalid Credentials
+                    content:
+                        application/json:
+                            schema:
+                              type: object
+                              properties:
+                                error:
+                                  type: string
+                                  example: Unauthorized
+                                message:
+                                    type: string
+                                    example: Invalid Credentials
+                '200':
+                    description: Jobs
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/users.yaml#/components/schema'
     /users:
+        get:
+            parameters:
+                - $ref: './schemas/parameters/token.yaml#/parameters/token_user'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Users
+            summary: Get User Information.
+            responses:
+                '401':
+                    $ref: "./schemas/response/unautorizedError.yaml#/responses/UnauthorizedError"
+                '200':
+                    description: Jobs
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/users.yaml#/components/schema'
         post:
             parameters:
                 - $ref: './schemas/parameters/contentType.yaml#/parameters/json'
@@ -36,6 +97,31 @@ paths:
                                   - email
                                   - password
             responses:
+                '201':
+                    description: Create Job
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './schemas/response/users.yaml#/components/schema'
+        patch:
+            parameters:
+                - $ref: './schemas/parameters/token.yaml#/parameters/token_user'
+                - $ref: './schemas/parameters/contentType.yaml#/parameters/json'
+            security:
+                - ApiKeyAuth: []
+            tags:
+                - Users
+            summary: Update a User.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: './schemas/request/users.yaml#/components/schema'
+
+            responses:
+                '401':
+                    $ref: "./schemas/response/unautorizedError.yaml#/responses/UnauthorizedError"
                 '201':
                     description: Jobs
                     content:
@@ -273,6 +359,15 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: './schemas/response/jobs.yaml#/components/schema'
+                                allOf:
+                                  - $ref: './schemas/response/users.yaml#/components/schema'
+                                  - type: object
+                                    properties:
+                                      jobs:
+                                          type: array
+                                          items:
+                                              $ref: './schemas/response/jobs.yaml#/components/schema'
+
+
 
 

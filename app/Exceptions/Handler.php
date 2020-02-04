@@ -61,6 +61,14 @@ class Handler extends ExceptionHandler
             ];
             return new JsonResponse($response, Response::HTTP_NOT_FOUND);
         }
+    
+        if($exception instanceof InvalidLoginException){
+            $response = [
+                'error'   => 'Unauthorized',
+                'message' => 'Invalid Credentials'
+            ];
+            return new JsonResponse($response, Response::HTTP_UNAUTHORIZED);
+        }
 
         if(env('APP_ENV') !== 'development'){
             return new JsonResponse(['error' => "Internal Server Error"], Response::HTTP_INTERNAL_SERVER_ERROR);
