@@ -13,7 +13,7 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,21 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->method() == "PUT") {
+            return [
+                'name' => 'required|string|max:255',
+                'lastname' => 'required|string|max:1255',
+                'email' => 'required|email|max:255|unique:users,email,', $this->userId,
+                'password' => 'string|confirmed|min:6|max:255',
+                'role_id' => 'required|integer|exists:roles,id',
+            ];
+        }
         return [
-            //
+            'name' => 'required|string|max:255',
+            'lastname' => 'required|string|max:1255',
+            'email' => 'required|email|max:255|unique:users,email',
+            'password' => 'required|string|confirmed|min:6|max:255',
+            'role_id' => 'required|integer|exists:roles,id',
         ];
     }
 }

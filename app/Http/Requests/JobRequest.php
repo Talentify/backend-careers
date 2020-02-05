@@ -25,7 +25,7 @@ class JobRequest extends FormRequest
     {
         if ($this->method() == "PUT") {
             return [
-                'title' => 'required|string|max:256|unique:jobs,title,' . $this->jobId,
+                'title' => 'required|string|max:256',
                 'description' => 'required|string|max:1000',
                 'status' => 'required|in:opened,closed',
                 'workplace' => 'nullable|string|max:1000',
@@ -33,7 +33,7 @@ class JobRequest extends FormRequest
             ];
         }
         return [
-            'title' => 'required|string|max:256|unique:jobs',
+            'title' => 'required|string|max:256',
             'description' => 'required|string|max:1000',
             'status' => 'required|in:opened,closed',
             'workplace' => 'nullable|string|max:1000',
