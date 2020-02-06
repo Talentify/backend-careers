@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use App\Traits\Filterable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Rule extends Model
 {
-    use SoftDeletes, Filterable;
+    use SoftDeletes;
 
     protected $fillable = ['name', 'code'];
 
