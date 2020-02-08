@@ -1,0 +1,89 @@
+version: "3"
+
+services:
+
+  mysql:
+    image: mysql:5.7
+    container_name: laravel-db
+    volumes:
+      - ./docker/mysql/lib:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "${DOCKER_MYSQL_PORT}:3306"
+    restart: always
+    networks:
+      app:
+        ipv4_address: ${DOCKER_MYSQL_IP}
+        aliases:
+          - mysql
+
+  redis:
+    image: redis:alpine
+    container_name: laravel-cache
+    ports:
+      - "${DOCKER_REDIS_PORT}:6379"
+    restart: always
+    networks:
+      app:
+        ipv4_address: ${DOCKER_REDIS_IP}
+        aliases:
+          - redis
+
+  php:
+    build:
+      context: 'docker/php'
+    user: "${UID}:${GID}"
+    container_name: laravel-php
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./php/conf.d/overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+      - ./logs/php:/var/log/php-fpm
+    links:
+      - mysql
+      - redis
+    depends_on:
+      - mysql
+      - redis
+    expose:
+      - "9000"
+    restart: always
+    networks:
+      app:
+        ipv4_address: ${DOCKER_PHP_IP}
+        aliases:
+          - php
+
+  nginx:
+    image: nginx:alpine
+    container_name: laravel-nginx
+    working_dir: /var/www
+    ports:
+      - "${DOCKER_NGINX_PORT}:80"
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/logs/nginx:/var/log/nginx
+      - ./:/var/www
+    links:
+      - php
+    depends_on:
+      - php
+    restart: always
+    networks:
+      app:
+        ipv4_address: ${DOCKER_NGINX_IP}
+        aliases:
+          - nginx
+
+networks:
+
+  app:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: ${DOCKER_NETWORK}
