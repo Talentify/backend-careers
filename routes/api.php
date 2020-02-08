@@ -1,18 +1,16 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\V1\Auth\LoginController;
+use App\Http\Controllers\V1\ExampleController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+/**
+ * Guest routes
+ */
+Route::post('auth/login', [LoginController::class, 'login'])->name('auth.login');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+/**
+ * Authenticated routes
+ */
+Route::middleware('auth:api')->group(function () {
+    Route::post('auth/logout', [LoginController::class, 'logout'])->name('auth.logout');
 });
