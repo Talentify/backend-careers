@@ -20,6 +20,7 @@ class CreateExamplesTable extends Migration
             $table->string('email');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
