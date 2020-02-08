@@ -8,6 +8,7 @@ use App\Core\Models\Model;
 use Exception;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
+use Str;
 
 /**
  * Class Repository
@@ -20,8 +21,6 @@ abstract class Repository
     protected Builder $query;
 
     abstract protected function model(): string;
-
-    abstract protected function filters($filter, $value): Builder;
 
     /**
      * Repository constructor.
@@ -39,8 +38,8 @@ abstract class Repository
      */
     public function getAll(array $options): LengthAwarePaginator
     {
-        $filters = $options['filters'] ?? [];
-        $orderBy = $options['order_by'] ?? 'id';
+        $filters = $options['filter'] ?? [];
+        $orderBy = $options['sort'] ?? 'id';
         $direction = $options['direction'] ?? 'desc';
         $perPage = $options['per_page'] ?? 15;
 
@@ -70,7 +69,7 @@ abstract class Repository
         $saveResult = $this->model->fill($data)->save();
 
         if (! $saveResult) {
-            throw new Exception('Could not store registry');
+            throw new Exception('Could not store registry.');
         }
 
         return $this->model;
@@ -100,7 +99,7 @@ abstract class Repository
         $updateResult = $model->update($data);
 
         if (! $updateResult) {
-            throw new Exception('Could not update registry');
+            throw new Exception('Could not update registry.');
         }
 
         return $model;
@@ -109,20 +108,37 @@ abstract class Repository
     /**
      * @param  int  $id
      *
-     * @return bool
+     * @return string
      * @throws Exception
      */
-    public function destroy(int $id): bool
+    public function destroy(int $id): string
     {
         $model = $this->get($id);
 
         $destroyResult = $model->delete();
 
         if (! $destroyResult) {
-            throw new Exception('Could not delete registry');
+            throw new Exception('Could not delete registry.');
         }
 
-        return true;
+        return 'Registry successfully deleted.';
+    }
+
+    /**
+     * @param $filter
+     * @param $value
+     *
+     * @return Builder
+     */
+    protected function filters($filter, $value): Builder
+    {
+        $methodName = 'filterBy'.Str::studly($filter);
+
+        if (method_exists($this, $methodName)) {
+            return $this->$methodName($value);
+        }
+
+        return $this->query->where($filter, $value);
     }
 
     protected function applyFilters($filters): Builder

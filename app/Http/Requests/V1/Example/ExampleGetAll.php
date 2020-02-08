@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\V1;
 
-use App\Core\Http\Requests\Request;
-use Illuminate\Validation\Rule;
+use App\Core\Http\Requests\GetAllRequest;
 
-class ExampleGetAll extends Request
+class ExampleGetAll extends GetAllRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,34 +18,13 @@ class ExampleGetAll extends Request
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    function allowedOrderBy(): array
     {
-        return [
-            'per_page' => ['integer', 'max:100'],
-            'page' => ['integer'],
-            'order_by' => [
-                'string',
-                Rule::in([
-                    'id',
-                    'name',
-                    'email',
-                ]),
-            ],
-            'direction' => [
-                'string',
-                Rule::in([
-                    'asc',
-                    'desc',
-                ]),
-            ],
-            'filters.id' => ['string'],
-            'filters.name' => ['string'],
-            'filters.email' => ['string'],
-        ];
+        return [];
+    }
+
+    function allowedFilters(): array
+    {
+        return [];
     }
 }

@@ -22,23 +22,4 @@ class ExampleRepository extends Repository
     {
         return Example::class;
     }
-
-    /**
-     * @param $filter
-     * @param $value
-     *
-     * @return Builder
-     */
-    protected function filters($filter, $value): Builder
-    {
-        switch ($filter) {
-            case 'name':
-            case 'email':
-                return $this->query->where($filter, 'LIKE', '%'.$value.'%');
-                break;
-            case 'id':
-            default:
-                return $this->query->where($filter, $value);
-        }
-    }
 }

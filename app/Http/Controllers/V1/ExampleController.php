@@ -52,14 +52,11 @@ class ExampleController extends Controller
      * @param  ExampleStore  $exampleStore
      *
      * @return ExampleResource
+     * @throws Exception
      */
     public function store(ExampleStore $exampleStore)
     {
-        try {
-            return $this->exampleService->store($exampleStore);
-        } catch (Exception $exception) {
-            return response()->error($exception->getMessage());
-        }
+        return $this->exampleService->store($exampleStore);
     }
 
     /**
@@ -82,14 +79,11 @@ class ExampleController extends Controller
      * @param  int            $id
      *
      * @return ExampleResource
+     * @throws Exception
      */
     public function update(ExampleUpdate $exampleUpdate, int $id)
     {
-        try {
-            return $this->exampleService->update($id, $exampleUpdate);
-        } catch (Exception $exception) {
-            return response()->error($exception->getMessage());
-        }
+        return $this->exampleService->update($id, $exampleUpdate);
     }
 
     /**
@@ -99,15 +93,12 @@ class ExampleController extends Controller
      * @param  int             $id
      *
      * @return int
+     * @throws Exception
      */
     public function destroy(ExampleDestroy $exampleDestroy, int $id)
     {
-        try {
-            $this->exampleService->destroy($id, $exampleDestroy);
+        $result = $this->exampleService->destroy($id, $exampleDestroy);
 
-            return response()->success(__('example.destroyed'));
-        } catch (Exception $exception) {
-            return response()->error($exception->getMessage());
-        }
+        return response()->success($result);
     }
 }

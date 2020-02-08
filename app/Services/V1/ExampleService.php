@@ -90,10 +90,10 @@ class ExampleService extends Service
      * @param  int             $id
      * @param  ExampleDestroy  $exampleDestroy
      *
-     * @return bool
+     * @return string
      * @throws Exception
      */
-    public function destroy(int $id, ExampleDestroy $exampleDestroy): bool
+    public function destroy(int $id, ExampleDestroy $exampleDestroy): string
     {
         return $this->exampleRepository->destroy($id);
     }
