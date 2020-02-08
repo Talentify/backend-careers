@@ -1,0 +1,9 @@
+<?php
+
+namespace App\Models\V1;
+
+use App\Core\Models\Model;
+
+class {{SingularEntityName|studly}} extends Model
+{
+}
