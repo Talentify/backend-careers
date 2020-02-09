@@ -14,6 +14,7 @@ class Variable
     private array $variables;
     private array $formattedVariables;
     private array $modifiers;
+    private array $functions;
 
     public function __construct(string $content)
     {
@@ -39,6 +40,10 @@ class Variable
             }
         }
 
+        foreach ($this->functions as $function) {
+            $this->formattedVariables[$function] = $this->getFunctionValue(str_replace(['{{@', '}}'], '', $function));
+        }
+
         return $this->formattedVariables;
     }
 
@@ -52,6 +57,7 @@ class Variable
     private function loadVariables(string $content): void
     {
         $extractedVariables = [];
+        $extractedFunctions = [];
         $variables = [];
 
         preg_match_all(
@@ -72,6 +78,14 @@ class Variable
         $this->variables = array_unique(array_map(fn($var) => $var[0], $variables));
 
         $this->modifiers = array_unique(array_map(fn($var) => $var[1] ?? null, $variables));
+
+        preg_match_all(
+            '/'.self::OPEN_TAG.'@\w[^}\s]*'.self::CLOSE_TAG.'/',
+            $content,
+            $extractedFunctions
+        );
+
+        $this->functions = array_unique(array_map(fn($var) => $var[0], $extractedFunctions));
     }
 
     /**
@@ -116,6 +130,16 @@ class Variable
                 return strtoupper($variable);
             default:
                 return $variable;
+        }
+    }
+
+    private function getFunctionValue($function)
+    {
+        switch ($function) {
+            case 'migrationTimeFormat':
+                return now()->format('Y_m_d_His');
+            default:
+                throw new \InvalidArgumentException("Function $function does not exists.");
         }
     }
 }
