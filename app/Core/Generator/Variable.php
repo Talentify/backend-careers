@@ -128,6 +128,8 @@ class Variable
                 return Str::studly($variable);
             case 'upper':
                 return strtoupper($variable);
+            case 'toArray':
+                return "['".implode("', '", explode(',', $variable))."']";
             default:
                 return $variable;
         }

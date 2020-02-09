@@ -6,4 +6,6 @@ use App\Core\Models\Model;
 
 class {{SingularEntityName|studly}} extends Model
 {
+    public $exampleMigrationName = '{{@migrationTimeFormat}}';
+    public $exampleArray = {{fields|toArray}};
 }
