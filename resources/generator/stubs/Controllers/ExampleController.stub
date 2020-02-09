@@ -1,0 +1,104 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers\V1;
+
+use App\Core\Http\Controllers\Controller;
+use App\Http\Requests\V1\{{SingularEntityName|studly}}Destroy;
+use App\Http\Requests\V1\{{SingularEntityName|studly}}Get;
+use App\Http\Requests\V1\{{SingularEntityName|studly}}GetAll;
+use App\Http\Requests\V1\{{SingularEntityName|studly}}Store;
+use App\Http\Requests\V1\{{SingularEntityName|studly}}Update;
+use App\Http\Resources\V1\{{SingularEntityName|studly}}Resource;
+use App\Http\Resources\V1\{{SingularEntityName|studly}}ResourceCollection;
+use App\Services\V1\Auth\{{SingularEntityName|studly}}Service;
+use Exception;
+
+/**
+ * Class {{SingularEntityName|studly}}Controller
+ *
+ * @package App\Http\Controllers\V1
+ */
+class {{SingularEntityName|studly}}Controller extends Controller
+{
+    private {{SingularEntityName|studly}}Service ${{SingularEntityName|cammel}}Service;
+
+    /**
+     * {{SingularEntityName|studly}}Controller constructor.
+     *
+     * @param  {{SingularEntityName|studly}}Service  ${{SingularEntityName|cammel}}Service
+     */
+    public function __construct({{SingularEntityName|studly}}Service ${{SingularEntityName|cammel}}Service)
+    {
+        $this->{{SingularEntityName|cammel}}Service = ${{SingularEntityName|cammel}}Service;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  {{SingularEntityName|studly}}GetAll  ${{SingularEntityName|cammel}}GetAll
+     *
+     * @return {{SingularEntityName|studly}}ResourceCollection
+     */
+    public function index({{SingularEntityName|studly}}GetAll ${{SingularEntityName|cammel}}GetAll)
+    {
+        return $this->{{SingularEntityName|cammel}}Service->getAll(${{SingularEntityName|cammel}}GetAll);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  {{SingularEntityName|studly}}Store  ${{SingularEntityName|cammel}}Store
+     *
+     * @return {{SingularEntityName|studly}}Resource
+     * @throws Exception
+     */
+    public function store({{SingularEntityName|studly}}Store ${{SingularEntityName|cammel}}Store)
+    {
+        return $this->{{SingularEntityName|cammel}}Service->store(${{SingularEntityName|cammel}}Store);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  {{SingularEntityName|studly}}Get  ${{SingularEntityName|cammel}}Get
+     * @param  int         $id
+     *
+     * @return {{SingularEntityName|studly}}Resource
+     */
+    public function show({{SingularEntityName|studly}}Get ${{SingularEntityName|cammel}}Get, int $id)
+    {
+        return $this->{{SingularEntityName|cammel}}Service->get($id, ${{SingularEntityName|cammel}}Get);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  {{SingularEntityName|studly}}Update  ${{SingularEntityName|cammel}}Update
+     * @param  int            $id
+     *
+     * @return {{SingularEntityName|studly}}Resource
+     * @throws Exception
+     */
+    public function update({{SingularEntityName|studly}}Update ${{SingularEntityName|cammel}}Update, int $id)
+    {
+        return $this->{{SingularEntityName|cammel}}Service->update($id, ${{SingularEntityName|cammel}}Update);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  {{SingularEntityName|studly}}Destroy  ${{SingularEntityName|cammel}}Destroy
+     * @param  int             $id
+     *
+     * @return int
+     * @throws Exception
+     */
+    public function destroy({{SingularEntityName|studly}}Destroy ${{SingularEntityName|cammel}}Destroy, int $id)
+    {
+        $result = $this->{{SingularEntityName|cammel}}Service->destroy($id, ${{SingularEntityName|cammel}}Destroy);
+
+        return response()->success($result);
+    }
+}

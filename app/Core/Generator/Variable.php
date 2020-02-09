@@ -131,6 +131,8 @@ class Variable
                 return Str::studly($variable);
             case 'upper':
                 return strtoupper($variable);
+            case 'explode':
+                return "'".implode("', '", explode(',', $variable))."'";
             case 'toArray':
                 return "['".implode("', '", explode(',', $variable))."']";
             default:

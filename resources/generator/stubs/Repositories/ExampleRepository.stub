@@ -5,21 +5,21 @@ declare(strict_types=1);
 namespace App\Repositories\V1;
 
 use App\Core\Repositories\Repository;
-use App\Models\V1\Example;
+use App\Models\V1\{{SingularEntityName|studly}};
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * Class ExampleRepository
+ * Class {{SingularEntityName|studly}}Repository
  *
  * @package App\Repositories\V1
  */
-class ExampleRepository extends Repository
+class {{SingularEntityName|studly}}Repository extends Repository
 {
     /**
      * @return string
      */
     protected function model(): string
     {
-        return Example::class;
+        return {{SingularEntityName|studly}}::class;
     }
 }

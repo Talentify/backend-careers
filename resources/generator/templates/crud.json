@@ -1,0 +1,60 @@
+{
+  "stubs": [
+    {
+      "stub": "Controllers/ExampleController.stub",
+      "output": "app/Http/Controllers/V1/{{SingularEntityName|studly}}Controller.php"
+    },
+    {
+      "stub": "Factories/ExampleFactory.stub",
+      "output": "database/factories/{{SingularEntityName|studly}}Factory.php"
+    },
+    {
+      "stub": "Migrations/ExampleMigration.stub",
+      "output": "database/migrations/{{@migrationTimeFormat}}_create_{{PluralEntityName|snake}}_table.php"
+    },
+    {
+      "stub": "Models/Example.stub",
+      "output": "app/Models/V1/{{SingularEntityName|studly}}.php"
+    },
+    {
+      "stub": "Repositories/ExampleRepository.stub",
+      "output": "app/Repositories/V1/{{SingularEntityName|studly}}Repository.php"
+    },
+    {
+      "stub": "Requests/ExampleDestroy.stub",
+      "output": "app/Http/Requests/V1/{{SingularEntityName|studly}}/{{SingularEntityName|studly}}Destroy.php"
+    },
+    {
+      "stub": "Requests/ExampleGet.stub",
+      "output": "app/Http/Requests/V1/{{SingularEntityName|studly}}/{{SingularEntityName|studly}}Get.php"
+    },
+    {
+      "stub": "Requests/ExampleGetAll.stub",
+      "output": "app/Http/Requests/V1/{{SingularEntityName|studly}}/{{SingularEntityName|studly}}GetAll.php"
+    },
+    {
+      "stub": "Requests/ExampleStore.stub",
+      "output": "app/Http/Requests/V1/{{SingularEntityName|studly}}/{{SingularEntityName|studly}}Store.php"
+    },
+    {
+      "stub": "Requests/ExampleUpdate.stub",
+      "output": "app/Http/Requests/V1/{{SingularEntityName|studly}}/{{SingularEntityName|studly}}Update.php"
+    },
+    {
+      "stub": "Resources/ExampleResource.stub",
+      "output": "app/Http/Resources/V1/{{SingularEntityName|studly}}Resource.php"
+    },
+    {
+      "stub": "Resources/ExampleResourceCollection.stub",
+      "output": "app/Http/Resources/V1/{{SingularEntityName|studly}}ResourceCollection.php"
+    },
+    {
+      "stub": "Seeders/ExampleSeeder.stub",
+      "output": "database/seeds/{{SingularEntityName|studly}}Seeder.php"
+    },
+    {
+      "stub": "Services/ExampleService.stub",
+      "output": "app/Services/V1/{{SingularEntityName|studly}}Service.php"
+    }
+  ]
+}

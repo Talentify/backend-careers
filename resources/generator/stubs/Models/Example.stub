@@ -7,12 +7,12 @@ namespace App\Models\V1;
 use App\Core\Models\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Example extends Model
+class {{SingularEntityName|studly}} extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
-        'name',
+        // {{fields|explode}}
     ];
 
     protected $hidden = [

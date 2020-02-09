@@ -1,8 +1,0 @@
-{
-  "stubs": [
-    {
-      "output": "app/Models/V1/{{SingularEntityName|studly}}.php",
-      "stub": "Model.stub"
-    }
-  ]
-}

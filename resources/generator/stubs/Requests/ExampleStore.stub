@@ -6,7 +6,7 @@ namespace App\Http\Requests\V1;
 
 use App\Core\Http\Requests\Request;
 
-class ExampleUpdate extends Request
+class {{SingularEntityName|studly}}Store extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class ExampleUpdate extends Request
     public function rules()
     {
         return [
-            'name' => '',
+            // {{fields|explode}}
         ];
     }
 }
