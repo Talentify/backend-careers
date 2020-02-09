@@ -85,7 +85,10 @@ class Variable
             $extractedFunctions
         );
 
-        $this->functions = array_unique(array_map(fn($var) => $var[0], $extractedFunctions));
+        $this->functions = array_unique(
+            array_map(fn($var) => $var[0], array_filter($extractedFunctions)
+            )
+        );
     }
 
     /**
