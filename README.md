@@ -65,9 +65,25 @@ Gerar chaves do passport:
     Insercao: POST localhost:8001/job (rota acessada apenas com usuário logado)
         Parâmetros adicionais no cabeçalho:
             Authorization: Bearer {adicionar access_token retornado no login}
+        Body:
+            {
+                "title": "teste 3",
+                "description": "teste 2 teste 2 ",
+                "status": "opened",
+                "workplace": "teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 t",
+                "salary": 9995569.99
+            }
     Atualizacao: PUT localhost:8001/job/{id} (rota acessada apenas com usuário logado)
         Parâmetros adicionais no cabeçalho:
             Authorization: Bearer {adicionar access_token retornado no login}
+        Body:
+            {
+                "title": "teste 3",
+                "description": "teste 2 teste 2 ",
+                "status": "opened",
+                "workplace": "teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 teste 2 t",
+                "salary": 9995569.99
+            }
     Exclusao: DELETE localhost:8001/job/{id} (rota acessada apenas com usuário logado)
         Parâmetros adicionais no cabeçalho:
             Authorization: Bearer {adicionar access_token retornado no login}
@@ -80,9 +96,25 @@ Gerar chaves do passport:
         Parâmetros adicionais no cabeçalho:
             Authorization: Bearer {adicionar access_token retornado no login}
     Insercao: POST localhost:8001/user 
+        Body:
+            {
+                "name": "teste",
+                "lastname": "Teste",
+                "email": "test2e2@teste.com",
+                "password": "1234@sdasd",
+                "password_confirmation": "1234@sdasd"
+            }
     Atualizacao: PUT localhost:8001/user/{id} (rota acessada apenas com usuário logado)
         Parâmetros adicionais no cabeçalho:
             Authorization: Bearer {adicionar access_token retornado no login}
+        Body:
+            {
+                "name": "teste",
+                "lastname": "Teste",
+                "email": "test2e2@teste.com",
+                "password": "1234@sdasd",
+                "password_confirmation": "1234@sdasd"
+            }
     Exclusao: DELETE localhost:8001/user/{id} (rota acessada apenas com usuário logado)
         Parâmetros adicionais no cabeçalho:
             Authorization: Bearer {adicionar access_token retornado no login}
