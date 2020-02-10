@@ -27,7 +27,7 @@ Rodar seeds do banco:
 
 Gerar chaves do passport:
 
-    docker exec -it -w /var/www/html talentify_web_1 php artisan passport:keys
+    docker exec -it -w /var/www/html talentify_web_1 php artisan passport:keys --force
 
 
 ## Testes
