@@ -17,6 +17,9 @@ Após subir o container do projeto, instalar as dependencias do projeto:
 
     docker exec -it -w /var/www/html talentify_web_1 composer install
 
+Copiar .env.example para .env, caso não seja criado automaticamente
+    docker exec -it -w /var/www/html talentify_web_1 cp .env.example .env
+
 Rodar migrations:
 
     docker exec -it -w /var/www/html talentify_web_1 php artisan migrate
