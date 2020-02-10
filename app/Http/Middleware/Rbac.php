@@ -17,10 +17,10 @@ class Rbac
     {
         $rule = $request->route()->getName();
 
-        $userRule = array_column($request->user()->rules->toArray(), 'code');
+        $userRule = array_column($request->user()->role->rules->toArray(), 'code');
 
         if ($request->user()->role->code != 'admin' && array_search($rule, $userRule) === false) {
-            return response()->json(['Not allowed'], 403);
+            return response()->json(['Forbidden'], 403);
         }
 
         return $next($request);

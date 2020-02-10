@@ -15,15 +15,15 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $jobs = (new User);
+        $users = (new User);
 
         if (isset($request->page) && $request->page != "") {
-            $jobs = $jobs->paginate($request->paginate ?? 10);
+            $users = $users->paginate($request->paginate ?? 10);
 
-            return response()->json($jobs);
+            return response()->json($users);
         }
 
-        return response()->json($jobs->get());
+        return response()->json($users->get());
         
     }
 
@@ -36,75 +36,67 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         try {
-            $job = (new User)->create($request->all());
+            $user = (new User)->create($request->all());
 
             return response()->json(['message' => 'User created successfully'], 201);
         } catch (Exception $e) {
-            return response()->json(['message' => $e->getMessage()], 422);
+            return response()->json(['message' => 'A error ocurred while inserting'], 500);
         }    
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  integer $jobId
+     * @param  integer $userId
      * @return \Illuminate\Http\Response
      */
-    public function show($jobId)
+    public function show($userId)
     {
-        try {
-            $job = (new User)->findOrFail($jobId);
-            return response()->json($job);
-        } catch (Exception $e) {
-            return response()->json(['message' => 'Not Found'], 404);
-        }        
-        
+        $user = (new User)->findOrFail($userId);
+        return response()->json($user);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UserRequest  $request
-     * @param  integer $jobId
+     * @param  integer $userId
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, $jobId)
+    public function update(UserRequest $request, $userId)
     {
         try {
-            $job = (new User)->findOrFail($jobId);
+            $user = (new User)->findOrFail($userId);
 
-            $job->fill($request->all())->save();
-
-            if (!$job) {
-                return response()->json(['message' => 'An error ocurred while updating'], 422);
+            if ($request->user()->role_id == 2 && $userId != $request->user()->id) {
+                return response()->json(['message' => 'Forbidden'], 403);
             }
+
+            $user->fill($request->all())->save();
+
 
             return response()->json(['message' => 'User updated successfully'], 200);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Not Found'], 404);
+            return response()->json(['message' => 'A error ocurred while updating'], 500);
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  integer $jobId
+     * @param  integer $userId
      * @return \Illuminate\Http\Response
      */
-    public function destroy($jobId)
+    public function destroy($userId)
     {
         try {
-            $job = (new User)->findOrFail($jobId);
+            $user = (new User)->findOrFail($userId);
             
-            $job->delete();
-
-            if (!$job) {
-                return response()->json(['message' => 'An error ocurred while deleting'], 422);
-            }
+            $user->delete();
 
             return response()->json(['message' => 'User deleted successfully'], 200);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Not Found'], 404);
+            return response()->json(['message' => 'A error ocurred while deleting'], 500);
         }
     }
 }

@@ -18,8 +18,4 @@ class Role extends Model
         return $this->belongsToMany('App\Models\Rule')->withTrashed()->withTimestamps();
     }
 
-    public function users()
-    {
-        return $this->hasMany('App\Models\User')->withTrashed();
-    }
 }

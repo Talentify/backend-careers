@@ -29,7 +29,7 @@ class UserRequest extends FormRequest
                 'lastname' => 'required|string|max:1255',
                 'email' => 'required|email|max:255|unique:users,email,', $this->userId,
                 'password' => 'string|confirmed|min:6|max:255',
-                'role_id' => 'required|integer|exists:roles,id',
+                'role_id' => 'integer|exists:roles,id',
             ];
         }
         return [
@@ -37,7 +37,7 @@ class UserRequest extends FormRequest
             'lastname' => 'required|string|max:1255',
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|string|confirmed|min:6|max:255',
-            'role_id' => 'required|integer|exists:roles,id',
+            'role_id' => 'integer|exists:roles,id',
         ];
     }
 }

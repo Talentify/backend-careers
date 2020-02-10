@@ -39,8 +39,8 @@ class JobController extends Controller
             $job = (new Job)->create($request->all());
 
             return response()->json(['message' => 'Job created successfully'], 201);
-        } catch (Exception $e) {
-            return response()->json(['message' => $e->getMessage()], 422);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'A error ocurred while inserting'], 500);
         }    
     }
 
@@ -52,13 +52,8 @@ class JobController extends Controller
      */
     public function show($jobId)
     {
-        try {
-            $job = (new Job)->findOrFail($jobId);
-            return response()->json($job);
-        } catch (Exception $e) {
-            return response()->json(['message' => 'Not Found'], 404);
-        }        
-        
+        $job = (new Job)->findOrFail($jobId);
+        return response()->json($job);
     }
 
     /**
@@ -75,13 +70,10 @@ class JobController extends Controller
 
             $job->fill($request->all())->save();
 
-            if (!$job) {
-                return response()->json(['message' => 'An error ocurred while updating'], 422);
-            }
-
             return response()->json(['message' => 'Job updated successfully'], 200);
-        } catch (Exception $e) {
-            return response()->json(['message' => 'Not Found'], 404);
+        } catch (\Exception $e) {
+            // dd($e);
+            return response()->json(['message' => 'A error ocurred while updating'], 500);
         }
     }
 
@@ -97,14 +89,9 @@ class JobController extends Controller
             $job = (new Job)->findOrFail($jobId);
             
             $job->delete();
-
-            if (!$job) {
-                return response()->json(['message' => 'An error ocurred while deleting'], 422);
-            }
-
             return response()->json(['message' => 'Job deleted successfully'], 200);
-        } catch (Exception $e) {
-            return response()->json(['message' => 'Not Found'], 404);
+        } catch (\Exception $e) {
+            return response()->json(['message' =>  'A error ocurred while deleting'], 500);
         }
     }
 }
