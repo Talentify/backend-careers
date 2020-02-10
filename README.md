@@ -47,7 +47,7 @@ Gerar chaves do passport:
 
 #### Login
     Gerar Token: POST localhost:8001/oauth/token
-        Parâmetros de envio: (usuário admin já cadastrado via seed)
+        Parâmetros de envio: (usuário admin já cadastrado via seed). Substituir username e password de cada usuário novo cadastrado para fazer login com os mesmos
             grant_type:password
             client_id:2
             client_secret:Qh1DDYCd2zun9oWwHK5kVhsPG2t5ruIZF2O8fXgP
