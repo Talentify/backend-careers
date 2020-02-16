@@ -34,11 +34,6 @@ class {{SingularEntityName|studly}}Service extends Service
         $this->{{SingularEntityName|cammel}}Repository = ${{SingularEntityName|cammel}}Repository;
     }
 
-    /**
-     * @param  {{SingularEntityName|studly}}GetAll  ${{SingularEntityName|cammel}}GetAll
-     *
-     * @return {{SingularEntityName|studly}}ResourceCollection
-     */
     public function getAll({{SingularEntityName|studly}}GetAll ${{SingularEntityName|cammel}}GetAll): {{SingularEntityName|studly}}ResourceCollection
     {
         $all = $this->{{SingularEntityName|cammel}}Repository->getAll(${{SingularEntityName|cammel}}GetAll->validated());
@@ -46,10 +41,12 @@ class {{SingularEntityName|studly}}Service extends Service
         return new {{SingularEntityName|studly}}ResourceCollection($all);
     }
 
+    public function count({{SingularEntityName|studly}}GetAll ${{SingularEntityName|cammel}}GetAll): int
+    {
+        return $this->{{SingularEntityName|cammel}}Repository->count(${{SingularEntityName|cammel}}GetAll->validated());
+    }
+
     /**
-     * @param  {{SingularEntityName|studly}}Store  ${{SingularEntityName|cammel}}Store
-     *
-     * @return {{SingularEntityName|studly}}Resource
      * @throws Exception
      */
     public function store({{SingularEntityName|studly}}Store ${{SingularEntityName|cammel}}Store): {{SingularEntityName|studly}}Resource
@@ -59,12 +56,6 @@ class {{SingularEntityName|studly}}Service extends Service
         return new {{SingularEntityName|studly}}Resource(${{SingularEntityName|cammel}});
     }
 
-    /**
-     * @param  int         $id
-     * @param  {{SingularEntityName|studly}}Get  ${{SingularEntityName|cammel}}Get
-     *
-     * @return {{SingularEntityName|studly}}Resource
-     */
     public function get(int $id, {{SingularEntityName|studly}}Get ${{SingularEntityName|cammel}}Get): {{SingularEntityName|studly}}Resource
     {
         ${{SingularEntityName|cammel}} = $this->{{SingularEntityName|cammel}}Repository->get($id);
@@ -73,10 +64,6 @@ class {{SingularEntityName|studly}}Service extends Service
     }
 
     /**
-     * @param  int            $id
-     * @param  {{SingularEntityName|studly}}Update  ${{SingularEntityName|cammel}}Update
-     *
-     * @return {{SingularEntityName|studly}}Resource
      * @throws Exception
      */
     public function update(int $id, {{SingularEntityName|studly}}Update ${{SingularEntityName|cammel}}Update): {{SingularEntityName|studly}}Resource
@@ -87,10 +74,6 @@ class {{SingularEntityName|studly}}Service extends Service
     }
 
     /**
-     * @param  int             $id
-     * @param  {{SingularEntityName|studly}}Destroy  ${{SingularEntityName|cammel}}Destroy
-     *
-     * @return string
      * @throws Exception
      */
     public function destroy(int $id, {{SingularEntityName|studly}}Destroy ${{SingularEntityName|cammel}}Destroy): string

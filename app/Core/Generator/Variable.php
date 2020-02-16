@@ -114,6 +114,10 @@ class Variable
      */
     private function getFormattedValue($variable, $format)
     {
+        if (! $variable) {
+            return '';
+        }
+
         switch ($format) {
             case 'cammel':
                 return Str::camel($variable);

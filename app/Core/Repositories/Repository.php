@@ -36,7 +36,7 @@ abstract class Repository
      *
      * @return LengthAwarePaginator
      */
-    public function getAll(array $options): LengthAwarePaginator
+    public function getAll(array $options = []): LengthAwarePaginator
     {
         $filters = $options['filter'] ?? [];
         $orderBy = $options['sort'] ?? 'id';
@@ -49,7 +49,7 @@ abstract class Repository
             ->paginate($perPage);
     }
 
-    public function count(array $options): int
+    public function count(array $options = []): int
     {
         $filters = $options['filters'] ?? [];
 
@@ -64,7 +64,7 @@ abstract class Repository
      * @return Model
      * @throws Exception
      */
-    public function store(array $data): Model
+    public function store(array $data = []): Model
     {
         $saveResult = $this->model->fill($data)->save();
 
@@ -92,7 +92,7 @@ abstract class Repository
      * @return Model
      * @throws Exception
      */
-    public function update(int $id, array $data): Model
+    public function update(int $id, array $data = []): Model
     {
         $model = $this->get($id);
 
@@ -141,6 +141,11 @@ abstract class Repository
         return $this->query->where($filter, $value);
     }
 
+    /**
+     * @param $filters
+     *
+     * @return Builder
+     */
     protected function applyFilters($filters): Builder
     {
         foreach ($filters as $filter => $value) {

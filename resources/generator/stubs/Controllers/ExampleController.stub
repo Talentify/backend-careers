@@ -14,6 +14,7 @@ use App\Http\Resources\V1\{{SingularEntityName|studly}}Resource;
 use App\Http\Resources\V1\{{SingularEntityName|studly}}ResourceCollection;
 use App\Services\V1\Auth\{{SingularEntityName|studly}}Service;
 use Exception;
+use Illuminate\Http\JsonResponse;
 
 /**
  * Class {{SingularEntityName|studly}}Controller
@@ -26,8 +27,6 @@ class {{SingularEntityName|studly}}Controller extends Controller
 
     /**
      * {{SingularEntityName|studly}}Controller constructor.
-     *
-     * @param  {{SingularEntityName|studly}}Service  ${{SingularEntityName|cammel}}Service
      */
     public function __construct({{SingularEntityName|studly}}Service ${{SingularEntityName|cammel}}Service)
     {
@@ -36,38 +35,36 @@ class {{SingularEntityName|studly}}Controller extends Controller
 
     /**
      * Display a listing of the resource.
-     *
-     * @param  {{SingularEntityName|studly}}GetAll  ${{SingularEntityName|cammel}}GetAll
-     *
-     * @return {{SingularEntityName|studly}}ResourceCollection
      */
-    public function index({{SingularEntityName|studly}}GetAll ${{SingularEntityName|cammel}}GetAll)
+    public function index({{SingularEntityName|studly}}GetAll ${{SingularEntityName|cammel}}GetAll): {{SingularEntityName|studly}}ResourceCollection
     {
         return $this->{{SingularEntityName|cammel}}Service->getAll(${{SingularEntityName|cammel}}GetAll);
     }
 
     /**
+     * Display the resource counter.
+     */
+    public function count(UserGetAll $userGetAll): JsonResponse
+    {
+        return response()->json([
+            'count' => $this->userService->count($userGetAll),
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
-     * @param  {{SingularEntityName|studly}}Store  ${{SingularEntityName|cammel}}Store
-     *
-     * @return {{SingularEntityName|studly}}Resource
      * @throws Exception
      */
-    public function store({{SingularEntityName|studly}}Store ${{SingularEntityName|cammel}}Store)
+    public function store({{SingularEntityName|studly}}Store ${{SingularEntityName|cammel}}Store): {{SingularEntityName|studly}}Resource
     {
         return $this->{{SingularEntityName|cammel}}Service->store(${{SingularEntityName|cammel}}Store);
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param  {{SingularEntityName|studly}}Get  ${{SingularEntityName|cammel}}Get
-     * @param  int         $id
-     *
-     * @return {{SingularEntityName|studly}}Resource
      */
-    public function show({{SingularEntityName|studly}}Get ${{SingularEntityName|cammel}}Get, int $id)
+    public function show({{SingularEntityName|studly}}Get ${{SingularEntityName|cammel}}Get, int $id): {{SingularEntityName|studly}}Resource
     {
         return $this->{{SingularEntityName|cammel}}Service->get($id, ${{SingularEntityName|cammel}}Get);
     }
@@ -75,13 +72,9 @@ class {{SingularEntityName|studly}}Controller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  {{SingularEntityName|studly}}Update  ${{SingularEntityName|cammel}}Update
-     * @param  int            $id
-     *
-     * @return {{SingularEntityName|studly}}Resource
      * @throws Exception
      */
-    public function update({{SingularEntityName|studly}}Update ${{SingularEntityName|cammel}}Update, int $id)
+    public function update({{SingularEntityName|studly}}Update ${{SingularEntityName|cammel}}Update, int $id): {{SingularEntityName|studly}}Resource
     {
         return $this->{{SingularEntityName|cammel}}Service->update($id, ${{SingularEntityName|cammel}}Update);
     }
@@ -89,16 +82,14 @@ class {{SingularEntityName|studly}}Controller extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  {{SingularEntityName|studly}}Destroy  ${{SingularEntityName|cammel}}Destroy
-     * @param  int             $id
-     *
-     * @return int
      * @throws Exception
      */
-    public function destroy({{SingularEntityName|studly}}Destroy ${{SingularEntityName|cammel}}Destroy, int $id)
+    public function destroy({{SingularEntityName|studly}}Destroy ${{SingularEntityName|cammel}}Destroy, int $id): JsonResponse
     {
         $result = $this->{{SingularEntityName|cammel}}Service->destroy($id, ${{SingularEntityName|cammel}}Destroy);
 
-        return response()->success($result);
+        return response()->json([
+            'message' => $result,
+        ]);
     }
 }
