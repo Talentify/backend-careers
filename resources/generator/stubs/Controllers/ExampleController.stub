@@ -44,10 +44,10 @@ class {{SingularEntityName|studly}}Controller extends Controller
     /**
      * Display the resource counter.
      */
-    public function count(UserGetAll $userGetAll): JsonResponse
+    public function count({{SingularEntityName|studly}}GetAll ${{SingularEntityName|cammel}}GetAll): JsonResponse
     {
         return response()->json([
-            'count' => $this->userService->count($userGetAll),
+            'count' => $this->{{SingularEntityName|cammel}}Service->count(${{SingularEntityName|cammel}}GetAll),
         ]);
     }
 
