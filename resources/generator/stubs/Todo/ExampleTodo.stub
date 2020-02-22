@@ -24,3 +24,11 @@ Route::prefix('{{PluralEntityName|cammel}}')
                 ->where('id', '[0-9]+')
                 ->name('destroy');
         });
+
+Permissions:
+
+Permission::findOrCreate('{{SingularEntityName|upper}}_GET_ALL');
+Permission::findOrCreate('{{SingularEntityName|upper}}_GET');
+Permission::findOrCreate('{{SingularEntityName|upper}}_STORE');
+Permission::findOrCreate('{{SingularEntityName|upper}}_UPDATE');
+Permission::findOrCreate('{{SingularEntityName|upper}}_DESTROY');
