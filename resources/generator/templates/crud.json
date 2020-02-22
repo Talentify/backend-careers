@@ -55,6 +55,10 @@
     {
       "stub": "Services/ExampleService.stub",
       "output": "app/Services/V1/{{SingularEntityName|studly}}Service.php"
+    },
+    {
+      "stub": "Todo/ExampleTodo.stub",
+      "output": "generated/{{SingularEntityName|studly}}.txt"
     }
   ]
 }
