@@ -41,7 +41,7 @@ services:
     working_dir: /var/www
     volumes:
       - ./:/var/www
-      - ./docker/php/conf.d/overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+      - ./docker/php/conf.d/overrides.ini:/usr/local/etc/php/conf.d/99-overrides.ini
       - ./docker/logs/php:/var/log/php-fpm
     links:
       - mysql
