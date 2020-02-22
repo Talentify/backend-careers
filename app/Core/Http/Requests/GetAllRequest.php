@@ -19,7 +19,7 @@ abstract class GetAllRequest extends Request
      */
     public function rules()
     {
-        return [
+        return array_merge([
             'limit'     => ['integer', 'max:100'],
             'per_page'  => ['integer'],
             'sort'      => [
@@ -33,8 +33,7 @@ abstract class GetAllRequest extends Request
                     'desc',
                 ]),
             ],
-            ...$this->getFilters(),
-        ];
+        ], $this->getFilters());
     }
 
     public function getFilters(): array
