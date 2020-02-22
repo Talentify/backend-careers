@@ -51,7 +51,7 @@ abstract class Repository
 
     public function count(array $options = []): int
     {
-        $filters = $options['filters'] ?? [];
+        $filters = $options['filter'] ?? [];
 
         return $this
             ->applyFilters($filters)
