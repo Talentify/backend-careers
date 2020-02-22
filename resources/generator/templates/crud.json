@@ -50,7 +50,7 @@
     },
     {
       "stub": "Seeders/ExampleSeeder.stub",
-      "output": "database/seeds/{{SingularEntityName|studly}}Seeder.php"
+      "output": "database/seeds/{{PluralEntityName|studly}}TableSeeder.php"
     },
     {
       "stub": "Services/ExampleService.stub",
