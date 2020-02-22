@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class {{SingularEntityName|studly}}Seeder extends Seeder
+class {{PluralEntityName|studly}}TableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
