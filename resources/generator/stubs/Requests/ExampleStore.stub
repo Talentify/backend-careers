@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Requests\V1;
 
 use App\Core\Http\Requests\Request;
+use Auth;
 
 class {{SingularEntityName|studly}}Store extends Request
 {
@@ -15,7 +16,7 @@ class {{SingularEntityName|studly}}Store extends Request
      */
     public function authorize()
     {
-        return true;
+        return Auth::user()->can('{{SingularEntityName|upper}}_STORE');
     }
 
     /**
