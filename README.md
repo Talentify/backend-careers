@@ -47,7 +47,7 @@ Digite o comando na raiz do projeto para subir a aplicação
     Digite o comando na raiz do projeto executar os testes unitários
     ./vendor/bin/phpunit (Foi configurado no arquivo phpunit.xml que está na raiz o projeto o banco de dados MySQL)
 
-##Navegação
+## Navegação
 
     Página Inicial (Vagas Ativas): http://localhost:8000
     Página Login: http://localhost:8000/login
