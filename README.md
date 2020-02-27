@@ -12,8 +12,8 @@ Arquivo para conexão com banco de dados
     DB_HOST=127.0.0.1
     DB_PORT=3306
     DB_DATABASE=talentify
-    DB_USERNAME=root
-    DB_PASSWORD=
+    DB_USERNAME=<user>
+    DB_PASSWORD=<password>
     
 Acesse o MySQL e crie o banco de dados (Pode ser utilizado outros banco de dados, basta somente parametrizar no arquivo .env)
     
@@ -47,7 +47,7 @@ Digite o comando na raiz do projeto para subir a aplicação
     Digite o comando na raiz do projeto executar os testes unitários
     ./vendor/bin/phpunit (Foi configurado no arquivo phpunit.xml que está na raiz o projeto o banco de dados MySQL)
 
-##Navegação
+## Navegação
 
     Página Inicial (Vagas Ativas): http://localhost:8000
     Página Login: http://localhost:8000/login
@@ -55,4 +55,13 @@ Digite o comando na raiz do projeto para subir a aplicação
     Cadastro Vaga (Somente Admin): http://localhost:8000/admin/jobs/create
     Visualizar Vagas Cadastradas (Somente Admin): http://localhost:8000/admin/jobs
     Dashboard (Somente Admin): http://localhost:8000/admin
+    
+## Usando Docker
+
+    Digite os comandos na pasta raiz do projeto
+    docker-compose up -d --build
+    docker-compose exec app php artisan key:generate
+    docker-compose exec app php artisan config:cache
+    docker-compose exec app php artisan migrate
+    docker-compose exec app php artisan db:seed
     
