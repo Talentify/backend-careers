@@ -64,4 +64,5 @@ Digite o comando na raiz do projeto para subir a aplicação
     docker-compose exec app php artisan config:cache
     docker-compose exec app php artisan migrate
     docker-compose exec app php artisan db:seed
+    docker-compose exec app ./vendor/bin/phpunit
     
