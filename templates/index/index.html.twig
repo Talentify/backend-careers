@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Job Opportunities{% endblock %}
+
+{% block body %}
+    {% for job_opportunity in job_opportunities  %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ job_opportunity.title }}</h3>
+            </div>
+            <div class="panel-body">
+                <dl>
+                    <dt>Description</dt>
+                    <dd>{{ job_opportunity.description }}</dd>
+                    <dt>Workplace</dt>
+                    <dd>{{ job_opportunity.workplace ?: '-' }}</dd>
+                    <dt>Salary</dt>
+                    <dd>$ {{ job_opportunity.salary ? job_opportunity.salary | number_format(2): '-' }}</dd>
+                </dl>
+            </div>
+        </div>
+    {% else %}
+        No job opportunities!
+    {% endfor %}
+    </table>
+{% endblock %}
