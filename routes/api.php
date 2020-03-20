@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+foreach (glob(__DIR__ . DIRECTORY_SEPARATOR .'apiroutes'.DIRECTORY_SEPARATOR.'*.php') as $filename) {
+    require $filename;
+}
