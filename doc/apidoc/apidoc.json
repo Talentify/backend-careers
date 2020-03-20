@@ -1,0 +1,15 @@
+{
+    "name": "Api Vagas",
+    "version": "0.0.1",
+    "description": "Vagas",
+    "title": "Documentação da api de vagas",
+    "url": "http://127.0.0.1:8000",
+    "header": {
+        "title": "Inicio",
+        "filename": "header.md"
+    },
+    "footer": {
+        "title": "Fim",
+        "filename": "footer.md"
+    }
+}
