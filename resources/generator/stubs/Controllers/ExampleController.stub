@@ -1,0 +1,95 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers\V1;
+
+use App\Core\Http\Controllers\Controller;
+use App\Http\Requests\V1\{{SingularEntityName|studly}}Destroy;
+use App\Http\Requests\V1\{{SingularEntityName|studly}}Get;
+use App\Http\Requests\V1\{{SingularEntityName|studly}}GetAll;
+use App\Http\Requests\V1\{{SingularEntityName|studly}}Store;
+use App\Http\Requests\V1\{{SingularEntityName|studly}}Update;
+use App\Http\Resources\V1\{{SingularEntityName|studly}}Resource;
+use App\Http\Resources\V1\{{SingularEntityName|studly}}ResourceCollection;
+use App\Services\V1\Auth\{{SingularEntityName|studly}}Service;
+use Exception;
+use Illuminate\Http\JsonResponse;
+
+/**
+ * Class {{SingularEntityName|studly}}Controller
+ *
+ * @package App\Http\Controllers\V1
+ */
+class {{SingularEntityName|studly}}Controller extends Controller
+{
+    private {{SingularEntityName|studly}}Service ${{SingularEntityName|cammel}}Service;
+
+    /**
+     * {{SingularEntityName|studly}}Controller constructor.
+     */
+    public function __construct({{SingularEntityName|studly}}Service ${{SingularEntityName|cammel}}Service)
+    {
+        $this->{{SingularEntityName|cammel}}Service = ${{SingularEntityName|cammel}}Service;
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function index({{SingularEntityName|studly}}GetAll ${{SingularEntityName|cammel}}GetAll): {{SingularEntityName|studly}}ResourceCollection
+    {
+        return $this->{{SingularEntityName|cammel}}Service->getAll(${{SingularEntityName|cammel}}GetAll);
+    }
+
+    /**
+     * Display the resource counter.
+     */
+    public function count({{SingularEntityName|studly}}GetAll ${{SingularEntityName|cammel}}GetAll): JsonResponse
+    {
+        return response()->json([
+            'count' => $this->{{SingularEntityName|cammel}}Service->count(${{SingularEntityName|cammel}}GetAll),
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @throws Exception
+     */
+    public function store({{SingularEntityName|studly}}Store ${{SingularEntityName|cammel}}Store): {{SingularEntityName|studly}}Resource
+    {
+        return $this->{{SingularEntityName|cammel}}Service->store(${{SingularEntityName|cammel}}Store);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show({{SingularEntityName|studly}}Get ${{SingularEntityName|cammel}}Get, int $id): {{SingularEntityName|studly}}Resource
+    {
+        return $this->{{SingularEntityName|cammel}}Service->get($id, ${{SingularEntityName|cammel}}Get);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @throws Exception
+     */
+    public function update({{SingularEntityName|studly}}Update ${{SingularEntityName|cammel}}Update, int $id): {{SingularEntityName|studly}}Resource
+    {
+        return $this->{{SingularEntityName|cammel}}Service->update($id, ${{SingularEntityName|cammel}}Update);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @throws Exception
+     */
+    public function destroy({{SingularEntityName|studly}}Destroy ${{SingularEntityName|cammel}}Destroy, int $id): JsonResponse
+    {
+        $result = $this->{{SingularEntityName|cammel}}Service->destroy($id, ${{SingularEntityName|cammel}}Destroy);
+
+        return response()->json([
+            'message' => $result,
+        ]);
+    }
+}

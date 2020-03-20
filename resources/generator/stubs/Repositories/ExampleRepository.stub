@@ -1,0 +1,24 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Repositories\V1;
+
+use App\Core\Repositories\Repository;
+use App\Models\V1\{{SingularEntityName|studly}};
+
+/**
+ * Class {{SingularEntityName|studly}}Repository
+ *
+ * @package App\Repositories\V1
+ */
+class {{SingularEntityName|studly}}Repository extends Repository
+{
+    /**
+     * @return string
+     */
+    protected function model(): string
+    {
+        return {{SingularEntityName|studly}}::class;
+    }
+}
