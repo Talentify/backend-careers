@@ -1,0 +1,83 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Services\V1\Auth;
+
+use App\Core\Services\Service;
+use App\Http\Requests\V1\{{SingularEntityName|studly}}Destroy;
+use App\Http\Requests\V1\{{SingularEntityName|studly}}Get;
+use App\Http\Requests\V1\{{SingularEntityName|studly}}GetAll;
+use App\Http\Requests\V1\{{SingularEntityName|studly}}Store;
+use App\Http\Requests\V1\{{SingularEntityName|studly}}Update;
+use App\Http\Resources\V1\{{SingularEntityName|studly}}Resource;
+use App\Http\Resources\V1\{{SingularEntityName|studly}}ResourceCollection;
+use App\Repositories\V1\{{SingularEntityName|studly}}Repository;
+use Exception;
+
+/**
+ * Class {{SingularEntityName|studly}}Service
+ *
+ * @package App\Services\V1\Auth
+ */
+class {{SingularEntityName|studly}}Service extends Service
+{
+    private {{SingularEntityName|studly}}Repository ${{SingularEntityName|cammel}}Repository;
+
+    /**
+     * {{SingularEntityName|studly}}Service constructor.
+     *
+     * @param  {{SingularEntityName|studly}}Repository  ${{SingularEntityName|cammel}}Repository
+     */
+    public function __construct({{SingularEntityName|studly}}Repository ${{SingularEntityName|cammel}}Repository)
+    {
+        $this->{{SingularEntityName|cammel}}Repository = ${{SingularEntityName|cammel}}Repository;
+    }
+
+    public function getAll({{SingularEntityName|studly}}GetAll ${{SingularEntityName|cammel}}GetAll): {{SingularEntityName|studly}}ResourceCollection
+    {
+        $all = $this->{{SingularEntityName|cammel}}Repository->getAll(${{SingularEntityName|cammel}}GetAll->validated());
+
+        return new {{SingularEntityName|studly}}ResourceCollection($all);
+    }
+
+    public function count({{SingularEntityName|studly}}GetAll ${{SingularEntityName|cammel}}GetAll): int
+    {
+        return $this->{{SingularEntityName|cammel}}Repository->count(${{SingularEntityName|cammel}}GetAll->validated());
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function store({{SingularEntityName|studly}}Store ${{SingularEntityName|cammel}}Store): {{SingularEntityName|studly}}Resource
+    {
+        ${{SingularEntityName|cammel}} = $this->{{SingularEntityName|cammel}}Repository->store(${{SingularEntityName|cammel}}Store->validated());
+
+        return new {{SingularEntityName|studly}}Resource(${{SingularEntityName|cammel}});
+    }
+
+    public function get(int $id, {{SingularEntityName|studly}}Get ${{SingularEntityName|cammel}}Get): {{SingularEntityName|studly}}Resource
+    {
+        ${{SingularEntityName|cammel}} = $this->{{SingularEntityName|cammel}}Repository->get($id);
+
+        return new {{SingularEntityName|studly}}Resource(${{SingularEntityName|cammel}});
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function update(int $id, {{SingularEntityName|studly}}Update ${{SingularEntityName|cammel}}Update): {{SingularEntityName|studly}}Resource
+    {
+        ${{SingularEntityName|cammel}} = $this->{{SingularEntityName|cammel}}Repository->update($id, ${{SingularEntityName|cammel}}Update->validated());
+
+        return new {{SingularEntityName|studly}}Resource(${{SingularEntityName|cammel}});
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function destroy(int $id, {{SingularEntityName|studly}}Destroy ${{SingularEntityName|cammel}}Destroy): string
+    {
+        return $this->{{SingularEntityName|cammel}}Repository->destroy($id);
+    }
+}

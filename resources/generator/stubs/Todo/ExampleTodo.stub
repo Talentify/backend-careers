@@ -1,0 +1,34 @@
+Routes:
+
+Route::prefix('{{PluralEntityName|cammel}}')
+        ->name('{{PluralEntityName|cammel}}.')
+        ->group(function () {
+            Route::get('', [{{SingularEntityName|studly}}Controller::class, 'index'])
+                ->name('index');
+
+            Route::get('count', [{{SingularEntityName|studly}}Controller::class, 'index'])
+                ->name('count');
+
+            Route::post('', [{{SingularEntityName|studly}}Controller::class, 'store'])
+                ->name('store');
+
+            Route::get('{id}', [{{SingularEntityName|studly}}Controller::class, 'show'])
+                ->where('id', '[0-9]+')
+                ->name('show');
+
+            Route::patch('{id}', [{{SingularEntityName|studly}}Controller::class, 'update'])
+                ->where('id', '[0-9]+')
+                ->name('update');
+
+            Route::delete('{id}', [{{SingularEntityName|studly}}Controller::class, 'destroy'])
+                ->where('id', '[0-9]+')
+                ->name('destroy');
+        });
+
+Permissions:
+
+Permission::findOrCreate('{{SingularEntityName|upper}}_GET_ALL');
+Permission::findOrCreate('{{SingularEntityName|upper}}_GET');
+Permission::findOrCreate('{{SingularEntityName|upper}}_STORE');
+Permission::findOrCreate('{{SingularEntityName|upper}}_UPDATE');
+Permission::findOrCreate('{{SingularEntityName|upper}}_DESTROY');

@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\V1\Auth\LoginController;
-use App\Http\Controllers\V1\ExampleController;
 
 /**
  * Guest routes

@@ -8,6 +8,7 @@ use App\Core\Models\Model;
 use Exception;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
+use Str;
 
 /**
  * Class Repository
@@ -20,8 +21,6 @@ abstract class Repository
     protected Builder $query;
 
     abstract protected function model(): string;
-
-    abstract protected function filters($filter, $value): Builder;
 
     /**
      * Repository constructor.
@@ -37,10 +36,10 @@ abstract class Repository
      *
      * @return LengthAwarePaginator
      */
-    public function getAll(array $options): LengthAwarePaginator
+    public function getAll(array $options = []): LengthAwarePaginator
     {
-        $filters = $options['filters'] ?? [];
-        $orderBy = $options['order_by'] ?? 'id';
+        $filters = $options['filter'] ?? [];
+        $orderBy = $options['sort'] ?? 'id';
         $direction = $options['direction'] ?? 'desc';
         $perPage = $options['per_page'] ?? 15;
 
@@ -50,9 +49,9 @@ abstract class Repository
             ->paginate($perPage);
     }
 
-    public function count(array $options): int
+    public function count(array $options = []): int
     {
-        $filters = $options['filters'] ?? [];
+        $filters = $options['filter'] ?? [];
 
         return $this
             ->applyFilters($filters)
@@ -65,12 +64,12 @@ abstract class Repository
      * @return Model
      * @throws Exception
      */
-    public function store(array $data): Model
+    public function store(array $data = []): Model
     {
         $saveResult = $this->model->fill($data)->save();
 
         if (! $saveResult) {
-            throw new Exception('Could not store registry');
+            throw new Exception('Could not store registry.');
         }
 
         return $this->model;
@@ -93,14 +92,14 @@ abstract class Repository
      * @return Model
      * @throws Exception
      */
-    public function update(int $id, array $data): Model
+    public function update(int $id, array $data = []): Model
     {
         $model = $this->get($id);
 
         $updateResult = $model->update($data);
 
         if (! $updateResult) {
-            throw new Exception('Could not update registry');
+            throw new Exception('Could not update registry.');
         }
 
         return $model;
@@ -109,22 +108,44 @@ abstract class Repository
     /**
      * @param  int  $id
      *
-     * @return bool
+     * @return string
      * @throws Exception
      */
-    public function destroy(int $id): bool
+    public function destroy(int $id): string
     {
         $model = $this->get($id);
 
         $destroyResult = $model->delete();
 
         if (! $destroyResult) {
-            throw new Exception('Could not delete registry');
+            throw new Exception('Could not delete registry.');
         }
 
-        return true;
+        return 'Registry successfully deleted.';
     }
 
+    /**
+     * @param $filter
+     * @param $value
+     *
+     * @return Builder
+     */
+    protected function filters($filter, $value): Builder
+    {
+        $methodName = 'filterBy'.Str::studly($filter);
+
+        if (method_exists($this, $methodName)) {
+            return $this->$methodName($value);
+        }
+
+        return $this->query->where($filter, $value);
+    }
+
+    /**
+     * @param $filters
+     *
+     * @return Builder
+     */
     protected function applyFilters($filters): Builder
     {
         foreach ($filters as $filter => $value) {

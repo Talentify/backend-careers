@@ -1,0 +1,35 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Requests\V1;
+
+use App\Core\Http\Requests\GetAllRequest;
+use Auth;
+
+class {{SingularEntityName|studly}}GetAll extends GetAllRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return Auth::user()->can('{{SingularEntityName|upper}}_GET_ALL');
+    }
+
+    function allowedOrderBy(): array
+    {
+        return [
+            // {{fields|explode}}
+        ];
+    }
+
+    function allowedFilters(): array
+    {
+        return [
+            // {{fields|explode}}
+        ];
+    }
+}

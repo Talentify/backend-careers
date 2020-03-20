@@ -1,0 +1,11 @@
+<?php
+
+/** @var Factory $factory */
+
+use App\Models\V1\{{SingularEntityName|studly}};
+use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factory;
+
+$factory->define({{SingularEntityName|studly}}::class, fn(Faker $faker) => [
+    // {{fields|explode}}
+]);
