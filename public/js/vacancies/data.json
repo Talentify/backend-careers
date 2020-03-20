@@ -1,0 +1,10 @@
+{
+    "id": "#",
+    "title": "Título",
+    "description": "Descrição",
+    "status": "Status",
+    "workplace": "Local de Trabalho",
+    "salary": "Salário",
+    "created_at": "Criado em",
+    "updated_at": "Atualizado em"
+}
