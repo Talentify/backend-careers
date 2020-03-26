@@ -1,51 +1,137 @@
-## A empresa
-A Talentify.io nasceu da fusão de 3 empresas distintas em 3 áreas diferentes: Digital Media & Advertising, Mobile Technology e HR Consulting. Nossa plataforma de SaaS ajuda empresas a superar seus maiores desafios na  busca e contratação de talentos em grande escala.
+# Get Aboard  
+Get Aboard is a vacancy announciment sample app, which contains the following functions:
+1. Publish a vacancy
+1. Update a vacancy
+1. Login/Logout (/admin to use it)
+1. Paginated list of all valid vacancies
 
-## A vaga
-Estamos constante adicionando novas features e aperfeiçoando as já existentes. Como desenvolvedor sênior, voce será responsável por criar código limpo, testável, e de alta qualidade, além de auxiliar o restante da equipe a migrar código existente para a nova arquitetura orientada a domínio.Somos adeptos de desenvolvimento ágil, integração contínua, code review e testes automáticos. Com isso, nossa equipe busca constantemente desenvolver e aprimorar o produto para estarmos sempre a frente do mercado.
+## Get started
 
-## Beneficios
-- Home office (a ser combinado)
-- Horario flexivel
-- Assistencia medica e odontologica (apos 3 meses)
-- Vale refeicao e transporte
+1. Installing dependencies
+1. Configuring database connection
+1. Importing database
+1. Configuring your serve
+1. Testing your app
+1. About
 
-## Requisitos
-- PHP 7
-- Desenvolvimento de testes
-- Desenvolvimento Agil
-- Web Services (RESTful ou SOAP ou JSON-RPC, etc)
-- Algum dos frameworks PHP (Phalcon, Zend, Symfony, Laravel)
-- Familiaridade com as PHP Standards Recommendations (PSRs)
-- GIT
-- Banco de dados relacional (MySQL, PostgreSQL, etc)
+### 1. Installing dependencies
+All non shipped dependencies are included in composer.json file. Run this command under your project root path in your favorite shell:
+```bash
+$ composer install
+```
 
-## Desejável
-- Arquitetura hexagonal
-- DDD
-- Microserviços
-- Filas de mensagens (RabbitMQ, Apache Kafka, Amazon SQS, etc)
-- Elasticsearch
-- Linux
-- Amazon Web Services (AWS)
-- CI/CD
-- Inglês (leitura, escrita e conversação)
+### 2. Configuring database connection
+Go to config/app.php and set your database configure
+```
+return [
+'Datasources' => [
+  'default' => [
+    'className' => Connection::class,
+    'driver' => Mysql::class,
+    'persistent' => false,
+    'host' => '{HOSTNAME}',
+    /*
+     * CakePHP will use the default DB port based on the driver selected
+     * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
+     * the following line and set the port accordingly
+     */
+    //'port' => 'non_standard_port_number',
+    'username' => '{USERNAME}',
+    'password' => '{PASSWORD}',
+    'database' => '{DATABASENAME}',
+  ],
+  'test' => [ // Connection to be used in test routines
+    'className' => Connection::class,
+    'driver' => Mysql::class,
+    'persistent' => false,
+    'host' => '{HOSTNAME}',
+    /*
+     * CakePHP will use the default DB port based on the driver selected
+     * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
+     * the following line and set the port accordingly
+     */
+    //'port' => 'non_standard_port_number',
+    'username' => '{USERNAME}',
+    'password' => '{PASSWORD}',
+    'database' => '{TEST_DATABASENAME}',
+  ]
+];
+```
 
-## Talk is cheap. Show me the code!
-Você deverá construir um pequeno sistema para publicação de vagas de emprego. Ele irá possuir os seguintes recursos:
-* Interface, de acesso público, com a listagem das vagas abertas
-* Interface para login
-* Interface administrativa, de acesso privado, com os seguintes recursos:
-  * Cadastro de vaga contendo os campos: title (string, 256 characteres, obrigatório) , description (string, 10000 caracteres, obrigatório), status (enum, obrigatório), workplace (endereço, opcional), salary (dólar americano, opicional).
- 
-#### Observações
-- Você pode, ou não, utilizar qualquer framework ou biblioteca PHP que desejar, desde que a lógica de negócio descrita acima seja feita por você, em puro PHP.
-- As interfaces podem ou não serem gráficas (GUI), isto é, podem ser qualquer tipo de canal que possibilite a comunicação com a aplicação, tais como: RESTful, GraphQL, SOAP, JSON-RPC, (X)HTML com ou sem javascript, etc.
-- Um README.md deverá ser adicionado e conter, no mínimo, as instruções de setup e utilização da aplicação.
+### 3. Importing database
+Get Aboard uses [Phinx](https://phinx.org) for database migration.
+#### 3.1 Import scheme
+```bash
+$ bin/cake migrations migrate
+```
+#### 3.2 Populate
+```bash
+$ bin/cake migrations seed --seed InitialSeed
+```
+### 4. Configuring your server
+CakePHP requires a server setup to emulate a domain.
+1. NGINX sample
+```
+server {
+  listen 80;
+  listen [::]:80;
+  server_name blog.local;
+  client_max_body_size 24M;
 
-#### Envio
-Para enviar o seu código, submeta uma pull request para este repositório.
+	root {{PATH_TO_PROJECT}}/webroot;
+	index index.php;
+	location / {
+		try_files $uri $uri/ /index.php?$args;
+	}
 
-#### Disclaimer
-O código fonte que você produzir será utilizado somente para avaliar sua aptidão para a vaga. Não será feito nenhum uso comercial do código fonte, tampouco haverá a exigência de direitos de atribuição.
+	location ~ \.php {
+		fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+		if (!-f $document_root$fastcgi_script_name) {
+				return 404;
+		}
+		#PHP 7.2
+		fastcgi_pass 127.0.0.1:9000;
+		fastcgi_param SCRIPT_FILENAME $request_filename;
+		fastcgi_param BLOG $sub;
+		include fastcgi_params;
+	}
+}
+```
+2. Restart your server
+3. Add it to your hosts file
 
+### 5. Get start using it!
+Admin: /admin
+User: tester@testing.local
+Password: 123456
+
+### 6. Testing your app
+```bash
+$ vendor/bin/phpunit tests/TestCase
+```
+
+### 7. About
+**How long did it take get "Get Aboard" built from the ground?**  
+Only 2h50 hours (including this very Readme file)  
+
+**Used technologies**
+  * CakePHP 3.8
+  * Composer
+  * MySQL 5.7
+  * Phinx
+  * HTML 5
+  * PHP 7
+  * jQuery 3
+  * PHP Unit 5
+  * Twitter Bootstrap 4  
+
+**Requirements**
+  * MySQL 5.7/Maria Database installed
+  * PHP 7.2+ (with libraries intl, json, mbstring)
+  * NGINX or Apache
+  * Shell interface (for testing and manual database installation)  
+  * Composer  
+
+**More in**
+
+* [CakePHP 3](book.cakephp.org/3.0/en/index.html) - The CakePHP user documentation; start learning here!
