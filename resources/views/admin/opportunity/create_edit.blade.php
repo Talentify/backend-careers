@@ -21,7 +21,11 @@
     @endisset
 
     <div class="col-md-12">
-        <form method="POST" action="{{ route('admin.opportunity.store') }}">
+        @if(isset($opportunity))
+            <form method="POST" action="{{ route('admin.opportunity.postEdit', $opportunity->id) }}">
+        @else
+            <form method="POST" action="{{  route('admin.opportunity.store') }}">
+        @endif
             @csrf
 
             <div class="form-group row">
@@ -58,13 +62,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <div class="radio">
-                            <label><input type="radio" name="status-active" class="@error('status') is-invalid @enderror" name="status-active" value="active" {{isset($opportunity) && $opportunity->status === 'active' ? "checked" : ""}}>Active</label>
+                            <label><input type="radio" name="status" class="@error('status') is-invalid @enderror" name="status-active" value="active" {{isset($opportunity) && $opportunity->status === 'active' ? "checked" : ""}}>Active</label>
                         </div>
                         <div class="radio">
-                            <label><input type="radio" name="status-paused" class="@error('status') is-invalid @enderror" name="status-paused" value="paused" {{isset($opportunity) && $opportunity->status === 'paused' ? "checked" : ""}}>Paused</label>
+                            <label><input type="radio" name="status" class="@error('status') is-invalid @enderror" name="status-paused" value="paused" {{isset($opportunity) && $opportunity->status === 'paused' ? "checked" : ""}}>Paused</label>
                         </div>
                         <div class="radio">
-                            <label><input type="radio" name="status-inactive" class="@error('status') is-invalid @enderror" name="status-inactive" value="inactive" {{isset($opportunity) && $opportunity->status === 'inactive' ? "checked" : ""}}>Inactive</label>
+                            <label><input type="radio" name="status" class="@error('status') is-invalid @enderror" name="status-inactive" value="inactive" {{isset($opportunity) && $opportunity->status === 'inactive' ? "checked" : ""}}>Inactive</label>
                         </div>
                     </div>
 
@@ -104,11 +108,20 @@
                 </div>
             </div>
 
-            <div class="form-group row mb-0">
-                <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary">
-                        {{ __('Save opportunity') }}
-                    </button>
+            <div class="container">
+                <div class="form-group row">
+                    <div class="col-md-12 text-center row">
+                        <div class="col-md-6">
+                            <a href="{{route('admin.home')}}" class="btn btn-secondary float-left">
+                                {{ __('Cancel') }}
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary float-right">
+                                {{ __('Save opportunity') }}
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>

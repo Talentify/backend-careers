@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Opportunities;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -34,6 +35,17 @@ class AdminController extends Controller {
     public function index()
     {
         return view('admin.home');
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function logOut(Request $request)
+    {
+        Auth::logout();
+
+        return redirect('admin/login');
     }
 
     /**

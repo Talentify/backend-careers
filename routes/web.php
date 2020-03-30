@@ -29,8 +29,9 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.', 'prefix' => 'admin'], fu
 
     Route::group(['middleware' => 'role'], function() {
         Route::get('/', 'AdminController@index')->name('home');
+        Route::get('/admin', 'AdminController@index')->name('admin');
         Route::get('/home', 'AdminController@index')->name('dashboard');
-        Route::get('/logout', 'AdminController@logOut')->name('logout');
+        Route::post('/logout', 'AdminController@logOut')->name('logout');
 
         Route::group(['as' => 'opportunity.', 'prefix' => 'opportunity'], function() {
             Route::get('/search', 'AdminController@search')->name('search');
