@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="85a03d6d-5ab9-4fd0-8c7a-9fd3cce31713" name="talentify" url="http://127.0.0.1">
+        <fileTransfer host="127.0.0.1" port="2222" privateKey="C:\Users\Gabriela Katz\.ssh\id_rsa" rootFolder="/var/www/html/talentify" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="2222" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

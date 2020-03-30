@@ -1,0 +1,158 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+
+html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: auto !important;
+    margin: 0;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 84px;
+}
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.navbar-logo {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.main-home-logo {
+    padding-top: 4.5rem !important;
+    padding-bottom: 1.5rem !important;
+}
+
+.subtitle-center {
+    padding-left: 0.5em !important;
+    text-align: center !important;
+}
+
+.main-home-content-division {
+    margin-top: 1.5em !important;
+    border-radius: 10px;
+    height: 10px;
+}
+
+.main-home-content-title {
+    color: #33459d;
+    font-size: 17px;
+    opacity: 1;
+    text-align: left;
+    padding-left: 1em;
+}
+
+.main-home-search-input {
+    width: 60% !important;
+    display: inline-table;
+    margin-right: 2px;
+}
+
+.search-body {
+    margin-top: 3%;
+}
+
+.search-content {
+    position: relative;
+    margin-top: 3%;
+    padding-left: 7% !important;
+}
+
+.opportunity-card-content {
+    margin-top: 10px;
+}
+
+.opportunity-card-body {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+}
+
+.opportunities-pagination {
+    margin-top: 3%;
+    margin-left: 40% !important;
+}
+
+.nav-opportunity {
+    margin-top: 1.5em !important;
+    border-radius: 10px;
+}
+
+.opportunity-title {
+    font-size: 35px;
+    margin-top: 2em;
+}
+
+.opportunity-content {
+    margin-top: 4em;
+}
+
+.opportunity-description {
+    margin-top: 2em;
+    text-align: justify;
+}
+
+.td-wrap-text {
+    overflow: auto;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+}
+
+.form-title {
+    margin-left: 8em;
+}
+
+.currency {
+    padding-left:12px;
+}
+
+.currency-symbol {
+    position:absolute;
+    padding: 2px 5px;
+}
+
+.dashboard-main-table {
+    margin-top: 3em;
+}
