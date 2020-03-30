@@ -77,3 +77,21 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Commands to install
+
+Create the "talentify" one database (mySql driver). Modify .env file applying your credentials;
+Go to the root and run the following commands:
+
+1) "composer install"
+2) "php artisan migrate --seed"
+
+Some "test" users:
+
+1) Admin: admin-test@talentify.com
+2) Client: client-test@talentify.com
+
+For both, password: "secret123"
+
+Accessing the admin dashboard: go to "your-service-url/admin"
