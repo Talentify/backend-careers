@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/admin.js') }}" defer></script>
 
     <!-- Favicon -->
@@ -48,7 +49,9 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <!-- -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.login') }}">{{ __('Login') }}</a>
+                            </li>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -62,7 +65,7 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>

@@ -29,16 +29,17 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.', 'prefix' => 'admin'], fu
 
     Route::group(['middleware' => 'role'], function() {
         Route::get('/', 'AdminController@index')->name('home');
+        Route::get('/admin', 'AdminController@index')->name('admin');
         Route::get('/home', 'AdminController@index')->name('dashboard');
-        Route::get('/logout', 'AdminController@logOut')->name('logout');
+        Route::post('/logout', 'AdminController@logOut')->name('logout');
 
         Route::group(['as' => 'opportunity.', 'prefix' => 'opportunity'], function() {
             Route::get('/search', 'AdminController@search')->name('search');
-            Route::get('opportunity/new', 'AdminController@create')->name('create');
-            Route::post('opportunity/new', 'AdminController@store')->name('store');
-            Route::get('opportunity/{opportunityId}/edit', 'AdminController@getEdit')->name('getEdit');
-            Route::post('opportunity/{opportunityId}/edit', 'AdminController@postEdit')->name('postEdit');
-            Route::delete('opportunity/{opportunityId}/delete', 'AdminController@postDelete')->name('postDelete');
+            Route::get('/new', 'AdminController@create')->name('create');
+            Route::post('/new', 'AdminController@store')->name('store');
+            Route::get('/{opportunityId}/edit', 'AdminController@getEdit')->name('getEdit');
+            Route::post('/{opportunityId}/edit', 'AdminController@postEdit')->name('postEdit');
+            Route::delete('/{opportunityId}/delete', 'AdminController@postDelete')->name('postDelete');
         });
     });
 
