@@ -22,9 +22,9 @@
 
     <div class="col-md-12">
         @if(isset($opportunity))
-            <form method="POST" action="{{ route('admin.opportunity.postEdit', $opportunity->id) }}">
+            <form method="POST" action="{{ route('admin.opportunity.update', $opportunity->id) }}">
         @else
-            <form method="POST" action="{{  route('admin.opportunity.postCreate') }}">
+            <form method="POST" action="{{  route('admin.opportunity.store') }}">
         @endif
             @csrf
 

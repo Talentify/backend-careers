@@ -50,13 +50,14 @@ class AdminController extends Controller {
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return mixed
+     * @throws \Exception
      */
     public function search(Request $request)
     {
         return Datatables::of(Opportunities::query())
             ->addColumn('actions', function($row) {
-                $editUrl = route('admin.opportunity.getEdit', $row->id);
+                $editUrl = route('admin.opportunity.edit', $row->id);
                 $deleteUrl = route('admin.opportunity.postDelete', $row->id);
 
                 return view('layouts.formActions', compact('editUrl', 'deleteUrl'));
@@ -69,7 +70,7 @@ class AdminController extends Controller {
      *
      * @return Response
      */
-    public function create()
+    public function showCreate()
     {
         // Show the page
         return view('admin.opportunity.create_edit', ['title' => 'Create job opportunity', 'mode' => 'edit']);
@@ -80,7 +81,7 @@ class AdminController extends Controller {
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function postCreate(Request $request)
     {
         // Declare the rules for the form validation
         $rules = [
@@ -95,21 +96,14 @@ class AdminController extends Controller {
         // Check if the form validates with success
         if ($validator->passes())
         {
-
             // Create a new opportunity
-            $salary = !is_null($request->input('salary')) ? floatval(str_replace(',', '.', str_replace('.', '', $request->input('salary')))) : null;
-
-            $this->opportunity->title       = $request->input('title');
-            $this->opportunity->description = $request->input('description');
-            $this->opportunity->status      = $request->input('status');
-            $this->opportunity->workplace   = $request->input('workplace');
-            $this->opportunity->salary      = $salary;
+            $saved = $this->store($request);
 
             // Was the opportunity created?
-            if($this->opportunity->save())
+            if($saved)
             {
                 // Redirect to the new opportunity page
-                return Redirect::to('admin/opportunity/' . $this->opportunity->id . '/edit')->with([
+                return Redirect::to(route('admin.home'))->with([
                     'title'   => 'Edit job opportunity',
                     'mode'    => 'edit',
                     'error'   => false,
@@ -118,7 +112,7 @@ class AdminController extends Controller {
             }
 
             // Redirect to the opportunity create page
-            return Redirect::to('admin/opportunity/create')->with([
+            return Redirect::to('admin/opportunity/new')->with([
                 'title'   => 'Edit job opportunity',
                 'mode'    => 'edit',
                 'error'   => true,
@@ -127,7 +121,7 @@ class AdminController extends Controller {
         }
 
         // Form validation failed
-        return Redirect::to('admin/opportunity/create')->with([
+        return Redirect::to('admin/opportunity/new')->with([
             'title'   => 'Edit job opportunity',
             'mode'    => 'edit',
             'error'   => true
@@ -140,7 +134,7 @@ class AdminController extends Controller {
      * @param $opportunity
      * @return Response
      */
-    public function getEdit($id)
+    public function showEdit($id)
     {
         $opportunity = Opportunities::find($id);
 
@@ -170,24 +164,16 @@ class AdminController extends Controller {
         // Validate the inputs
         $validator = Validator::make($request->all(), $rules);
 
-        $opportunity = Opportunities::find($id);
-
         // Check if the form validates with success
         if ($validator->passes())
         {
-            $salary = !is_null($request->input('salary')) ? floatval(str_replace(',', '.', str_replace('.', ',', $request->input('salary')))) : null;
-
-            $opportunity->title       = $request->input('title');
-            $opportunity->description = $request->input('description');
-            $opportunity->status      = $request->input('status');
-            $opportunity->workplace   = $request->input('workplace');
-            $opportunity->salary      = $salary;
+            $saved = $this->update($id, $request);
 
             // Was the opportunity updated?
-            if($opportunity->save())
+            if($saved)
             {
                 // Redirect to the new opportunity page
-                return Redirect::to('admin/opportunity/' . $opportunity->id . '/edit')->with([
+                return Redirect::to(route('admin.home'))->with([
                     'title'   => 'Edit job opportunity',
                     'mode'    => 'edit',
                     'error'   => false,
@@ -196,7 +182,7 @@ class AdminController extends Controller {
             }
 
             // Redirect to the opportunity management page
-            return Redirect::to('admin/opportunity/' . $opportunity->id . '/edit')->with([
+            return Redirect::to('admin/opportunity/' . $id . '/edit')->with([
                 'title'   => 'Edit job opportunity',
                 'mode'    => 'edit',
                 'error'   => true,
@@ -205,7 +191,7 @@ class AdminController extends Controller {
         }
 
         // Form validation failed
-        return Redirect::to('admin/opportunity/' . $opportunity->id . '/edit')->with([
+        return Redirect::to('admin/opportunity/' . $id . '/edit')->with([
             'title'   => 'Edit job opportunity',
             'mode'    => 'edit',
             'error'   => true
@@ -220,20 +206,13 @@ class AdminController extends Controller {
      */
     public function postDelete($id)
     {
-        // Declare the rules for the form validation
-        $rules = array(
-            'id' => 'required|integer'
-        );
-
-
-        $opportunity = Opportunities::find($id);
-        $opportunity->delete();
+        $deleted = $this->delete($id);
 
         // Was the opportunity deleted?
-        if(empty($opportunity))
+        if(empty($deleted))
         {
             // Redirect to the opportunities management page
-            return Redirect::to('admin/opportunities')->with([
+            return Redirect::to('admin/')->with([
                 'error' => false,
                 'errorMessage' => 'Job opportunity deleted with success!'
             ]);
@@ -244,5 +223,69 @@ class AdminController extends Controller {
             'error' => true,
             'errorMessage', 'An error occurred while deleting the job opportunity.'
         ]);
+    }
+
+    /**
+     * @param $request
+     * @return bool
+     */
+    public function store(Request $request){
+        $salary = !is_null($request->input('salary')) ? floatval(str_replace(',', '.', str_replace('.', '', $request->input('salary')))) : null;
+
+        $this->opportunity->title       = $request->input('title');
+        $this->opportunity->description = $request->input('description');
+        $this->opportunity->status      = $request->input('status');
+        $this->opportunity->workplace   = $request->input('workplace');
+        $this->opportunity->salary      = $salary;
+
+        return $this->opportunity->save();
+    }
+
+    /**
+     * @param null $id
+     * @param Request $request
+     * @return bool
+     * @throws \Exception
+     */
+    public function update($id = null, Request $request){
+        if (is_null($id)) {
+            throw new \Exception('Invalid id.');
+        }
+
+        $this->opportunity = Opportunities::find($id);
+
+        if (empty($this->opportunity)) {
+            throw new \Exception('Record not found.');
+        }
+
+        $salary = !is_null($request->input('salary')) ? floatval(str_replace(',', '.', str_replace('.', '', $request->input('salary')))) : null;
+
+        $this->opportunity->title       = $request->input('title');
+        $this->opportunity->description = $request->input('description');
+        $this->opportunity->status      = $request->input('status');
+        $this->opportunity->workplace   = $request->input('workplace');
+        $this->opportunity->salary      = $salary;
+
+
+        return $this->opportunity->update();
+    }
+
+    /*
+     * List opportunities
+     */
+    public function listOpportunities(){
+        return Opportunities::all();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param $opportunity
+     * @return Response
+     */
+    public function delete($id)
+    {
+        $opportunity = Opportunities::find($id);
+        $opportunity->delete();
     }
 }

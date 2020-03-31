@@ -35,18 +35,11 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.', 'prefix' => 'admin'], fu
 
         Route::group(['as' => 'opportunity.', 'prefix' => 'opportunity'], function() {
             Route::get('/search', 'AdminController@search')->name('search');
-            Route::get('/new', 'AdminController@showCreate')->name('showCreate');
-            Route::post('/new', 'AdminController@postCreate')->name('postCreate');
-            Route::get('/{opportunityId}/edit', 'AdminController@showEdit')->name('edit');
-            Route::post('/{opportunityId}/edit', 'AdminController@postEdit')->name('postEdit');
-            Route::delete('/{opportunityId}/postDelete', 'AdminController@postDelete')->name('postDelete');
-
-            Route::group(['as' => 'tests.', 'prefix' => 'tests'], function() {
-                Route::get('/list', 'AdminController@listOpportunities')->name('listOpportunities');
-                Route::post('/store', 'AdminController@store')->name('store');
-                Route::put('/{opportunityId}/update', 'AdminController@update')->name('update');
-                Route::delete('/{opportunityId}/delete', 'AdminController@delete')->name('delete');
-            });
+            Route::get('/new', 'AdminController@create')->name('create');
+            Route::post('/new', 'AdminController@store')->name('store');
+            Route::get('/{opportunityId}/edit', 'AdminController@edit')->name('getEdit');
+            Route::post('/{opportunityId}/edit', 'AdminController@update')->name('update');
+            Route::delete('/{opportunityId}/delete', 'AdminController@delete')->name('delete');
         });
     });
 

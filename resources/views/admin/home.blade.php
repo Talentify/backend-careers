@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 pull-right">
-                <a href="{{route('admin.opportunity.create')}}" class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i class="fa fa-plus"></i>&nbsp; New opportunity</a>
+                <a href="{{route('admin.opportunity.showCreate')}}" class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i class="fa fa-plus"></i>&nbsp; New opportunity</a>
             </div>
         </div>
         <div class="dashboard-main-table">

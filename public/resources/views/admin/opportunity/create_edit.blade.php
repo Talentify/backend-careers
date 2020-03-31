@@ -6,7 +6,7 @@
     </div>
     <hr>
 
-    @if($errors->any())
+    @if(isset($errors) && $errors->any())
         <div class="alert alert-danger">
             @foreach($errors->all() as $error)
                 <p>{{ $error }}</p>
@@ -24,7 +24,7 @@
         @if(isset($opportunity))
             <form method="POST" action="{{ route('admin.opportunity.postEdit', $opportunity->id) }}">
         @else
-            <form method="POST" action="{{  route('admin.opportunity.store') }}">
+            <form method="POST" action="{{  route('admin.opportunity.postCreate') }}">
         @endif
             @csrf
 
