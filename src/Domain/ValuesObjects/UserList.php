@@ -65,7 +65,7 @@ class UserList implements CollectionContract
         }
     }
 
-    public function all()
+    public function all(): array
     {
         return $this->users;
     }
