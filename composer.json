@@ -15,7 +15,9 @@
         "psr/http-message": "^1.0",
         "slim/slim": "^4.5",
         "slim/psr7": "^1.1",
-        "vlucas/phpdotenv": "^5.1"
+        "vlucas/phpdotenv": "^5.1",
+        "robmorgan/phinx": "^0.12.3",
+        "fzaninotto/faker": "^1.9"
     },
     "autoload": {
         "psr-4": {
