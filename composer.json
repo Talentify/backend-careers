@@ -9,6 +9,7 @@
         }
     ],
     "require": {
+        "ext-json": "*",
         "ramsey/uuid": "^4.0",
         "illuminate/database": "^7.19",
         "psr/http-message": "^1.0",
