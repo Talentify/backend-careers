@@ -6,6 +6,9 @@ com tranquilidade.
 Adicionei alguns itens como docker, logs no Elasticsearch com Kibana, e fiz o upload da aplicação no EC2 da AWS 
 para testes.
 
+## Aplicação na AWS EC2
+Caso queiram testar a aplicação rodando, a mesma já esta hospedada em uma máquina no EC2 da AWS. O endereço é http://13.58.173.69
+
 ## Build
 Para iniciar a aplicação, basta fazer o clone do repositório, entrar na pasta *docker* e executar comando
 ````shell script
