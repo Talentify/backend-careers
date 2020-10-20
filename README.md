@@ -9,6 +9,9 @@ para testes.
 ## Aplicação na AWS EC2
 Caso queiram testar a aplicação rodando, a mesma já esta hospedada em uma máquina no EC2 da AWS. O endereço é http://13.58.173.69
 
+## Acesso ao Kibana
+Para visualizações dos logs, o acesso pode ser feito por http://13.58.173.69:5601/
+
 ## Build
 Para iniciar a aplicação, basta fazer o clone do repositório, entrar na pasta *docker* e executar comando
 ````shell script
