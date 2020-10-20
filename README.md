@@ -36,6 +36,7 @@ Criar as chaves do passport
 sudo docker exec -it php-backendcareers-container  php artisan passport:install
 ````
 
+Para acesso as rotas autenticadas da aplicação, é necessário adicionar o token Bearer recebido no passo da autenticação no cabeçalho da requisição.
 As rotas de acesso a aplicação são:
 
 > *POST* /api/auth/ para autenticação. O payload abaixo serve como exemplo de envio:
