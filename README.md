@@ -15,22 +15,32 @@ docker-compose up --build -d
 Em seguida é necessário acessar a pasta raiz da aplicação e executar
 
 ````shell script
-composer install
+sudo docker exec -it php-backendcareers-container composer install
 ````
 
-Executar as migrations (preferencialmente dentro do container)
+Executar as migrations
 
 ````shell script
-php artisan migrate
+sudo docker exec -it php-backendcareers-container php artisan migrate
 ````
 
 Criar as chaves do passport
 
 ````shell script
-php artisan passport:install
+sudo docker exec -it php-backendcareers-container  php artisan passport:install
 ````
 
 As rotas de acesso a aplicação são:
+
+> *POST* /api/auth/ para autenticação. O payload abaixo serve como exemplo de envio:
+````json
+{
+    "credentials": {
+        "email" : "usuario@teste.com",
+        "password": "abc123."
+    }
+}
+````
 
 > *POST* /api/jobs/ para criar uma nova vaga. O payload abaixo serve como exemplo de envio:
 
