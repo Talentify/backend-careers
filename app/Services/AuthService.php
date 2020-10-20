@@ -7,7 +7,7 @@ use Exception;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
-class AuthService extends Service
+class AuthService
 {
     public function login(array $credentials)
     {
