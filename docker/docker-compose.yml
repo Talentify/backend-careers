@@ -1,0 +1,52 @@
+version: "3.2"
+services:
+    
+    app-backendcareers:
+        image: nginx:latest
+        container_name: app-backendcareers-container
+        privileged: true
+        ports:
+            - 80:80
+        volumes:
+            - ../:/var/www/backendcareers/
+            - ./nginx/app-backendcareers.conf:/etc/nginx/conf.d/default.conf
+        networks:
+            - internal
+
+    php74:
+        build: ./php74
+        container_name: php-backendcareers-container
+        privileged: true
+        volumes:
+            - ../:/var/www/backendcareers
+        working_dir: /var/www/backendcareers
+        ports:
+            - 9074:9000
+        networks:
+            - internal
+
+    mysql:
+        image: mysql:5.7
+        container_name: db-backendcareers-container
+        environment:
+          MYSQL_ROOT_PASSWORD: "root"
+          MYSQL_DATABASE: backendcareers
+        ports:
+          - "3306:3306"
+        networks:
+          - internal
+
+    elk:
+        image: sebp/elk
+        container_name: elk-backendcareers-container
+        ports:
+            - 5601:5601
+            - 9200:9200
+            - 5044:5044
+        environment:
+            LOGSTASH_START: 0
+            ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+
+networks:
+    internal:
+        driver: bridge

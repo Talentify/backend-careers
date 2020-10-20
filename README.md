@@ -1,3 +1,71 @@
+## Sobre o teste
+O teste foi realizado no dia de hoje (19/10), fiz bem rapidinho para atender o básico do teste porque como comentei,
+ainda tenho alguns projetos que finalizam hoje mesmo! Então preciso atender no prazo, até mesmo para me desligar
+com tranquilidade.
+
+Adicionei alguns itens como docker, logs no Elasticsearch com Kibana, e fiz o upload da aplicação no EC2 da AWS 
+para testes.
+
+## Build
+Para iniciar a aplicação, basta fazer o clone do repositório, entrar na pasta *docker* e executar comando
+````shell script
+docker-compose up --build -d
+````
+
+Em seguida é necessário acessar a pasta raiz da aplicação e executar
+
+````shell script
+composer install
+````
+
+Executar as migrations (preferencialmente dentro do container)
+
+````shell script
+php artisan migrate
+````
+
+Criar as chaves do passport
+
+````shell script
+php artisan passport:install
+````
+
+As rotas de acesso a aplicação são:
+
+> *POST* /api/jobs/ para criar uma nova vaga. O payload abaixo serve como exemplo de envio:
+
+````json
+{
+    "job": {
+        "title" : "PHP Senior developer",
+        "description": "This is my description.",
+        "workplace": "Avenue Vanilla PHP",
+        "salary": "8500.78",
+        "status": "opened"
+    }
+}
+````
+
+> *GET* /api/jobs/ para listar todas as vagas.
+>
+> *GET* /api/jobs/status/{status} para listar todas as vagas de acordo com o status.
+>
+> *DELETE* /api/jobs/{job_id} para remover uma vaga.
+>
+> *PUT* /api/jobs/{job_id} para atualizar os dados de uma vaga. O payload abaixo serve como exemplo de envio:
+                                                               
+````json
+{
+   "job": {
+       "title" : "PHP Senior developer",
+       "description": "This is my description.",
+       "workplace": "Avenue Vanilla PHP",
+       "salary": "8500.78",
+       "status": "opened"
+   }
+}
+````
+
 ## A empresa
 A Talentify.io nasceu da fusão de 3 empresas distintas em 3 áreas diferentes: Digital Media & Advertising, Mobile Technology e HR Consulting. Nossa plataforma de SaaS ajuda empresas a superar seus maiores desafios na  busca e contratação de talentos em grande escala.
 
