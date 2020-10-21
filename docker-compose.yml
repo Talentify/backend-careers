@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  app:
+    build: .
+    env_file: .env
+    networks:
+      - app-network
+    volumes:
+      - ./:/var/www
+
+  nginx:
+    build: .docker/nginx
+    restart: always
+    tty: true
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www
+    networks:
+      - app-network
+
+  db:
+    build: .docker/mysql
+    command: --innodb-use-native-aio=0
+    restart: always
+    tty: true
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./.docker/dbdata:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=laravel
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=root
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
