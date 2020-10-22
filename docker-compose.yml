@@ -1,0 +1,32 @@
+version: "3.1"
+services:
+
+    db:
+      image: mysql:5.7
+      container_name: kernel-db
+      environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=jobs
+        - MYSQL_USER=jobs_user
+        - MYSQL_PASSWORD=jobs_password
+      ports:
+        - "3306:3306"
+
+    webserver:
+      image: nginx:alpine
+      container_name: kernel-webserver
+      working_dir: /app
+      volumes:
+          - ./app:/app
+          - ./docker/nginx/nginx_dev.conf:/etc/nginx/conf.d/default.conf
+      ports:
+       - "80:80"
+
+    backend:
+      build: docker/php-fpm
+      container_name: kernel-php
+      working_dir: /app
+      volumes:
+        - ./app:/app
+      ports:
+        - "9000:9000"

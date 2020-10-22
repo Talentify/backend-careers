@@ -1,0 +1,74 @@
+jobs_list:
+  path: /api/v1/jobs
+  controller: App\Job\Http\Controller\ListAction
+  methods: GET
+
+jobs_search:
+  path: /api/v1/jobs/search
+  controller: App\Job\Http\Controller\SearchAction
+  methods: GET
+
+jobs_create:
+  path: /api/v1/jobs/create
+  controller: App\Job\Http\Controller\CreateAction
+  methods: POST
+
+jobs_update:
+  path: /api/v1/jobs/{id}/update
+  controller: App\Job\Http\Controller\UpdateAction
+  methods: PUT
+  requirements:
+      id: '\d+'
+
+jobs_delete:
+  path: /api/v1/jobs/{id}/delete
+  controller: App\Job\Http\Controller\DeleteAction
+  methods: DELETE
+  requirements:
+      id: '\d+'
+
+jobs_search_unique:
+  path: /api/v1/jobs/{id}
+  controller: App\Job\Http\Controller\SearchUniqueAction
+  methods: GET
+  requirements:
+      id: '\d+'
+
+users_list:
+  path: /api/v1/users
+  controller: App\User\Http\Controller\ListAction
+  methods: GET
+
+users_search:
+  path: /api/v1/users/search
+  controller: App\User\Http\Controller\SearchAction
+  methods: GET
+
+users_create:
+  path: /api/v1/users/create
+  controller: App\User\Http\Controller\CreateAction
+  methods: POST
+
+users_update:
+  path: /api/v1/users/{id}/update
+  controller: App\User\Http\Controller\UpdateAction
+  methods: PUT
+  requirements:
+      id: '\d+'
+
+users_delete:
+  path: /api/v1/users/{id}/delete
+  controller: App\User\Http\Controller\DeleteAction
+  methods: DELETE
+  requirements:
+      id: '\d+'
+
+users_search_unique:
+  path: /api/v1/users/{id}
+  controller: App\User\Http\Controller\SearchUniqueAction
+  methods: GET
+  requirements:
+
+api_login_check:
+    path: /api/v1/login
+

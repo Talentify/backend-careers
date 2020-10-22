@@ -1,0 +1,7 @@
+lexik_jwt_authentication:
+    secret_key: '%env(JWT_SECRET)%'
+    user_identity_field: email
+    token_ttl: 3600
+    encoder:
+        service: lexik_jwt_authentication.encoder.lcobucci
+        signature_algorithm: HS256
