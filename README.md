@@ -48,4 +48,3 @@ Para enviar o seu código, submeta uma pull request para este repositório.
 
 #### Disclaimer
 O código fonte que você produzir será utilizado somente para avaliar sua aptidão para a vaga. Não será feito nenhum uso comercial do código fonte, tampouco haverá a exigência de direitos de atribuição.
-
