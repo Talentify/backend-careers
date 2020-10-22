@@ -27,7 +27,7 @@ class JobsRepository implements JobsRepositoryInterface
 
     public function listOpenJobs(int $limit = 20)
     {
-        return $this->jobEntity->paginate($limit);
+        return $this->jobEntity->where(['status' => 'open'])->paginate($limit);
     }
 
     public function createNewJob(array $data): ?Job
