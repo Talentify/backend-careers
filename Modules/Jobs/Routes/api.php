@@ -15,4 +15,4 @@ use Illuminate\Http\Request;
 
 Route::get('/jobs', 'JobsController@list');
 
-Route::middleware('auth:api')->post('/jobs', 'JobsController@addNewJob');
+Route::middleware('auth:api')->post('/jobs', 'JobsController@createNewJob');

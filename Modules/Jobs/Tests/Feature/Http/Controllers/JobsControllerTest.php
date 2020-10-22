@@ -5,11 +5,14 @@ namespace Modules\Jobs\Tests\Feature\Http\Controllers;
 
 
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Modules\Jobs\Entities\Job;
 use Tests\TestCase;
-use Tymon\JWTAuth\JWTAuth;
 
 class JobsControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testGuestUserCanAccessListJobsEndpoint()
     {
         $response = $this->get('/api/jobs', ['Accept' => 'application/json']);
@@ -30,7 +33,9 @@ class JobsControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->post('/api/jobs');
+        $requestBody = Job::factory()->definition();
+
+        $response = $this->actingAs($user)->post('/api/jobs', $requestBody);
 
         $response->assertStatus(200);
     }

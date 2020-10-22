@@ -2,8 +2,6 @@
 
 namespace Modules\Jobs\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Jobs\Repositories\JobsRepositoryInterface;
 
@@ -24,8 +22,22 @@ class JobsController extends Controller
         return $this->repository->listOpenJobs();
     }
 
-    public function addNewJob()
+    public function createNewJob()
     {
-        return [];
+        $requestBody = request()->all();
+
+        $createdJob = $this->repository->createNewJob($requestBody);
+
+        if ($createdJob) {
+            return response()->json([
+                'message' => 'Created',
+                'data' => $createdJob,
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Validation Errors',
+            'errors' => $this->repository->getErrors(),
+        ], 400);
     }
 }

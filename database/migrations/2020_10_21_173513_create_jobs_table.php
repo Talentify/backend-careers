@@ -18,8 +18,8 @@ class CreateJobsTable extends Migration
             $table->string('title', 256);
             $table->string('description', 10000);
             $table->enum('status', ['open', 'closed']);
-            $table->string('workplace')->nullable();
-            $table->integer('salary')->nullable();
+            $table->string('workplace')->default(null)->nullable();
+            $table->integer('salary')->default(null)->nullable();
             $table->timestamps();
         });
     }
