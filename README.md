@@ -27,7 +27,6 @@ Simples e Pequeno, ApiRouter-Jobs + Firebase
 ```apacheconfig
 RewriteEngine On
 #Options All -Indexes
-php_value date.timezone "America/Sao_Paulo"
 
 RewriteCond %{HTTP:Authorization} ^(.*)
 RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
@@ -38,6 +37,8 @@ RewriteRule ^(.*)$ index.php?route=/$1
 ```
 
 ##### Routes Public
+
+Exemplo da Api em funcionamento:  http://webserver666.online/apiRouter/api/public/allJobs
 
 URL: 
 /api/public/allJobs

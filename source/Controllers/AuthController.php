@@ -70,7 +70,8 @@ class AuthController{
         public static function checkAuth()
         {
             $headerHttp = apache_request_headers();
-            $tokenJwt   = explode(' ', $headerHttp['authorization'])[1];
+            $tokenJwt   = explode(' ', $headerHttp['authorization'] ?? $headerHttp['Authorization'])[1];
+
             if (!empty($tokenJwt)) {
                 $return = self::setObjectHeaderJWT($tokenJwt);
 
