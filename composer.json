@@ -1,0 +1,24 @@
+{
+  "name": "thalesrup",
+  "description": "Api Consulta Cadastro de Vagas de Emprego",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Thales F. Ruppenthal",
+      "email": "thales.rup@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Source\\": "source/"
+    },
+    "files": [
+      "source/Config.php"
+    ]
+  },
+  "require": {
+    "coffeecode/router": "1.0.*",
+    "kreait/firebase-php": "^4.0"
+  }
+}
