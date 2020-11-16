@@ -13,12 +13,12 @@ Esta aplicação consiste em uma API de pubicação e listagem de vagas de empre
 
 ## Dados de acesso para o banco de dados
 `
-DB_CONNECTION=mysql  
-DB_HOST=talentify-test-mysql  
-DB_PORT=3306  
-DB_DATABASE=talentify-test  
-DB_USERNAME=root  
-DB_PASSWORD=abc123  
+- DB_CONNECTION=mysql  
+- DB_HOST=talentify-test-mysql  
+- DB_PORT=3306  
+- DB_DATABASE=talentify-test  
+- DB_USERNAME=root  
+- DB_PASSWORD=abc123  
 `
 
 ## Instalação e execução do projeto
