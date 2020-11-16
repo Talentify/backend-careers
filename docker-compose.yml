@@ -1,0 +1,40 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+version: "3.1"
+services:
+
+    mysql:
+      image: mysql:5.7
+      container_name: talentify-test-mysql
+      working_dir: /application
+      volumes:
+        - ./application
+      environment:
+        - MYSQL_ROOT_PASSWORD=abc123
+        - MYSQL_DATABASE=talentify-test
+        - MYSQL_USER=tfyuser
+        - MYSQL_PASSWORD=tfypass
+      ports:
+        - "3306:3306"
+
+    webserver:
+      image: nginx:alpine
+      container_name: talentify-test-webserver
+      working_dir: /application
+      volumes:
+          - .:/application
+          - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+        - "8888:80"
+      links:
+        - mysql:talentify-test-mysql
+
+    php-fpm:
+      build: phpdocker/php-fpm
+      container_name: talentify-test-php-fpm
+      working_dir: /application
+      volumes:
+        - ./jobs-api:/application
+        - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+
