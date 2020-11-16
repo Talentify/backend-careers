@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Talentify{% endblock %}
+
+{% block body %}
+<div class="wrapper">
+    <h3>Erro ao cadastrar Vaga!</h3>
+    {% for erro in erros %}
+        <li>{{ erro }}</li>
+    {% endfor %}
+    <hr>
+    <p>Clique <a href="new">Aqui</a> para voltar.</p>
+</div>
+{% endblock %}

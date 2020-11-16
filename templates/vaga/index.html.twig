@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Talentify{% endblock %}
+
+{% block body %}
+<div class="wrapper">
+    <h1>Olá {{ app.user.username ?? 'Visitante' }}!</h1>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <p><a href="{{ path('app_logout') }}">Logout</a></p>
+        <p>Deseja cadastrar vagas? clique <a href="/admin">Aqui</a></p>
+    {% else %}
+        <p>Deseja cadastrar vagas? faça <a href="/login">Login</a></p>
+    {% endif %}
+    <hr>
+    Lista de vagas disponíveis:
+    <div class="list-group">
+        {% for vaga in vagas %}
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ vaga.title }}</h5>
+                    <small>{{ vaga.salary|format_currency('USD') }}</small>
+                </div>
+                <p class="mb-1">{{ vaga.description }}</p>
+                <small>{{ vaga.workplace }}</small>
+            </div>
+        {% endfor %}
+        <br>
+    </div>
+</div>
+{% endblock %}
