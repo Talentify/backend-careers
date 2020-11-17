@@ -9,6 +9,17 @@ use Illuminate\Http\Request;
 class VacancyController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $vacancies = Vacancy::where('status', 'opened')->get();
+        return view('vacancy.index', compact('vacancies'));        
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

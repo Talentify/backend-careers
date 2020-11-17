@@ -17,7 +17,7 @@ class CreateVacanciesTable extends Migration
             $table->uuid('id')->primary();
             $table->string('title');
             $table->text('description');
-            $table->enum('status', ['open', 'closed']);
+            $table->enum('status', ['opened', 'closed']);
             $table->string('workplace')->nullable();
             $table->float('salary')->nullable();
             $table->unsignedBigInteger('user_id');

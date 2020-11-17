@@ -27,7 +27,7 @@ class VacancyRequest extends FormRequest
         return [
             'title' => ['required', 'string'],
             'description' => ['required', 'string'],
-            'status' => ['required', Rule::in(['open', 'closed'])],
+            'status' => ['required', Rule::in(['opened', 'closed'])],
             'workplace' => ['nullable', 'string'],
             'salary' => ['nullable', 'numeric'],
         ];
