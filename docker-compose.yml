@@ -1,0 +1,56 @@
+version: '3.7'
+
+services:
+  app:
+    build: .docker/php-fpm
+    container_name: talentify-${APP_ENV}
+    restart: always
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 40s ./.docker/entrypoint.sh
+    environment:
+      - PHP_OPCACHE_VALIDATE_TIMESTAMPS=1
+      - DB_HOST=db
+      - DB_DATABASE=talentify
+      - DB_USERNAME=root
+      - DB_PASSWORD=toor
+
+    volumes:
+      - .:/var/www
+    networks:
+      - app-network
+    depends_on:
+      - db
+
+  nginx:
+    build: .docker/nginx
+    entrypoint: dockerize -template ./.docker/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf -wait tcp://app:9000 -timeout 40s nginx -g "daemon off";
+    container_name: nginx-talentify-${APP_ENV}
+    restart: always
+    tty: true
+    ports:
+      - "${NGINX_PORT-80}:80"
+    volumes:
+      - .:/var/www
+    networks:
+      - app-network
+    depends_on:
+      - app
+
+  db:
+    image: mysql:5.7
+    container_name: db-talentify-${APP_ENV}
+    restart: always
+    tty: true
+    environment:
+      - MYSQL_ROOT_PASSWORD=toor
+      - MYSQL_USER=root
+    volumes:
+      - ./.docker/mysql/dbdata:/var/lib/mysql
+      - ./.docker/mysql:/docker-entrypoint-initdb.d
+    ports:
+      - "${MYSQL_PORT-3306}:3306"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
