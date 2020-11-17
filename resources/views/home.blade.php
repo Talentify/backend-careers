@@ -14,7 +14,36 @@
     </div>
     <div class="row justify-content-center">
         @if (!$vacancies->isEmpty())
-            {{-- Vagas --}}
+            <table class="table table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            @lang('Título')
+                        </th>
+                        <th scope="col">
+                            @lang('Descrição')
+                        </th>
+                        <th scope="col">
+                            @lang('Status')
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($vacancies as $vacancy)
+                        <tr>
+                            <td>
+                                {{ $vacancy->title }}
+                            </td>
+                            <td>
+                                {{ $vacancy->description }}
+                            </td>
+                            <td>
+                                {{ $vacancy->status === 'open' ? __('Aberto') : __('Fechado') }}
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         @else
             @lang('Você não tem vagas divulgadas')
         @endif
