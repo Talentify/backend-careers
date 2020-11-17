@@ -29,17 +29,19 @@
             @lang('Status da vaga')
             <span class="required-signal">*</span>
         </label>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="status" id="status-open" value="open">
-            <label class="form-check-label" for="status-open">
-                @lang('Aberta')
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="status" id="status-closed" value="closed">
-            <label class="form-check-label" for="status-closed">
-                @lang('Fechada')
-            </label>
+        <div class="@error('status') is-invalid @enderror">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="status" id="status-open" value="open">
+                <label class="form-check-label" for="status-open">
+                    @lang('Aberta')
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="status" id="status-closed" value="closed">
+                <label class="form-check-label" for="status-closed">
+                    @lang('Fechada')
+                </label>
+            </div>
         </div>
         @error('status')
             <span class="invalid-feedback" role="alert">
