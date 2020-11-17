@@ -20,6 +20,8 @@ class CreateVacanciesTable extends Migration
             $table->enum('status', ['open', 'closed']);
             $table->string('workplace')->nullable();
             $table->float('salary')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
