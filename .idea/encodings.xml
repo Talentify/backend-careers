@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/.docker/sonic/config.cfg" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/.env" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/.env.example" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/README.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Core/Controllers/AbsctractCrudController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Core/Controllers/AbstractController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Core/Controllers/AbstractCrudControllerInterface.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Core/DTOs/AbstractDTO.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Core/DTOs/AbstractDTOInterface.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Core/Models/AbstractModel.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Core/Models/AbstractModelInterface.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Core/Requests/AbstractCrudRequest.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Core/Requests/AbstractCrudRequestInterface.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Core/Requests/AbstractRequest.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Core/Requests/AbstractRequestInterface.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Core/Requests/EmptyRequest.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Core/Services/AbsctractCrudService.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Core/Services/AbstractCrudServiceInterface.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Core/Services/AbstractService.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Domain/Jobs/Controllers/JobController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Domain/Jobs/DTOs/AddressDTO.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Domain/Jobs/DTOs/JobDTO.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Domain/Jobs/Models/Address.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Domain/Jobs/Models/AddressInterface.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Domain/Jobs/Models/Job.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Domain/Jobs/Models/JobInterface.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Domain/Jobs/Observers/AddressObserver.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Domain/Jobs/Observers/JobObserver.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Domain/Jobs/Requests/JobRequest.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Domain/Jobs/Requests/JobSearchRequest.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Domain/Jobs/Services/JobService.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Domain/Users/Models/User.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Domain/Users/Observers/UserObserver.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Domain/Users/Services/UserService.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Infrastructure/Auth/AuthController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Infrastructure/Auth/AuthService.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Infrastructure/Auth/LoginRequest.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Infrastructure/Auth/SignupRequest.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Infrastructure/Http/Kernel.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Infrastructure/Providers/AppServiceProvider.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Infrastructure/Providers/ObserverServiceProvider.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bootstrap/app.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/composer.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config/app.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config/auth.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config/responsecache.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config/sanctum.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config/scout.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/database/migrations/2020_11_14_003443_create_adresses_table.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/database/migrations/2020_11_14_004614_create_jobs_table.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/docker-compose.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/routes/api.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/storage/logs/laravel.log" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Application.php" charset="UTF-8" />
+    <file url="PROJECT" charset="windows-1252" />
+  </component>
+</project>
