@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vacancy;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $vacancies = auth()->user()->vacancies;
+        $vacancies = Vacancy::where('status', 'opened')->get();
         return view('home', compact('vacancies'));
     }
 }

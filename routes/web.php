@@ -16,12 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [VacancyController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-    Route::resource('vacancies', VacancyController::class)->only(['create', 'store', 'edit', 'update']);
+    Route::resource('vacancies', VacancyController::class)->only(['index', 'create', 'store', 'edit', 'update']);
 });

@@ -7,7 +7,7 @@
             @lang('Divulgar vaga')
         </h1>
         <div>
-            <a href="{{ route('home') }}" class="btn btn-secondary">
+            <a href="{{ route('vacancies.index') }}" class="btn btn-secondary">
                 @lang('Voltar')
             </a>
         </div>

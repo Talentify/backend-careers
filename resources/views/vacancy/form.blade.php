@@ -31,8 +31,8 @@
         </label>
         <div class="@error('status') is-invalid @enderror">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="status" id="status-open" value="open">
-                <label class="form-check-label" for="status-open">
+                <input class="form-check-input" type="radio" name="status" id="status-opened" value="opened">
+                <label class="form-check-label" for="status-opened">
                     @lang('Aberta')
                 </label>
             </div>
@@ -64,7 +64,7 @@
         <label for="salary">
             @lang('Salário')
         </label>
-        <input value="{{ old('salary', $vacancy->salary ?? '') }}" type="number" placeholder="$" step='0.01' class="form-control @error('salary') is-invalid @enderror" id="salary" name="workplace">
+        <input value="{{ old('salary', $vacancy->salary ?? '') }}" type="number" placeholder="$" step='0.01' class="form-control @error('salary') is-invalid @enderror" id="salary" name="salary">
         @error('salary')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

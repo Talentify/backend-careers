@@ -4,11 +4,11 @@
 <div class="container">
     <div class="d-flex justify-content-between">
         <h1>
-            @lang('Vagas abertas')
+            @lang('Vagas divulgadas')
         </h1>
         <div>
             <a href="{{ route('home') }}" class="btn btn-link">
-                @lang('Minhas vagas divulgadas')
+                @lang('Vagas abertas')
             </a>
             <a href="{{ route('vacancies.create') }}" class="btn btn-primary">
                 @lang('Divulgar vaga')
@@ -27,10 +27,7 @@
                             @lang('Descrição')
                         </th>
                         <th scope="col">
-                            @lang('Salário')
-                        </th>
-                        <th scope="col">
-                            @lang('Local')
+                            @lang('Status')
                         </th>
                     </tr>
                 </thead>
@@ -44,17 +41,14 @@
                                 {{ $vacancy->description }}
                             </td>
                             <td>
-                                {{ !empty($vacancy->salary) ? "$ $vacancy->salary" : __('Não informado') }}
-                            </td>
-                            <td>
-                                {{ !empty($vacancy->workplace) ? $vacancy->workplace : __('Não informado') }}
+                                {{ $vacancy->status === 'opened' ? __('Aberto') : __('Fechado') }}
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         @else
-            @lang('Não há vagas abertas')
+            @lang('Você não tem vagas divulgadas')
         @endif
     </div>
 </div>

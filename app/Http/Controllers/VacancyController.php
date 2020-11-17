@@ -15,7 +15,7 @@ class VacancyController extends Controller
      */
     public function index()
     {
-        $vacancies = Vacancy::where('status', 'opened')->get();
+        $vacancies = auth()->user()->vacancies;
         return view('vacancy.index', compact('vacancies'));        
     }
 
@@ -38,9 +38,9 @@ class VacancyController extends Controller
     public function store(VacancyRequest $request)
     {
         if (Vacancy::create($request->except('_token'))) {
-            return redirect(route('home'))->with('success', trans('Vaga cadastrada com sucesso!'));
+            return redirect(route('vacancies.index'))->with('success', trans('Vaga cadastrada com sucesso!'));
         }
-        return redirect(route('vacancy.create'))->with('error', trans('Devido a um erro não foi possível cadastrar a vaga. Tente novamente.'));
+        return redirect(route('vacancies.create'))->with('error', trans('Devido a um erro não foi possível cadastrar a vaga. Tente novamente.'));
     }
 
     /**
