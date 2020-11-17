@@ -85,6 +85,9 @@ class VacancyController extends Controller
      */
     public function destroy(Vacancy $vacancy)
     {
-        //
+        if ($vacancy->delete()) {
+            return redirect(route('vacancies.index'))->with('warning', trans('Vaga apagada com sucesso'));
+        }
+        return redirect(route('vacancies.index'))->with('error', trans('Devido a um erro não foi possível apagar a vaga. Tente novamente.'));
     }
 }

@@ -21,5 +21,5 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('vacancies', VacancyController::class)->only(['index', 'create', 'store', 'edit', 'update']);
+    Route::resource('vacancies', VacancyController::class)->except(['show']);
 });
