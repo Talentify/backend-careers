@@ -14,90 +14,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16a89083-ec76-407a-903a-9b29505ed870" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.docker/php/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.docker/sonic/config.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/TalentifyBackend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README_INSTRUCTIONS.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Core/Controllers/AbsctractCrudController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Core/Controllers/AbstractCrudControllerInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Core/DTOs/AbstractDTO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Core/DTOs/AbstractDTOInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Core/Models/AbstractModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Core/Models/AbstractModelInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Core/Requests/AbstractCrudRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Core/Requests/AbstractCrudRequestInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Core/Requests/AbstractRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Core/Requests/AbstractRequestInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Core/Requests/EmptyRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Core/Services/AbsctractCrudService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Core/Services/AbstractCrudServiceInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Core/Services/AbstractService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Domain/Jobs/Controllers/JobController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Domain/Jobs/DTOs/AddressDTO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Domain/Jobs/DTOs/JobDTO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Domain/Jobs/Models/Address.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Domain/Jobs/Models/AddressInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Domain/Jobs/Models/Job.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Domain/Jobs/Models/JobInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Domain/Jobs/Observers/AddressObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Domain/Jobs/Observers/JobObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Domain/Jobs/Requests/JobRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Domain/Jobs/Requests/JobSearchRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Domain/Jobs/Services/JobService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Domain/Users/Observers/UserObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Domain/Users/Services/UserService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Infrastructure/Auth/AuthController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Infrastructure/Auth/AuthService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Infrastructure/Auth/LoginRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Infrastructure/Auth/SignupRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Infrastructure/Http/Kernel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Infrastructure/Providers/ObserverServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/jwt.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/responsecache.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/scout.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_11_14_003443_create_adresses_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_11_14_004614_create_jobs_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Infrastructure/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Infrastructure/Exceptions/Handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Core/Controllers/AbstractController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Infrastructure/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Infrastructure/Http/Middleware/EncryptCookies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/PreventRequestsDuringMaintenance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Infrastructure/Http/Middleware/PreventRequestsDuringMaintenance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Infrastructure/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/TrimStrings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Infrastructure/Http/Middleware/TrimStrings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/TrustHosts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Infrastructure/Http/Middleware/TrustHosts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Infrastructure/Http/Middleware/TrustProxies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Infrastructure/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Domain/Users/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Infrastructure/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Infrastructure/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Infrastructure/Providers/BroadcastServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Infrastructure/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Infrastructure/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Talentify.postman_collection.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README_INSTRUCTIONS.md" beforeDir="false" afterPath="$PROJECT_DIR$/README_INSTRUCTIONS.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,8 +208,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="PHPUnit.phpunit.xml" />
       <item itemvalue="PHP Script.TEst" />
+      <item itemvalue="PHPUnit.phpunit.xml" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -305,6 +224,7 @@
       <workItem from="1605326271048" duration="7821000" />
       <workItem from="1605393226143" duration="29659000" />
       <workItem from="1605565731063" duration="13287000" />
+      <workItem from="1605586012639" duration="1287000" />
     </task>
     <servers />
   </component>
@@ -397,6 +317,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1605410205784" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605586150482">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605586150482" />
     <state x="756" y="340" width="408" height="355" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1605327441311">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -405,6 +329,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="803" y="251" width="493" height="538" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1605574779063" />
+    <state x="2697" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605586135236">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2697" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605586135236" />
     <state x="24" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog" timestamp="1605410291648">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -413,10 +341,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="224" width="585" height="592" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1605411407395" />
-    <state x="2681" y="426" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1605585820405">
+    <state x="2681" y="426" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1605586132888">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2681" y="426" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605585820405" />
+    <state x="2681" y="426" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605586132888" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1605572586385">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
