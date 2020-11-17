@@ -7,7 +7,7 @@
             @lang('Vagas divulgadas')
         </h1>
         <div>
-            <a href="javascript:;" class="btn btn-primary">
+            <a href="{{ route('vacancies.create') }}" class="btn btn-primary">
                 @lang('Divulgar vaga')
             </a>
         </div>
