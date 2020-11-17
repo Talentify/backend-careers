@@ -44,17 +44,6 @@ class VacancyController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Vacancy  $vacancy
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Vacancy $vacancy)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Vacancy  $vacancy
@@ -62,7 +51,7 @@ class VacancyController extends Controller
      */
     public function edit(Vacancy $vacancy)
     {
-        //
+        return view('vacancy.edit', compact('vacancy'));
     }
 
     /**
@@ -72,9 +61,12 @@ class VacancyController extends Controller
      * @param  \App\Models\Vacancy  $vacancy
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vacancy $vacancy)
+    public function update(VacancyRequest $request, Vacancy $vacancy)
     {
-        //
+        if ($vacancy->update($request->except('_token'))) {
+            return redirect(route('vacancies.index'))->with('success', trans('Vaga atualizada com sucesso'));
+        }
+        return redirect(route('vacancies.edit', $vacancy))->with('error', trans('Devido a um erro não foi possível atualizar a vaga. Tente novamente.'));
     }
 
     /**

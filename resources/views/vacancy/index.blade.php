@@ -45,11 +45,14 @@
                         <td>
                             {{ $vacancy->status === 'opened' ? __('Aberto') : __('Fechado') }}
                         </td>
-                        <td>
+                        <td class="d-flex">
+                            <a href="{{ route('vacancies.edit', $vacancy) }}" class="btn btn-primary mx-1">
+                                @lang('Editar')
+                            </a>
                             <form onsubmit="return confirm('Tem certeza que deseja apagar a vaga?')" action="{{ route('vacancies.destroy', $vacancy) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-danger">
+                                <button type="submit" class="btn btn-danger mx-1">
                                     @lang('Apagar')
                                 </button>
                             </form>

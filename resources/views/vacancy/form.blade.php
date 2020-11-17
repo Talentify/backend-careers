@@ -31,13 +31,13 @@
         </label>
         <div class="@error('status') is-invalid @enderror">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="status" id="status-opened" value="opened">
+                <input class="form-check-input" @if (old('status', $vacancy->status ?? '')  === 'opened') checked @endif type="radio" name="status" id="status-opened" value="opened">
                 <label class="form-check-label" for="status-opened">
                     @lang('Aberta')
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="status" id="status-closed" value="closed">
+                <input class="form-check-input" @if (old('status', $vacancy->status ?? '')  === 'closed') checked @endif type="radio" name="status" id="status-closed" value="closed">
                 <label class="form-check-label" for="status-closed">
                     @lang('Fechada')
                 </label>
