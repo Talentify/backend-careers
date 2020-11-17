@@ -1,0 +1,97 @@
+version: "3"
+services:
+  reverse-proxy:
+    image: traefik:v2.3
+    command: --api.insecure=true --providers.docker
+    labels:
+      - "traefik.http.routers.traefik.rule=Host(`traefik.localhost`)"
+      - "traefik.http.services.traefik.loadbalancer.server.port=8080"
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+  sonic:
+    image: valeriansaliou/sonic:v1.3.0
+    ports:
+      - "1491:1491"
+    volumes:
+      - "./.docker/sonic/config.cfg:/etc/sonic.cfg"
+      - "sonic_data:/var/lib/sonic/store"
+  apache:
+    build:
+      context: .
+      dockerfile: ./.docker/php/Dockerfile
+    labels:
+      - "traefik.http.routers.myrouterapache.rule=Host(`apache.localhost`)"
+    env_file:
+      - .env.example
+    environment:
+      - APP_ENV=production
+      - APP_KEY=base64:9nd3XQH4qLHsq2sM31hvLhg6Bg4QdowKhRlanQqyzEo=
+      - APP_DEBUG=false
+      - APP_URL=http://apache.localhost
+      - DB_CONNECTION=pgsql
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_DATABASE=jobs
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=contrataNoiz
+      - CACHE_DRIVER=redis
+      - QUEUE_CONNECTION=redis
+      - SESSION_DRIVER=redis
+      - REDIS_HOST=redis
+      - REDIS_PASSWORD=str0ng_passw0rd
+      - REDIS_PORT=6379
+      - JWT_SECRET=OVm7XsPH2WPymiOKrcI9pGBifYJmLY5LBeU7TFO2ASECHrvdCh4x90DRvivMq6NU
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5433:5432"
+    volumes:
+      - "db_data:/var/lib/postgresql/data"
+      - "./.docker/postgres:/docker-entrypoint-initdb.d"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: contrataNoiz
+      POSTGRES_DB: jobs
+  redis:
+    image: 'bitnami/redis:latest'
+    ports:
+      - "16379:6379"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+      - REDIS_PASSWORD=str0ng_passw0rd
+    volumes:
+      - 'redis_data:/bitnami'
+  redis-slave:
+    image: 'bitnami/redis:latest'
+    environment:
+      - REDIS_REPLICATION_MODE=slave
+      - REDIS_MASTER_HOST=redis
+      - REDIS_MASTER_PASSWORD=str0ng_passw0rd
+      - REDIS_PASSWORD=str0ng_passw0rd
+    depends_on:
+      - redis
+  redis-sentinel:
+    image: 'bitnami/redis-sentinel:latest'
+    environment:
+      - REDIS_MASTER_PASSWORD=str0ng_passw0rd
+    depends_on:
+      - redis
+      - redis-slave
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=str0ng_passw0rd
+    labels:
+      - "traefik.http.routers.commander.rule=Host(`commander.localhost`)"
+      - "traefik.http.services.commander.loadbalancer.server.port=8081"
+volumes:
+  db_data:
+  redis_data:
+  sonic_data:

@@ -1,0 +1,1433 @@
+{
+	"info": {
+		"_postman_id": "95292cf0-0c4b-47bd-9d96-0d23a8d1d500",
+		"name": "Talentify",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Public",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login By Password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "54b04ae5-69c9-4abd-b0d4-82c01e635e75",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"token\",jsonData.access_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"jefferson_jipa14@hotmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/api/auth/login",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Login By Password",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"jefferson_jipa14@hotmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api_url}}/api/auth/login",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"api",
+												"auth",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 16 Nov 2020 22:38:53 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 16 Nov 2020 22:38:53 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.7"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYwNTU2NjMzMywiZXhwIjoxNjA1NTY5OTMzLCJuYmYiOjE2MDU1NjYzMzMsImp0aSI6IjBxQlg3SjN5UDdwcmQ2Z04iLCJzdWIiOiJlMTYyNTcwOS1jMGQ2LTRlNWMtYmU3ZC04YzkzYTZmN2ZlMmIiLCJwcnYiOiI4ZTFmMmVlOThhYTkxZjRkZjQwOWY3NGU3YzcwOTc2NzUxYTIzYzYxIn0.n65TaYDGnfOpNAiy3UINNinrY9ZWAJKCavRV6Mmv1P8\",\n    \"token_type\": \"bearer\",\n    \"expires_in\": 3600\n}"
+								}
+							]
+						},
+						{
+							"name": "Signup",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cd092bed-cd47-43f3-a4c6-a55761b82b2d",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"token\",jsonData.access_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"jefferson1@hotmail.com\",\r\n    \"name\": \"Jefferson\",\r\n    \"password\": \"12345678\",\r\n    \"password_confirmation\": \"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/api/auth/signup",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Signup",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"jefferson1@hotmail.com\",\r\n    \"name\": \"Jefferson\",\r\n    \"password\": \"12345678\",\r\n    \"password_confirmation\": \"12345678\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api_url}}/api/auth/signup",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"api",
+												"auth",
+												"signup"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 16 Nov 2020 23:01:27 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 16 Nov 2020 23:01:27 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.7"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9zaWdudXAiLCJpYXQiOjE2MDU1Njc2ODcsImV4cCI6MTYwNTU3MTI4NywibmJmIjoxNjA1NTY3Njg3LCJqdGkiOiJ4TE0zdTg4Vmc3M01nc3ZIIiwic3ViIjoiYmNjNzczZTctNWZlMC00ZTg2LWFjZDAtMTc1MjFjNTQxN2RiIiwicHJ2IjoiOGUxZjJlZTk4YWE5MWY0ZGY0MDlmNzRlN2M3MDk3Njc1MWEyM2M2MSJ9.LcNUUoY2-jqBNey0W2arepxQ9zgI2Ffk5G5mUqJAa8s\",\n    \"token_type\": \"bearer\",\n    \"expires_in\": 3600\n}"
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Jobs",
+					"item": [
+						{
+							"name": "List Jobs",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/api/jobs",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"jobs"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List Jobs",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/api/jobs",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"api",
+												"jobs"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 15 Nov 2020 05:42:09 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 15 Nov 2020 05:42:09 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.7"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "56"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": \"c434bb06-d043-4e4b-80ad-d57f941c2e6c\",\n            \"address_id\": null,\n            \"title\": \"teste\",\n            \"slug\": \"teste\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-14T05:42:50.000000Z\",\n            \"updated_at\": \"2020-11-14T05:42:50.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        },\n        {\n            \"id\": \"c434bb06-d043-4e4b-80ad-d57f941c2e6a\",\n            \"address_id\": null,\n            \"title\": \"teste\",\n            \"slug\": \"teste-1\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-14T05:48:20.000000Z\",\n            \"updated_at\": \"2020-11-14T05:48:20.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        },\n        {\n            \"id\": \"c434bb06-d043-4e4b-80ad-d57f941c2a6a\",\n            \"address_id\": null,\n            \"title\": \"teste\",\n            \"slug\": \"teste-2\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-14T05:50:36.000000Z\",\n            \"updated_at\": \"2020-11-14T05:50:36.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        },\n        {\n            \"id\": \"c434bb06-d043-4a4b-80ad-d57f941c2a6a\",\n            \"address_id\": null,\n            \"title\": \"teste\",\n            \"slug\": \"teste-3\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-14T06:37:43.000000Z\",\n            \"updated_at\": \"2020-11-14T06:37:43.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        },\n        {\n            \"id\": \"c434bb06-d043-4a4b-80ad-d57f941c2a6b\",\n            \"address_id\": null,\n            \"title\": \"teste\",\n            \"slug\": \"teste-4\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-14T06:38:19.000000Z\",\n            \"updated_at\": \"2020-11-14T06:38:19.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        },\n        {\n            \"id\": \"d7c88078-d14e-437a-b880-9ba48baabd3a\",\n            \"address_id\": null,\n            \"title\": \"Programador java\",\n            \"slug\": \"programador-java\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-15T02:16:48.000000Z\",\n            \"updated_at\": \"2020-11-15T02:16:48.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        },\n        {\n            \"id\": \"bd8c0415-12de-4c37-83ff-c8c60d593545\",\n            \"address_id\": null,\n            \"title\": \"Programador php\",\n            \"slug\": \"programador-php\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-15T02:17:57.000000Z\",\n            \"updated_at\": \"2020-11-15T02:17:57.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        }\n    ],\n    \"first_page_url\": \"http://127.0.0.1:8000/api/jobs?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://127.0.0.1:8000/api/jobs?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"active\": false\n        },\n        {\n            \"url\": \"http://127.0.0.1:8000/api/jobs?page=1\",\n            \"label\": 1,\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://127.0.0.1:8000/api/jobs\",\n    \"per_page\": 15,\n    \"prev_page_url\": null,\n    \"to\": 7,\n    \"total\": 7\n}"
+								}
+							]
+						},
+						{
+							"name": "Get One",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/api/jobs/bd8c0415-12de-4c37-83ff-c8c60d593545",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"jobs",
+										"bd8c0415-12de-4c37-83ff-c8c60d593545"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get One",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/api/jobs/bd8c0415-12de-4c37-83ff-c8c60d593545",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"api",
+												"jobs",
+												"bd8c0415-12de-4c37-83ff-c8c60d593545"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 15 Nov 2020 05:48:24 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 15 Nov 2020 05:48:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.7"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"title\": \"Programador php\",\n    \"description\": null,\n    \"status\": 1,\n    \"salary\": null,\n    \"id\": \"bd8c0415-12de-4c37-83ff-c8c60d593545\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Search Job By Term",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/api/jobs/search/?term=prog",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"jobs",
+										"search",
+										""
+									],
+									"query": [
+										{
+											"key": "term",
+											"value": "prog"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Search Job By Term",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api_url}}/api/jobs/search/?term=prog",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"api",
+												"jobs",
+												"search",
+												""
+											],
+											"query": [
+												{
+													"key": "term",
+													"value": "prog"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 15 Nov 2020 05:49:31 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 15 Nov 2020 05:49:31 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.7"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"current_page\": 1,\n    \"data\": {\n        \"0\": {\n            \"id\": \"d7c88078-d14e-437a-b880-9ba48baabd3a\",\n            \"address_id\": null,\n            \"title\": \"Programador java\",\n            \"slug\": \"programador-java\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-15T02:16:48.000000Z\",\n            \"updated_at\": \"2020-11-15T02:16:48.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        },\n        \"1\": {\n            \"id\": \"bd8c0415-12de-4c37-83ff-c8c60d593545\",\n            \"address_id\": null,\n            \"title\": \"Programador php\",\n            \"slug\": \"programador-php\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-15T02:17:57.000000Z\",\n            \"updated_at\": \"2020-11-15T02:17:57.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        }\n    },\n    \"first_page_url\": \"http://127.0.0.1:8000/api/jobs/search?query=prog&page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://127.0.0.1:8000/api/jobs/search?query=prog&page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"active\": false\n        },\n        {\n            \"url\": \"http://127.0.0.1:8000/api/jobs/search?query=prog&page=1\",\n            \"label\": 1,\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://127.0.0.1:8000/api/jobs/search\",\n    \"per_page\": 15,\n    \"prev_page_url\": null,\n    \"to\": 2,\n    \"total\": 2\n}"
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Private",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Get Auth User Data",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/api/auth/user",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"user"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Auth User Data",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/api/auth/user",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"api",
+												"auth",
+												"user"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 16 Nov 2020 22:40:03 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 16 Nov 2020 22:40:03 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.7"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"e1625709-c0d6-4e5c-be7d-8c93a6f7fe2b\",\n    \"name\": \"Jefferson\",\n    \"email\": \"jefferson_jipa14@hotmail.com\",\n    \"email_verified_at\": null,\n    \"created_at\": \"2020-11-15T06:57:04.000000Z\",\n    \"updated_at\": \"2020-11-15T06:57:04.000000Z\",\n    \"deleted_at\": null\n}"
+								}
+							]
+						},
+						{
+							"name": "Refresh Access Token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/api/auth/refresh",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"refresh"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Refresh Access Token",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{api_url}}/api/auth/refresh",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"api",
+												"auth",
+												"refresh"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 16 Nov 2020 22:54:45 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 16 Nov 2020 22:54:45 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.7"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9yZWZyZXNoIiwiaWF0IjoxNjA1NTY2MzMzLCJleHAiOjE2MDU1NzA4ODUsIm5iZiI6MTYwNTU2NzI4NSwianRpIjoiWDJJSVgwbTJpYmhQOWg0ZyIsInN1YiI6ImUxNjI1NzA5LWMwZDYtNGU1Yy1iZTdkLThjOTNhNmY3ZmUyYiIsInBydiI6IjhlMWYyZWU5OGFhOTFmNGRmNDA5Zjc0ZTdjNzA5NzY3NTFhMjNjNjEifQ._3Jxpuw-92lUD9zbD4Kyg4dUmIz41V5Y7UXEZcU1Ne0\",\n    \"token_type\": \"bearer\",\n    \"expires_in\": 3600\n}"
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Jobs",
+					"item": [
+						{
+							"name": "List Jobs",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/api/admin/jobs",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"jobs"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List Jobs",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/api/jobs",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"api",
+												"jobs"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 15 Nov 2020 05:42:09 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 15 Nov 2020 05:42:09 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.7"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "56"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": \"c434bb06-d043-4e4b-80ad-d57f941c2e6c\",\n            \"address_id\": null,\n            \"title\": \"teste\",\n            \"slug\": \"teste\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-14T05:42:50.000000Z\",\n            \"updated_at\": \"2020-11-14T05:42:50.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        },\n        {\n            \"id\": \"c434bb06-d043-4e4b-80ad-d57f941c2e6a\",\n            \"address_id\": null,\n            \"title\": \"teste\",\n            \"slug\": \"teste-1\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-14T05:48:20.000000Z\",\n            \"updated_at\": \"2020-11-14T05:48:20.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        },\n        {\n            \"id\": \"c434bb06-d043-4e4b-80ad-d57f941c2a6a\",\n            \"address_id\": null,\n            \"title\": \"teste\",\n            \"slug\": \"teste-2\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-14T05:50:36.000000Z\",\n            \"updated_at\": \"2020-11-14T05:50:36.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        },\n        {\n            \"id\": \"c434bb06-d043-4a4b-80ad-d57f941c2a6a\",\n            \"address_id\": null,\n            \"title\": \"teste\",\n            \"slug\": \"teste-3\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-14T06:37:43.000000Z\",\n            \"updated_at\": \"2020-11-14T06:37:43.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        },\n        {\n            \"id\": \"c434bb06-d043-4a4b-80ad-d57f941c2a6b\",\n            \"address_id\": null,\n            \"title\": \"teste\",\n            \"slug\": \"teste-4\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-14T06:38:19.000000Z\",\n            \"updated_at\": \"2020-11-14T06:38:19.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        },\n        {\n            \"id\": \"d7c88078-d14e-437a-b880-9ba48baabd3a\",\n            \"address_id\": null,\n            \"title\": \"Programador java\",\n            \"slug\": \"programador-java\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-15T02:16:48.000000Z\",\n            \"updated_at\": \"2020-11-15T02:16:48.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        },\n        {\n            \"id\": \"bd8c0415-12de-4c37-83ff-c8c60d593545\",\n            \"address_id\": null,\n            \"title\": \"Programador php\",\n            \"slug\": \"programador-php\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-15T02:17:57.000000Z\",\n            \"updated_at\": \"2020-11-15T02:17:57.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        }\n    ],\n    \"first_page_url\": \"http://127.0.0.1:8000/api/jobs?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://127.0.0.1:8000/api/jobs?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"active\": false\n        },\n        {\n            \"url\": \"http://127.0.0.1:8000/api/jobs?page=1\",\n            \"label\": 1,\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://127.0.0.1:8000/api/jobs\",\n    \"per_page\": 15,\n    \"prev_page_url\": null,\n    \"to\": 7,\n    \"total\": 7\n}"
+								}
+							]
+						},
+						{
+							"name": "Get One",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/api/admin/jobs/bd8c0415-12de-4c37-83ff-c8c60d593545",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"jobs",
+										"bd8c0415-12de-4c37-83ff-c8c60d593545"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get One",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/api/jobs/bd8c0415-12de-4c37-83ff-c8c60d593545",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"api",
+												"jobs",
+												"bd8c0415-12de-4c37-83ff-c8c60d593545"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 15 Nov 2020 05:48:24 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 15 Nov 2020 05:48:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.7"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"title\": \"Programador php\",\n    \"description\": null,\n    \"status\": 1,\n    \"salary\": null,\n    \"id\": \"bd8c0415-12de-4c37-83ff-c8c60d593545\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Search Job By Term",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/api/admin/jobs/search/?term=prog",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"jobs",
+										"search",
+										""
+									],
+									"query": [
+										{
+											"key": "term",
+											"value": "prog"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Search Job By Term",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api_url}}/api/jobs/search/?term=prog",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"api",
+												"jobs",
+												"search",
+												""
+											],
+											"query": [
+												{
+													"key": "term",
+													"value": "prog"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 15 Nov 2020 05:49:31 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 15 Nov 2020 05:49:31 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.7"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"current_page\": 1,\n    \"data\": {\n        \"0\": {\n            \"id\": \"d7c88078-d14e-437a-b880-9ba48baabd3a\",\n            \"address_id\": null,\n            \"title\": \"Programador java\",\n            \"slug\": \"programador-java\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-15T02:16:48.000000Z\",\n            \"updated_at\": \"2020-11-15T02:16:48.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        },\n        \"1\": {\n            \"id\": \"bd8c0415-12de-4c37-83ff-c8c60d593545\",\n            \"address_id\": null,\n            \"title\": \"Programador php\",\n            \"slug\": \"programador-php\",\n            \"description\": null,\n            \"status\": \"1\",\n            \"salary\": null,\n            \"created_at\": \"2020-11-15T02:17:57.000000Z\",\n            \"updated_at\": \"2020-11-15T02:17:57.000000Z\",\n            \"deleted_at\": null,\n            \"address\": null\n        }\n    },\n    \"first_page_url\": \"http://127.0.0.1:8000/api/jobs/search?query=prog&page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://127.0.0.1:8000/api/jobs/search?query=prog&page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"active\": false\n        },\n        {\n            \"url\": \"http://127.0.0.1:8000/api/jobs/search?query=prog&page=1\",\n            \"label\": 1,\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://127.0.0.1:8000/api/jobs/search\",\n    \"per_page\": 15,\n    \"prev_page_url\": null,\n    \"to\": 2,\n    \"total\": 2\n}"
+								}
+							]
+						},
+						{
+							"name": "Save One Job",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"Programador talentify\",\r\n    \"address\":{\r\n        \"state\":\"Texas\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/api/admin/jobs",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"jobs"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Save One Job",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\":\"Programador talentify\",\r\n    \"address\":{\r\n        \"state\":\"Texas\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api_url}}/api/admin/jobs",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"jobs"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 17 Nov 2020 01:23:24 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 17 Nov 2020 01:23:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.7"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "60"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"dd96e50d-7d66-4fca-afa4-ed9eba8fdc95\",\n    \"title\": \"Programador talentify\",\n    \"description\": null,\n    \"status\": 1,\n    \"salary\": 0,\n    \"address\": {\n        \"id\": \"73428bfe-d6d9-4c6d-b73a-c0ad34ebec8e\",\n        \"street\": null,\n        \"city\": null,\n        \"state\": \"Texas\",\n        \"state_full\": null,\n        \"zip_code\": null,\n        \"created_at\": \"2020-11-17T01:23:24.000000Z\",\n        \"updated_at\": \"2020-11-17T01:23:24.000000Z\",\n        \"deleted_at\": null\n    },\n    \"created_at\": \"2020-11-17T01:23:24.000000Z\",\n    \"updated_at\": \"2020-11-17T01:23:24.000000Z\",\n    \"deleted_at\": null\n}"
+								}
+							]
+						},
+						{
+							"name": "Update one",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Programador talentify update\",\r\n    \"description\": null,\r\n    \"status\": 1,\r\n    \"salary\": 0,\r\n    \"address\": {\r\n        \"street\": null,\r\n        \"city\": \"Novo Mexico\",\r\n        \"state\": \"Texas\",\r\n        \"state_full\": null,\r\n        \"zip_code\": null\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/api/admin/jobs/dd96e50d-7d66-4fca-afa4-ed9eba8fdc95",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"jobs",
+										"dd96e50d-7d66-4fca-afa4-ed9eba8fdc95"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update one",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"Programador talentify update\",\r\n    \"description\": null,\r\n    \"status\": 1,\r\n    \"salary\": 0,\r\n    \"address\": {\r\n        \"street\": null,\r\n        \"city\": \"Novo Mexico\",\r\n        \"state\": \"Texas\",\r\n        \"state_full\": null,\r\n        \"zip_code\": null\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api_url}}/api/admin/jobs/dd96e50d-7d66-4fca-afa4-ed9eba8fdc95",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"jobs",
+												"dd96e50d-7d66-4fca-afa4-ed9eba8fdc95"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 17 Nov 2020 01:35:46 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 17 Nov 2020 01:35:46 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.7"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "60"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"dd96e50d-7d66-4fca-afa4-ed9eba8fdc95\",\n    \"title\": \"Programador talentify update\",\n    \"description\": null,\n    \"status\": 1,\n    \"salary\": 0,\n    \"address\": {\n        \"id\": \"73428bfe-d6d9-4c6d-b73a-c0ad34ebec8e\",\n        \"street\": null,\n        \"city\": \"Novo Mexico\",\n        \"state\": \"Texas\",\n        \"state_full\": null,\n        \"zip_code\": null,\n        \"created_at\": \"2020-11-17T01:23:24.000000Z\",\n        \"updated_at\": \"2020-11-17T01:35:46.000000Z\",\n        \"deleted_at\": null\n    },\n    \"created_at\": \"2020-11-17T01:23:24.000000Z\",\n    \"updated_at\": \"2020-11-17T01:35:45.000000Z\",\n    \"deleted_at\": null\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete One Job",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/api/admin/jobs/c434bb06-d043-4e4b-80ad-d57f941c2a6a",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"jobs",
+										"c434bb06-d043-4e4b-80ad-d57f941c2a6a"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete One Job",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/api/admin/jobs/c434bb06-d043-4a4b-80ad-d57f941c2a6a",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"jobs",
+												"c434bb06-d043-4a4b-80ad-d57f941c2a6a"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 15 Nov 2020 06:29:13 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 15 Nov 2020 06:29:13 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.7"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					],
+					"description": "Aqui é retornado apenas os dados pertencentes ao usuario autenticado",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e97ab285-3432-48a2-822e-5ff2d129cf02",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "44adb2d6-994e-4a97-b915-7c697dbf1500",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
