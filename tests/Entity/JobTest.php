@@ -30,19 +30,19 @@ class JobTest extends TestCase
      */
     public function validIdentifierProvider(): array
     {
-        $randomIdentifier = rand(1);
+        $randomIdentifier = rand(1, 100);
         return [
             'random integer identifier' => [$randomIdentifier, $randomIdentifier]
         ];
     }
 
     /**
-     * @param string $value
-     * @param string $expected
+     * @param int $value
+     * @param int $expected
      *
      * @dataProvider validIdentifierProvider
      */
-    public function testSuccessIdentifierGetterAndSetter(string $value, string $expected): void
+    public function testSuccessIdentifierGetterAndSetter(int $value, int $expected): void
     {
         $this->assertSuccessGettersAndSetters($value, $expected, 'Identifier');
     }
@@ -67,7 +67,7 @@ class JobTest extends TestCase
         return [
             'empty string title' => ['', EmptyException::class],
             'only space string title' => [str_repeat(' ', rand(1, 256)), EmptyException::class],
-            'string title longer than 256 characters' => [str_repeat('a', rand(257)), TooLongException::class]
+            'string title longer than 256 characters' => [str_repeat('a', rand(257, 357)), TooLongException::class]
         ];
     }
 
@@ -113,7 +113,7 @@ class JobTest extends TestCase
         return [
             'empty description' => ['', EmptyException::class],
             'only space string description' => [str_repeat(' ', rand(1, 10000)), EmptyException::class],
-            'string title longer than 10000 characters' => [str_repeat('a', rand(10001)), TooLongException::class]
+            'string title longer than 10000 characters' => [str_repeat('a', rand(10001, 10100)), TooLongException::class]
         ];
     }
 

@@ -28,19 +28,19 @@ class WorkplaceTest extends TestCase
      */
     public function validIdentifierProvider(): array
     {
-        $randomIdentifier = rand(1);
+        $randomIdentifier = rand(1, 100);
         return [
             'random integer identifier' => [$randomIdentifier, $randomIdentifier]
         ];
     }
 
     /**
-     * @param string $value
-     * @param string $expected
+     * @param int $value
+     * @param int $expected
      *
      * @dataProvider validIdentifierProvider
      */
-    public function testSuccessIdentifierGetterAndSetter(string $value, string $expected): void
+    public function testSuccessIdentifierGetterAndSetter(int $value, int $expected): void
     {
         $this->assertSuccessGettersAndSetters($value, $expected, 'Identifier');
     }
@@ -50,7 +50,7 @@ class WorkplaceTest extends TestCase
      */
     public function validStringProvider(): array
     {
-        $randomString = str_repeat('a', rand(1));
+        $randomString = str_repeat('a', rand(1, 100));
         return [
             'random string' => [$randomString, $randomString]
         ];
@@ -60,7 +60,7 @@ class WorkplaceTest extends TestCase
     {
         return [
             'empty string' => ['', EmptyException::class],
-            'only space string' => [str_repeat('', rand(1)), EmptyException::class]
+            'only space string' => [str_repeat('', rand(1, 100)), EmptyException::class]
         ];
     }
 
@@ -190,11 +190,11 @@ class WorkplaceTest extends TestCase
     }
 
     /**
-     * @param string $value
-     * @param string $expected
+     * @param $value
+     * @param $expected
      * @param string $variable
      */
-    private function assertSuccessGettersAndSetters(string $value, string $expected, string $variable): void
+    private function assertSuccessGettersAndSetters($value, $expected, string $variable): void
     {
         $setMethod = 'set' . ucfirst($variable);
         $getMethod = 'get' . ucfirst($variable);
