@@ -35,16 +35,6 @@ class WorkplaceTest extends TestCase
     }
 
     /**
-     * @return array
-     */
-    public function invalidIdentifierProvider(): array
-    {
-        return [
-            'null identifier' => [null, EmptyException::class]
-        ];
-    }
-
-    /**
      * @param string $value
      * @param string $expected
      *
@@ -53,17 +43,6 @@ class WorkplaceTest extends TestCase
     public function testSuccessIdentifierGetterAndSetter(string $value, string $expected): void
     {
         $this->assertSuccessGettersAndSetters($value, $expected, 'Identifier');
-    }
-
-    /**
-     * @param $value
-     * @param string $expected
-     *
-     * @dataProvider invalidIdentifierProvider
-     */
-    public function testFailureSetIdentifier($value, string $expected): void
-    {
-        $this->assertFailureSetters($value, $expected, 'Identifier');
     }
 
     /**
