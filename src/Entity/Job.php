@@ -3,6 +3,7 @@ namespace App\Entity;
 
 use App\Exceptions\EmptyException;
 use App\Exceptions\TooLongException;
+use App\Interfaces\DoctrineEntityInterface;
 use App\Traits\EntityValidationTrait;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table()
  */
-class Job implements \JsonSerializable
+class Job implements DoctrineEntityInterface
 {
     use EntityValidationTrait;
 
