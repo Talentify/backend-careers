@@ -149,16 +149,6 @@ class JobTest extends TestCase
     }
 
     /**
-     * @return array
-     */
-    public function invalidStatusProvider(): array
-    {
-        return [
-            'empty status' => [null, EmptyException::class]
-        ];
-    }
-
-    /**
      * @param bool $value
      * @param bool $expected
      *
@@ -170,17 +160,6 @@ class JobTest extends TestCase
     }
 
     /**
-     * @param $value
-     * @param string $expected
-     *
-     * @dataProvider invalidStatusProvider
-     */
-    public function testFailureSetStatus($value, string $expected): void
-    {
-        $this->assertFailureSetters($value, $expected, 'status');
-    }
-
-    /**
      * @return array
      */
     public function validWorkplaceProvider(): array
@@ -189,13 +168,6 @@ class JobTest extends TestCase
         return [
             'null workplace' => [null, null],
             'workplace class' => [$workplaceMock, $workplaceMock]
-        ];
-    }
-
-    public function invalidWorkplaceProvider(): array
-    {
-        return [
-            'not an instance of Workplace' => [new \stdClass(), \TypeError::class]
         ];
     }
 
@@ -216,17 +188,6 @@ class JobTest extends TestCase
     }
 
     /**
-     * @param $value
-     * @param string $expected
-     *
-     * @dataProvider invalidWorkplaceProvider
-     */
-    public function testFailureSetWorkplace($value, string $expected): void
-    {
-        $this->assertFailureSetters($value, $expected, 'workplace');
-    }
-
-    /**
      * @return array
      */
     public function validSalaryProvider(): array
@@ -239,16 +200,6 @@ class JobTest extends TestCase
     }
 
     /**
-     * @return array
-     */
-    public function invalidSalaryProvider(): array
-    {
-        return [
-            'not a number salary' => ['USD 100', \TypeError::class]
-        ];
-    }
-
-    /**
      * @param $value
      * @param $expected
      *
@@ -257,17 +208,6 @@ class JobTest extends TestCase
     public function testSuccessSalaryGetterAndSetter($value, $expected): void
     {
         $this->assertSuccessGettersAndSetters($value, $expected, 'salary');
-    }
-
-    /**
-     * @param $value
-     * @param string $expected
-     *
-     * @dataProvider invalidSalaryProvider
-     */
-    public function testFailureSetSalary($value, string $expected): void
-    {
-        $this->assertFailureSetters($value, $expected, 'salary');
     }
 
     /**
