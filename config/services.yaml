@@ -21,3 +21,10 @@ services:
         App\Interfaces\DoctrineEntityServiceInterface:
             calls:
                 - [setEntityManager, ['@doctrine.orm.entity_manager']]
+
+    App\Listener\DoctrineListener:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, priority: 1 }
+            - { name: kernel.event_listener, event: kernel.exception, priority: 1 }
