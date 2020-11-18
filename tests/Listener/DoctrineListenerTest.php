@@ -4,40 +4,59 @@ namespace App\Tests\Listener;
 use App\Listener\DoctrineListener;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
-use PHPUnit\Framework\TestCase;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 
-class DoctrineListenerTest extends TestCase
+class DoctrineListenerTest extends WebTestCase
 {
     /**
      * @var DoctrineListener
      */
     private DoctrineListener $doctrineListener;
 
-    public function setUp(): void
-    {
-        $this->doctrineListener = new DoctrineListener($this->getEntityManagerStub());
-    }
-
     public function testOnKernelException(): void
     {
-        $this->assertNull($this->doctrineListener->onKernelException($this->createMock(ExceptionEvent::class)));
+        $exceptionEvent = new ExceptionEvent(
+            $this->createKernel(),
+            Request::createFromGlobals(),
+            0,
+            new \Exception()
+        );
+        $entityManager = $this->getEntityManagerMock();
+        $entityManager->expects($this->once())
+            ->method('rollback');
+        $this->doctrineListener = new DoctrineListener($entityManager);
+        $this->doctrineListener->onKernelException($exceptionEvent);
+        $this->doctrineListener->onKernelException($exceptionEvent);
     }
 
     public function testOnKernelResponse(): void
     {
-        $this->assertNull($this->doctrineListener->onKernelResponse($this->createMock(ResponseEvent::class)));
+        $entityManager = $this->getEntityManagerMock();
+        $entityManager->expects($this->once())
+            ->method('flush');
+        $this->doctrineListener = new DoctrineListener($entityManager);
+        $this->doctrineListener->onKernelResponse(new ResponseEvent(
+            $this->createKernel(),
+            Request::createFromGlobals(),
+            0,
+            $this->createMock(Response::class)
+        ));
     }
 
     /**
-     * @return EntityManagerInterface|Stub
+     * @return EntityManagerInterface|MockObject
      */
-    private function getEntityManagerStub()
+    private function getEntityManagerMock()
     {
-        $entityManager = $this->createStub(EntityManagerInterface::class);
-        $entityManager->method('getConnection')->willReturn($this->getConnectionStub());
+        $entityManager = $this->createMock(EntityManagerInterface::class);
+        $entityManager->method('getConnection')
+            ->will($this->returnValue($this->getConnectionStub()));
         return $entityManager;
     }
 
@@ -47,7 +66,7 @@ class DoctrineListenerTest extends TestCase
     private function getConnectionStub()
     {
         $connection = $this->createStub(Connection::class);
-        $connection->method('isTransactionActive')->willReturn(true);
+        $connection->method('isTransactionActive')->will($this->onConsecutiveCalls(true, false));
         return $connection;
     }
 }
