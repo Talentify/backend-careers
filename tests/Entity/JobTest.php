@@ -292,6 +292,63 @@ class JobTest extends TestCase
     }
 
     /**
+     * @return array
+     */
+    public function validJsonSerializeProvider(): array
+    {
+        $workplaceStub = $this->createStub(Workplace::class);
+        $workplaceStub->method('jsonSerialize')
+            ->will($this->returnValue([]));
+        $completeValues = [
+            'identifier' => 1,
+            'title' => 'title',
+            'description' => 'description',
+            'status' => true,
+            'workplace' => $workplaceStub,
+            'salary' => 100.0
+        ];
+        $completeExpectedValue = [
+            'identifier' => 1,
+            'title' => 'title',
+            'description' => 'description',
+            'status' => true,
+            'workplace' => [],
+            'salary' => 100.0
+        ];
+        return [
+            'complete' => [$completeValues, $completeExpectedValue],
+            'without workplace' => [
+                array_merge($completeValues, ['workplace' => null]),
+                array_merge($completeExpectedValue, ['workplace' => null])
+            ],
+            'without salary' => [
+                array_merge($completeValues, ['salary' => null]),
+                array_merge($completeExpectedValue, ['salary' => null])
+            ]
+        ];
+    }
+
+    /**
+     * @param $values
+     * @param $expected
+     *
+     * @dataProvider validJsonSerializeProvider
+     */
+    public function testJsonSerialize($values, $expected): void
+    {
+        foreach ($values as $variable => $value) {
+            $setMethod = 'set' . ucfirst($variable);
+            $this->job->$setMethod($value);
+        }
+        $json = $this->job->jsonSerialize();
+        $this->assertIsArray($json);
+        foreach ($expected as $key => $value) {
+            $this->assertArrayHasKey($key, $json);
+            $this->assertSame($value, $json[$key]);
+        }
+    }
+
+    /**
      * @param $value
      * @param $expected
      * @param string $variable
