@@ -76,7 +76,7 @@ class JobSerializerTest extends TestCase
 
     public function testSuccessDecode(): void
     {
-        $this->assertIsArray($this->jobSerializer->decode([], Job::class, null, []));
+        $this->assertIsArray($this->jobSerializer->decode('', Job::class, [], []));
     }
 
     /**
@@ -84,10 +84,38 @@ class JobSerializerTest extends TestCase
      */
     public function validDenormalizeProvider(): array
     {
+        $data = [
+            'title' => 'title',
+            'description' => 'description',
+            'status' => true,
+            'workplace' => [
+                'address' => 'address',
+                'city' => 'city',
+                'state' => 'state',
+                'country' => 'country'
+            ],
+            'salary' => 100.0
+        ];
         return [
-            'null context' => [[[], Job::class, null, [AbstractNormalizer::OBJECT_TO_POPULATE => null]]],
-            'job context' => [[[], Job::class, null, [AbstractNormalizer::OBJECT_TO_POPULATE => $this->createMock(Job::class)]]],
-            'not instance of job context' => [[[], Job::class, null, [AbstractNormalizer::OBJECT_TO_POPULATE => new \stdClass()]]]
+            'null context' => [[$data, Job::class, null, [AbstractNormalizer::OBJECT_TO_POPULATE => null]]],
+            'job context' => [[
+                $data,
+                Job::class,
+                null,
+                [AbstractNormalizer::OBJECT_TO_POPULATE => $this->createMock(Job::class)]
+            ]],
+            'not instance of job context' => [[
+                $data,
+                Job::class,
+                null,
+                [AbstractNormalizer::OBJECT_TO_POPULATE => new \stdClass()]
+            ]],
+            'without workplace' =>[[
+                array_merge($data, ['workplace' => null]),
+                Job::class,
+                null,
+                [AbstractNormalizer::OBJECT_TO_POPULATE => null]
+            ]]
         ];
     }
 
