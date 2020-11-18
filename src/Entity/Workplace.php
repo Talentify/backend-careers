@@ -1,7 +1,9 @@
 <?php
 namespace App\Entity;
 
+use App\Exceptions\EmptyException;
 use App\Interfaces\DoctrineEntityInterface;
+use App\Traits\EntityValidationTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Workplace implements DoctrineEntityInterface
 {
+    use EntityValidationTrait;
+
     /**
      * @var int
      *
@@ -79,10 +83,11 @@ class Workplace implements DoctrineEntityInterface
     /**
      * @param string $address
      * @return Workplace
+     * @throws EmptyException
      */
     public function setAddress(string $address): Workplace
     {
-        $this->address = $address;
+        $this->address = $this->validateEmptyString($address);
         return $this;
     }
 
@@ -96,11 +101,12 @@ class Workplace implements DoctrineEntityInterface
 
     /**
      * @param string $city
+     * @throws EmptyException
      * @return Workplace
      */
     public function setCity(string $city): Workplace
     {
-        $this->city = $city;
+        $this->city = $this->validateEmptyString($city);
         return $this;
     }
 
@@ -115,10 +121,11 @@ class Workplace implements DoctrineEntityInterface
     /**
      * @param string $state
      * @return Workplace
+     * @throws EmptyException
      */
     public function setState(string $state): Workplace
     {
-        $this->state = $state;
+        $this->state = $this->validateEmptyString($state);
         return $this;
     }
 
@@ -133,10 +140,11 @@ class Workplace implements DoctrineEntityInterface
     /**
      * @param string $country
      * @return Workplace
+     * @throws EmptyException
      */
     public function setCountry(string $country): Workplace
     {
-        $this->country = $country;
+        $this->country = $this->validateEmptyString($country);
         return $this;
     }
 
