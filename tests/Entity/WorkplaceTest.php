@@ -59,7 +59,8 @@ class WorkplaceTest extends TestCase
     public function invalidStringProvider(): array
     {
         return [
-            'empty string' => ['', EmptyException::class]
+            'empty string' => ['', EmptyException::class],
+            'only space string' => [str_repeat('', rand(1)), EmptyException::class]
         ];
     }
 
