@@ -1,5 +1,7 @@
 doctrine:
     dbal:
+        types:
+            StatusType: App\DBAL\Types\StatusType
         url: '%env(resolve:DATABASE_URL)%'
 
         # IMPORTANT: You MUST configure your server version,
