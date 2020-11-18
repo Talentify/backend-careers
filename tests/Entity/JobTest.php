@@ -28,6 +28,49 @@ class JobTest extends TestCase
     /**
      * @return array
      */
+    public function validIdentifierProvider(): array
+    {
+        $randomIdentifier = rand(1);
+        return [
+            'random integer identifier' => [$randomIdentifier, $randomIdentifier]
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function invalidIdentifierProvider(): array
+    {
+        return [
+            'null identifier' => [null, EmptyException::class]
+        ];
+    }
+
+    /**
+     * @param string $value
+     * @param string $expected
+     *
+     * @dataProvider validIdentifierProvider
+     */
+    public function testSuccessIdentifierGetterAndSetter(string $value, string $expected): void
+    {
+        $this->assertSuccessGettersAndSetters($value, $expected, 'Identifier');
+    }
+
+    /**
+     * @param $value
+     * @param string $expected
+     *
+     * @dataProvider invalidIdentifierProvider
+     */
+    public function testFailureSetIdentifier($value, string $expected): void
+    {
+        $this->assertFailureSetters($value, $expected, 'Identifier');
+    }
+
+    /**
+     * @return array
+     */
     public function validTitleProvider(): array
     {
         $titleUpTo256Characters = str_repeat('a', rand(1, 256));
