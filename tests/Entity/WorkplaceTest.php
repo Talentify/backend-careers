@@ -173,6 +173,37 @@ class WorkplaceTest extends TestCase
     }
 
     /**
+     * @return array
+     */
+    public function validJsonSerializeProvider(): array
+    {
+        $completeValues = ['identifier' => 1, 'address' => 'address', 'city' => 'city', 'country' => 'country'];
+        return [
+            'complete' => [$completeValues, $completeValues]
+        ];
+    }
+
+    /**
+     * @param $values
+     * @param $expected
+     *
+     * @dataProvider validJsonSerializeProvider
+     */
+    public function testJsonSerialize($values, $expected): void
+    {
+        foreach ($values as $variable => $value) {
+            $setMethod = 'set' . ucfirst($variable);
+            $this->workplace->$setMethod($value);
+        }
+        $json = $this->workplace->jsonSerialize();
+        $this->assertIsArray($json);
+        foreach ($expected as $key => $value) {
+            $this->assertArrayHasKey($key, $json);
+            $this->assertSame($value, $json[$key]);
+        }
+    }
+
+    /**
      * @param string $value
      * @param string $expected
      * @param string $variable
