@@ -177,7 +177,13 @@ class WorkplaceTest extends TestCase
      */
     public function validJsonSerializeProvider(): array
     {
-        $completeValues = ['identifier' => 1, 'address' => 'address', 'city' => 'city', 'country' => 'country'];
+        $completeValues = [
+            'identifier' => 1,
+            'address' => 'address',
+            'city' => 'city',
+            'state' => 'state',
+            'country' => 'country'
+        ];
         return [
             'complete' => [$completeValues, $completeValues]
         ];
