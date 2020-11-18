@@ -20,6 +20,7 @@ class JobServiceTest extends TestCase
     public function setUp(): void
     {
         $this->jobService = new JobService();
+        $this->jobService->setEntityManager($this->getMockedEntityManager(null));
     }
 
     public function testInstanceOfDoctrineEntityServiceInterface(): void
@@ -29,12 +30,12 @@ class JobServiceTest extends TestCase
 
     public function testSuccessSetEntityManager(): void
     {
-        $this->assertInstanceOf(JobService::class, $this->jobService->setEntityManager($this->getMockedEntityManager()));
+        $this->assertInstanceOf(JobService::class, $this->jobService->setEntityManager($this->getMockedEntityManager(null)));
     }
 
     public function testSuccessGetEntityRepository(): void
     {
-        $this->assertInstanceOf(EntityRepository::class, $this->jobService->getEntityRepository());
+        $this->assertInstanceOf(EntityRepository::class, $this->jobService->getEntityRepository(''));
     }
 
     /**
@@ -104,7 +105,7 @@ class JobServiceTest extends TestCase
 
     public function testSuccessPersist(): void
     {
-        $this->assertInstanceOf(JobService::class, $this->jobService->persist($this->createMock(Job::class)));
+        $this->assertInstanceOf(Job::class, $this->jobService->persist($this->createMock(Job::class)));
     }
 
     public function testSuccessGetEntityClass(): void
