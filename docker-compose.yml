@@ -24,4 +24,4 @@ services:
     volumes:
       - .:/aironou
     env_file:
-      - .env
+      - .env.test
