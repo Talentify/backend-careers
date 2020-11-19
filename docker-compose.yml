@@ -1,0 +1,33 @@
+version: '3.7'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: __Dockerfile
+      target: php
+    container_name: woo-conector
+    expose:
+      - "9000"
+    ports:
+      - 9000:9000
+    volumes:
+      - ./:/data/job-talentify
+      - /data/job-talentify/vendor
+    networks:
+      - default
+    working_dir: /data/job-talentify/
+
+  nginx:
+    container_name: nginx_woo-conector
+    image: nginx:1.16.0
+    ports:
+      - 80:80
+    volumes:
+      - ./.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./.docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - api
+
+networks:
+  default:
+    driver: bridge

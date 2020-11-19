@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8794c008-1ac1-4513-a01a-5260b66a0116" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Modelo_Novo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../architecture-front" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cafeteria-api" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../check_text/resources/views/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../curso-api-rest-com-laravel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../laravel-blog" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/.styleci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Console/Kernel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Exceptions/Handler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Http/Kernel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Http/Middleware/CheckForMaintenanceMode.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Http/Middleware/TrimStrings.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Http/Middleware/TrustHosts.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Http/Middleware/TrustProxies.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/app/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/artisan" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/bootstrap/app.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/bootstrap/cache/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/composer.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/config/app.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/config/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/config/broadcasting.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/config/cache.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/config/cors.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/config/database.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/config/filesystems.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/config/hashing.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/config/logging.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/config/mail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/config/queue.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/config/services.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/config/session.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/config/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/database/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/database/factories/UserFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/public/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/public/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/public/web.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/resources/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/resources/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/resources/lang/en/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/resources/lang/en/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/resources/lang/en/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/resources/lang/en/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/resources/sass/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/resources/views/welcome.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/routes/api.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/routes/channels.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/routes/console.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/routes/web.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/server.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/storage/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/storage/app/public/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/storage/framework/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/storage/framework/cache/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/storage/framework/cache/data/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/storage/framework/sessions/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/storage/framework/testing/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/storage/framework/views/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/storage/logs/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/tests/CreatesApplication.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/tests/Feature/ExampleTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/tests/TestCase.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/tests/Unit/ExampleTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesha/webpack.mix.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/.idea/commandlinetools/Laravel_16_08_2020_15_49.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/.idea/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/.idea/send_api.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/.styleci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Console/Kernel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Exceptions/Handler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Http/Kernel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Http/Middleware/CheckForMaintenanceMode.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Http/Middleware/TrimStrings.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Http/Middleware/TrustHosts.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Http/Middleware/TrustProxies.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/app/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/artisan" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/bootstrap/app.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/bootstrap/cache/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/composer.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/config/app.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/config/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/config/broadcasting.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/config/cache.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/config/cors.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/config/database.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/config/filesystems.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/config/hashing.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/config/logging.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/config/mail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/config/queue.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/config/services.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/config/session.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/config/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/database/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/database/factories/UserFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/public/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/public/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/public/web.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/resources/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/resources/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/resources/lang/en/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/resources/lang/en/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/resources/lang/en/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/resources/lang/en/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/resources/sass/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/resources/views/welcome.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/routes/api.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/routes/channels.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/routes/console.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/routes/web.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/server.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/storage/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/storage/app/public/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/storage/framework/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/storage/framework/cache/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/storage/framework/cache/data/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/storage/framework/sessions/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/storage/framework/testing/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/storage/framework/views/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/storage/logs/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/tests/CreatesApplication.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/tests/Feature/ExampleTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/tests/TestCase.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/tests/Unit/ExampleTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../send_api/webpack.mix.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../solluti_api" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store-api" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/.idea/commandlinetools/Laravel_03_09_2020_17_36.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/.styleci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Console/Kernel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Exceptions/Handler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Http/Kernel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Http/Middleware/CheckForMaintenanceMode.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Http/Middleware/TrimStrings.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Http/Middleware/TrustHosts.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Http/Middleware/TrustProxies.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/artisan" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/bootstrap/app.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/bootstrap/cache/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/composer.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/config/app.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/config/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/config/broadcasting.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/config/cache.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/config/cors.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/config/database.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/config/filesystems.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/config/hashing.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/config/logging.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/config/mail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/config/queue.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/config/services.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/config/session.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/config/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/database/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/database/factories/UserFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/public/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/public/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/public/web.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/resources/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/resources/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/resources/lang/en/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/resources/lang/en/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/resources/lang/en/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/resources/lang/en/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/resources/sass/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/resources/views/welcome.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/routes/api.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/routes/channels.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/routes/console.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/routes/web.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/server.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/storage/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/storage/app/public/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/storage/framework/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/storage/framework/cache/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/storage/framework/cache/data/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/storage/framework/sessions/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/storage/framework/testing/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/storage/framework/views/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/storage/logs/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/tests/CreatesApplication.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/tests/TestCase.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/tests/Unit/ExampleTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_pad/webpack.mix.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store_shopify" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.docker/nginx/default.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.docker/nginx/nginx.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.docker/php-fpm/php-fpm.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.docker/php-fpm/php.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.docker/php-fpm/www.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/vendor/graham-campbell/result-type" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/vendor/tymon/jwt-auth" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/vendor/asm89/stack-cors" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/facade/ignition" />
+      <path value="$PROJECT_DIR$/vendor/facade/ignition-contracts" />
+      <path value="$PROJECT_DIR$/vendor/facade/flare-client-php" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
+      <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/fruitcake/laravel-cors" />
+      <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1kTSjVM7KJGnbyIPLA5Nhv0pyEI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8794c008-1ac1-4513-a01a-5260b66a0116" name="Default Changelist" comment="" />
+      <created>1605723224273</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605723224273</updated>
+      <workItem from="1605723225316" duration="8610000" />
+      <workItem from="1605808832570" duration="884000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="678" y="360" width="615" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605808992231">
+      <screen x="72" y="29" width="1848" height="1051" />
+    </state>
+    <state x="678" y="360" width="615" height="403" key="#com.intellij.fileTypes.FileTypeChooser/72.29.1848.1051@72.29.1848.1051" timestamp="1605808992231" />
+    <state x="779" y="312" width="424" height="491" key="FileChooserDialogImpl" timestamp="1605730439170">
+      <screen x="72" y="29" width="1848" height="1051" />
+    </state>
+    <state x="779" y="312" width="424" height="491" key="FileChooserDialogImpl/72.29.1848.1051@72.29.1848.1051" timestamp="1605730439170" />
+  </component>
+</project>
