@@ -1,0 +1,12 @@
+actor: ApiTester
+modules:
+    enabled:
+        - Symfony:
+            app_path: 'src'
+            environment: 'test'
+        - REST:
+            url: http://talentify-web/v1/
+            depends: PhpBrowser
+        - Doctrine2:
+            depends: Symfony
+        - \Helper\Api

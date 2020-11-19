@@ -8,7 +8,7 @@ final class StatusType extends AbstractEnumType
     public const ACTIVE = 'active';
     public const INACTIVE = 'inactive';
 
-    protected static $choices = [
+    public static $choices = [
         self::ACTIVE => 'Ativo',
         self::INACTIVE => 'Inativo',
     ];

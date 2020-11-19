@@ -4,11 +4,12 @@ namespace App\Entity;
 
 use App\Repository\JobRepository;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity(repositoryClass=JobRepository::class)
  */
-class Job
+class Job implements JsonSerializable
 {
     /**
      * @ORM\Id
@@ -105,5 +106,16 @@ class Job
         $this->workspace = $workspace;
 
         return $this;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'title' => $this->getTitle(),
+            'description' => $this->getDescription(),
+            'salary' => $this->getSalary(),
+            'status' => $this->getStatus(),
+            'workspace' => $this->getWorkspace() //? $this->getWorkspace()->toArray() : null,
+        ];
     }
 }

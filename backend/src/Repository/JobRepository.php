@@ -19,6 +19,14 @@ class JobRepository extends ServiceEntityRepository
         parent::__construct($registry, Job::class);
     }
 
+    public function save(Job $job): Job
+    {
+        $this->_em->persist($job);
+        $this->_em->flush();
+
+        return $job;
+    }
+
     // /**
     //  * @return Job[] Returns an array of Job objects
     //  */
