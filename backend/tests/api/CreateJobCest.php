@@ -8,7 +8,7 @@ use Faker\Factory;
 class CreateJobCest
 {
     protected $faker;
-
+    protected $token;
     public function _before()
     {
         $this->faker = Factory::create('pt_BR');
@@ -33,11 +33,25 @@ class CreateJobCest
         ];
     }
 
+    private function login(ApiTester $I)
+    {
+        if (is_null($this->token)) {
+            $I->haveHttpHeader('Content-Type', 'application/json');
+            $I->sendPOST('/login', ['username' => 'test', 'password' => 'test']);
+
+            $this->token = json_decode($I->grabResponse(), true)['token'];
+        }
+
+        $I->amBearerAuthenticated($this->token);
+    }
+
     /**
      * @group ok
      */
     public function tryToCreateJob(ApiTester $I)
     {
+        $this->login($I);
+
         $data = $this->getData();
 
         $I->haveHttpHeader('Content-Type', 'application/json');
@@ -48,6 +62,8 @@ class CreateJobCest
     }
     public function tryToCreateJobWithoutWorkspace(ApiTester $I)
     {
+        $this->login($I);
+
         $data = $this->getData();
         unset($data['workspace']);
 
@@ -62,6 +78,8 @@ class CreateJobCest
      */
     public function tryToCreateJobWitoutTitle(ApiTester $I)
     {
+        $this->login($I);
+
         $data = $this->getData();
         unset($data['title']);
 
@@ -75,6 +93,8 @@ class CreateJobCest
      */
     public function tryToCreateJobWitoutDescription(ApiTester $I)
     {
+        $this->login($I);
+
         $data = $this->getData();
         unset($data['description']);
 
@@ -88,6 +108,8 @@ class CreateJobCest
      */
     public function tryToCreateJobWitoutStatus(ApiTester $I)
     {
+        $this->login($I);
+
         $data = $this->getData();
         unset($data['status']);
 
@@ -101,6 +123,8 @@ class CreateJobCest
      */
     public function tryToCreateJobWithInvalidStatus(ApiTester $I)
     {
+        $this->login($I);
+
         $data = $this->getData();
         $data['status'] = 'waiting';
 

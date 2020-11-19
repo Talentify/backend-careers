@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ListJobController extends AbstractController
 {
     /**
-     * @Route("/v1/jobs", name="job_list_job")
+     * @Route("/v1/jobs-active", name="job_list_job")
      */
     public function __invoke(JobService $jobService): Response
     {

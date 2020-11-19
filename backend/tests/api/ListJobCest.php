@@ -8,6 +8,7 @@ use Faker\Factory;
 class ListJobCest
 {
     protected $faker;
+    protected $token;
 
     public function _before()
     {
@@ -15,7 +16,17 @@ class ListJobCest
         $this->faker->addProvider(new \Faker\Provider\pt_BR\Company($this->faker));
         $this->faker->addProvider(new \Faker\Provider\pt_BR\Address($this->faker));
     }
+    private function login(ApiTester $I)
+    {
+        if (is_null($this->token)) {
+            $I->haveHttpHeader('Content-Type', 'application/json');
+            $I->sendPOST('/login', ['username' => 'test', 'password' => 'test']);
 
+            $this->token = json_decode($I->grabResponse(), true)['token'];
+        }
+
+        $I->amBearerAuthenticated($this->token);
+    }
     private function getData()
     {
         return [
@@ -36,13 +47,15 @@ class ListJobCest
     /**
      * @group list
      */
-    public function tryToTest(ApiTester $I)
+    public function tryToListJobs(ApiTester $I)
     {
+        $this->login($I);
+
         $I->haveHttpHeader('Content-Type', 'application/json');
         $I->sendPOST('/jobs', $this->getData());
 
         $I->haveHttpHeader('Content-Type', 'application/json');
-        $I->sendGET('/jobs');
+        $I->sendGET('/jobs-active');
 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->seeResponseJsonMatchesJsonPath('$.[*].title');
