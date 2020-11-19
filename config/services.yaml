@@ -22,6 +22,9 @@ services:
             calls:
                 - [setEntityManager, ['@doctrine.orm.entity_manager']]
 
+    App\Listener\ExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
     App\Listener\DoctrineListener:
         arguments:
             $entityManager: '@doctrine.orm.entity_manager'
