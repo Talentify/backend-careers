@@ -51,7 +51,7 @@ class Job implements DoctrineEntityInterface
     /**
      * @var Workplace|null
      *
-     * @ORM\OneToOne(targetEntity="Workplace")
+     * @ORM\OneToOne(targetEntity="Workplace", fetch="EAGER", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private ?Workplace $workplace;
