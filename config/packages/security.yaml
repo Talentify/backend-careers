@@ -1,0 +1,9 @@
+security:
+    providers:
+        users_in_memory: { memory: null }
+    firewalls:
+        main:
+            anonymous: true
+            lazy: true
+            provider: users_in_memory
+    access_control:
