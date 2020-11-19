@@ -55,11 +55,11 @@ class Workplace implements DoctrineEntityInterface
     private string $country;
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getIdentifier(): int
+    public function getIdentifier(): ?int
     {
-        return $this->identifier;
+        return $this->identifier ?? null;
     }
 
     /**

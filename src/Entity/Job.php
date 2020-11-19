@@ -64,11 +64,11 @@ class Job implements DoctrineEntityInterface
     private ?float $salary;
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getIdentifier(): int
+    public function getIdentifier(): ?int
     {
-        return $this->identifier;
+        return $this->identifier ?? null;
     }
 
     /**
