@@ -1,0 +1,32 @@
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/html/public;
+
+        index index.html index.htm index.nginx-debian.html index.php;
+
+        server_name _;
+
+        location / {
+                try_files $uri $uri/ /index.php?$query_string;
+        }
+
+	# pass PHP scripts to FastCGI server
+	#
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		fastcgi_split_path_info ^(.+\.php)(/.+)$;
+		# With php-fpm (or other unix sockets):
+		fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
+		# With php-cgi (or other tcp sockets):
+		# fastcgi_pass 127.0.0.1:9000;
+		fastcgi_read_timeout 3600;
+                include fastcgi_params;
+    }
+
+    location ~ /\.ht {
+            deny all;
+    }
+}
+

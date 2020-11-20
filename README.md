@@ -1,57 +1,47 @@
-## A vaga
-Estamos constante adicionando novas features e aperfeiçoando as já existentes. Como desenvolvedor sênior, voce será responsável por criar código limpo, testável, e de alta qualidade, além de auxiliar o restante da equipe a migrar código existente para a nova arquitetura orientada a domínio.Somos adeptos de desenvolvimento ágil, integração contínua, code review e testes automáticos. Com isso, nossa equipe busca constantemente desenvolver e aprimorar o produto para estarmos sempre a frente do mercado.
 
-<details>
-<summary>Detalhes da vaga</summary>
+# Teste prático - Talentify
 
-## A empresa
-A Talentify.io nasceu da fusão de 3 empresas distintas em 3 áreas diferentes: Digital Media & Advertising, Mobile Technology e HR Consulting. Nossa plataforma de SaaS ajuda empresas a superar seus maiores desafios na  busca e contratação de talentos em grande escala.
+Este repositório tem como objetivo principal a demonstração de conhecimento prático quanto as tecnologias requisitadas para admissão da vaga Desenvolvedor Sênior
 
-## Beneficios
-- Home office (você pode trabalhar em casa ou em nosso escritório, em Alphaville/SP)
-- Horario flexivel
-- Assistencia medica e odontologica (apos 3 meses)
-- Vale refeicao e transporte
+# O projeto
 
-## Requisitos
-- PHP 7
-- Desenvolvimento de testes
-- Desenvolvimento Agil
-- Web Services (RESTful ou SOAP ou JSON-RPC, etc)
-- Algum dos frameworks PHP (Phalcon, Zend, Symfony, Laravel)
-- Familiaridade com as PHP Standards Recommendations (PSRs)
-- GIT
-- Banco de dados relacional (MySQL, PostgreSQL, etc)
+Consiste em um sistema de vagas, onde terá um acesso administrativo para gerência dos registros e uma tela inicial para listagem das vagas disponíveis
 
-## Desejável
-- Arquitetura hexagonal
-- DDD
-- Microserviços
-- Filas de mensagens (RabbitMQ, Apache Kafka, Amazon SQS, etc)
-- Elasticsearch
-- Linux
-- Amazon Web Services (AWS)
-- CI/CD
-- Inglês (leitura, escrita e conversação)
+## Especificações técnicas
+- PHP 7.3
+- Laravel 8
+- MySQL 5.7
 
-</details>
+## Requisitos técnicos
+- Docker
+- Portas 9000 e 9001 disponíveis. Caso estejam em uso, alterar o arquivo **docker-compose.yml**
 
-## Talk is cheap. Show me the code!
-Você deverá construir um pequeno sistema para publicação de vagas de emprego. Ele irá possuir os seguintes recursos:
-* Acesso público, com a listagem das vagas abertas
-* Login
-* Acesso administrativo, de acesso privado, com os seguintes recursos:
-  * Cadastro de vaga contendo os campos: title (string, 256 characteres, obrigatório), description (string, 10000 caracteres, obrigatório), status (enum, obrigatório), workplace (endereço, opcional), salary (dólar americano, opcional).
- 
-#### Observações
-- Você pode, ou não, utilizar qualquer framework ou biblioteca PHP que desejar, desde que a lógica de negócio descrita acima seja feita por você, em puro PHP.
-- As interfaces podem ou não serem gráficas (GUI), isto é, podem ser qualquer tipo de canal que possibilite a comunicação com a aplicação, tais como: RESTful, GraphQL, SOAP, JSON-RPC, (X)HTML com ou sem javascript, etc.
-- Testes automatizados (de unidade e/ou funcionais e/ou aceitação) deverão ser escritos.
-- Um README.md deverá ser adicionado e conter, no mínimo, as instruções de setup e utilização da aplicação.
+## Instalação
+### Windows
+Abrir o terminal de comando, acessar a pasta do projeto e rodar o seguinte comando:
+```bash
+init.bat
+```
+### Mac/Linux
+Abrir o terminal de comando, acessar a pasta do projeto e rodar o seguinte comando:
+```bash
+bash init.sh
+```
+Após a execução do passo acima, basta clicar no link ao lado: [Acessar aplicação](http://localhost:9000 "Acessar aplicação diretamente") ou digitar na barra de navegação: http://localhost:9000.
+##### OBS: caso tenha alterado a porta no 'docker-compose.yml', a porta de acesso à aplicação também irá mudar.
 
-#### Envio
-Para enviar o seu código, submeta uma pull request para este repositório.
+## Utilização
+Há, na raiz do projeto, um arquivo **insomnia.json**, que pode ser importado no Insomnia. Nele contém todas as chamadas aos endpoints da aplicação, já com payload.
+Para realizar as requisições do 'Admin', é necessário realizar a chamada ao ednpoint 'Login' e pegar o token gerado e colocar no Header das requisições, conforme abaixo:
+**Authorization: Bearer COLAR_TOKEN_AQUI**
 
-#### Disclaimer
-O código fonte que você produzir será utilizado somente para avaliar sua aptidão para a vaga. Não será feito nenhum uso comercial do código fonte, tampouco haverá a exigência de direitos de atribuição.
-
+## Execução dos testes
+Abrir o terminal de comando, acessar a raiz do projeto e executar o comando de acordo com o seu respectivo sistema operacional:
+### Windows
+```bash
+tests.bat
+```
+### Mac/Linux
+```bash
+bash tests.sh
+```

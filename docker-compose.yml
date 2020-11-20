@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  mysql:
+    container_name: talentifydb
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "talentify"
+    ports:
+      - "9001:3306"
+  app:
+    container_name: talentifyapp
+    stdin_open: true
+    tty: true
+    build: .
+    restart: always
+    ports:
+      - "9000:80"
+    links:
+      - mysql
+    environment:
+      - TZ=America/Fortaleza
+    volumes:
+      - ./src:/var/www/html
+networks:
+  default:
+    external:
+      name: localhost
