@@ -18,8 +18,8 @@ class CreateJobVacanciesTable extends Migration
             $table->string('title', 256);
             $table->string('description', 10000);
             $table->enum('status', ['active','disabled']);
-            $table->longText('workplace');
-            $table->decimal('salary', 13, 2);
+            $table->longText('workplace')->nullable();
+            $table->decimal('salary', 13, 2)->nullable();
             $table->timestamps();
         });
     }
