@@ -5,20 +5,30 @@ services:
       context: .
       dockerfile: __Dockerfile
       target: php
-    container_name: woo-conector
+    container_name: backend-careers
     expose:
       - "9000"
     ports:
       - 9000:9000
     volumes:
-      - ./:/data/job-talentify
-      - /data/job-talentify/vendor
+      - ./:/data/backend-careers
+      - /data/backend-careers/vendor
     networks:
       - default
-    working_dir: /data/job-talentify/
-
+    working_dir: /data/backend-careers/
+  mysql-app:
+    image: mysql:5.7.22
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./.docker/dbinit:/docker-entrypoint-initdb.d
+      - ./.docker/dbdata:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: vacancies
+      MYSQL_ROOT_PASSWORD: root
   nginx:
-    container_name: nginx_woo-conector
+    container_name: nginx_backend-careers
     image: nginx:1.16.0
     ports:
       - 80:80

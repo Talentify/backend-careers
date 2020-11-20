@@ -1,12 +1,16 @@
-FROM  php:7.3-fpm-alpine as php
+FROM  php:7.3-fpm as php
+
+RUN apt-get update && apt-get install -y libpng-dev libxml2-dev libzip-dev unzip\
+    && apt-get install -y libcurl4-openssl-dev pkg-config libssl-dev
+
+RUN pecl install mongodb
 
 RUN curl -sS https://getcomposer.org/installer | php && chmod +x composer.phar && mv composer.phar /usr/local/bin/composer
-RUN set -ex \
-  && apk --no-cache add
-RUN  docker-php-ext-install bcmath sockets
+RUN docker-php-ext-install bcmath sockets calendar gd xml gettext mysqli pcntl soap zip
+RUN docker-php-ext-enable mongodb
 
-WORKDIR /data/job-talentify/
-COPY . /data/job-talentify/
+WORKDIR /data/backend-careers/
+COPY . /data/backend-careers/
 
 RUN composer install -o
 
