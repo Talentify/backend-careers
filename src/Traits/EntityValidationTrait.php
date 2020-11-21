@@ -2,6 +2,7 @@
 namespace App\Traits;
 
 use App\Exceptions\EmptyException;
+use App\Exceptions\InvalidPasswordHashException;
 use App\Exceptions\TooLongException;
 
 trait EntityValidationTrait
@@ -31,5 +32,18 @@ trait EntityValidationTrait
             throw new TooLongException();
         }
         return $value;
+    }
+
+    /**
+     * @param string $hash
+     * @return string
+     * @throws InvalidPasswordHashException
+     */
+    protected function validateBcryptHash(string $hash): string
+    {
+        if (password_get_info($hash)['algo'] !== PASSWORD_BCRYPT) {
+            throw new InvalidPasswordHashException();
+        }
+        return $hash;
     }
 }
