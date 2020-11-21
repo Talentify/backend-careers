@@ -35,7 +35,7 @@ class TokenAuthenticatorTest extends TestCase
     public function validRequestProvider(): array
     {
         return [
-            'with X-AUTH-TOKEN' => [Request::create('', 'GET', [], [], [], ['X-AUTH-TOKEN' => 'token']), true],
+            'with X-AUTH-TOKEN' => [Request::create('', 'GET', [], [], [], ['HTTP_X-AUTH-TOKEN' => 'token']), true],
             'without X-AUTH-TOKEN' => [Request::create(''), false]
         ];
     }
@@ -59,7 +59,7 @@ class TokenAuthenticatorTest extends TestCase
     {
         $token = bin2hex(random_bytes(32));
         return [
-            'random request' => [Request::create('', 'GET', [], [], [], ['X-AUTH-TOKEN' => $token]), $token]
+            'random request' => [Request::create('', 'GET', [], [], [], ['HTTP_X-AUTH-TOKEN' => $token]), $token]
         ];
     }
 
@@ -92,7 +92,7 @@ class TokenAuthenticatorTest extends TestCase
                 [],
                 [],
                 [],
-                ['X-AUTH-TOKEN' => '']
+                ['HTTP_X-AUTH-TOKEN' => '']
             ), AuthenticationException::class],
             'only space token' => [Request::create(
                 '',
@@ -100,14 +100,15 @@ class TokenAuthenticatorTest extends TestCase
                 [],
                 [],
                 [],
-                ['X-AUTH-TOKEN' => str_repeat(' ', rand(1, 64))]
+                ['HTTP_X-AUTH-TOKEN' => str_repeat(' ', rand(1, 64))]
             ), AuthenticationException::class],
             'token not found' => [Request::create(
                 '',
                 'GET',
                 [],
                 [],
-                ['X-AUTH-TOKEN' => 'token']
+                [],
+                ['HTTP_X-AUTH-TOKEN' => 'token']
             ), AuthenticationException::class]
         ];
     }
@@ -131,7 +132,7 @@ class TokenAuthenticatorTest extends TestCase
 
     public function testOnAuthenticationSuccess(): void
     {
-        $this->assertSame(null, $this->tokenAuthenticator->onAuthenticateSuccess(
+        $this->assertSame(null, $this->tokenAuthenticator->onAuthenticationSuccess(
             Request::createFromGlobals(),
             $this->createMock(TokenInterface::class),
             'default'
@@ -141,6 +142,6 @@ class TokenAuthenticatorTest extends TestCase
     public function testOnAuthenticationFailure(): void
     {
         $this->expectException(AuthenticationException::class);
-        $this->tokenAuthenticator->onAuthenticateFailuer(Request::createFromGlobals(), new AuthenticationException());
+        $this->tokenAuthenticator->onAuthenticationFailure(Request::createFromGlobals(), new AuthenticationException());
     }
 }
