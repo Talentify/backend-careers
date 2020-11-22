@@ -22,6 +22,7 @@ class JobControllerTest extends WebTestCase
         $application->run(new StringInput('doctrine:database:drop --force --quiet'));
         $application->run(new StringInput('doctrine:database:create --quiet'));
         $application->run(new StringInput('doctrine:migrations:migrate --no-interaction --quiet'));
+        $application->run(new StringInput('doctrine:fixtures:load --no-interaction --quiet'));
     }
 
     public function testReadWithoutResults(): void
@@ -63,7 +64,10 @@ class JobControllerTest extends WebTestCase
      */
     public function testCreate(string $data): void
     {
-        $this->kernelBrowser->request('POST', '/job', [], [], ['CONTENT_TYPE' => 'application/json'], $data);
+        $this->kernelBrowser->request('POST', '/job', [], [], [
+            'CONTENT_TYPE' => 'application/json',
+            'HTTP_X-AUTH-TOKEN' => 'test'
+        ], $data);
         $response = $this->kernelBrowser->getResponse();
         $this->assertJson($response->getContent());
         $this->assertEquals(Response::HTTP_CREATED, $response->getStatusCode());
