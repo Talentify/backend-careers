@@ -7,6 +7,8 @@ use App\Service\UserService;
 use Doctrine\ORM\NoResultException;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Http\Authenticator\AbstractAuthenticator;
@@ -35,7 +37,10 @@ class TokenAuthenticatorTest extends TestCase
     public function validRequestProvider(): array
     {
         return [
-            'with X-AUTH-TOKEN' => [Request::create('', 'GET', [], [], [], ['HTTP_X-AUTH-TOKEN' => 'token']), true],
+            'with X-AUTH-TOKEN' => [
+                Request::create('', 'GET', [], [], [], ['HTTP_X-AUTH-TOKEN' => 'token']),
+                true
+            ],
             'without X-AUTH-TOKEN' => [Request::create(''), false]
         ];
     }
@@ -59,7 +64,10 @@ class TokenAuthenticatorTest extends TestCase
     {
         $token = bin2hex(random_bytes(32));
         return [
-            'random request' => [Request::create('', 'GET', [], [], [], ['HTTP_X-AUTH-TOKEN' => $token]), $token]
+            'random request' => [
+                Request::create('', 'GET', [], [], [], ['HTTP_X-AUTH-TOKEN' => $token]),
+                $token
+            ]
         ];
     }
 
@@ -93,7 +101,7 @@ class TokenAuthenticatorTest extends TestCase
                 [],
                 [],
                 ['HTTP_X-AUTH-TOKEN' => '']
-            ), AuthenticationException::class],
+            ), UnauthorizedHttpException::class],
             'only space token' => [Request::create(
                 '',
                 'GET',
@@ -101,7 +109,7 @@ class TokenAuthenticatorTest extends TestCase
                 [],
                 [],
                 ['HTTP_X-AUTH-TOKEN' => str_repeat(' ', rand(1, 64))]
-            ), AuthenticationException::class],
+            ), UnauthorizedHttpException::class],
             'token not found' => [Request::create(
                 '',
                 'GET',
@@ -109,7 +117,7 @@ class TokenAuthenticatorTest extends TestCase
                 [],
                 [],
                 ['HTTP_X-AUTH-TOKEN' => 'token']
-            ), AuthenticationException::class]
+            ), UnauthorizedHttpException::class]
         ];
     }
 
@@ -141,7 +149,11 @@ class TokenAuthenticatorTest extends TestCase
 
     public function testOnAuthenticationFailure(): void
     {
-        $this->expectException(AuthenticationException::class);
-        $this->tokenAuthenticator->onAuthenticationFailure(Request::createFromGlobals(), new AuthenticationException());
+        $response = $this->tokenAuthenticator->onAuthenticationFailure(
+            Request::createFromGlobals(),
+            $this->createMock(AuthenticationException::class)
+        );
+        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 }
