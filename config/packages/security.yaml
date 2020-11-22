@@ -1,9 +1,15 @@
 security:
+    enable_authenticator_manager: true
     providers:
-        users_in_memory: { memory: null }
+        users:
+            entity:
+                class: 'App\Entity\User'
+                property: 'username'
     firewalls:
         main:
-            anonymous: true
-            lazy: true
-            provider: users_in_memory
+            custom_authenticators:
+                - App\Authenticator\TokenAuthenticator
     access_control:
+        - { path: '^/job', methods: [GET], roles: PUBLIC_ACCESS }
+        - { path: '^/job', methods: [POST], roles: IS_AUTHENTICATED_REMEMBERED }
+
