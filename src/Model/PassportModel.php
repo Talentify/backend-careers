@@ -40,7 +40,7 @@ class PassportModel implements PassportInterface
      */
     public function hasBadge(string $badgeFqcn): bool
     {
-        throw new \BadFunctionCallException();
+        return false;
     }
 
     /**
@@ -53,8 +53,5 @@ class PassportModel implements PassportInterface
     }
 
     public function checkIfCompletelyResolved(): void
-    {
-        throw new \BadMethodCallException();
-    }
-
+    {}
 }

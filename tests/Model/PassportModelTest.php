@@ -35,10 +35,9 @@ class PassportModelTest extends TestCase
         $this->passport->addBadge($this->createMock(BadgeInterface::class));
     }
 
-    public function testHasBadgeNotImplemented(): void
+    public function testHasBadge(): void
     {
-        $this->expectException(\BadFunctionCallException::class);
-        $this->passport->hasBadge('');
+        $this->assertFalse($this->passport->hasBadge(random_bytes(rand(1, 100))));
     }
 
     public function testGetBadgeNotImplemented(): void
@@ -47,9 +46,8 @@ class PassportModelTest extends TestCase
         $this->passport->getBadge('');
     }
 
-    public function testCheckIfCompletelyResolvedNotImplemented(): void
+    public function testCheckIfCompletelyResolved(): void
     {
-        $this->expectException(\BadMethodCallException::class);
-        $this->passport->checkIfCompletelyResolved();
+        $this->assertSame(null, $this->passport->checkIfCompletelyResolved());
     }
 }
