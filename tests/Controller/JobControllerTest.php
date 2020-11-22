@@ -76,4 +76,17 @@ class JobControllerTest extends WebTestCase
         $this->assertJson($response->getContent());
         $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
     }
+
+    /**
+     * @param string $data
+     *
+     * @dataProvider validCreateProvider
+     */
+    public function testUnauthorizedCreate(string $data): void
+    {
+        $this->kernelBrowser->request('POST', '/job', [], [], ['CONTENT_TYPE' => 'application/json'], $data);
+        $response = $this->kernelBrowser->getResponse();
+        $this->assertJson($response->getContent());
+        $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
+    }
 }
