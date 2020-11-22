@@ -6,6 +6,7 @@ use App\Exceptions\EmptyException;
 use App\Exceptions\InvalidPasswordHashException;
 use App\Interfaces\DoctrineEntityInterface;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserTest extends TestCase
 {
@@ -22,6 +23,11 @@ class UserTest extends TestCase
     public function testInstanceOfDoctrineEntityInterface(): void
     {
         $this->assertInstanceOf(DoctrineEntityInterface::class, $this->user);
+    }
+
+    public function testInstanceOfUserInterface(): void
+    {
+        $this->assertInstanceOf(UserInterface::class, $this->user);
     }
 
     /**
@@ -193,6 +199,21 @@ class UserTest extends TestCase
             $this->assertArrayHasKey($key, $json);
             $this->assertSame($value, $json[$key]);
         }
+    }
+
+    public function testGetRoles(): void
+    {
+        $this->assertIsArray($this->user->getRoles());
+    }
+
+    public function testGetSalt(): void
+    {
+        $this->assertNull($this->user->getSalt());
+    }
+
+    public function testEraseCredentials(): void
+    {
+        $this->assertNull($this->user->eraseCredentials());
     }
 
     /**

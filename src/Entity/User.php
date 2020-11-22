@@ -6,6 +6,7 @@ use App\Exceptions\InvalidPasswordHashException;
 use App\Interfaces\DoctrineEntityInterface;
 use App\Traits\EntityValidationTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class User
@@ -14,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table()
  */
-class User implements DoctrineEntityInterface
+class User implements DoctrineEntityInterface, UserInterface
 {
     use EntityValidationTrait;
 
@@ -107,4 +108,23 @@ class User implements DoctrineEntityInterface
             'username' => $this->getUsername()
         ];
     }
+
+    /**
+     * @return array
+     */
+    public function getRoles()
+    {
+        return ['ROLE_OK'];
+    }
+
+    /**
+     * @return null
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    public function eraseCredentials()
+    {}
 }
