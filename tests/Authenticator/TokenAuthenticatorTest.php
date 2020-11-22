@@ -3,6 +3,7 @@ namespace App\Tests\Authenticator;
 
 use App\Authenticator\TokenAuthenticator;
 use App\Entity\User;
+use App\Model\PassportModel;
 use App\Service\UserService;
 use Doctrine\ORM\NoResultException;
 use PHPUnit\Framework\TestCase;
@@ -11,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Symfony\Component\Security\Http\Authenticator\AbstractAuthenticator;
+use Symfony\Component\Security\Http\Authenticator\AuthenticatorInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\PassportInterface;
 
 class TokenAuthenticatorTest extends TestCase
@@ -26,22 +27,22 @@ class TokenAuthenticatorTest extends TestCase
         $this->tokenAuthenticator = new TokenAuthenticator($this->createMock(UserService::class));
     }
 
-    public function testInstanceOfAbstractAuthenticator(): void
+    public function testInstanceOfAuthenticatorInterface(): void
     {
-        $this->assertInstanceOf(AbstractAuthenticator::class, $this->tokenAuthenticator);
+        $this->assertInstanceOf(AuthenticatorInterface::class, $this->tokenAuthenticator);
     }
 
     /**
      * @return array
      */
-    public function validRequestProvider(): array
+    public function validSupportsRequestProvider(): array
     {
         return [
             'with X-AUTH-TOKEN' => [
                 Request::create('', 'GET', [], [], [], ['HTTP_X-AUTH-TOKEN' => 'token']),
                 true
             ],
-            'without X-AUTH-TOKEN' => [Request::create(''), false]
+            'without X-AUTH-TOKEN' => [Request::createFromGlobals(), false]
         ];
     }
 
@@ -49,7 +50,7 @@ class TokenAuthenticatorTest extends TestCase
      * @param Request $request
      * @param bool $expected
      *
-     * @dataProvider validRequestProvider
+     * @dataProvider validSupportsRequestProvider
      */
     public function testSupports(Request $request, bool $expected): void
     {
@@ -60,11 +61,11 @@ class TokenAuthenticatorTest extends TestCase
      * @return array
      * @throws \Exception
      */
-    public function validAuthenticateProvider(): array
+    public function requestAuthenticateProvider(): array
     {
         $token = bin2hex(random_bytes(32));
         return [
-            'random request' => [
+            'random credential' => [
                 Request::create('', 'GET', [], [], [], ['HTTP_X-AUTH-TOKEN' => $token]),
                 $token
             ]
@@ -75,76 +76,53 @@ class TokenAuthenticatorTest extends TestCase
      * @param Request $request
      * @param string $token
      *
-     * @dataProvider validAuthenticateProvider
+     * @dataProvider requestAuthenticateProvider
      */
     public function testSuccessAuthenticate(Request $request, string $token): void
     {
         $userServiceMock = $this->createMock(UserService::class);
         $userServiceMock->expects($this->once())
             ->method('find')
-            ->with($this->equalTo(['token' => $token]), $this->anything(), $this->anything(), $this->anything())
+            ->with(['token' => $token], $this->anything(), $this->anything(), $this->anything())
             ->will($this->returnValue([$this->createMock(User::class)]));
         $this->tokenAuthenticator = new TokenAuthenticator($userServiceMock);
         $this->assertInstanceOf(PassportInterface::class, $this->tokenAuthenticator->authenticate($request));
     }
 
     /**
-     * @return array
-     */
-    public function invalidAuthenticateProvider(): array
-    {
-        return [
-            'empty token' => [Request::create(
-                '',
-                'GET',
-                [],
-                [],
-                [],
-                ['HTTP_X-AUTH-TOKEN' => '']
-            ), UnauthorizedHttpException::class],
-            'only space token' => [Request::create(
-                '',
-                'GET',
-                [],
-                [],
-                [],
-                ['HTTP_X-AUTH-TOKEN' => str_repeat(' ', rand(1, 64))]
-            ), UnauthorizedHttpException::class],
-            'token not found' => [Request::create(
-                '',
-                'GET',
-                [],
-                [],
-                [],
-                ['HTTP_X-AUTH-TOKEN' => 'token']
-            ), UnauthorizedHttpException::class]
-        ];
-    }
-
-    /**
      * @param Request $request
-     * @param string $expected
+     * @param string $token
      *
-     * @dataProvider invalidAuthenticateProvider
+     * @dataProvider requestAuthenticateProvider
      */
-    public function testFailureAuthenticate(Request $request, string $expected): void
+    public function testFailureAuthenticate(Request $request, string $token): void
     {
         $userServiceMock = $this->createMock(UserService::class);
         $userServiceMock->expects($this->once())
             ->method('find')
+            ->with(['token' => $token], $this->anything(), $this->anything(), $this->anything())
             ->will($this->throwException(new NoResultException()));
         $this->tokenAuthenticator = new TokenAuthenticator($userServiceMock);
-        $this->expectException($expected);
+        $this->expectException(UnauthorizedHttpException::class);
         $this->tokenAuthenticator->authenticate($request);
     }
 
-    public function testOnAuthenticationSuccess(): void
+    public function testSuccessCreateAuthenticatedToken(): void
     {
-        $this->assertSame(null, $this->tokenAuthenticator->onAuthenticationSuccess(
-            Request::createFromGlobals(),
-            $this->createMock(TokenInterface::class),
-            'default'
-        ));
+        $passport = $this->createMock(PassportModel::class);
+        $passport->expects($this->once())
+            ->method('getUser')
+            ->will($this->returnValue($this->createMock(User::class)));
+        $this->assertInstanceOf(
+            TokenInterface::class,
+            $this->tokenAuthenticator->createAuthenticatedToken($passport, '')
+        );
+    }
+
+    public function testFailureCreateAuthenticateToken(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->tokenAuthenticator->createAuthenticatedToken($this->createMock(PassportInterface::class), '');
     }
 
     public function testOnAuthenticationFailure(): void
@@ -155,5 +133,14 @@ class TokenAuthenticatorTest extends TestCase
         );
         $this->assertInstanceOf(Response::class, $response);
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
+    }
+
+    public function testOnAuthenticationSuccess(): void
+    {
+        $this->assertNull($this->tokenAuthenticator->onAuthenticationSuccess(
+            Request::createFromGlobals(),
+            $this->createMock(TokenInterface::class),
+            ''
+        ));
     }
 }
