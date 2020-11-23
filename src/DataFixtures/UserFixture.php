@@ -15,6 +15,10 @@ use Doctrine\Persistence\ObjectManager;
  */
 class UserFixture extends Fixture
 {
+    const USERNAME = 'test';
+    const PASSWORD = 'test';
+    const TOKEN = 'test';
+
     /**
      * @param ObjectManager $manager
      * @throws EmptyException
@@ -34,8 +38,8 @@ class UserFixture extends Fixture
     private function getUser(): User
     {
         return (new User())
-            ->setUsername('test')
-            ->setPassword(password_hash('test', PASSWORD_BCRYPT))
-            ->setToken('test');
+            ->setUsername(self::USERNAME)
+            ->setPassword(password_hash(self::PASSWORD, PASSWORD_BCRYPT))
+            ->setToken(self::TOKEN);
     }
 }

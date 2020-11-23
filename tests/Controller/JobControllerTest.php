@@ -1,6 +1,7 @@
 <?php
 namespace App\Tests\Controller;
 
+use App\DataFixtures\UserFixture;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -66,7 +67,7 @@ class JobControllerTest extends WebTestCase
     {
         $this->kernelBrowser->request('POST', '/job', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'HTTP_X-AUTH-TOKEN' => 'test'
+            'HTTP_X-AUTH-TOKEN' => UserFixture::TOKEN
         ], $data);
         $response = $this->kernelBrowser->getResponse();
         $this->assertJson($response->getContent());
