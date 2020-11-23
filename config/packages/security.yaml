@@ -9,7 +9,9 @@ security:
         main:
             custom_authenticators:
                 - App\Authenticator\TokenAuthenticator
+                - App\Authenticator\PasswordAuthenticator
     access_control:
-        - { path: '^/job', methods: [GET], roles: PUBLIC_ACCESS }
         - { path: '^/job', methods: [POST], roles: IS_AUTHENTICATED_REMEMBERED }
+        - { path: '^/auth/credentials', methods: [POST], roles: IS_AUTHENTICATED_REMEMBERED }
+        - { path: '^/auth/logged', methods: [GET], roles: IS_AUTHENTICATED_REMEMBERED }
 
