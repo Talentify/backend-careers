@@ -83,7 +83,7 @@ class TokenAuthenticatorTest extends TestCase
         $userServiceMock = $this->createMock(UserService::class);
         $userServiceMock->expects($this->once())
             ->method('find')
-            ->with(['token' => $token], $this->anything(), $this->anything(), $this->anything())
+            ->with($this->equalTo(['token' => $token]), $this->anything(), $this->anything(), $this->anything())
             ->will($this->returnValue([$this->createMock(User::class)]));
         $this->tokenAuthenticator = new TokenAuthenticator($userServiceMock);
         $this->assertInstanceOf(PassportInterface::class, $this->tokenAuthenticator->authenticate($request));
@@ -100,7 +100,7 @@ class TokenAuthenticatorTest extends TestCase
         $userServiceMock = $this->createMock(UserService::class);
         $userServiceMock->expects($this->once())
             ->method('find')
-            ->with(['token' => $token], $this->anything(), $this->anything(), $this->anything())
+            ->with($this->equalTo(['token' => $token]), $this->anything(), $this->anything(), $this->anything())
             ->will($this->throwException(new NoResultException()));
         $this->tokenAuthenticator = new TokenAuthenticator($userServiceMock);
         $this->expectException(UnauthorizedHttpException::class);
