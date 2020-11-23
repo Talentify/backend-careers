@@ -1,0 +1,213 @@
+openapi: 3.0.0
+info:
+  description: "Esta é uma simples API para cadastrar e listar vagas de trabalhos"
+  version: "0.0.1"
+  title: "Jobs API"
+
+paths:
+  "/v1/login":
+    post:
+      tags:
+      - "Autenticação"
+      summary: "Login do usuário"
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  description: Usuário de acesso
+                  type: string
+                  example: "test"
+                password:
+                  description: Senha de acesso
+                  type: string
+                  example: "test"
+              required:
+                - username
+                - password
+      responses:
+        "200":
+          description: Retorno de Token de acesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    example: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1OD
+        "400":
+          $ref: '#/components/responses/Error'
+
+  "/v1/jobs-active":
+    get:
+      tags:
+      - "Vaga"
+      summary: "Lista pública de vagas ativas na plataforma"
+      description: ""
+      responses:
+        "200":
+          description: "Lista de vagas"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Job'
+
+  "/v1/jobs":
+    post:
+      summary: Registra um vaga de trabalho
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/BearerToken'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title: 
+                  type: string
+                  example: "Programador PHP"
+                description:
+                  type: string
+                  example: "Atuar com Symfony Framework"
+                status:
+                  type: "string"
+                  enum:
+                  - "active"
+                  - "inactive"
+                salary:
+                  type: string
+                  format: float
+                  example: 5000.50
+                workspace:
+                  type: object
+                  properties:
+                      street:
+                        type: string
+                        example: "Avenida Principal"
+                      number:
+                        type: string
+                        example: "n 240"
+                      city:
+                        type: string
+                        example: "Salvador"
+                      state:
+                        type: string
+                        example: "BA"
+                      postcode:
+                        type: string
+                        example: "41810-340"
+              required:
+                - title
+                - description
+                - status
+      responses:
+        '200':
+          description: Vaga
+          $ref: '#/components/responses/Job'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      tags:
+        - Vaga
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      
+  parameters:
+    BearerToken:
+      name: Bearer-Token
+      in: header
+      description: Token de acesso
+      required: true
+      schema:
+        type: string
+        format: uuid  
+
+
+  responses:
+    Job:
+      description: Vaga
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Job'
+
+    Unauthorized:
+      description: Não Autorizada
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+    Error:
+      description: Requisição inválida
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  type:
+                    type: string
+                  status:
+                    type: integer
+                    format: int32
+                  detail:
+                    type: string
+
+  schemas:
+    Job:
+      type: object
+      properties:
+        title: 
+          type: string
+          example: "Programador PHP"
+        description:
+          type: string
+          example: "Atuar com Symfony Framework"
+        status:
+          type: "string"
+          enum:
+          - "active"
+          - "inactive"
+        salary:
+          type: string
+          format: float
+          example: 5000.50
+        workspace:
+          type: object
+          properties:
+              street:
+                type: string
+                example: "Avenida Principal"
+              number:
+                type: string
+                example: "n 240"
+              city:
+                type: string
+                example: "Salvador"
+              state:
+                type: string
+                example: "BA"
+              postcode:
+                type: string
+                example: "41810-340"
