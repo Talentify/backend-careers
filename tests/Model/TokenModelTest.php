@@ -29,7 +29,15 @@ class TokenModelTest extends TestCase
         $userMock->expects($this->once())
             ->method('getUsername')
             ->will($this->returnValue('username'));
+        $userMock->expects($this->once())
+            ->method('getToken')
+            ->will($this->returnValue('token'));
         $this->tokenModel->setUser($userMock);
-        $this->assertSame('username', $this->tokenModel->getCredentials());
+        $credentials = $this->tokenModel->getCredentials();
+        $this->assertIsArray($credentials);
+        $this->assertArrayHasKey('username', $credentials);
+        $this->assertSame('username', $credentials['username']);
+        $this->assertArrayHasKey('token', $credentials);
+        $this->assertSame('token', $credentials['token']);
     }
 }
