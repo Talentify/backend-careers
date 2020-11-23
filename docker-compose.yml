@@ -17,10 +17,10 @@ services:
       - .env.local
     ports:
       - "${LOCAL_SERVER_HOST_PORT}:8000"
-  unit-test:
+  test:
     image: aironou/talentify:php7.4
     command: php vendor/bin/phpunit --testdox --coverage-text
-    container_name: aironou-talentify-unit-test
+    container_name: aironou-talentify-test
     volumes:
       - .:/aironou
     env_file:
