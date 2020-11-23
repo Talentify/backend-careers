@@ -1,4 +1,4 @@
-# talentify-backend-carrers
+# talentify-backend-careers
 
 
 Esse projeto é uma API para consulta e criação de vagas.
