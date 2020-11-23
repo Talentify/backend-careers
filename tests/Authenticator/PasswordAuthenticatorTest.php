@@ -122,11 +122,11 @@ class PasswordAuthenticatorTest extends TestCase
      */
     public function invalidRequestAuthenticatorProvider(): array
     {
-        $randomString = bin2hex(random_bytes(rand(1, 100)));
+        $randomString = bin2hex(random_bytes(rand(1, 10)));
         $user = $this->createMock(User::class);
         $user->expects($this->once())
             ->method('getPassword')
-            ->will($this->returnValue(password_hash($randomString . 'a', PASSWORD_BCRYPT)));
+            ->will($this->returnValue(password_hash(('a' . $randomString), PASSWORD_BCRYPT)));
         return [
             'not found user' => [
                 Request::create('', 'POST', [], [], [], ['CONTENT_TYPE' => 'application/json'], json_encode([
