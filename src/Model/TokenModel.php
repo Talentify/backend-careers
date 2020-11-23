@@ -11,10 +11,7 @@ class TokenModel extends AbstractToken
      */
     public function getCredentials()
     {
-        return [
-            'username' => $this->getUsername(),
-            'token' => $this->getUserModel()->getToken()
-        ];
+        return $this->getUserModel()->jsonSerialize();
     }
 
     /**

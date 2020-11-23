@@ -105,7 +105,8 @@ class User implements DoctrineEntityInterface, UserInterface
     public function jsonSerialize()
     {
         return [
-            'username' => $this->getUsername()
+            'username' => $this->getUsername(),
+            'token' => $this->getToken()
         ];
     }
 

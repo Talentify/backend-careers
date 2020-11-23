@@ -27,11 +27,11 @@ class TokenModelTest extends TestCase
     {
         $userMock = $this->createMock(User::class);
         $userMock->expects($this->once())
-            ->method('getUsername')
-            ->will($this->returnValue('username'));
-        $userMock->expects($this->once())
-            ->method('getToken')
-            ->will($this->returnValue('token'));
+            ->method('jsonSerialize')
+            ->will($this->returnValue([
+                'username' => 'username',
+                'token' => 'token'
+            ]));
         $this->tokenModel->setUser($userMock);
         $credentials = $this->tokenModel->getCredentials();
         $this->assertIsArray($credentials);

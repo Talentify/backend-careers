@@ -176,8 +176,11 @@ class UserTest extends TestCase
             'token' => $randomToken
         ];
         return [
-            'complete data' => [$completeData, ['username' => 'username']],
-            'without token' => [array_merge($completeData, ['token' => null]), ['username' => 'username']]
+            'complete data' => [$completeData, ['username' => 'username', 'token' => $randomToken]],
+            'without token' => [
+                array_merge($completeData, ['token' => null]),
+                ['username' => 'username', 'token' => null]
+            ]
         ];
     }
 
