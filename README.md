@@ -18,6 +18,7 @@ Esse projeto é uma API para consulta e criação de vagas.
 1. Execute `cp .env .env.local` para criar um arquivo de variáveis de ambiente local
 1. Execute `cp .env.test .env.test.local` para criar um arquivo de variáveis de ambiente de teste local
 1. Execute `cp phpunit.xml.dist phpunit.xml` para criar um arquivo de configurações do PHPUnit local
+1. Execute `cp docker/php/usr/local/etc/php/conf.d/talentify.ini.dist docker/php/usr/local/etc/php/conf.d/talentify.ini` para criar o arquivo de configurações do PHP
 1. Edite os arquivos recém criados conforme achar necessário
 1. Execute `docker-compose build` para gerar a imagem do container do projeto
 1. Execute `docker-compose run --rm php composer install --verbose` para instalar as dependências do projeto
