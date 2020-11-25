@@ -15,7 +15,7 @@ Dependencies
 Installation
 -------------
 
-- After the clone of the project, execute script in the root.
+- After the clone of the project, cp .env.example to new archive .env and  execute script in the root.
 ```console
 ./up.sh
 ```
