@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  nginx:
+    build: .docker/nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - php
+    volumes:
+    - .:/var/www/html
+
+  php:
+    build: .docker/php
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    ports:
+      - "9000:9000"
+    environment:
+      - APPLICATION_ENV=development
+      - XDEBUG_INSTALL="true"
+      - XDEBUG_CONFIG="remote_host=localhost"
+      - XDEBUG_REMOTE_ENABLE=on
+      - XDEBUG_REMOTE_AUTOSTART=on
+      - XDEBUG_REMOTE_CONNECT_BACK=1
+      - XDEBUG_REMOTE_HANDLER=dbgp
+      - XDEBUG_PROFILER_ENABLE=1
+      - XDEBUG_PROFILER_OUTPUT_DIR=/tmp/www/html
+      - XDEBUG_REMOTE_PORT=9003
+      - XDEBUGINI_PATH=/usr/local/etc/php/conf.d/xdebug.ini
+      - PHP_IDE_CONFIG="serverName=Test"
+      - XDEBUG_DEFAULT_ENABLE=1
+      - XDEBUG_IDEKEY=PHPSTORM
+
+  cache:
+    image: memcached:1.6-alpine
