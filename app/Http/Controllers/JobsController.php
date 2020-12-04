@@ -15,7 +15,6 @@ class JobsController extends Controller
      */
     protected function validateJobs(Request $request)
     {
-
         $validate = [
             'title' => 'required|string|max:256',
             'description' => 'required|string|max:10000'
