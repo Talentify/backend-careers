@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "a897428d-d093-472d-972d-216a60019dd1",
+		"name": "Talentify",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Job posting",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MDg4MjM0NjgsImV4cCI6MTYwODgyNzA2OCwicm9sZXMiOltdLCJ1c2VybmFtZSI6InJ1YmVucy5jb3JyZWRvciJ9.Cn7UKy-oUoIKaTW8aH-LCns_68SIvbNobIilHWFBiEvbPuDMY8ocVj1HY-mIDvcaSjUAD3k0Z0sP78BCQPDbtQea9mjwWEVB6zp6wAQo--oHJOW9ycAu6FTgeD1S2OH1sMmyN3rn8SfzC300or2QCyz9Ie33KAW9552CeP25A3_vj-k5Wu6SIRO2_XFd-m65RmAPJAD4t3EeQHzVtO2xxqCInY0eHPfqVPH3b558qRbzk8kXUnLaUrwcw1kA-5_JyNkJFQfaqOHSRkQFedvSikNkx8g7oQawzQ5EhySwT18UY3LKSc73-6GtLpuG7abYJSrUdM7oCG5-t0YHQlgcNwb_outzvThXpVxqqUyCip_HAANLsbBeRpaqcZm0gk3AtZp0azZFjtzOlnMnGVQCPT3g0ZCMR7_QOwI4X0l30QUAVgKvvQx9BhVnYu-7nK6230A85XvoYVcQncsuhbxm3E89HEbzD9vz6_kVFKRtGSqBwPGZbB0o9VlLmm0YDO1yNfC1I_VOFMV3ILscZm8bN_jK-jV6JvOIseGRKxuhIX272nNyyLei3hGDWtxRjpENGvUI2OG7FW7ogf-gaZmGLq8EBnVcwmM0QYhDCm78WJdvPN7uPwcj6py6SrIIAq5XV8loKG2fw-sYv8n-bpFGozshdueGn8Wd1NEaIeAHN5s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Teste 3\",\n    \"description\": \"Lorem ipsum\",\n    \"status\": \"active\",\n    \"workplace\": {\n        \"street\": \"Rua blablabla, 15\",\n        \"postalCode\": \"11060-430\",\n        \"city\": \"Santos\",\n        \"country\": \"Brasil\"\n    },\n    \"salary\": {\n        \"amount\": 10000.00,\n        \"currency\": \"R$\"\n    }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/admin/jobs",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"test2\",\n    \"username\": \"test.2\",\n    \"password\": \"123456\",\n    \"email\": \"test2@example.com\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"test.user\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Jobs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/jobs",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

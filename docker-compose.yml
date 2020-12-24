@@ -1,0 +1,21 @@
+version: "3.1"
+services:
+
+    talentify-webserver:
+      image: nginx:alpine
+      container_name: talentify-webserver
+      working_dir: /home
+      volumes:
+          - .:/home
+          - ./.docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+       - "8080:80"
+
+    talentify-php-fpm:
+      build: .docker/php-fpm
+      container_name: talentify-php-fpm
+      working_dir: /home/application
+      volumes:
+        - .:/home
+        - ./.docker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+
