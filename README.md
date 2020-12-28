@@ -84,6 +84,11 @@ The endpoint for job posting creation requires that you pass an `Authorization` 
 curl --location --request GET 'localhost:8080/jobs'
 ```
 
+#### Execute phpunit test
+```
+$ docker exec -it talentify-php-fpm ./vendor/bin/simple-phpunit src/tests/Controller/JobOpeningControllerTest.php
+```
+
 #### To test API endpoints, download collection and import to postman
 
 Download and import postman collection [here](postman_collection.json).
