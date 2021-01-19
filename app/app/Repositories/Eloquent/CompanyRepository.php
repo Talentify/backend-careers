@@ -6,6 +6,7 @@ use App\Repositories\CompanyRepositoryInterface;
 use App\Models\Company;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CompanyRepository extends BaseRepository implements CompanyRepositoryInterface
 {
@@ -16,11 +17,32 @@ class CompanyRepository extends BaseRepository implements CompanyRepositoryInter
 
     public function findById(string $companyId): Model
     {
-        return $this->model->find($companyId);
+        $company = $this->model->find($companyId);
+
+        if (!$company) {
+            throw new NotFoundHttpException("Company Not Found");
+        }
+
+        return $company;
     }
 
-    public function all(array $columns = []): Collection
+    public function all(array $columns = ['*']): Collection
     {
-        // TODO: Implement all() method.
+        return $this->model->all($columns);
+    }
+
+    public function update(string $companyId, array $attributes): Model
+    {
+        $company = $this->findById($companyId);
+
+        $company->update($attributes);
+        return $company;
+    }
+
+    public function delete(string $companyId): void
+    {
+        $company = $this->findById($companyId);
+
+        $company->delete();
     }
 }

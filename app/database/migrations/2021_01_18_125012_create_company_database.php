@@ -16,7 +16,6 @@ class CreateCompanyDatabase extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string("name", 100)->index("name");
-            $table->string("slug", 140)->index("slug");
             $table->longText("description");
             $table->enum("size", [
                 "small",

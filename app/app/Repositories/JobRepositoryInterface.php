@@ -13,6 +13,8 @@ interface JobRepositoryInterface
 
     public function findById(string $id): ?Model;
 
+    public function findByCompanyId(string $companyId): Collection;
+
     public function update(string $id,  array $attributes): Model;
 
     public function delete(string $id): bool;

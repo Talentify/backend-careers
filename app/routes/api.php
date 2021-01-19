@@ -27,3 +27,13 @@ $router->group(['prefix' => 'jobs'], function ($router) {
     $router->delete('{jobId}', 'JobsController@delete');
 });
 
+$router->group(['prefix' => 'companies'], function ($router) {
+    $router->get('/', 'CompanyController@index');
+    $router->get('{companyId}', 'CompanyController@view');
+
+    $router->post('/', 'CompanyController@create');
+
+    $router->put('{companyId}', 'CompanyController@update');
+    $router->delete('{companyId}', 'CompanyController@delete');
+});
+

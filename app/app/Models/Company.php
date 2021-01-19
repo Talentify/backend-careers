@@ -11,7 +11,6 @@ class Company extends Model
 
     protected $fillable = [
         'name',
-        'slug',
         'description',
         'size',
     ];
@@ -19,10 +18,5 @@ class Company extends Model
     public function jobs()
     {
         return $this->hasMany(Jobs::class);
-    }
-
-    public function workplaces()
-    {
-        return $this->hasMany(Workplaces::class);
     }
 }

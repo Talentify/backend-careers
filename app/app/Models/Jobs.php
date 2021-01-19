@@ -16,8 +16,8 @@ class Jobs extends Model
         'workplace'
     ];
 
-    public function workplace()
+    public function company()
     {
-        return $this->belongsTo(Workplaces::class);
+        return $this->belongsTo(Company::class);
     }
 }

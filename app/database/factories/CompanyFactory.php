@@ -22,10 +22,8 @@ class CompanyFactory extends Factory
      */
     public function definition()
     {
-        $company = $this->faker->company;
         return [
-            'name' => $company,
-            'slug' => Str::slug($company),
+            'name' => $this->faker->company,
             'description' => $this->faker->text(500),
         ];
     }

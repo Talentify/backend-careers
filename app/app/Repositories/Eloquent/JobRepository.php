@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\Enums\JobStatus;
 use App\Models\Jobs;
 use App\Repositories\JobRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
@@ -35,5 +36,12 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
     {
         $job = $this->findById($id);
         return $job->delete();
+    }
+
+    public function findByCompanyId(string $companyId): Collection
+    {
+        return $this->model->where('company_id', $companyId)
+            ->where('status', JobStatus::ACTIVE)
+            ->get();
     }
 }

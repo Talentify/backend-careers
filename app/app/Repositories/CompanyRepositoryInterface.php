@@ -12,4 +12,8 @@ interface CompanyRepositoryInterface
     public function create(array $attributes): Model;
 
     public function findById(string $id): ?Model;
+
+    public function update(string $companyId, array $attributes): Model;
+
+    public function delete(string $companyId): void;
 }
