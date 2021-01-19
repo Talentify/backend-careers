@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ADMIN - TALENTIFY{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-12 text-right">
+            <a href="{{ path('jobs_list') }}" class="btn btn-sm badge-pill btn-warning">LIST JOBS?</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            {{ form(formJob) }}
+        </div>
+    </div>
+{% endblock %}

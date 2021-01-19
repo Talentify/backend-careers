@@ -1,0 +1,64 @@
+{% extends '/base.html.twig' %}
+
+{% block title %}Vagas - TALENTIFY{% endblock %}
+{% block body %}
+    <div class="row">
+        {% if data.count %}
+            <div class="col-12 mx-auto">
+                <ul class="list-unstyled">
+                    {% for job in data.result %}
+                        <li class="pb-3 border-bottom text-left">
+                            <h4 class="text-primary">{{ job.title }}</h4>
+                            <p>
+                                <small class="text-secondary">{{ job.description }}</small>
+                            </p>
+
+                            {% if job.workplace is not empty %}
+                                <address class="text-info">
+                                    {{ job.workplace }}
+                                </address>
+                            {% endif %}
+
+                            {% if job.salary is not empty %}
+                                <p class="text-right text-danger">{{ job.salary|number_format(2, '.', ',') }} US$</p>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>
+                <nav aria-label="Page">
+                    <ul class="pagination justify-content-center">
+                        {% set pages = (data.count / data.limit)|round(0, 'ceil') ?: 1 %}
+                        {% set page = app.request.get('page', 1) %}
+                        {% set pagination = { init: (page - 5)  > 1 ? page - 5 : 1, max: (page + 5) < pages ? page + 5 : pages } %}
+                        {% set routerName = 'home_page' %}
+
+                        <li class="page-item {{ 1 == page ? 'disabled' : '' }}">
+                            <a class="page-link"
+                               href="{{ page > 1 ? path(routerName, { 'page': page - 1 }) : '#' }}">
+                                Prev
+                            </a>
+                        </li>
+                        {% for pageIndex in pagination.init .. pagination.max %}
+                            <li class="page-item {{ pageIndex == page ? 'active' : '' }}">
+                                <a class="page-link"
+                                   href="{{ pageIndex != page ? path(routerName, { 'page': pageIndex }) : '#' }}">
+                                    {{ pageIndex }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                        <li class="page-item {{ pages == page ? 'disabled' : '' }}">
+                            <a class="page-link"
+                               href="{{ page < pages ? path(routerName, { 'page': page + 1 }) : '#' }}">
+                                Next
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        {% else %}
+            <p>No Jobs</p>
+        {% endif %}
+    </div>
+{% endblock %}

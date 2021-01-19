@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ADMIN - TALENTIFY{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            {% for type, messages in app.session.flashBag.all() %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            {{ form(search) }}
+        </div>
+        <div class="col-9 text-right">
+            <a href="{{ path('job_new') }}" class="btn btn-sm badge-pill btn-warning">A NEW JOB?</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            {% if data.count %}
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th colspan="2" class="w-25"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for job in data.result %}
+                        <tr>
+                            <td>{{ job.id }}</td>
+                            <td>{{ job.title }}</td>
+                            <td>{{ job.status|statusTranslate }}</td>
+                            <td>
+                                <a href="{{ path('job_edit', {'job': job.id }) }}" class="text-info"><i class="far fa-edit"></i> edit</a>
+                            </td>
+                            <td>
+                                <a href="{{ path('job_confirme_delete', {'job': job.id }) }}" class="text-danger">
+                                    <i class="far fa-trash-alt"></i> remove
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div>
+                    <nav aria-label="Page">
+                        <ul class="pagination justify-content-center">
+                            {% set pages = (data.count / data.limit)|round(0, 'ceil') ?: 1 %}
+                            {% set page = app.request.get('page', 1) %}
+                            {% set pagination = { init: (page - 5)  > 1 ? page - 5 : 1, max: (page + 5) < pages ? page + 5 : pages } %}
+                            {% set routerName = app.request.get('status') ? 'jobs_list_status_page' : 'jobs_list_page' %}
+
+                            <li class="page-item {{ 1 == page ? 'disabled' : '' }}">
+                                <a class="page-link"
+                                   href="{{ page > 1 ? path(routerName, { 'page': page - 1 }) : '#' }}">
+                                    Prev
+                                </a>
+                            </li>
+                            {% for pageIndex in pagination.init .. pagination.max %}
+                                <li class="page-item {{ pageIndex == page ? 'active' : '' }}">
+                                    <a class="page-link"
+                                       href="{{ pageIndex != page ? path(routerName, { 'page': pageIndex }) : '#' }}">
+                                        {{ pageIndex }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                            <li class="page-item {{ pages == page ? 'disabled' : '' }}">
+                                <a class="page-link"
+                                   href="{{ page < pages ? path(routerName, { 'page': page + 1 }) : '#' }}">
+                                    Next
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            {% else %}
+                <p>Nenhum registro encontrado</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#status').on('change', function (event) {
+            window.location.href = '/admin/jobs/status/' + $(this).val();
+        });
+    });
+</script>
+{% endblock %}

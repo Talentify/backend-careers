@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ADMIN - TALENTIFY{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-5">Job</h2>
+            <h6 class="text-primary">{{ job.title }}</h6>
+            <p>
+                <small class="text-secondary">{{ job.description }}</small>
+            </p>
+
+            {% if job.workplace is not empty %}
+                <address class="text-info">
+                    {{ job.workplace }}
+                </address>
+            {% endif %}
+
+            {% if job.salary is not empty %}
+                <p class="text-right text-danger">{{ job.salary|number_format(2, '.', ',') }} US$</p>
+            {% endif %}
+
+            <h2 class="mb-5">Do you really want to delete this job?</h2>
+            <nav>
+                <a href="{{ path('job_delete', {'job': job.id }) }}" class="btn btn-md btn-danger">YES</a>
+                <a href="{{ path('jobs_list') }}" class="btn btn-md btn-secondary">NO</a>
+            </nav>
+        </div>
+    </div>
+{% endblock %}
