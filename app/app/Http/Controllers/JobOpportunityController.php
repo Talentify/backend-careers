@@ -4,21 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Enums\JobStatus;
 use App\Http\Resources\JobResource;
-use App\Repositories\Eloquent\JobOpportunityOpportunityRepository;
+use App\Repositories\Eloquent\JobOpportunityRepository;
 use App\Services\JobService;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class JobsController extends Controller
+class JobOpportunityController extends Controller
 {
     protected $jobService;
     protected $jobRepository;
 
     public function __construct(
         JobService $jobService,
-        JobOpportunityOpportunityRepository $jobRepository
+        JobOpportunityRepository $jobRepository
     ) {
-//        $this->middleware('auth:api', ['except' => ['index']]);
+        $this->middleware('auth:api', ['except' => ['index', 'view']]);
 
         $this->jobService = $jobService;
         $this->jobRepository = $jobRepository;
@@ -26,6 +26,8 @@ class JobsController extends Controller
 
     public function create(Request $request)
     {
+        $this->authorize('is_admin');
+
         $this->validate($request, [
             'company_id'    => 'required|numeric',
             'title'         =>  'required|string|max:256',
@@ -50,6 +52,8 @@ class JobsController extends Controller
 
     public function update(string $jobId, Request $request)
     {
+        $this->authorize('is_admin');
+
         $this->validate($request, [
             'workplace'     =>  'string',
             'title'         =>  'string|max:256',
@@ -59,12 +63,14 @@ class JobsController extends Controller
         ]);
 
         return new JobResource(
-            $this->jobService->updateJob($jobId, $request->except(['company_id']))
+            $this->jobRepository->update($jobId, $request->except(['company_id']))
         );
     }
 
     public function delete(string $jobId)
     {
+        $this->authorize('is_admin');
+
         $this->jobRepository->delete($jobId);
         return response([], 204);
     }

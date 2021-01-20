@@ -8,7 +8,7 @@ use App\Repositories\JobOpportunityRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
-class JobOpportunityOpportunityRepository extends BaseRepository implements JobOpportunityRepositoryInterface
+class JobOpportunityRepository extends BaseRepository implements JobOpportunityRepositoryInterface
 {
     public function __construct(JobOpportunity $model)
     {
@@ -22,7 +22,7 @@ class JobOpportunityOpportunityRepository extends BaseRepository implements JobO
 
     public function all(array $columns = []): Collection
     {
-        return $this->model->all();
+        return $this->model->where('status', JobStatus::ACTIVE);
     }
 
     public function update(string $id, array $attributes): Model

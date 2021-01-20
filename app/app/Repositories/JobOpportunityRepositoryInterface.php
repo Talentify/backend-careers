@@ -5,7 +5,7 @@ namespace App\Repositories;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
-interface JobRepositoryInterface
+interface JobOpportunityRepositoryInterface
 {
     public function all(array $columns = []): Collection;
 
