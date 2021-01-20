@@ -52,6 +52,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        dd($exception);
         if (method_exists($exception, 'render')) {
             return $exception->render($request);
         } elseif ($exception instanceof Responsable) {

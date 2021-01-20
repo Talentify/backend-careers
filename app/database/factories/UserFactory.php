@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\RolesEnum;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,7 +24,10 @@ class UserFactory extends Factory
     {
         return [
             'full_name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
+            'email'     => $this->faker->unique()->safeEmail,
+            'password'  => $this->faker->password,
+            'role'      => RolesEnum::ADMIN_ROLE,
+            'status'    => 'active'
         ];
     }
 }

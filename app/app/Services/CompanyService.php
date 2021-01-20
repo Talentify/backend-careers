@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Exceptions\ExistsException;
 use App\Repositories\CompanyRepositoryInterface;
-use App\Repositories\JobRepositoryInterface;
+use App\Repositories\JobOpportunityRepositoryInterface;
 
 class CompanyService
 {
@@ -12,7 +12,7 @@ class CompanyService
     protected $jobRepository;
 
     public function __construct(
-        JobRepositoryInterface $jobRepository,
+        JobOpportunityRepositoryInterface $jobRepository,
         CompanyRepositoryInterface $companyRepository
     ) {
         $this->companyRepository = $companyRepository;
@@ -29,7 +29,5 @@ class CompanyService
 
         $company = $this->companyRepository->findById($companyId);
         return $company->delete();
-
     }
-
 }

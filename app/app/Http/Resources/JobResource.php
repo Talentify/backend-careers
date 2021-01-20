@@ -9,11 +9,13 @@ class JobResource extends JsonResource
     public function toArray($request)
     {
         return [
-            "id"            =>  $this->id,
-            "company"       =>  $this->company_id,
-            "workplace"     =>  $this->workplace_id,
-            "title"         =>  $this->title,
-            "description"   =>  $this->description,
+            'id'            =>  $this->id,
+            'company'       =>  new CompanyResource($this->company),
+            'workplace'     =>  $this->workplace,
+            'title'         =>  $this->title,
+            'description'   =>  $this->description,
+            'salary'        =>  $this->salary,
+            'status'        =>  $this->status,
         ];
     }
 }

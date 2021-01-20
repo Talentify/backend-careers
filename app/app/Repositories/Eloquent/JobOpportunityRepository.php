@@ -3,14 +3,14 @@
 namespace App\Repositories\Eloquent;
 
 use App\Enums\JobStatus;
-use App\Models\Jobs;
-use App\Repositories\JobRepositoryInterface;
+use App\Models\JobOpportunity;
+use App\Repositories\JobOpportunityRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
-class JobRepository extends BaseRepository implements JobRepositoryInterface
+class JobOpportunityOpportunityRepository extends BaseRepository implements JobOpportunityRepositoryInterface
 {
-    public function __construct(Jobs $model)
+    public function __construct(JobOpportunity $model)
     {
         parent::__construct($model);
     }

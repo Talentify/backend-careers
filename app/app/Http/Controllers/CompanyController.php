@@ -11,7 +11,6 @@ use Illuminate\Validation\Rule;
 
 class CompanyController extends Controller
 {
-
     protected $companyRepository;
     protected $companyService;
 
@@ -21,6 +20,8 @@ class CompanyController extends Controller
     ) {
         $this->companyRepository = $companyRepository;
         $this->companyService = $companyService;
+
+        $this->middleware('auth:api', ['except' => ['index', 'view']]);
     }
 
     public function index()
@@ -30,6 +31,8 @@ class CompanyController extends Controller
 
     public function create(Request $request)
     {
+        $this->authorize('is_admin');
+
         $this->validate($request, [
             'name'  =>  'required|string|max:100',
             'description'   =>  'required|max:1000',
@@ -51,6 +54,8 @@ class CompanyController extends Controller
 
     public function update(string $companyId, Request $request)
     {
+        $this->authorize('is_admin');
+
         $this->validate($request, [
             'name'  =>  'required|string|max:100',
             'description'   =>  'required|max:1000',
@@ -67,6 +72,8 @@ class CompanyController extends Controller
 
     public function delete(string $companyId)
     {
+        $this->authorize('is_admin');
+
         $this->companyService->delete($companyId);
         return response([], 204);
     }

@@ -1,57 +1,29 @@
-## A vaga
-Estamos constante adicionando novas features e aperfeiçoando as já existentes. Como desenvolvedor sênior, voce será responsável por criar código limpo, testável, e de alta qualidade, além de auxiliar o restante da equipe a migrar código existente para a nova arquitetura orientada a domínio.Somos adeptos de desenvolvimento ágil, integração contínua, code review e testes automáticos. Com isso, nossa equipe busca constantemente desenvolver e aprimorar o produto para estarmos sempre a frente do mercado.
+## Introduction
+Boa Noite, neste teste, busquei trazer um pouco do meu conhecimento com o Lumen, um microframework baseado em Laravel.
 
-<details>
-<summary>Detalhes da vaga</summary>
+## Como Instalar?
+1. `cp ./app/.env.example ./app/.env` Arquivo .env.example já está configurado corretamente :D
+2. `docker-compose up -d`
+3. `docker-compose exec app /install.sh`
 
-## A empresa
-A Talentify.io nasceu da fusão de 3 empresas distintas em 3 áreas diferentes: Digital Media & Advertising, Mobile Technology e HR Consulting. Nossa plataforma de SaaS ajuda empresas a superar seus maiores desafios na  busca e contratação de talentos em grande escala.
+## Utilizando as APIs
+Acesse a documentação disponível em http://localhost:9145/docs assim, que acessar, você pode optar em rodar os comandos no seu terminal ou no Insomnia.
 
-## Beneficios
-- Home office (você pode trabalhar em casa ou em nosso escritório, em Alphaville/SP)
-- Horario flexivel
-- Assistencia medica e odontologica (apos 3 meses)
-- Vale refeicao e transporte
+A Primeira rota que você deve acessar é a Login, para gerar seu token de acesso JWT.
 
-## Requisitos
-- PHP 7
-- Desenvolvimento de testes
-- Desenvolvimento Agil
-- Web Services (RESTful ou SOAP ou JSON-RPC, etc)
-- Algum dos frameworks PHP (Phalcon, Zend, Symfony, Laravel)
-- Familiaridade com as PHP Standards Recommendations (PSRs)
-- GIT
-- Banco de dados relacional (MySQL, PostgreSQL, etc)
 
-## Desejável
-- Arquitetura hexagonal
-- DDD
-- Microserviços
-- Filas de mensagens (RabbitMQ, Apache Kafka, Amazon SQS, etc)
-- Elasticsearch
-- Linux
-- Amazon Web Services (AWS)
-- CI/CD
-- Inglês (leitura, escrita e conversação)
+## Usuários Disponíveis para Login
 
-</details>
+### Admin
+Email: admin.active@example.net
+Pass: admin@1234556
 
-## Talk is cheap. Show me the code!
-Você deverá construir um pequeno sistema para publicação de vagas de emprego. Ele irá possuir os seguintes recursos:
-* Acesso público, com a listagem das vagas abertas
-* Login
-* Acesso administrativo, de acesso privado, com os seguintes recursos:
-  * Cadastro de vaga contendo os campos: title (string, 256 characteres, obrigatório), description (string, 10000 caracteres, obrigatório), status (enum, obrigatório), workplace (endereço, opcional), salary (dólar americano, opcional).
- 
-#### Observações
-- Você pode, ou não, utilizar qualquer framework ou biblioteca PHP que desejar, desde que a lógica de negócio descrita acima seja feita por você, em puro PHP.
-- As interfaces podem ou não serem gráficas (GUI), isto é, podem ser qualquer tipo de canal que possibilite a comunicação com a aplicação, tais como: RESTful, GraphQL, SOAP, JSON-RPC, (X)HTML com ou sem javascript, etc.
-- Testes automatizados (de unidade e/ou funcionais e/ou aceitação) deverão ser escritos.
-- Um README.md deverá ser adicionado e conter, no mínimo, as instruções de setup e utilização da aplicação.
+### Admin inativo
+Email: admin.inactive@example.net
+Pass: admin@654321
 
-#### Envio
-Para enviar o seu código, submeta uma pull request para este repositório.
+### Company
+Email: company@example.net
+Pass: company@1234556
 
-#### Disclaimer
-O código fonte que você produzir será utilizado somente para avaliar sua aptidão para a vaga. Não será feito nenhum uso comercial do código fonte, tampouco haverá a exigência de direitos de atribuição.
 

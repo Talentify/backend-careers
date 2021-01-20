@@ -21,18 +21,17 @@ $router->group(['prefix' => 'auth'], function($router) {
 });
 
 $router->group(['prefix' => 'jobs'], function ($router) {
-    $router->get('/', 'JobsController@index');
-    $router->post('/', 'JobsController@create');
-    $router->put('{jobId}', 'JobsController@update');
-    $router->delete('{jobId}', 'JobsController@delete');
+    $router->get('/', 'JobOpportunityController@index');
+    $router->get('/{jobId}', 'JobOpportunityController@view');
+    $router->post('/', 'JobOpportunityController@create');
+    $router->put('{jobId}', 'JobOpportunityController@update');
+    $router->delete('{jobId}', 'JobOpportunityController@delete');
 });
 
 $router->group(['prefix' => 'companies'], function ($router) {
     $router->get('/', 'CompanyController@index');
     $router->get('{companyId}', 'CompanyController@view');
-
     $router->post('/', 'CompanyController@create');
-
     $router->put('{companyId}', 'CompanyController@update');
     $router->delete('{companyId}', 'CompanyController@delete');
 });

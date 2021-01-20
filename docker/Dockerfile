@@ -38,11 +38,13 @@ RUN adduser -u 1000 www -D -s /bin/ash && \
     chown -R www:www /app
 
 COPY config/     /
+COPY install.sh /
 WORKDIR /app
 
 RUN mkdir -p /app/storage/logs \
     && chown -R www:www /app/storage \
-    && chmod +x /docker-entrypoint.sh
+    && chmod +x /docker-entrypoint.sh \
+    && chmod +x /install.sh
 
 EXPOSE 9000
 

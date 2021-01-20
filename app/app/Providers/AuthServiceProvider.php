@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Enums\RolesEnum;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -33,6 +34,14 @@ class AuthServiceProvider extends ServiceProvider
         $this->app['auth']->viaRequest('api', function ($request) {
             if ($request->input('api_token')) {
                 return User::where('api_token', $request->input('api_token'))->first();
+            }
+        });
+
+        Gate::before(function ($user, $ability) {
+            if ($ability === 'is_admin'
+                && $user->role === RolesEnum::ADMIN_ROLE
+            ) {
+                return true;
             }
         });
     }
