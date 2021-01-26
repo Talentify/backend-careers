@@ -2,42 +2,75 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-
-class User extends Authenticatable
+class User extends AbstractModel
 {
-    use HasFactory, Notifiable;
+    private $name;
+    private $email;
+    private $password;
+
+    public function __construct(array $params = [])
+    {
+        parent::__construct();
+        $this->fill('users', $params);
+    }
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
+     * Get the value of name
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    public function getName()
+    {
+        return $this->name;
+    }
 
     /**
-     * The attributes that should be hidden for arrays.
+     * Set the value of name
      *
-     * @var array
+     * @return  self
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
 
     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
+     * Get the value of email
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of password
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set the value of password
+     *
+     * @return  self
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
 }
