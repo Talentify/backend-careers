@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use PDO;
+
 class User extends AbstractModel
 {
     private $name;
@@ -12,6 +14,18 @@ class User extends AbstractModel
     {
         parent::__construct();
         $this->fill('users', $params);
+    }
+
+    public function getByEmail($email)
+    {
+        $query = "SELECT * FROM {$this->getTableName()} WHERE email=:email";
+
+        $sm = $this->pdo->prepare($query);
+        $sm->execute([':email' => $email]);
+
+        $item = $sm->fetch(PDO::FETCH_ASSOC);
+
+        return $item;
     }
 
     /**
