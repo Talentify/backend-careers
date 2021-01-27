@@ -26,7 +26,6 @@ job.handleResponse = response => {
 
 window.onload = function () {
     const btns = document.getElementsByClassName('job-delete');
-    console.log(btns);
 
     [].forEach.call(btns, (elm) => {
         elm.addEventListener('click', (evt) => {

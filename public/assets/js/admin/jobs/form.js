@@ -34,7 +34,7 @@ job.handleResponse = response => {
 
         let btn = document.querySelector('button.btn-primary');
         if (btn) {
-            btn.innerHTML = 'Sign In';
+            btn.innerHTML = 'Salvar';
             btn.disabled = false;
         }
     } else if (response.status == 'ok') {

@@ -68,7 +68,17 @@ abstract class AbstractModel
         }
 
         $st = $this->pdo->prepare($query);
-        return $st->execute($fields);
+        $executed = $st->execute($fields);
+
+        if ($executed) {
+            $id = $this->pdo->lastInsertId();
+
+            $this->setId($id);
+
+            return $id;
+        }
+
+        return false;
     }
 
     public function update()

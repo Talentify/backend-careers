@@ -6,9 +6,9 @@ use PDO;
 
 class User extends AbstractModel
 {
-    private $name;
-    private $email;
-    private $password;
+    protected $name;
+    protected $email;
+    protected $password;
 
     public function __construct(array $params = [])
     {

@@ -34,7 +34,7 @@ class Job extends AbstractModel
             throw new EmptyException('Informe a descrição da vaga!');
         }
 
-        if ((int)$this->status != self::STATUS_ABERTA && (int)$this->status != self::STATUS_FECHADA) {
+        if ((int)$this->status !== self::STATUS_ABERTA && (int)$this->status !== self::STATUS_FECHADA) {
             throw new InvalidException('Status da vaga inválido! Informe aberta ou fechada.');
         }
 

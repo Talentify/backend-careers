@@ -5,7 +5,7 @@ signin.login = async (evt) => {
 
     let btn = document.querySelector('button.btn-primary');
     if (btn) {
-        btn.innerHTML = 'Please wait...';
+        btn.innerHTML = 'Aguarde...';
         btn.disabled = true;
     }
 
