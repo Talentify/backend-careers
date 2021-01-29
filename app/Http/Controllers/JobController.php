@@ -76,6 +76,6 @@ class JobController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return new JobResource($this->repository->delete($id));
     }
 }

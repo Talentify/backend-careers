@@ -68,6 +68,13 @@ abstract class AbstractRepository
         return $record->save();
     }
 
+    public function delete($id)
+    {
+        $record = $this->buildQuery()->find($id);
+        
+        return $record->delete();
+    }
+
     public function pluck($column, $key = null)
     {
         return $this->buildQuery()->pluck($column, $key);
