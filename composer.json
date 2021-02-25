@@ -1,0 +1,64 @@
+{
+    "name": "laminas/laminas-mvc-skeleton",
+    "description": "Laminas MVC Skeleton Application",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "laminas",
+        "mvc",
+        "skeleton",
+        "framework"
+    ],
+    "require": {
+        "php": "^7.3",
+        "laminas/laminas-component-installer": "^1.0 || ^2.1",
+        "laminas/laminas-development-mode": "^3.2",
+        "laminas/laminas-mvc": "^3.1.1",
+        "doctrine/orm": "^2.8",
+        "vlucas/phpdotenv": "^5.3",
+        "doctrine/migrations": "^3.1",
+        "doctrine/doctrine-module": "^4.1",
+        "doctrine/doctrine-orm-module": "^3.1",
+        "nesbot/carbon": "^2.45",
+        "firebase/php-jwt": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Admin\\": "module/Admin/src/",
+            "Api\\": "module/Api/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AdminTest\\": "module/Admin/test/"
+        }
+    },
+    "scripts": {
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "development-disable": "laminas-development-mode disable",
+        "development-enable": "laminas-development-mode enable",
+        "development-status": "laminas-development-mode status",
+        "post-create-project-cmd": [
+            "@development-enable",
+            "php bin/update-gitignore.php",
+            "php -r 'if (file_exists(\"bin/remove-package-artifacts.php\")) include \"bin/remove-package-artifacts.php\";'",
+            "php -r 'if (file_exists(\"CHANGELOG.md\")) unlink(\"CHANGELOG.md\");'"
+        ],
+        "serve": "php -S 0.0.0.0:8080 -t public",
+        "test": "phpunit"
+    },
+    "scripts-descriptions": {
+        "cs-check": "Run coding standards checks.",
+        "cs-fix": "Automatically fix coding standard issues.",
+        "development-disable": "Disable development mode.",
+        "development-enable": "Enable development mode.",
+        "development-status": "Detail whether or not the application is in development mode.",
+        "serve": "Start the built-in PHP web server and serve the application.",
+        "test": "Run unit tests."
+    },
+    "require-dev": {
+        "laminas/laminas-test": "^3.4",
+        "phpunit/phpunit": "^9.5"
+    }
+}

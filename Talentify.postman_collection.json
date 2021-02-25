@@ -1,0 +1,436 @@
+{
+	"info": {
+		"_postman_id": "c9bebf77-ded4-475b-aba2-d79a32431a50",
+		"name": "Talentify",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Paulo Lavoratti\",\r\n    \"email\": \"paulolavoratti@hotmail.com\",\r\n    \"password\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/login/register/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"login",
+								"register",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Paulo Lavoratti\",\r\n    \"email\": \"paulolavoratti@hotmail.com\",\r\n    \"password\": \"teste\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/v1/login/register",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"v1",
+										"login",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 01:06:42 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.46 (Win64) OpenSSL/1.1.1g PHP/7.3.24"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.3.24"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 5,\n        \"name\": \"Paulo Lavoratti\",\n        \"email\": \"paulolavoratti@hotmaill.com\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"paulolavoratti@hotmail.com\",\r\n    \"password\": \"testeteste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"paulolavoratti@hotmail.com\",\r\n    \"password\": \"teste\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/v1/login",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 14 Feb 2021 22:32:21 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.46 (Win64) OpenSSL/1.1.1g PHP/7.3.24"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.3.24"
+								},
+								{
+									"key": "Content-Length",
+									"value": "280"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Paulo Lavoratti\",\n        \"email\": \"paulolavoratti@hotmail.com\",\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6IlBhdWxvIExhdm9yYXR0aSIsImVtYWlsIjoicGF1bG9sYXZvcmF0dGlAaG90bWFpbC5jb20ifQ._5JEG4U9i3BJbddfgSVNpcWwtBrTYx3JggPquQBgd1o\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Jobs",
+			"item": [
+				{
+					"name": "Register Job",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6IlBhdWxvIExhdm9yYXR0aSIsImVtYWlsIjoicGF1bG9sYXZvcmF0dGlAaG90bWFpbC5jb20ifQ._5JEG4U9i3BJbddfgSVNpcWwtBrTYx3JggPquQBgd1o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Quero essa vaga\",\r\n    \"description\" : \"Quero entrar na talentify\",\r\n    \"status\" : 0,\r\n    \"workplace\" : \"Rua Saldanha Marinho, 1453\",\r\n    \"salary\" : 1500.50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/jobs/register/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"jobs",
+								"register",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Updated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"Quero essa vaga\",\r\n    \"description\" : \"Quero entrar na talentify\",\r\n    \"status\" : 1,\r\n    \"workplace\" : \"Rua Saldanha Marinho, 1453\",\r\n    \"salary\" : 10000.50\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/v1/jobs/register/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"v1",
+										"jobs",
+										"register",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 25 Feb 2021 00:38:07 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.46 (Win64) OpenSSL/1.1.1g PHP/7.3.24"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.3.24"
+								},
+								{
+									"key": "Content-Length",
+									"value": "169"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"Quero essa vaga\",\n        \"description\": \"Quero entrar na talentify\",\n        \"status\": 1,\n        \"workplace\": \"Rua Saldanha Marinho, 1453\",\n        \"salary\": 10000.5\n    }\n}"
+						},
+						{
+							"name": "Insert",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"Quero essa vaga\",\r\n    \"description\" : \"Quero entrar na talentify\",\r\n    \"status\" : 1,\r\n    \"workplace\" : \"Rua Saldanha Marinho, 1453\",\r\n    \"salary\" : 9505.50\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/v1/jobs/register",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"v1",
+										"jobs",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 25 Feb 2021 00:37:38 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.46 (Win64) OpenSSL/1.1.1g PHP/7.3.24"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.3.24"
+								},
+								{
+									"key": "Content-Length",
+									"value": "168"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"Quero essa vaga\",\n        \"description\": \"Quero entrar na talentify\",\n        \"status\": 1,\n        \"workplace\": \"Rua Saldanha Marinho, 1453\",\n        \"salary\": 9505.5\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List Jobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/v1/jobs",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"jobs"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Jobs",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/v1/jobs",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"v1",
+										"jobs"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 25 Feb 2021 01:02:19 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.46 (Win64) OpenSSL/1.1.1g PHP/7.3.24"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.3.24"
+								},
+								{
+									"key": "Content-Length",
+									"value": "469"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=99"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 2,\n            \"title\": \"Quero essa vaga\",\n            \"description\": \"Quero entrar na talentify\",\n            \"status\": true,\n            \"workplace\": \"Rua Saldanha Marinho, 1453\",\n            \"salary\": 1500.5\n        },\n        {\n            \"id\": 3,\n            \"title\": \"Quero essa vaga\",\n            \"description\": \"Quero entrar na talentify\",\n            \"status\": true,\n            \"workplace\": \"Rua Saldanha Marinho, 1453\",\n            \"salary\": 1500.5\n        },\n        {\n            \"id\": 4,\n            \"title\": \"Quero essa vaga\",\n            \"description\": \"Quero entrar na talentify\",\n            \"status\": true,\n            \"workplace\": \"Rua Saldanha Marinho, 1453\",\n            \"salary\": 1500.5\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
