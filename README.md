@@ -1,8 +1,10 @@
 ## Ambiente Docker
 
-Foi utlizado a arquitetura abaixo para concepção do projeto e disponibilizado na AWS para testes.
+Foi utlizado a arquitetura abaixo para concepção do projeto.
 
 Services, Repository, ACL Dinamica, Testes Unitários, RestFull e Docker.
+
+Projeto disponível na AWS para testes.
 
 1. Clonar o repositório:
 `git clone https://github.com/nilbertooliveira/backend-careers.git`
