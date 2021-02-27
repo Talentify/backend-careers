@@ -1,0 +1,54 @@
+version: "3.6"
+
+networks:
+  rede_docker:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.5.0.0/16
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Nil#123@
+      MYSQL_USER: nilberto
+      MYSQL_PASSWORD: Nil#123@
+    volumes:
+      - ./Volumes/mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      rede_docker:
+        ipv4_address: 10.5.0.4
+
+  phpfpm:
+    image: "bitnami/php-fpm"
+    container_name: phpfpm
+    networks:
+      rede_docker:
+        ipv4_address: 10.5.0.5
+    links:
+      - mysql
+    volumes:
+      - ./../:/app
+      - ./custom.ini:/opt/bitnami/php/etc/conf.d/custom.ini
+
+  nginx:
+    image: "bitnami/nginx:latest"
+    container_name: nginx
+    depends_on:
+      - phpfpm
+    networks:
+      rede_docker:
+        ipv4_address: 10.5.0.6
+    volumes:
+      - ./../:/app
+      - ./server_block.conf:/opt/bitnami/nginx/conf/server_blocks/server_block.conf
+    ports:
+      - "8080:8080"
+      - "443:443"
