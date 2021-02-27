@@ -1,6 +1,6 @@
 ## Ambiente Docker
 
-Foi utlizado a arquitetura abaixo para concepção do projeto.
+Foi utlizado a arquitetura abaixo para concepção do projeto e disponibilizado na AWS para testes.
 
 Services, Repository, ACL Dinamica, Testes Unitários, RestFull e Docker.
 
