@@ -28,4 +28,9 @@ WORKDIR /var/www/html/
 
 RUN composer install
 
+RUN mkdir -p logs && chmod -R 777 ./logs
+RUN mkdir -p tmp && chmod -R 777 ./tmp
+
 RUN a2enmod rewrite && service apache2 restart
+
+EXPOSE 80

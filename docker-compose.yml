@@ -1,0 +1,37 @@
+version: '3'
+services:
+  talentfy-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: talentfy-api
+    env_file:
+      - ./config/.env.dev
+    volumes:
+      - .:/var/www/html/
+    networks:
+      - cakephp4     
+    ports:
+      - 8080:80
+  mysql:
+    image: 'mysql:8.0'
+    ports:
+        - '3306:3306'
+    environment:
+        MYSQL_ROOT_PASSWORD: ''
+        MYSQL_DATABASE: 'talentfy'
+        MYSQL_USER: 'talentfy'
+        MYSQL_PASSWORD: '123456'
+        MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes:
+        - 'volumemysql:/var/lib/mysql'
+    networks:
+        - cakephp4
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping"]
+networks:
+    cakephp4:
+        driver: bridge
+volumes:
+    volumemysql:
+        driver: local
