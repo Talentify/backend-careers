@@ -10,8 +10,10 @@ start:
 stop: 
 	- docker-compose stop
 clean: 
-	- docker-compose rm && docker volume rm volumemysql
+	- docker-compose rm && docker volume rm talentify_volumemysql
 test: 
 	- docker exec -it talentify-api /var/www/html/vendor/bin/phpunit
 bash: 
 	- docker exec -it talentify-api /bin/bash
+fix: 
+	- sudo chown -R paulo src && sudo chown -R paulo config && sudo chown -R paulo tests

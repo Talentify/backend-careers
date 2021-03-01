@@ -15,6 +15,7 @@ services:
       - 8080:80
   mysql:
     image: 'mysql:8.0'
+    container_name: talentify-database
     ports:
         - '3306:3306'
     environment:
