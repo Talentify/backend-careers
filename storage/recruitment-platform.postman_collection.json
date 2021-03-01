@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "59b65e2f-df9a-4117-9d4f-98cfd1d35710",
+		"name": "recruitment-platform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Recruiter Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "jdfjdbfmsdfsd",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"José Silva\",\n    \"cpf\": \"21478523691\",\n    \"email\": \"jose@hotmail.com\",\n    \"password\": \"password\",\n    \"companyId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8091/recruiters/create",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8091",
+					"path": [
+						"recruiters",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Job Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "cebddb0d75ce5febea4c7e7d26a20af6",
+						"type": "text"
+					},
+					{
+						"key": "email",
+						"value": "jose@hotmail.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tittle\": \"Engenheiro de Software\",\n    \"description\": \"vaga para engenheiro de software\",\n    \"status\": \"ACTIVE\",\n    \"salary\": 2500.25,\n    \"keywords\": \"Engenheiro, software\",\n    \"recruiterId\": 1,\n    \"address\": {\n        \"address\": \"Rua\",\n        \"number\": 123,\n        \"city\": \"Araraquara\",\n        \"state\": \"SP\",\n        \"country\": \"Brasil\",\n        \"complement\": \"sala 12\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8091/jobs/create",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8091",
+					"path": [
+						"jobs",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Job Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "cebddb0d75ce5febea4c7e7d26a20af6",
+						"type": "text"
+					},
+					{
+						"key": "email",
+						"value": "jose@hotmail.com",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "0.0.0.0:8091/jobs/1",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8091",
+					"path": [
+						"jobs",
+						"1"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Job Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "cebddb0d75ce5febea4c7e7d26a20af6",
+						"type": "text"
+					},
+					{
+						"key": "email",
+						"value": "jose@hotmail.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tittle\": \"Engenheiro de Software Pleno\",\n    \"description\": \"vaga para engenheiro de software\",\n    \"status\": \"INACTIVE\",\n    \"salary\": 2500.25,\n    \"keywords\": \"Engenheiro, software\",\n    \"recruiterId\": 1,\n    \"address\": {\n        \"address\": \"Rua\",\n        \"number\": 123,\n        \"city\": \"Araraquara\",\n        \"state\": \"SP\",\n        \"country\": \"Brasil\",\n        \"complement\": \"sala 12\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8091/jobs/1",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8091",
+					"path": [
+						"jobs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Jobs Show",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "0.0.0.0:8091/jobs/1",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8091",
+					"path": [
+						"jobs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Jobs Index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "0.0.0.0:8091/jobs",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8091",
+					"path": [
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Job Search",
+			"request": {
+				"auth": {
+					"type": "basic"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "0.0.0.0:8091/jobs-search/?keywords=ENGENHEIRO, SOFTWARE&addressState=sp&addressCity=Araraquara&addressCountry=Brasil&salaryStart=300&salaryEnd=6000&company=Company1",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8091",
+					"path": [
+						"jobs-search",
+						""
+					],
+					"query": [
+						{
+							"key": "keywords",
+							"value": "ENGENHEIRO, SOFTWARE"
+						},
+						{
+							"key": "addressState",
+							"value": "sp"
+						},
+						{
+							"key": "addressCity",
+							"value": "Araraquara"
+						},
+						{
+							"key": "addressCountry",
+							"value": "Brasil"
+						},
+						{
+							"key": "salaryStart",
+							"value": "300"
+						},
+						{
+							"key": "salaryEnd",
+							"value": "6000"
+						},
+						{
+							"key": "company",
+							"value": "Company1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"jose@hotmail.com\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8091/recruiters/login",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8091",
+					"path": [
+						"recruiters",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,42 @@
+version: "3.1"
+services:
+  database:
+    image: mysql:8.0
+    container_name: recruitment-platform-database
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - ${DB_PORT}:3306
+  webserver:
+    image: nginx:alpine
+    container_name: recruitment-platform-nginx
+    working_dir: /application
+    volumes:
+      - .:/application
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - ${NGINX_PORT}:80
+      - ${NGINX_PORT_SSL}:443
+    depends_on:
+      - php-fpm
+  php-fpm:
+    build: ./docker/php-fpm
+    container_name: recruitment-platform-php-fpm
+    working_dir: /application
+    volumes:
+      - .:/application
+      - ./docker/php-fpm/php-ini-overrides.ini:/usr/local/etc/php/conf.d/custom.ini
+      - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+      - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/php-fpm/conf.d/99-overrides.ini
+    ports:
+      - ${PHP_PORT}:80
+
+networks:
+  default:
+    external:
+      name: ${NETWORK_DEFAULT}

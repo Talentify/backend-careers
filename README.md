@@ -1,62 +1,44 @@
-## A vaga
-Estamos constante adicionando novas features e aperfeiçoando as já existentes. Como desenvolvedor sênior, voce será responsável por criar código limpo, testável, e de alta qualidade, além de auxiliar o restante da equipe a migrar código existente para a nova arquitetura orientada a domínio.Somos adeptos de desenvolvimento ágil, integração contínua, code review e testes automáticos. Com isso, nossa equipe busca constantemente desenvolver e aprimorar o produto para estarmos sempre a frente do mercado.
+# Recruitment Platform
 
-<details>
-<summary>Detalhes da vaga</summary>
+##### Dependências
+- docker
+- docker-compose
+- make
+___
 
-## A empresa
-A Talentify.io nasceu da fusão de 3 empresas distintas em 3 áreas diferentes: Digital Media & Advertising, Mobile Technology e HR Consulting. Nossa plataforma de SaaS ajuda empresas a superar seus maiores desafios na  busca e contratação de talentos em grande escala.
+## Instalação
+1. Faça o clone do repositório com `git clone git@github.com:vivianequinaia/backend-careers.git`.
+2. Copie o arquivo .env.dist para .env `cp .env.dist .env`.
+3. Utilize o comando `docker-compose build` para realizar o pull das imagens.
+4. Execute o comando `docker network create recruitment-platform-network` (utilize o valor variável `NETWORK_DEFAULT` do seu .env);
+5. Execute seus containers com o comando `docker-compose up -d`.
+6. Entre no container do php `make php` e execute o comando `composer install`.
+7. Ainda dentro do container do passo 6 execute o comando `php artisan key:generate` para gerar o valor da variável `APP_KEY`.
+8. execute o comando `php artisan migrate` para criar as tabelas do banco de dados.
+9. execute o comando `php artisan db:seed` para criar dados no banco de dados.
+10. Dê permissão para os arquivos da pasta `/storage`. `sudo chmod 777 -R storage/`.
+___
 
-## Beneficios
-- Home office (você pode trabalhar em casa ou em nosso escritório, em Alphaville/SP)
-- Horario flexivel
-- Assistencia medica e odontologica (apos 3 meses)
-- Vale refeicao e transporte
+## Postman
+A collection para acessar os endpoints via postman se encontram em:
 
-## Requisitos
-- PHP 7
-- Desenvolvimento de testes
-- Desenvolvimento Agil
-- Web Services (RESTful ou SOAP ou JSON-RPC, etc)
-- Algum dos frameworks PHP (Phalcon, Zend, Symfony, Laravel)
-- Familiaridade com as PHP Standards Recommendations (PSRs)
-- GIT
-- Banco de dados relacional (MySQL, PostgreSQL, etc)
+[postman_collection](./storage/recruitment-platform.postman_collection.json).
 
-## Desejável
-- Arquitetura hexagonal
-- DDD
-- Microserviços
-- Filas de mensagens (RabbitMQ, Apache Kafka, Amazon SQS, etc)
-- Elasticsearch
-- Linux
-- Amazon Web Services (AWS)
-- CI/CD
-- Inglês (leitura, escrita e conversação)
+Saiba mais sobre o postman em: [Postman](https://www.postman.com/)
 
-</details>
+Utilize o token gerado no Login nos headers das rotas que não são públicas.
+___
 
-## Talk is cheap. Show me the code!
+## Testes unitários:
 
-Você deverá construir uma API REST com as seguintes funcionalidades:
-* Cadastro/Login de recrutadores, onde cada recrutador pertence a uma empresa diferente
-* CRUD de vagas pelos recrutadores
-   * Vagas possuem os campos: title, description, status, address, salary, company
-   * Um recrutador não pode modificar vagas criadas por outro
-* Listagem pública de vagas abertas
-* Busca pública de vagas abertas
-   * Critérios de busca que devem ser aceitos: keyword, address, salary, company
-  
- 
-#### Observações
-- É permitido utilizar qualquer biblioteca ou framework PHP, desde que a lógica de neǵocio seja escrita por você em PHP;
-- Interface gráfica é opcional, desde que a comunicação com o back-end seja feita através dos endpoints REST desenvolvidos por você;
-- Testes automatizados (de unidade e/ou funcionais e/ou aceitação) são **obrigatórios**;
-- Um README.md deverá ser adicionado e conter, no mínimo, as instruções de setup e utilização da aplicação.
+Para executar os testes unitários:
 
-#### Envio
-Para enviar o seu código, submeta uma pull request para este repositório com o título da PR contendo seu nome e sobrenome.
+`make test`, fora do container ou, `./vendor/bin/phpunit tests/` após executar `make php`.
+___
 
-#### Disclaimer
-O código fonte que você produzir será utilizado somente para avaliar sua aptidão para a vaga. Não será feito nenhum uso comercial do código fonte, tampouco haverá a exigência de direitos de atribuição.
+## Version
+[version](./VERSION).
+___
 
+## Sobre a arquitetura do código acesse o artigo abaixo
+[A decoupled PHP architecture inspired by the Clean Architecture](https://medium.com/engenharia-arquivei/a-decoupled-php-architecture-inspired-by-the-clean-architecture-788b30ab52c2).
