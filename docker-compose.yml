@@ -1,10 +1,10 @@
 version: '3'
 services:
-  talentfy-api:
+  talentify-api:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: talentfy-api
+    container_name: talentify-api
     env_file:
       - ./config/.env.dev
     volumes:
@@ -19,8 +19,8 @@ services:
         - '3306:3306'
     environment:
         MYSQL_ROOT_PASSWORD: ''
-        MYSQL_DATABASE: 'talentfy'
-        MYSQL_USER: 'talentfy'
+        MYSQL_DATABASE: 'talentify'
+        MYSQL_USER: 'talentify'
         MYSQL_PASSWORD: '123456'
         MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     volumes:
