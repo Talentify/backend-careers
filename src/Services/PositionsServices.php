@@ -9,6 +9,10 @@ use Cake\Http\Exception\BadRequestException;
 
 class PositionsServices extends Services
 {
+    /**
+     * Add new Position
+     * @return array
+     */
     public function addPosition()
     {
         $this->Request->allowMethod(['POST']);
@@ -29,6 +33,11 @@ class PositionsServices extends Services
         return $return;
     }
 
+    /**
+     * Edit position created by logged user
+     * @param $id
+     * @return array
+     */
     public function editPosition($id)
     {
 
@@ -60,6 +69,10 @@ class PositionsServices extends Services
 
     }
 
+    /**
+     * List all positions
+     * @return array
+     */
     public function list(){
 
         $where = [
@@ -77,6 +90,10 @@ class PositionsServices extends Services
         return $return;
     }
 
+    /**
+     * Search all positions
+     * @return array
+     */
     public function search(){
 
         $where  = $this->getSearchParams();
