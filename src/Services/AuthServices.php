@@ -20,7 +20,7 @@ class AuthServices extends Services
         $user = $result->getData();
         $payload = [
             'sub' => $user->id,
-            'exp' => time() + 600,
+            'exp' => time() + 6000,
         ];
 
         $json = [

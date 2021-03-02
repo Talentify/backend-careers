@@ -6,6 +6,8 @@ namespace App\Test\TestCase\Controller;
 use App\Controller\PositionsController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
+use Cake\Utility\Security;
+use Firebase\JWT\JWT;
 
 /**
  * App\Controller\PositionsController Test Case
@@ -26,6 +28,14 @@ class PositionsControllerTest extends TestCase
         'app.Users',
     ];
 
+    protected $token;
+
+    public function getToken()
+    {
+        $payload = ['sub' => 1, 'exp' => time() + 600];
+        return JWT::encode($payload, Security::getSalt(), 'HS256');
+    }
+
     /**
      * Test index method
      *
@@ -33,7 +43,7 @@ class PositionsControllerTest extends TestCase
      */
     public function testAdd(): void
     {
-        $this->post('/positions/add.json', [
+        $this->post('/positions/add.json?token='.$this->getToken(), [
             "title" => "PHP Developer",
             "description" => "PHP7, API Development",
             "address" => "Orlando, Florida",
