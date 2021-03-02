@@ -31,7 +31,11 @@ class PositionsController extends AppController
         $this->set('_serialize', ['response']);
     }
 
-    public function list()
+    public function list(){
+
+    }
+
+    public function edit($id)
     {
         $positions = $this->paginate();
         $this->set(compact('positions'));

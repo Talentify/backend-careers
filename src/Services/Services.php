@@ -16,7 +16,7 @@ class Services
     protected $Table;
     protected $ApiResponse;
 
-    public function __construct(ServerRequest $Request, Response $Response, Table $Table, AuthenticationComponent $Authentication)
+    public function __construct(ServerRequest $Request, Response $Response, ?Table $Table, AuthenticationComponent $Authentication)
     {
         $this->Request = $Request;
         $this->Response = $Response;

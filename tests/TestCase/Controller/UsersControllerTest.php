@@ -70,38 +70,7 @@ class UsersControllerTest extends TestCase
     }
 
 
-    /**
-     * Test testLoginSuccess method
-     *
-     * @return void
-     */
-    public function testLoginSuccess(): void
-    {
 
-        $this->post('/users/login.json',[
-            "email" => "ps.arguelo@gmail.com",
-            "password" => "123456",
-        ]);
-
-        $this->assertResponseCode(200);
-    }
-
-    /**
-     * Test testInvalidLogin method
-     *
-     * @return void
-     */
-    public function testInvalidLogin(): void
-    {
-
-        $this->post('/users/login.json',[
-            "email" => "car@gmail.com",
-            "password" => "4456",
-        ]);
-
-        //dd($this->_response);
-        $this->assertResponseCode(400);
-    }
 
     public function testList() : void
     {

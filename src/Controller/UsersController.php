@@ -25,7 +25,7 @@ class UsersController extends AppController
     public function initialize(): void
     {
         parent::initialize();
-        $this->Authentication->allowUnauthenticated(['index', 'login', 'add']);
+        $this->Authentication->allowUnauthenticated(['index', 'add']);
         $this->UsersServices = new UsersServices($this->getRequest(), $this->getResponse(), $this->Users, $this->Authentication);
     }
 
@@ -41,14 +41,7 @@ class UsersController extends AppController
         $this->set('_serialize', ['ok']);
     }
 
-    public function login()
-    {
-        $response = $this->UsersServices->login();
-        $this->setResponse($this->UsersServices->getReponse());
-        $this->set(compact('response'));
-        $this->set('_serialize', ['response']);
 
-    }
 
     public function add()
     {
