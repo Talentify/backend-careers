@@ -14,6 +14,7 @@ declare(strict_types=1);
  * @since     3.3.0
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App;
 
 use Cake\Core\Configure;
@@ -34,6 +35,7 @@ use Authentication\AuthenticationServiceProviderInterface;
 use Authentication\Identifier\IdentifierInterface;
 use Authentication\Middleware\AuthenticationMiddleware;
 use Cake\Routing\Router;
+use Cake\Utility\Security;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
@@ -101,19 +103,13 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             // using it's second constructor argument:
             // `new RoutingMiddleware($this, '_cake_routes_')`
             ->add(new RoutingMiddleware($this))
-
-            ->add(new AuthenticationMiddleware($this))
+            ->add(new BodyParserMiddleware())
+            ->add(new AuthenticationMiddleware($this));
 
             // Parse various types of encoded request bodies so that they are
             // available as array through $request->getData()
             // https://book.cakephp.org/4/en/controllers/middleware.html#body-parser-middleware
-            ->add(new BodyParserMiddleware())
 
-            // Cross Site Request Forgery (CSRF) Protection Middleware
-            // https://book.cakephp.org/4/en/controllers/middleware.html#cross-site-request-forgery-csrf-middleware
-            ->add(new CsrfProtectionMiddleware([
-                'httponly' => true,
-            ]));
 
         return $middlewareQueue;
     }
@@ -157,15 +153,25 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             IdentifierInterface::CREDENTIAL_USERNAME => 'email',
             IdentifierInterface::CREDENTIAL_PASSWORD => 'password'
         ];
-
-        $service->loadAuthenticator('Authentication.Token', [
-            'queryParam' => 'token',
-            'header' => 'Authorization',
-            'tokenPrefix' => 'Token'
+        // Load the authenticators. Session should be first.
+//        $service->loadAuthenticator('Authentication.Session');
+        $service->loadAuthenticator('Authentication.Form', [
+            'fields' => $fields
         ]);
 
+        // JWT
+        $service->loadAuthenticator('Authentication.Jwt', [
+            'secretKey' => Security::getSalt(),
+            'returnPayload' => false,
+        ]);
+
+        // Load identifiers
+        $service->loadIdentifier('Authentication.JwtSubject');
         $service->loadIdentifier('Authentication.Password', compact('fields'));
 
+
+
         return $service;
+
     }
 }

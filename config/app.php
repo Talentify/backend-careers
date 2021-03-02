@@ -180,7 +180,7 @@ return [
      *   your application that still emit deprecations.
      */
     'Error' => [
-        'errorLevel' => E_ALL,
+        'errorLevel' => E_ALL & ~E_USER_DEPRECATED,
         'exceptionRenderer' => ExceptionRenderer::class,
         'skipLog' => [],
         'log' => true,
@@ -338,15 +338,19 @@ return [
          */
         'test' => [
             'className' => Connection::class,
-            'driver' => Sqlite::class,
-            'persistent' => false,
+            'driver' => Mysql::class,
+            'persistent' => true,
             'timezone' => 'UTC',
             //'encoding' => 'utf8mb4',
             'flags' => [],
             'cacheMetadata' => true,
             'quoteIdentifiers' => false,
-            'log' => false,           
+            'log' => false,
             //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
+            'host' =>  env('DB_HOST'),
+            'username' => env('DB_USERNAME', null),
+            'password' => env('DB_PASSWORD', null),
+            'database' =>  'test_'.env('DB_DATABASE', null),
         ],
     ],
 

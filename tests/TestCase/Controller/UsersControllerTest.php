@@ -32,7 +32,65 @@ class UsersControllerTest extends TestCase
      */
     public function testIndex(): void
     {
-        $this->get('/users.json');
+        $this->get('/users/index.json');
+        $this->assertResponseCode(200);
+    }
+
+
+    /**
+     * Test index method
+     *
+     * @return void
+     */
+    public function testAdd(): void
+    {
+        $this->post('/users/add.json', [
+            "name" => "Paulo",
+            "email" => "ps.arguelo@gmail.com",
+            "password" => "123456",
+        ]);
+
+
+        $this->assertResponseCode(200);
+
+    }
+
+    /**
+     * Test testAddInvalidEmail method
+     *
+     * @return void
+     */
+    public function testAddUserWithUsedEmail(): void
+    {
+        $this->post('/users/add.json',[
+            "name" => "Paulo",
+            "email" => "ps.arguelo@gmail.com",
+            "password" => "123456",
+        ]);
+        $this->assertResponseCode(200);
+    }
+
+
+    /**
+     * Test testAddInvalidEmail method
+     *
+     * @return void
+     */
+    public function testLogin(): void
+    {
+
+        $this->post('/users/login.json',[
+            "email" => "ps.arguelo@gmail.com",
+            "password" => "123456",
+        ]);
+
+        //dd($this->_response);
+        $this->assertResponseCode(400);
+    }
+
+    public function testList() : void
+    {
+        $this->get('/users/list.json');
         $this->assertResponseCode(200);
     }
 
