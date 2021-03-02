@@ -1,62 +1,44 @@
-## A vaga
-Estamos constante adicionando novas features e aperfeiçoando as já existentes. Como desenvolvedor sênior, voce será responsável por criar código limpo, testável, e de alta qualidade, além de auxiliar o restante da equipe a migrar código existente para a nova arquitetura orientada a domínio.Somos adeptos de desenvolvimento ágil, integração contínua, code review e testes automáticos. Com isso, nossa equipe busca constantemente desenvolver e aprimorar o produto para estarmos sempre a frente do mercado.
+# Talentify API
 
-<details>
-<summary>Detalhes da vaga</summary>
+## Stack
 
-## A empresa
-A Talentify.io nasceu da fusão de 3 empresas distintas em 3 áreas diferentes: Digital Media & Advertising, Mobile Technology e HR Consulting. Nossa plataforma de SaaS ajuda empresas a superar seus maiores desafios na  busca e contratação de talentos em grande escala.
+1. Docker
+1. PHP 7.4
+2. Mysql 8
+3. CakePHP4
 
-## Beneficios
-- Home office (você pode trabalhar em casa ou em nosso escritório, em Alphaville/SP)
-- Horario flexivel
-- Assistencia medica e odontologica (apos 3 meses)
-- Vale refeicao e transporte
 
-## Requisitos
-- PHP 7
-- Desenvolvimento de testes
-- Desenvolvimento Agil
-- Web Services (RESTful ou SOAP ou JSON-RPC, etc)
-- Algum dos frameworks PHP (Phalcon, Zend, Symfony, Laravel)
-- Familiaridade com as PHP Standards Recommendations (PSRs)
-- GIT
-- Banco de dados relacional (MySQL, PostgreSQL, etc)
+## Requisitos para rodar o projeto
 
-## Desejável
-- Arquitetura hexagonal
-- DDD
-- Microserviços
-- Filas de mensagens (RabbitMQ, Apache Kafka, Amazon SQS, etc)
-- Elasticsearch
-- Linux
-- Amazon Web Services (AWS)
-- CI/CD
-- Inglês (leitura, escrita e conversação)
+1. Docker
+2. docker-compose
+3. Comando ```make``` instalado para facilitar a execução dos comandos.
 
-</details>
 
-## Talk is cheap. Show me the code!
+## Rodar Aplicação
 
-Você deverá construir uma API REST com as seguintes funcionalidades:
-* Cadastro/Login de recrutadores, onde cada recrutador pertence a uma empresa diferente
-* CRUD de vagas pelos recrutadores
-   * Vagas possuem os campos: title, description, status, address, salary, company
-   * Um recrutador não pode modificar vagas criadas por outro
-* Listagem pública de vagas abertas
-* Busca pública de vagas abertas
-   * Critérios de busca que devem ser aceitos: keyword, address, salary, company
-  
- 
-#### Observações
-- É permitido utilizar qualquer biblioteca ou framework PHP, desde que a lógica de neǵocio seja escrita por você em PHP;
-- Interface gráfica é opcional, desde que a comunicação com o back-end seja feita através dos endpoints REST desenvolvidos por você;
-- Testes automatizados (de unidade e/ou funcionais e/ou aceitação) são **obrigatórios**;
-- Um README.md deverá ser adicionado e conter, no mínimo, as instruções de setup e utilização da aplicação.
+1. Clonar o projeto
+2. Dentro da raiz do projeto executar ```make init```
+3. Aguarde os containers iniciarem (na primeira vez o banco de dados demora um pouco mais para iniciar)
+4. Executar na raiz ```make migrate``` para executar as migrations e criar o banco de dados
+5. Acessar http://localhost:8080
 
-#### Envio
-Para enviar o seu código, submeta uma pull request para este repositório com o título da PR contendo seu nome e sobrenome.
+## Execução dos testes
+Após subir os containers executar os testes utilizando PHPUNIT  com o comando ```make test``` na raiz do projeto.
 
-#### Disclaimer
-O código fonte que você produzir será utilizado somente para avaliar sua aptidão para a vaga. Não será feito nenhum uso comercial do código fonte, tampouco haverá a exigência de direitos de atribuição.
 
+## OBS.
+Caso não possua o make instalado pode executar os comandos diretamente:
+
+1. make init
+```
+docker-compose build && docker-compose up -d
+```
+2. make migrate
+```
+docker exec -it talentify-api /var/www/html/bin/cake migrations migrate
+```
+3. make test
+```
+docker exec -it talentify-api /var/www/html/vendor/bin/phpunit
+```
