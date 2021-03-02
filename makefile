@@ -1,19 +1,19 @@
 
-init: clean build start migrate
+init: clean build start
 
 migrate:
 	- docker exec -it talentify-api /var/www/html/bin/cake migrations migrate
-build: 
+build:
 	- docker-compose build
-start: 
+start:
 	- docker-compose up -d
-stop: 
+stop:
 	- docker-compose stop
-clean: 
-	- docker-compose rm && docker volume rm talentify_volumemysql
-test: 
+clean: stop
+	- docker-compose rm && docker volume rm talentfy_volumemysql
+test:
 	- docker exec -it talentify-api /var/www/html/vendor/bin/phpunit
-bash: 
+bash:
 	- docker exec -it talentify-api /bin/bash
-fix: 
+fix:
 	- sudo chown -R paulo src && sudo chown -R paulo config && sudo chown -R paulo tests

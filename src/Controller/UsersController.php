@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Services\UsersServices;
 use Authentication\Controller\Component\AuthenticationComponent;
 use Cake\Http\Exception\BadRequestException;
 use Cake\Utility\Security;
 use Firebase\JWT\JWT;
+
 /**
  * Users Controller
  *
@@ -20,7 +22,7 @@ class UsersController extends AppController
     public function initialize(): void
     {
         parent::initialize();
-        $this->Authentication->allowUnauthenticated(['index','login','add']);
+        $this->Authentication->allowUnauthenticated(['index', 'login', 'add']);
     }
 
     /**
@@ -31,34 +33,20 @@ class UsersController extends AppController
     public function index()
     {
         $ok = "200";
-        $this->set(compact( 'ok'));
-        $this->set('_serialize', [ 'ok']);
+        $this->set(compact('ok'));
+        $this->set('_serialize', ['ok']);
     }
 
-    public function login(){
-
-        $result = $this->Authentication->getResult();
-
-        if(!$result->isValid()){
-            throw new BadRequestException(__("ERRO LOGIN"));
-        }
-
-        $user = $result->getData();
-        $payload = [
-            'sub' => $user->id,
-            'exp' => time() + 60,
-        ];
-
-        $json = [
-            'token' => JWT::encode($payload, Security::getSalt(), 'HS256'),
-        ];
-
-        $this->set(compact( 'json'));
-        $this->set('_serialize', [ 'json']);
+    public function login()
+    {
+        $response = (new UsersServices($this->Authentication, $this->Users))->login();
+        $this->set(compact('response'));
+        $this->set('_serialize', ['response']);
 
     }
 
-    public function add(){
+    public function add()
+    {
 
         $this->getRequest()->allowMethod(['POST']);
 
@@ -67,7 +55,7 @@ class UsersController extends AppController
         $this->Users->save($user);
 
         $errors = $user->getErrors();
-        if(count($errors)){
+        if (count($errors)) {
             $this->setResponse($this->response->withStatus(400));
         }
 
@@ -76,7 +64,8 @@ class UsersController extends AppController
 
     }
 
-    public function list(){
+    public function list()
+    {
 
         $users = $this->paginate();
         $this->set(compact('users'));

@@ -338,7 +338,7 @@ return [
          */
         'test' => [
             'className' => Connection::class,
-            'driver' => Mysql::class,
+            'driver' => Sqlite::class,
             'persistent' => false,
             'timezone' => 'UTC',
             //'encoding' => 'utf8mb4',
@@ -347,10 +347,10 @@ return [
             'quoteIdentifiers' => false,
             'log' => false,
             //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
-            'host' =>  env('DB_HOST'),
-            'username' => env('DB_USERNAME', null),
-            'password' => env('DB_PASSWORD', null),
-            'database' =>  'test_'.env('DB_DATABASE', null),
+//            'host' =>  env('DB_HOST'),
+//            'username' => env('DB_USERNAME', null),
+//            'password' => env('DB_PASSWORD', null),
+//            'database' =>  'test_'.env('DB_DATABASE', null),
         ],
     ],
 
