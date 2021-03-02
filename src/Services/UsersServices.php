@@ -21,7 +21,7 @@ class UsersServices extends Services
         $user = $result->getData();
         $payload = [
             'sub' => $user->id,
-            'exp' => time() + 60,
+            'exp' => time() + 600,
         ];
 
         $json = [
