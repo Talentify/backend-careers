@@ -50,7 +50,6 @@ class UsersControllerTest extends TestCase
             "password" => "123456",
         ]);
 
-
         $this->assertResponseCode(200);
 
     }
@@ -84,7 +83,6 @@ class UsersControllerTest extends TestCase
             "password" => "123456",
         ]);
 
-        //dd($this->_response);
         $this->assertResponseCode(200);
     }
 

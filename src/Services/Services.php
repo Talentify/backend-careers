@@ -4,27 +4,34 @@
 namespace App\Services;
 
 use Authentication\Controller\Component\AuthenticationComponent;
+use Cake\Http\Response;
+use Cake\Http\ServerRequest;
 use Cake\ORM\Table;
 
 class Services
 {
+    protected $Request;
+    protected $Response;
     protected $Authentication;
-    protected $TableRepository;
+    protected $Table;
     protected $ApiResponse;
 
-    public function __construct(AuthenticationComponent $Authentication, Table $TableRepository)
+    public function __construct(ServerRequest $Request, Response $Response, Table $Table, AuthenticationComponent $Authentication)
     {
+        $this->Request = $Request;
+        $this->Response = $Response;
         $this->Authentication = $Authentication;
-        $this->TableRepository = $TableRepository;
+        $this->Table = $Table;
     }
 
-    public function setApiResponse($ApiResponse)
+    public function setResponse(Response $Response)
     {
-        $this->ApiResponse = $ApiResponse;
+        $this->Response = $Response;
     }
 
-    public function getApiResponse()
+    public function getReponse()
     {
-        return $this->ApiResponse;
+        return $this->Response;
     }
+
 }

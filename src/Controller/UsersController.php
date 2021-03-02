@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Model\Entity\User;
 use App\Services\UsersServices;
 use Authentication\Controller\Component\AuthenticationComponent;
 use Cake\Http\Exception\BadRequestException;
@@ -12,17 +13,20 @@ use Firebase\JWT\JWT;
 /**
  * Users Controller
  *
+ * @property  UsersServices $UsersServices
  * @property  AuthenticationComponent $Authentication
  * @property \App\Model\Table\UsersTable $Users
  * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class UsersController extends AppController
 {
+    protected $UsersServices;
 
     public function initialize(): void
     {
         parent::initialize();
         $this->Authentication->allowUnauthenticated(['index', 'login', 'add']);
+        $this->UsersServices = new UsersServices($this->getRequest(), $this->getResponse(), $this->Users, $this->Authentication);
     }
 
     /**
@@ -39,7 +43,8 @@ class UsersController extends AppController
 
     public function login()
     {
-        $response = (new UsersServices($this->Authentication, $this->Users))->login();
+        $response = $this->UsersServices->login();
+        $this->setResponse($this->UsersServices->getReponse());
         $this->set(compact('response'));
         $this->set('_serialize', ['response']);
 
@@ -47,20 +52,10 @@ class UsersController extends AppController
 
     public function add()
     {
-
-        $this->getRequest()->allowMethod(['POST']);
-
-        $user = $this->Users->newEntity($this->getRequest()->getData());
-        $user->status = true;
-        $this->Users->save($user);
-
-        $errors = $user->getErrors();
-        if (count($errors)) {
-            $this->setResponse($this->response->withStatus(400));
-        }
-
-        $this->set(compact('user', 'errors'));
-        $this->set('_serialize', ['user', 'errors']);
+        $response = $this->UsersServices->addUser();
+        $this->setResponse($this->UsersServices->getReponse());
+        $this->set(compact('response'));
+        $this->set('_serialize', ['response']);
 
     }
 
