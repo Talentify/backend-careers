@@ -17,6 +17,13 @@ RUN docker-php-ext-install pdo pdo_mysql pgsql pdo_pgsql intl zip gd
 RUN  pecl install xdebug \
     && docker-php-ext-enable xdebug
 
+
+## NODEJS
+RUN curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh && bash nodesource_setup.sh \ 
+    && apt -y install nodejs \
+    && npm install -g apidoc
+
+
 # COMPOSER
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --filename=composer \

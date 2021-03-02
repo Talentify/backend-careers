@@ -1,8 +1,9 @@
 
 init: clean build start
-
 migrate:
 	- docker exec -it talentify-api /var/www/html/bin/cake migrations migrate
+doc:
+	- docker exec -it talentify-api apidoc -i /var/www/html/src/Controller -o /var/www/html/webroot/apidoc/
 build:
 	- docker-compose build
 start:
@@ -10,7 +11,7 @@ start:
 stop:
 	- docker-compose stop
 clean: stop
-	- docker-compose rm && docker volume rm talentfy_volumemysql
+	- docker-compose rm && docker volume rm api_volumemysql
 test:
 	- docker exec -it talentify-api /var/www/html/vendor/bin/phpunit
 bash:
