@@ -32,7 +32,8 @@ class PositionsControllerTest extends TestCase
 
     public function getToken()
     {
-        $payload = ['sub' => 1, 'exp' => time() + 600];
+        $userTestId = 1;
+        $payload = ['sub' => $userTestId, 'exp' => time() + 600];
         return JWT::encode($payload, Security::getSalt(), 'HS256');
     }
 
@@ -51,10 +52,33 @@ class PositionsControllerTest extends TestCase
             "company" => "Talentify"
         ]);
 
+        $this->assertResponseCode(200);
+    }
 
-        //title:string description:string status:boolean address:string salary:decimal company:string user_id:integer created modified
+    public function testEditPosition(): void
+    {
+        $this->put('/positions/edit/1.json?token='.$this->getToken(), [
+            "title" => "PHP Developer",
+            "description" => "PHP7, API Development",
+            "address" => "Orlando, Florida",
+            "salary" => 8500.00,
+            "company" => "Talentify"
+        ]);
 
         $this->assertResponseCode(200);
+    }
+
+    public function testValidateEditPositionAnotherRecruiter(): void
+    {
+        $this->put('/positions/edit/2.json?token='.$this->getToken(), [
+            "title" => "PHP Developer",
+            "description" => "PHP7, API Development",
+            "address" => "Orlando, Florida",
+            "salary" => 8500.00,
+            "company" => "Talentify"
+        ]);
+
+        $this->assertResponseCode(400);
     }
 
 }

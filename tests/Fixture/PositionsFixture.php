@@ -60,6 +60,18 @@ class PositionsFixture extends TestFixture
                 'created' => '2021-03-02 19:04:28',
                 'modified' => '2021-03-02 19:04:28',
             ],
+            [
+                'id' => 2,
+                'title' => 'Lorem ipsum dolor sit amet',
+                'description' => 'Lorem ipsum dolor sit amet',
+                'status' => 1,
+                'address' => 'Lorem ipsum dolor sit amet',
+                'salary' => 1.5,
+                'company' => 'Lorem ipsum dolor sit amet',
+                'user_id' => 2,
+                'created' => '2021-03-02 19:04:28',
+                'modified' => '2021-03-02 19:04:28',
+            ],
         ];
         parent::init();
     }
