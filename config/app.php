@@ -339,7 +339,7 @@ return [
         'test' => [
             'className' => Connection::class,
             'driver' => Mysql::class,
-            'persistent' => true,
+            'persistent' => false,
             'timezone' => 'UTC',
             //'encoding' => 'utf8mb4',
             'flags' => [],

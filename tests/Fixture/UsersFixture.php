@@ -50,6 +50,15 @@ class UsersFixture extends TestFixture
                 'created' => '2021-03-01 23:36:05',
                 'modified' => '2021-03-01 23:36:05',
             ],
+            [
+                'id' => 2,
+                'name' => 'Paulo',
+                'email' => 'ps.arguelo@gmail.com',
+                'password' => '$2y$10$ILegf0GIkqNjVAl6UmeyAuJ6LvUmfYDvv.zBb2ykMcSOJKEcaSPC6',
+                'status' => 1,
+                'created' => '2021-03-01 23:36:05',
+                'modified' => '2021-03-01 23:36:05',
+            ],
         ];
         parent::init();
     }

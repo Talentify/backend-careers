@@ -20,7 +20,7 @@ class UsersController extends AppController
     public function initialize(): void
     {
         parent::initialize();
-        $this->Authentication->allowUnauthenticated(['index','login','add', 'list']);
+        $this->Authentication->allowUnauthenticated(['index','login','add']);
     }
 
     /**

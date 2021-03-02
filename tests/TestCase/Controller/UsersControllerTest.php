@@ -38,15 +38,15 @@ class UsersControllerTest extends TestCase
 
 
     /**
-     * Test index method
+     * Test testAddUser method
      *
      * @return void
      */
-    public function testAdd(): void
+    public function testAddUser(): void
     {
         $this->post('/users/add.json', [
-            "name" => "Paulo",
-            "email" => "ps.arguelo@gmail.com",
+            "name" => "Jon",
+            "email" => "jon@gmail.com",
             "password" => "123456",
         ]);
 
@@ -56,32 +56,49 @@ class UsersControllerTest extends TestCase
     }
 
     /**
-     * Test testAddInvalidEmail method
+     * Test testAddUserWithUsedEmail method
      *
      * @return void
      */
     public function testAddUserWithUsedEmail(): void
     {
         $this->post('/users/add.json',[
-            "name" => "Paulo",
+            "name" => "Paul",
             "email" => "ps.arguelo@gmail.com",
             "password" => "123456",
         ]);
-        $this->assertResponseCode(200);
+        $this->assertResponseCode(400);
     }
 
 
     /**
-     * Test testAddInvalidEmail method
+     * Test testLoginSuccess method
      *
      * @return void
      */
-    public function testLogin(): void
+    public function testLoginSuccess(): void
     {
 
         $this->post('/users/login.json',[
             "email" => "ps.arguelo@gmail.com",
             "password" => "123456",
+        ]);
+
+        //dd($this->_response);
+        $this->assertResponseCode(200);
+    }
+
+    /**
+     * Test testInvalidLogin method
+     *
+     * @return void
+     */
+    public function testInvalidLogin(): void
+    {
+
+        $this->post('/users/login.json',[
+            "email" => "car@gmail.com",
+            "password" => "4456",
         ]);
 
         //dd($this->_response);
@@ -91,7 +108,7 @@ class UsersControllerTest extends TestCase
     public function testList() : void
     {
         $this->get('/users/list.json');
-        $this->assertResponseCode(200);
+        $this->assertResponseCode(401);
     }
 
 
