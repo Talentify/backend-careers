@@ -19,7 +19,7 @@ class PositionsController extends AppController
     public function initialize(): void
     {
         parent::initialize();
-        $this->Authentication->allowUnauthenticated(['list']);
+        $this->Authentication->allowUnauthenticated(['list', 'search']);
         $this->PositionsServices = new PositionsServices($this->getRequest(), $this->getResponse(), $this->Positions, $this->Authentication);
     }
 
@@ -40,9 +40,15 @@ class PositionsController extends AppController
     }
 
     public function list(){
-        $positions = $this->paginate();
-        $this->set(compact('positions'));
-        $this->set('_serialize', ['positions']);
+        $response = $this->PositionsServices->list();
+        $this->set(compact('response'));
+        $this->set('_serialize', ['response']);
+    }
+
+    public function search(){
+        $response = $this->PositionsServices->search();
+        $this->set(compact('response'));
+        $this->set('_serialize', ['response']);
     }
 
 

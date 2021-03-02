@@ -81,4 +81,39 @@ class PositionsControllerTest extends TestCase
         $this->assertResponseCode(400);
     }
 
+    public function testList(): void
+    {
+        $this->get('/positions/list.json');
+        $this->assertResponseCode(200);
+    }
+
+    public function testSearchKeyWord(): void
+    {
+        $this->get('/positions/search.json?keyword=JAVA');
+        $this->assertResponseCode(200);
+        $this->assertResponseContains('JAVA');
+    }
+
+    public function testSearchSalary(): void
+    {
+        $this->get('/positions/search.json?salary=2500');
+        $this->assertResponseCode(200);
+        $this->assertResponseContains('salary');
+    }
+
+    public function testSearchAddress(): void
+    {
+        $this->get('/positions/search.json?address=Orlando');
+        $this->assertResponseCode(200);
+        $this->assertResponseContains('Orlando');
+    }
+
+    public function testSearchCompany(): void
+    {
+        $this->get('/positions/search.json?company=Google');
+        $this->assertResponseCode(200);
+        $this->assertResponseContains('Google');
+    }
+
+
 }
