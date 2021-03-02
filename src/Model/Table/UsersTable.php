@@ -80,6 +80,11 @@ class UsersTable extends Table
             ->requirePresence('status', 'create')
             ->notEmptyString('status');
 
+        $validator
+            ->maxLength('company', 255)
+            ->requirePresence('company', 'create')
+            ->notEmptyString('company');
+
         return $validator;
     }
 

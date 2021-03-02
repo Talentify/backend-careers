@@ -23,6 +23,23 @@ class PositionsController extends AppController
         $this->PositionsServices = new PositionsServices($this->getRequest(), $this->getResponse(), $this->Positions, $this->Authentication);
     }
 
+    /**
+     * @api {post} /positions/add.json Add Position
+     * @apiName Add Position
+     * @apiGroup Positions
+     *
+     *
+     * @apiParam {String} title Positions title.
+     * @apiParam {String} description Positions description.
+     * @apiParam {String} address Positions address.
+     * @apiParam {String} salary Positions salary.
+     * @apiParam {String} company Users company.
+     *
+     * @apiHeader {String} Authorization JWT token
+     *
+     * @apiSuccess {Object} position Position Object JSON.
+     *
+     */
     public function add()
     {
         $response = $this->PositionsServices->addPosition();
@@ -31,6 +48,25 @@ class PositionsController extends AppController
         $this->set('_serialize', ['response']);
     }
 
+
+    /**
+     * @api {put} /positions/edit/{id}.json Edit Position
+     * @apiName Edit Position
+     * @apiGroup Positions
+     *
+     *
+     * @apiParam {String} title Positions title.
+     * @apiParam {String} description Positions description.
+     * @apiParam {String} address Positions address.
+     * @apiParam {Number} salary Positions salary.
+     * @apiParam {Boolean} status Positions status.
+     * @apiParam {String} company Users company.
+     *
+     * @apiHeader {String} Authorization JWT token
+     *
+     * @apiSuccess {Object} position Position Object JSON.
+     *
+     */
     public function edit($id)
     {
         $response = $this->PositionsServices->editPosition($id);
@@ -39,13 +75,38 @@ class PositionsController extends AppController
         $this->set('_serialize', ['response']);
     }
 
-    public function list(){
+    /**
+     * @api {get} /positions/list.json List Public Positions
+     * @apiName List
+     * @apiGroup Positions
+     *
+     * @apiSuccess {Object[]} positions Array of Position Object JSON.
+     * @apiSuccess {Object} paginator Paginator Object JSON.
+     *
+     */
+    public function list()
+    {
         $response = $this->PositionsServices->list();
         $this->set(compact('response'));
         $this->set('_serialize', ['response']);
     }
 
-    public function search(){
+    /**
+     * @api {get} /positions/search.json Search Public Positions
+     * @apiName Search
+     * @apiGroup Positions
+     *
+     * @apiParam {String} keyword Positions keyword.
+     * @apiParam {String} address Positions address.
+     * @apiParam {Number} salary Positions salary.
+     * @apiParam {String} company Positions company.
+     *
+     * @apiSuccess {Object[]} positions Array of Position Object JSON.
+     * @apiSuccess {Object} paginator Paginator Object JSON.
+     *
+     */
+    public function search()
+    {
         $response = $this->PositionsServices->search();
         $this->set(compact('response'));
         $this->set('_serialize', ['response']);

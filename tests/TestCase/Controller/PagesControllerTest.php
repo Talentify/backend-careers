@@ -34,10 +34,10 @@ class PagesControllerTest extends TestCase
      *
      * @return void
      */
-    public function testMultipleGet()
+    public function testRedirectDocumentation()
     {
         $this->get('/');
-        $this->assertResponseCode(401);
+        $this->assertResponseCode(301);
     }
 
 }

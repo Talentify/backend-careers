@@ -47,7 +47,8 @@ class UsersControllerTest extends TestCase
         $this->post('/users/add.json', [
             "name" => "Jon",
             "email" => "jon@gmail.com",
-            "password" => "123456",
+            "company" => "Facebook",
+            "password" => "123456"
         ]);
 
         $this->assertResponseCode(200);
