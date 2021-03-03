@@ -11,7 +11,7 @@ services:
         APP_ENCODING: 'UTF-8'
         APP_DEFAULT_LOCALE: 'en_US'
         APP_DEFAULT_TIMEZONE: 'UTC'
-        SECURITY_SALT : '$1$gSUz3sUo$mFPQB05MAMhFokOSydON91'
+        SECURITY_SALT : 'a1agSUz3sUoamFPQB05MAMhFokOSydON91'
         DB_HOST: 'mysql'
         DB_PORT: '3306'
         DB_DATABASE: 'talentify'
