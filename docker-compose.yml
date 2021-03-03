@@ -7,7 +7,7 @@ services:
     container_name: talentify-api
     environment:
         APP_NAME: 'talentify'
-        DEBUG: 'true'
+        DEBUG: 'false'
         APP_ENCODING: 'UTF-8'
         APP_DEFAULT_LOCALE: 'en_US'
         APP_DEFAULT_TIMEZONE: 'UTC'
