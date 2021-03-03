@@ -17,8 +17,8 @@ services:
         DB_DATABASE: 'talentify'
         DB_USERNAME: 'talentify'
         DB_PASSWORD: '123456'
-    volumes:
-      - .:/var/www/html/
+#    volumes:
+#      - .:/var/www/html/
     networks:
       - cakephp4     
     ports:
