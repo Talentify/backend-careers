@@ -78,3 +78,6 @@ Endpoint para listagem de vagas públicas e busca por parâmetros definidos. O r
 | keywords | (Opcional) Palavras para sem buscadas tanto no título quanto na descrição da vaga, separados por vírgula. Exemplo: php,mysql,laravel |
 | address | (Opcional) Endereço da vaga |
 | salary | (Opcional) Salário da vaga em formato float |
+
+## Testes
+Para executar a bateria de testes basta apenas executar o seguinte comando na raiz do projeto: `php vendor/bin/phpunit`
