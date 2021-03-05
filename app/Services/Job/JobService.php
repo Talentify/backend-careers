@@ -2,9 +2,10 @@
 
 namespace App\Services\Job;
 
-
 use App\Models\Job;
 use App\Services\Recruiter\RecruiterService;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class JobService
 {
@@ -17,6 +18,21 @@ class JobService
 
     public function create(array $params): array
     {
+        $validator = Validator::make($params, [
+            'title' => 'required',
+            'description' => 'required',
+            'status' => [
+                'required',
+                Rule::in(['active', 'inactive', 'paused', 'finished'])
+            ],
+        ]);
+
+        if($validator->fails()) {
+            return [
+                'error' => $validator->errors(),
+            ];
+        }
+
         $job = Job::create($params);
 
         return [
@@ -38,6 +54,18 @@ class JobService
                 'error' => 'Você não tem permissão para editar essa vaga.',
             ];
         }
+        $validator = Validator::make($params, [
+            'status' => [
+                Rule::in(['active', 'inactive', 'paused', 'finished'])
+            ],
+        ]);
+
+        if($validator->fails()) {
+            return [
+                'error' => $validator->errors(),
+            ];
+        }
+
         $job->update($params);
 
         return [

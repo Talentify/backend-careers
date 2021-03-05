@@ -6,17 +6,23 @@ namespace App\Services\Recruiter;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class RecruiterRegisterService
 {
-    protected $recruiterParamsValidator = [
-        'name' => 'required|string',
-        'company' => 'required',
-        'password' => 'required',
-    ];
-
-    public function register(array $params = []): User
+    public function register(array $params = []): User | array
     {
+        $validator = Validator::make($params, [
+            'name' => 'required|string',
+            'company' => 'required',
+            'password' => 'required',
+        ]);
+        if($validator->fails()) {
+            return [
+                'error' => $validator->errors(),
+            ];
+        }
+
         $company = Company::firstOrCreate([
             'name' => $params['company']
         ]);

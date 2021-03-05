@@ -65,7 +65,7 @@ Endpoint para alteração dos dados da vaga. O retorno será um objeto contendo 
 | --- | --- |
 | title | (Opcional) Título da vaga |
 | description | (Opcional) Descrição da vaga |
-| status | (Opcional) Status da vaga: active, inactive, pause, finished |
+| status | (Opcional) Status da vaga: active, inactive, paused, finished |
 | address | (Opcional) Endereço da vaga |
 | salary | (Opcional) Salário da vaga em formato float |
 
