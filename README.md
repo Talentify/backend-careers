@@ -1,62 +1,80 @@
-## A vaga
-Estamos constante adicionando novas features e aperfeiçoando as já existentes. Como desenvolvedor sênior, voce será responsável por criar código limpo, testável, e de alta qualidade, além de auxiliar o restante da equipe a migrar código existente para a nova arquitetura orientada a domínio.Somos adeptos de desenvolvimento ágil, integração contínua, code review e testes automáticos. Com isso, nossa equipe busca constantemente desenvolver e aprimorar o produto para estarmos sempre a frente do mercado.
+## Introdução
 
-<details>
-<summary>Detalhes da vaga</summary>
+### Tecnologias utilizadas e pré-requisitos
 
-## A empresa
-A Talentify.io nasceu da fusão de 3 empresas distintas em 3 áreas diferentes: Digital Media & Advertising, Mobile Technology e HR Consulting. Nossa plataforma de SaaS ajuda empresas a superar seus maiores desafios na  busca e contratação de talentos em grande escala.
+- PHP 8.0
+- Laravel 8.12.*
+- Composer 2.0.11
+- MySQL 8.0
 
-## Beneficios
-- Home office (você pode trabalhar em casa ou em nosso escritório, em Alphaville/SP)
-- Horario flexivel
-- Assistencia medica e odontologica (apos 3 meses)
-- Vale refeicao e transporte
+### Considerações técnicas
 
-## Requisitos
-- PHP 7
-- Desenvolvimento de testes
-- Desenvolvimento Agil
-- Web Services (RESTful ou SOAP ou JSON-RPC, etc)
-- Algum dos frameworks PHP (Phalcon, Zend, Symfony, Laravel)
-- Familiaridade com as PHP Standards Recommendations (PSRs)
-- GIT
-- Banco de dados relacional (MySQL, PostgreSQL, etc)
+- Container/Docker: Idealmente, o projeto está preparado para rodar dentro de containers Docker/K8s, permitindo o
+  escalonamento horizontal e vertical
+- Sistema de token fixo: Atualmente, o token de autenticação é fixo, facilitando a forma de lidar com SPA e aplicativos
+  mobile, mas nada impede de trabalhar com tokens com expiração definida de forma fácil com o Laravel Sanctum
+- Por questão de simplicidade o arquivo .env está incluso no repositório, mas com um alerta que essa não é uma boa 
+prática a se fazer em ambientes de produção
 
-## Desejável
-- Arquitetura hexagonal
-- DDD
-- Microserviços
-- Filas de mensagens (RabbitMQ, Apache Kafka, Amazon SQS, etc)
-- Elasticsearch
-- Linux
-- Amazon Web Services (AWS)
-- CI/CD
-- Inglês (leitura, escrita e conversação)
+### Instalação e configuração
 
-</details>
+Com os pré-requisitos instalador, basta seguir os seguintes passos para ter a aplicação funcionando
 
-## Talk is cheap. Show me the code!
+- Após baixar o repositório, instale as dependências do projeto: `composer install`
+- Agora, certifique-se de que o arquivo .env tem as credenciais corretas de banco de dados para que possamos executar as
+  migrações de tabelas: `php artisan migrate`
 
-Você deverá construir uma API REST com as seguintes funcionalidades:
-* Cadastro/Login de recrutadores, onde cada recrutador pertence a uma empresa diferente
-* CRUD de vagas pelos recrutadores
-   * Vagas possuem os campos: title, description, status, address, salary, company
-   * Um recrutador não pode modificar vagas criadas por outro
-* Listagem pública de vagas abertas
-* Busca pública de vagas abertas
-   * Critérios de busca que devem ser aceitos: keyword, address, salary, company
-  
- 
-#### Observações
-- É permitido utilizar qualquer biblioteca ou framework PHP, desde que a lógica de neǵocio seja escrita por você em PHP;
-- Interface gráfica é opcional, desde que a comunicação com o back-end seja feita através dos endpoints REST desenvolvidos por você;
-- Testes automatizados (de unidade e/ou funcionais e/ou aceitação) são **obrigatórios**;
-- Um README.md deverá ser adicionado e conter, no mínimo, as instruções de setup e utilização da aplicação.
+Pronto! Com esses dois passos sua aplicação está funcional. Para utilizar o servidor web imbutido no Laravel basta
+apenas executar: `php artisan serve`
 
-#### Envio
-Para enviar o seu código, submeta uma pull request para este repositório com o título da PR contendo seu nome e sobrenome.
+### Endpoints
 
-#### Disclaimer
-O código fonte que você produzir será utilizado somente para avaliar sua aptidão para a vaga. Não será feito nenhum uso comercial do código fonte, tampouco haverá a exigência de direitos de atribuição.
+#### POST /api/recruiters
+Endpoint para o cadastro de novos recrutadores
 
+| Parâmetro | Descrição |
+| --- | --- |
+| name | (Obrigatório) Nome do recurtador |
+| email | (Obrigatório) E-mail do recurtador |
+| password | (Obrigatório) Senha do recrutador |
+| company | (Obrigatório) Nome da empresa do recrutador. Caso a empresa já exista, ele será registrado na empresa, caso não, uma nova empresa será criada e ele será registrado na mesma |
+
+### POST /api/recruiters/login
+Endpoint para login dos recrutadores. O retorno será o token necessário para a autenticação Bearer nos endpoints
+
+| Parâmetro | Descrição |
+| --- | --- |
+| email | (Obrigatório) E-mail do recurtador |
+| password | (Obrigatório) Senha do recrutador |
+
+### POST /api/jobs (autenticação necessária)
+Endpoint para criação de vagas. O retorno será um objeto contendo as informações da vaga criada
+
+| Parâmetro | Descrição |
+| --- | --- |
+| title | (Obrigatório) Título da vaga |
+| description | (Obrigatório) Descrição da vaga |
+| status | (Obrigatório) Status da vaga: active, inactive, pause, finished |
+| address | (Obrigatório) Endereço da vaga |
+| salary | (Obrigatório) Salário da vaga em formato float |
+
+### POST /api/jobs/{jobId} (autenticação necessária)
+Endpoint para alteração dos dados da vaga. O retorno será um objeto contendo as informações da vaga criada
+
+| Parâmetro | Descrição |
+| --- | --- |
+| title | (Opcional) Título da vaga |
+| description | (Opcional) Descrição da vaga |
+| status | (Opcional) Status da vaga: active, inactive, pause, finished |
+| address | (Opcional) Endereço da vaga |
+| salary | (Opcional) Salário da vaga em formato float |
+
+### POST /api/jobs/search
+Endpoint para listagem de vagas públicas e busca por parâmetros definidos. O retorno será um array contendo objetos das vagas cadastrados no sistema
+
+| Parâmetro | Descrição |
+| --- | --- |
+| company_id | (Opcional) Id da empresa para filtrar  |
+| keywords | (Opcional) Palavras para sem buscadas tanto no título quanto na descrição da vaga, separados por vírgula. Exemplo: php,mysql,laravel |
+| address | (Opcional) Endereço da vaga |
+| salary | (Opcional) Salário da vaga em formato float |
