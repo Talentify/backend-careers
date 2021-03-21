@@ -81,6 +81,8 @@ Seguir os passos abaixo:<br/>
 - composer dumpautoload<br/>
 - php artisan key:generate<br/>
 - php artisan migrate --seed<br/>
+-- User: admin@admin.com.br<br/>
+  -- Pass: 12345678
 
 ##Endpoints e Rotas
 </br>
