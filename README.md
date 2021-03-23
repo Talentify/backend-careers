@@ -50,7 +50,7 @@ Você deverá construir uma API RESTful com as seguintes funcionalidades:
  
 #### Observações
 - É permitido utilizar qualquer biblioteca ou framework PHP, desde que a lógica de neǵocio seja escrita por você, em PHP;
-- Nesse contexto, um bom código é aquele que segue Clean Code, SOLID e padrões arquiteturais, como os descritos na seção [Desejavel](#desejavel);
+- Nesse contexto, um bom código é aquele que segue Clean Code, SOLID e padrões arquiteturais, como os descritos na seção [Desejável](#desejável);
 - Interface gráfica é opcional, desde que a comunicação com o back-end seja feita através dos endpoints RESTful desenvolvidos por você;
 - Testes automatizados (de unidade e/ou funcionais e/ou aceitação) são **obrigatórios**;
 - Um README.md deverá ser adicionado e conter, no mínimo, as instruções de setup e utilização da aplicação.
