@@ -38,7 +38,7 @@ A Talentify.io nasceu da fusão de 3 empresas distintas em 3 áreas diferentes: 
 
 ## Talk is cheap. Show me the code!
 
-Você deverá construir uma API REST com as seguintes funcionalidades:
+Você deverá construir uma API RESTful com as seguintes funcionalidades:
 * Cadastro/Login de recrutadores, onde cada recrutador pertence a uma empresa diferente
 * CRUD de vagas pelos recrutadores
    * Vagas possuem os campos: title, description, status, address, salary, company
@@ -49,8 +49,9 @@ Você deverá construir uma API REST com as seguintes funcionalidades:
   
  
 #### Observações
-- É permitido utilizar qualquer biblioteca ou framework PHP, desde que a lógica de neǵocio seja escrita por você em PHP;
-- Interface gráfica é opcional, desde que a comunicação com o back-end seja feita através dos endpoints REST desenvolvidos por você;
+- É permitido utilizar qualquer biblioteca ou framework PHP, desde que a lógica de neǵocio seja escrita por você, em PHP;
+- Nesse contexto, um bom código é aquele que segue Clean Code, SOLID e padrões arquiteturais, como os descritos na seção [Desejavel](#desejavel);
+- Interface gráfica é opcional, desde que a comunicação com o back-end seja feita através dos endpoints RESTful desenvolvidos por você;
 - Testes automatizados (de unidade e/ou funcionais e/ou aceitação) são **obrigatórios**;
 - Um README.md deverá ser adicionado e conter, no mínimo, as instruções de setup e utilização da aplicação.
 
