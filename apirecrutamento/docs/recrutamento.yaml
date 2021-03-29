@@ -1,0 +1,165 @@
+swagger: "2.0.0"
+info:
+  version: 1.0.0
+  title: Api Recrutamento server = http://localhost:8000
+  license:
+    name: MIT Interface de pesquisa de vagas = http://localhost:8000/app.php
+  consumes:
+  - "application/json"
+servers:
+  - url: http://localhost:8000/
+paths:
+  /listar:
+    get:
+      summary: Lista todas as vagas
+      operationId: listar
+      tags:
+        - Vagas Publicas
+      parameters:
+      responses:
+        '200':
+          description: lista todas as vagas
+          headers:
+          content:
+            application/json:    
+              schema:
+  /recrutador:
+    post:
+      summary: Cadastrar Recrutador
+      operationId: cadastrar
+      tags:
+        - Recrutador
+      parameters:
+        - name: nome
+          description: Nome do Recrutador
+          in: query
+          required: true
+        - name: usuario
+          description: Usuário para acesso da api
+          in: query
+          required: true
+        - name: senha
+          description: Senha para acesso da api
+          in: query
+          required: true
+        - name: empresa
+          description: Empresa que o usuário faz parte
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cadastrar Recrutador
+          headers:
+          content:
+            application/json:    
+              schema:
+  /vagas/{id}{recrutador_id}:
+    get:
+      summary: Lista Vaga Recrutador
+      operationId: listar
+      tags:
+        - Vagas/Recrutador
+      parameters:
+      responses:
+        '200':
+          description: Lista Vaga Recrutador
+          headers:
+          content:
+            application/json:    
+              schema:
+  /vagas/cadastrar/{recrutador_id}:
+    post:
+      summary: Cadastrar Vaga
+      operationId: cadastrar
+      tags:
+        - Vagas/Recrutador
+      parameters:
+        - name: title
+          in: query
+          required: true
+        - name: description
+          in: query
+          required: true
+        - name: status
+          description: aberto/fechado
+          in: query
+          required: true
+        - name: address
+          in: query
+          required: true
+        - name: salary
+          in: query
+          required: true
+        - name: company
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cadastrar Vaga
+          headers:
+          content:
+            application/json:    
+              schema:
+  /vagas/atualizar/{id}/{recrutador_id}:
+    put:
+      summary: Atualizar Vaga
+      operationId: vagas/atualizar/id/recrutador_id
+      tags:
+        - Vagas/Recrutador
+      parameters:
+        - name: title
+          in: query
+          required: true
+        - name: description
+          in: query
+          required: true
+        - name: status
+          description: aberto/fechado
+          in: query
+          required: true
+        - name: address
+          in: query
+          required: true
+        - name: salary
+          in: query
+          required: true
+        - name: company
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Atualizar Vaga
+          headers:
+          content:
+            application/json:    
+              schema:
+  vagas/deletar/{id}/{recrutador_id}:
+    delete:
+      summary: deletear Vaga
+      operationId: deletar/id/recrutador_id
+      tags:
+        - Vagas/Recrutador
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id da vaga
+        - name: recrutador_id
+          in: path
+          required: true
+          description: id recrutador
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Remover vaga
+          headers:
+          content:
+            application/json:    
+              schema:

@@ -1,0 +1,15 @@
+{
+    "name": "talentify/api",
+    "description": "Api Vagas",
+    "require": {
+        "slim/slim": "^4.3",
+        "slim/psr7": "^0.6.0",
+        "symfony/yaml": "^4.4",
+        "slim/twig-view": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Api\\": "src/"
+        }
+    }
+}

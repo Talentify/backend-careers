@@ -1,0 +1,19 @@
+CREATE TABLE recrutador (
+	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	nome VARCHAR(100) NOT NULL,
+	usuario VARCHAR(100) NOT NULL,
+	senha VARCHAR(100) NOT NULL,
+	empresa VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE vagas (
+	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    title VARCHAR(100) NOT NULL,
+    description VARCHAR(100) NOT NULL,
+    status VARCHAR(10) NOT NULL,
+    address VARCHAR(100) NOT NULL,
+    salary VARCHAR (11) NOT NULL,
+    company VARCHAR(100) NOT NULL,
+    recrutador_id INTEGER,
+    FOREIGN KEY (recrutador_id) REFERENCES recrutador(id)
+);

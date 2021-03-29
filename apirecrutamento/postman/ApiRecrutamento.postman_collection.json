@@ -1,0 +1,315 @@
+{
+	"info": {
+		"_postman_id": "75a8e475-fa14-42d0-91c3-169da61866e4",
+		"name": "ApiRecrutamento",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cadastrar Recrutador",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/recrutador?nome=jandelson&usuario=jandelson&senha=1234&empresa=talentify",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"recrutador"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "jandelson"
+						},
+						{
+							"key": "usuario",
+							"value": "jandelson"
+						},
+						{
+							"key": "senha",
+							"value": "1234"
+						},
+						{
+							"key": "empresa",
+							"value": "talentify"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta vaga recrutador",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "jandelson",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/vagas/3/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"vagas",
+						"3",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar Vaga",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "jandelson",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/vagas/cadastrar/1?title=COMERCIAL&description=Desenvolvedor PHP&status=aberto&address=Rua jose São Paulo&salary=5800&company=Work",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"vagas",
+						"cadastrar",
+						"1"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "COMERCIAL"
+						},
+						{
+							"key": "description",
+							"value": "Desenvolvedor PHP"
+						},
+						{
+							"key": "status",
+							"value": "aberto"
+						},
+						{
+							"key": "address",
+							"value": "Rua jose São Paulo"
+						},
+						{
+							"key": "salary",
+							"value": "5800"
+						},
+						{
+							"key": "company",
+							"value": "Work"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar Vaga",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "jandelson",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/vagas/atualizar/3/1?title=DEV TESTE&description=Desenvolvedor PHP&status=aberto&address=Rua jose São Paulo&salary=6800&company=Work",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"vagas",
+						"atualizar",
+						"3",
+						"1"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "DEV TESTE"
+						},
+						{
+							"key": "description",
+							"value": "Desenvolvedor PHP"
+						},
+						{
+							"key": "status",
+							"value": "aberto"
+						},
+						{
+							"key": "address",
+							"value": "Rua jose São Paulo"
+						},
+						{
+							"key": "salary",
+							"value": "6800"
+						},
+						{
+							"key": "company",
+							"value": "Work"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar Vaga",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "jandelson",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/vagas/deletar/2/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"vagas",
+						"deletar",
+						"2",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Vagas Publicas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/listar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"listar"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "1234",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "jandelson",
+				"type": "string"
+			}
+		]
+	}
+}
