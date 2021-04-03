@@ -1,0 +1,20 @@
+{
+    "name": "iacreative/backend-careers",
+    "description": "Api desenvolvida para teste de conhecimento no desafio Back-end da Talentify",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "iacreative",
+            "email": "ia2design@hotmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Api\\": "app/Infrastructure/Api"
+        }
+    }
+}
