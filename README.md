@@ -13,10 +13,8 @@
 
 # Registro
 {host}/api/register
-
-| header                            |
-|--------------|--------------------|
-| Content-Type | multipart/form-data|
+```
+    header Content-Type multipart/form-data
 ```
 #### Payload
 ```
