@@ -1,0 +1,549 @@
+{
+	"id": "eb98b05d-21ee-283f-322d-588fa09ba995",
+	"name": "Desafio Recrutadores",
+	"description": "",
+	"order": [],
+	"folders_order": [
+		"f9792766-e23b-eab0-8e7d-b3f9b2beba2d",
+		"a7950921-ac11-e6d4-8815-8b9aa814c8a0",
+		"eeffa90a-5d63-aac4-23d3-9ef9e781e15f",
+		"44956e68-5e1b-ac7e-560a-d365f7a50f3d"
+	],
+	"folders": [
+		{
+			"id": "a7950921-ac11-e6d4-8815-8b9aa814c8a0",
+			"name": "Cadastro",
+			"description": "",
+			"order": [
+				"a1b04b24-6a93-6684-a1df-5bf98d0b82aa"
+			],
+			"folders_order": [],
+			"owner": "1207971",
+			"collectionId": "eb98b05d-21ee-283f-322d-588fa09ba995"
+		},
+		{
+			"id": "eeffa90a-5d63-aac4-23d3-9ef9e781e15f",
+			"name": "Login JWT",
+			"description": "",
+			"order": [
+				"c1e5b94f-b087-be74-9f8d-78c800edcd3b",
+				"fdf7a593-00c2-7ad2-3be1-1634d929d722",
+				"bd9d8970-044a-e1ca-a963-885b77be9426"
+			],
+			"folders_order": [],
+			"owner": "1207971",
+			"collectionId": "eb98b05d-21ee-283f-322d-588fa09ba995"
+		},
+		{
+			"id": "f9792766-e23b-eab0-8e7d-b3f9b2beba2d",
+			"name": "Public",
+			"description": "",
+			"order": [
+				"38c26423-1436-1b29-8060-721ac306c327"
+			],
+			"folders_order": [],
+			"owner": "1207971",
+			"collectionId": "eb98b05d-21ee-283f-322d-588fa09ba995"
+		},
+		{
+			"id": "44956e68-5e1b-ac7e-560a-d365f7a50f3d",
+			"name": "Vagas",
+			"description": "",
+			"order": [
+				"7f7605c7-0844-75f4-ab29-d7689abbb833",
+				"e473b332-cc5c-0b9a-43d6-8c4fc245a4b5",
+				"55ba8d47-c0bd-556d-cacb-ef3a2f93eeaa",
+				"582449b5-ff0b-b05d-a757-605812e477a0"
+			],
+			"folders_order": [],
+			"owner": "1207971",
+			"collectionId": "eb98b05d-21ee-283f-322d-588fa09ba995"
+		}
+	],
+	"owner": "1207971",
+	"hasRequests": true,
+	"requests": [
+		{
+			"id": "38c26423-1436-1b29-8060-721ac306c327",
+			"name": "List Vacancies",
+			"description": "",
+			"collectionId": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"method": "GET",
+			"headers": "Content-Type: application/json\nAccept: */*",
+			"dataMode": "raw",
+			"data": [],
+			"url": "{{Server 1}}/api/list-vacancies",
+			"responses": [
+				{
+					"id": "1b9463c9-f8a6-16e3-1f48-2a4aace58c22",
+					"name": "Response_200",
+					"responseCode": {
+						"code": 200,
+						"detail": ""
+					},
+					"language": "Text",
+					"previewType": "html",
+					"headers": [],
+					"cookies": [],
+					"rawDataType": "text",
+					"owner": "1207971"
+				}
+			],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "*/*",
+					"enabled": true
+				}
+			],
+			"collection_id": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"folder": "f9792766-e23b-eab0-8e7d-b3f9b2beba2d"
+		},
+		{
+			"id": "55ba8d47-c0bd-556d-cacb-ef3a2f93eeaa",
+			"name": "Update Vacancies",
+			"description": "",
+			"collectionId": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"method": "PUT",
+			"headers": "X-Requested-With: XMLHttpRequest\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6OTA5MFwvYXBpXC9hdXRoIiwiaWF0IjoxNjE4MDkyMDgwLCJleHAiOjE2MTgwOTU2ODAsIm5iZiI6MTYxODA5MjA4MCwianRpIjoiTVBUT29kSHpvam5oMUEwZyIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.7drRirHE3_QytoC6qS10tvytzlysfR1Rv9AZSNCLmOM\nContent-Type: application/json\nAccept: */*",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"title\": \"Desenvolvedor JAVA\",\r\n  \"status\": \"Em Aberto\",\r\n  \"address\": \"Rua Um A, 600 - Rio Claro/SP\",\r\n  \"salary\": 5000,\r\n  \"keyword\": \"JAVA, Desenvolvedor\"\r\n}",
+			"url": "{{Server 1}}/api/v1/vacancies/create/2",
+			"responses": [
+				{
+					"id": "d6047c30-fd04-8cb4-d3d0-633f27e0565c",
+					"name": "Response_200",
+					"responseCode": {
+						"code": 200,
+						"detail": ""
+					},
+					"language": "Text",
+					"previewType": "html",
+					"headers": [],
+					"cookies": [],
+					"rawDataType": "text",
+					"owner": "1207971"
+				}
+			],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "X-Requested-With",
+					"value": "XMLHttpRequest",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6OTA5MFwvYXBpXC9hdXRoIiwiaWF0IjoxNjE4MDkyMDgwLCJleHAiOjE2MTgwOTU2ODAsIm5iZiI6MTYxODA5MjA4MCwianRpIjoiTVBUT29kSHpvam5oMUEwZyIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.7drRirHE3_QytoC6qS10tvytzlysfR1Rv9AZSNCLmOM",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "*/*",
+					"enabled": true
+				}
+			],
+			"collection_id": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"folder": "44956e68-5e1b-ac7e-560a-d365f7a50f3d"
+		},
+		{
+			"id": "582449b5-ff0b-b05d-a757-605812e477a0",
+			"name": "Delete Vacancies",
+			"description": "",
+			"collectionId": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"method": "DELETE",
+			"headers": "Content-Type: application/json\nX-Requested-With: XMLHttpRequest\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6OTA5MFwvYXBpXC9hdXRoIiwiaWF0IjoxNjE4MDg1OTUyLCJleHAiOjE2MTgwODk1NTIsIm5iZiI6MTYxODA4NTk1MiwianRpIjoiOFFLYXF2R3hVbnhCcHhhRiIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.4Bxyji-hWVxB132KwsMmJ_s5feI9AHClF7iRTqQCgPQ\nAccept: */*",
+			"dataMode": "raw",
+			"data": [],
+			"url": "{{Server 1}}/api/v1/vacancies/destroy/2?name=Christian",
+			"responses": [
+				{
+					"id": "8d940989-4e98-71d2-620b-9dc9ffc1be0e",
+					"name": "Response_200",
+					"responseCode": {
+						"code": 200,
+						"detail": ""
+					},
+					"language": "Text",
+					"previewType": "html",
+					"headers": [],
+					"cookies": [],
+					"rawDataType": "text",
+					"owner": "1207971"
+				}
+			],
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "name",
+					"value": "Christian",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "X-Requested-With",
+					"value": "XMLHttpRequest",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6OTA5MFwvYXBpXC9hdXRoIiwiaWF0IjoxNjE4MDg1OTUyLCJleHAiOjE2MTgwODk1NTIsIm5iZiI6MTYxODA4NTk1MiwianRpIjoiOFFLYXF2R3hVbnhCcHhhRiIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.4Bxyji-hWVxB132KwsMmJ_s5feI9AHClF7iRTqQCgPQ",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "*/*",
+					"enabled": true
+				}
+			],
+			"collection_id": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"folder": "44956e68-5e1b-ac7e-560a-d365f7a50f3d"
+		},
+		{
+			"id": "7f7605c7-0844-75f4-ab29-d7689abbb833",
+			"name": "Create Vacancies",
+			"description": "",
+			"collectionId": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"method": "POST",
+			"headers": "X-Requested-With: XMLHttpRequest\nContent-Type: application/json\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6OTA5MFwvYXBpXC9hdXRoIiwiaWF0IjoxNjE4MDkyMDgwLCJleHAiOjE2MTgwOTU2ODAsIm5iZiI6MTYxODA5MjA4MCwianRpIjoiTVBUT29kSHpvam5oMUEwZyIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.7drRirHE3_QytoC6qS10tvytzlysfR1Rv9AZSNCLmOM\nAccept: */*",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"title\": \"Desenvolvedor JAVA \",\r\n  \"status\": \"Em Aberto\",\r\n  \"address\": \"Rua Um A, 600 - Rio Santo/SP\",\r\n  \"salary\": 5000,\r\n  \"keyword\": \"JAVA, Desenvolvedor\"\r\n}",
+			"url": "{{Server 1}}/api/v1/vacancies/create",
+			"responses": [
+				{
+					"id": "fea70662-4d2e-be67-1b38-329b740014d7",
+					"name": "Response_200",
+					"responseCode": {
+						"code": 200,
+						"detail": ""
+					},
+					"language": "Text",
+					"previewType": "html",
+					"headers": [],
+					"cookies": [],
+					"rawDataType": "text",
+					"owner": "1207971"
+				}
+			],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "X-Requested-With",
+					"value": "XMLHttpRequest",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6OTA5MFwvYXBpXC9hdXRoIiwiaWF0IjoxNjE4MDkyMDgwLCJleHAiOjE2MTgwOTU2ODAsIm5iZiI6MTYxODA5MjA4MCwianRpIjoiTVBUT29kSHpvam5oMUEwZyIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.7drRirHE3_QytoC6qS10tvytzlysfR1Rv9AZSNCLmOM",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "*/*",
+					"enabled": true
+				}
+			],
+			"collection_id": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"folder": "44956e68-5e1b-ac7e-560a-d365f7a50f3d"
+		},
+		{
+			"id": "a1b04b24-6a93-6684-a1df-5bf98d0b82aa",
+			"name": "Register",
+			"description": "",
+			"collectionId": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"method": "POST",
+			"headers": "Content-Type: application/json\nAccept: */*",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"name\": \"Christisan\",\r\n  \"email\": \"chkilian89@gmail.com\",\r\n  \"username\": \"christian\",\r\n  \"password\": \"123456\",\r\n  \"company\": {\r\n    \"name\": \"Vargas LTDA\"\r\n  }\r\n}",
+			"url": "{{Server 1}}/register",
+			"responses": [
+				{
+					"id": "572ee63a-4b54-dd48-1984-0fd3c28e5820",
+					"name": "Response_200",
+					"responseCode": {
+						"code": 200,
+						"detail": ""
+					},
+					"language": "Text",
+					"previewType": "html",
+					"headers": [],
+					"cookies": [],
+					"rawDataType": "text",
+					"owner": "1207971"
+				}
+			],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "*/*",
+					"enabled": true
+				}
+			],
+			"collection_id": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"folder": "a7950921-ac11-e6d4-8815-8b9aa814c8a0"
+		},
+		{
+			"id": "bd9d8970-044a-e1ca-a963-885b77be9426",
+			"name": "Resfresh Token",
+			"description": "",
+			"collectionId": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"method": "POST",
+			"headers": "Content-Type: multipart/form-data\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODZcL2FwaVwvYXV0aCIsImlhdCI6MTYxMDU4MDM0MywiZXhwIjoxNjEwNTgzOTQzLCJuYmYiOjE2MTA1ODAzNDMsImp0aSI6Im5yZzByRVh2T2dLUUdrcm4iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.hxnoaDVXjsxGsIYMInDAvK3Qp3NJhyiGOEKw45aqdzI\nAccept: */*",
+			"dataMode": "raw",
+			"data": [],
+			"url": "{{Server 1}}/api/auth-refresh",
+			"responses": [
+				{
+					"id": "19293afc-4970-3861-7245-a57ddb5c4fe7",
+					"name": "Response_200",
+					"responseCode": {
+						"code": 200,
+						"detail": ""
+					},
+					"language": "Text",
+					"previewType": "html",
+					"headers": [],
+					"cookies": [],
+					"rawDataType": "text",
+					"owner": "1207971"
+				}
+			],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "multipart/form-data",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODZcL2FwaVwvYXV0aCIsImlhdCI6MTYxMDU4MDM0MywiZXhwIjoxNjEwNTgzOTQzLCJuYmYiOjE2MTA1ODAzNDMsImp0aSI6Im5yZzByRVh2T2dLUUdrcm4iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.hxnoaDVXjsxGsIYMInDAvK3Qp3NJhyiGOEKw45aqdzI",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "*/*",
+					"enabled": true
+				}
+			],
+			"collection_id": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"folder": "eeffa90a-5d63-aac4-23d3-9ef9e781e15f"
+		},
+		{
+			"id": "c1e5b94f-b087-be74-9f8d-78c800edcd3b",
+			"name": "Login",
+			"description": "",
+			"collectionId": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"method": "POST",
+			"headers": "Content-Type: multipart/form-data\nAccept: */*",
+			"dataMode": "urlencoded",
+			"data": [
+				{
+					"key": "username",
+					"value": "christian",
+					"type": "text",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "123456",
+					"type": "text",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"rawModeData": "",
+			"url": "{{Server 1}}/api/auth",
+			"responses": [
+				{
+					"id": "b3a743ed-d2e9-433a-c3f0-b140cd86583e",
+					"name": "Response_200",
+					"responseCode": {
+						"code": 200,
+						"detail": ""
+					},
+					"language": "Text",
+					"previewType": "html",
+					"headers": [],
+					"cookies": [],
+					"rawDataType": "text",
+					"owner": "1207971"
+				}
+			],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "multipart/form-data",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "*/*",
+					"enabled": true
+				}
+			],
+			"collection_id": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"folder": "eeffa90a-5d63-aac4-23d3-9ef9e781e15f"
+		},
+		{
+			"id": "e473b332-cc5c-0b9a-43d6-8c4fc245a4b5",
+			"name": "List Vacancies By User",
+			"description": "",
+			"collectionId": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"method": "GET",
+			"headers": "X-Requested-With: XMLHttpRequest\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6OTA5MFwvYXBpXC9hdXRoIiwiaWF0IjoxNjE4MDg1OTUyLCJleHAiOjE2MTgwODk1NTIsIm5iZiI6MTYxODA4NTk1MiwianRpIjoiOFFLYXF2R3hVbnhCcHhhRiIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.4Bxyji-hWVxB132KwsMmJ_s5feI9AHClF7iRTqQCgPQ\nContent-Type: application/json\nAccept: */*",
+			"dataMode": "raw",
+			"data": [],
+			"url": "{{Server 1}}/api/v1/vacancies/list-vacancies-by-user",
+			"responses": [
+				{
+					"id": "881257c8-2533-551d-663b-9b0e94fe60ed",
+					"name": "Response_200",
+					"responseCode": {
+						"code": 200,
+						"detail": ""
+					},
+					"language": "Text",
+					"previewType": "html",
+					"headers": [],
+					"cookies": [],
+					"rawDataType": "text",
+					"owner": "1207971"
+				}
+			],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "X-Requested-With",
+					"value": "XMLHttpRequest",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6OTA5MFwvYXBpXC9hdXRoIiwiaWF0IjoxNjE4MDg1OTUyLCJleHAiOjE2MTgwODk1NTIsIm5iZiI6MTYxODA4NTk1MiwianRpIjoiOFFLYXF2R3hVbnhCcHhhRiIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.4Bxyji-hWVxB132KwsMmJ_s5feI9AHClF7iRTqQCgPQ",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "*/*",
+					"enabled": true
+				}
+			],
+			"collection_id": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"folder": "44956e68-5e1b-ac7e-560a-d365f7a50f3d"
+		},
+		{
+			"id": "fdf7a593-00c2-7ad2-3be1-1634d929d722",
+			"name": "Me",
+			"description": "",
+			"collectionId": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"method": "GET",
+			"headers": "Content-Type: multipart/form-data\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6OTA5MFwvYXBpXC9hdXRoIiwiaWF0IjoxNjE4MDc0MjA4LCJleHAiOjE2MTgwNzc4MDgsIm5iZiI6MTYxODA3NDIwOCwianRpIjoiUUhWU0VUM0Y2Vnk4ZjlHVSIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.tT0Wykd1pLsUmWwTWxO_F8MLsoMPQiom591CeK8Cg2M\nAccept: */*",
+			"dataMode": "raw",
+			"data": [],
+			"url": "{{Server 1}}/api/me",
+			"responses": [
+				{
+					"id": "b5ffdf90-4e59-307f-0713-b1c964eea55d",
+					"name": "Response_200",
+					"responseCode": {
+						"code": 200,
+						"detail": ""
+					},
+					"language": "Text",
+					"previewType": "html",
+					"headers": [],
+					"cookies": [],
+					"rawDataType": "text",
+					"owner": "1207971"
+				}
+			],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "multipart/form-data",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6OTA5MFwvYXBpXC9hdXRoIiwiaWF0IjoxNjE4MDc0MjA4LCJleHAiOjE2MTgwNzc4MDgsIm5iZiI6MTYxODA3NDIwOCwianRpIjoiUUhWU0VUM0Y2Vnk4ZjlHVSIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.tT0Wykd1pLsUmWwTWxO_F8MLsoMPQiom591CeK8Cg2M",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "*/*",
+					"enabled": true
+				}
+			],
+			"collection_id": "eb98b05d-21ee-283f-322d-588fa09ba995",
+			"folder": "eeffa90a-5d63-aac4-23d3-9ef9e781e15f"
+		}
+	]
+}
