@@ -13,7 +13,7 @@
 
 # Registro
 {host}/api/register
-
+```
 {
 	"name" : "Christisan",
 	"email" : "chkilian89@gmail.com",
@@ -23,8 +23,10 @@
 		"name" : "Vargas LTDA"
 	}
 }
+```
 
 **Result
+```
 {
   "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6OTA5MFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTYxODA4ODQ2NywiZXhwIjoxNjE4MDkyMDY3LCJuYmYiOjE2MTgwODg0NjcsImp0aSI6InhqOWhVRlBWS29oVTFTdlQiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.qOpqmid9sqv03CQXIeYWlIzxwggKpeVcSM5YwfTnBcc",
   "user": {
@@ -38,3 +40,4 @@
     "updated_at": "2021-04-10T21:01:06.000000Z"
   }
 }
+```
