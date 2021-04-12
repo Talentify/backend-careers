@@ -5,7 +5,7 @@
 - copiar o arquivo .env.example para .env, definir as configuração de banco
 - executar o comando php artisan optimize, para regarrar as informações
 - executar o comando php artisan migrate (irá crias tabelas, para que o sistema funcione corretamente)
-- Aplicação executando com Laravel 8 e php 7.4
+- Aplicação executando com Laravel 7 e php 7.4
 - Pode o sistema pode ser executado tanto local ou hospededado em algun servidor web, desde que tenha todos os protocolos HTTP GET, POST, PUT e DELETE habilitados.
 - Dentro do repositório temos dois arquivos que pode ser usados(importados) nos clientes REST (Postman ou Insomnia).
 - Após ser feito o registro, o sistema automaticamente irá fazer o login do usuário, gerando um token. Esse token deve ser copiado e alterado nos headers das seguintes rotas "Create Vacancies", "List Vancancies By User", "Update Vancancies", "Delete Vancancies".
