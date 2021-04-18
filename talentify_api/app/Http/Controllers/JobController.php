@@ -61,7 +61,7 @@ class JobController extends Controller
 
     public function filter(Request $request)
     {   
-
+        
         $jobList = Job::where('status', 'O')                
                 ->when($request->address != null && $request->address != "", 
                 function ($query) use ($request) {
@@ -85,7 +85,7 @@ class JobController extends Controller
                 });
 
             
-            return $jobList->toSql();
+            return $jobList->get();
             
     }
 }
