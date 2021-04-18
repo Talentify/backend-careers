@@ -9,7 +9,7 @@ class Recruiter extends Model
 {
     use HasFactory;
     public $timestamps = false;
-
+    
     public function company() {
         return $this->belongsTo(Company::class);
     }
