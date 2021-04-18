@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Recruiter extends Model
 {
     use HasFactory;
-    public $timestamps = false;
+    protected $fillable = ['name', 'login', 'password'];
     
     public function company() {
         return $this->belongsTo(Company::class);

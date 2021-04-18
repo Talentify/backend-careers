@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class RecruiterController extends Controller
 {
-    public function create()
+    public function register()
     {
         return Recruiter::create([
             'id_company' => request('id_company'),

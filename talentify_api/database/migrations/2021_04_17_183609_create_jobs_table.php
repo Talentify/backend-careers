@@ -22,6 +22,7 @@ class CreateJobsTable extends Migration
             $table->text('address');
             $table->decimal('salary', 10, 2);
             $table->string('company')->nullable();
+            $table->timestamps();
 
             $table->foreign('id_recruiters_creator')
                 ->references('id')

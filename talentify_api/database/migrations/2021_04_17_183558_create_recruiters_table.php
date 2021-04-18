@@ -19,6 +19,8 @@ class CreateRecruitersTable extends Migration
             $table->string('name');
             $table->string('login')->unique();
             $table->string('password');
+            $table->string('api_token')->unique()->nullable();
+            $table->timestamps();
 
             $table->foreign('id_company')
                 ->references('id')
