@@ -61,17 +61,31 @@ class JobController extends Controller
 
     public function filter(Request $request)
     {   
-        return Job::where('status', 'O')
-                ->where(function ($query) {
-                $query->where('title', 'LIKE', '%'.$request->keyword.'%')
-                ->orWhere('description', 'LIKE', '%'.$request->keyword.'%')
-                ->orWhere('address', 'LIKE', '%'.$request->keyword.'%')
-                ->orWhere('salary', 'LIKE', '%'.$request->keyword.'%')
-                ->orWhere('company', 'LIKE', '%'.$request->keyword.'%')
-                ->orWhere('address', 'LIKE', '%'.$request->address.'%')
-                ->orWhere('salary', 'LIKE', '%'.$request->salary.'%')
-                ->orWhere('company', 'LIKE', '%'.$request->company.'%');                
-            })
-            ->get();
+
+        $jobList = Job::where('status', 'O')                
+                ->when($request->address != null && $request->address != "", 
+                function ($query) use ($request) {
+                    return $query->where('address', 'LIKE', '%'.$request->address.'%');
+                })
+                ->when($request->salary != null && $request->salary != "", 
+                function ($query) use ($request) {
+                    return $query->where('salary', 'LIKE', '%'.$request->salary.'%');
+                })
+                ->when($request->company != null && $request->company != "", 
+                function ($query) use ($request) {
+                    return $query->where('company', 'LIKE', '%'.$request->company.'%');
+                })               
+                ->when($request->keyword != null && $request->keyword != "", 
+                function ($query) use ($request) {
+                    return $query->where('title', 'LIKE', '%'.$request->keyword.'%')
+                        ->orWhere('description', 'LIKE', '%'.$request->keyword.'%')
+                        ->orWhere('address', 'LIKE', '%'.$request->keyword.'%')
+                        ->orWhere('salary', 'LIKE', '%'.$request->keyword.'%')
+                        ->orWhere('company', 'LIKE', '%'.$request->keyword.'%');
+                });
+
+            
+            return $jobList->toSql();
+            
     }
 }
