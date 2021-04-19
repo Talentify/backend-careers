@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Response;
 
 class JobController extends Controller
 {
@@ -27,8 +28,10 @@ class JobController extends Controller
 
     public function store(Request $request)
     {   
+        $loggedRecruiter = auth()->user();
+
         $job = Job::create([
-            'id_recruiters_creator' => 1,
+            'id_recruiters_creator' => $loggedRecruiter->id,
             'title' => $request->title,
             'description' => $request->description,
             'address' => $request->address,
@@ -41,6 +44,14 @@ class JobController extends Controller
     
     public function update(Request $request, Job $job)
     {   
+        $loggedRecruiter = auth()->user();
+
+        if($job->id_recruiters_creator != $loggedRecruiter->id){
+            return response([
+                'message' => 'Você não pode efetuar alterações nessa vaga!'
+            ], 401);
+        }
+
         $job->update([
             'title' => $request->title,
             'description' => $request->description,
@@ -54,6 +65,14 @@ class JobController extends Controller
 
     public function delete(Job $job)
     {
+        $loggedRecruiter = auth()->user();
+
+        if($job->id_recruiters_creator != $loggedRecruiter->id){
+            return response([
+                'message' => 'Você não pode remover esta vaga!'
+            ], 401);
+        }
+
         $job->delete();
         
         return response()->json(null, 204);
@@ -85,7 +104,6 @@ class JobController extends Controller
                 });
 
             
-            return $jobList->get();
-            
+            return $jobList->get();            
     }
 }

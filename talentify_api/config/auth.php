@@ -13,9 +13,15 @@ return [
     |
     */
 
-    'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+    // 'defaults' => [
+    //     'guard' => 'web',
+    //     'passwords' => 'recruiters',
+    // ],
+
+
+     'defaults' => [
+        'guard' => 'api',
+        'passwords' => 'recruiters',
     ],
 
     /*
@@ -36,14 +42,16 @@ return [
     */
 
     'guards' => [
+        
+        
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
-        ],
+            'provider' => 'recruiters',
+        ],        
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'recruiters',
             'hash' => false,
         ],
     ],
@@ -66,10 +74,16 @@ return [
     */
 
     'providers' => [
-        'users' => [
+
+        'recruiters' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Recruiter::class,
         ],
+
+        // 'users' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Recruiter::class,
+        // ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -93,8 +107,16 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+
+        // 'users' => [
+        //     'provider' => 'users',
+        //     'table' => 'password_resets',
+        //     'expire' => 60,
+        //     'throttle' => 60,
+        // ],
+
+        'recruiters' => [
+            'provider' => 'recruiters',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

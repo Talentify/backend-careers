@@ -3,13 +3,27 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Recruiter extends Model
+class Recruiter extends Authenticatable
 {
-    use HasFactory;
-    protected $fillable = ['name', 'login', 'password'];
-    
+    use HasFactory, Notifiable, HasApiTokens;
+
+    protected $fillable = [
+        'id_company',
+        'name',
+        'login',
+        'password',
+    ];
+
+    protected $hidden = [
+        'password',
+        'api_token',
+    ];
+
+
     public function company() {
         return $this->belongsTo(Company::class);
     }

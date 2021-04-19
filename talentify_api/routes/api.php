@@ -18,17 +18,32 @@ use App\Http\Controllers\JobController;
 |
 */
 
-Route::post('/register', [RecruiterController::class, 'register']);
+//-----------------------------------PUBLIC-----------------------------
+//Recruiter
 Route::post('/login', [RecruiterController::class, 'login']);
 
-Route::get('/companies', [CompanyController::class, 'getall']);
-Route::post('/companies', [CompanyController::class, 'store']);
-Route::get('/companies/{company}', [CompanyController::class, 'show']);
-
+//Job
 Route::get('/jobs', [JobController::class, 'getall']);
 Route::get('/openjobs', [JobController::class, 'getopen']);
 Route::get('/jobs/{job}', [JobController::class, 'show']);
-Route::post('/jobs', [JobController::class, 'store']);
-Route::put('/jobs/{job}', [JobController::class, 'update']);
-Route::delete('/jobs/{job}', [JobController::class, 'delete']);
 Route::post('/jobsfilter', [JobController::class, 'filter']);
+
+
+//-----------------------------------PROTECTED-----------------------------
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    
+    //Recruiter
+    Route::post('/register', [RecruiterController::class, 'register']);
+    Route::post('/logout', [RecruiterController::class, 'logout']);
+
+    //Company
+    Route::get('/companies', [CompanyController::class, 'getall']);
+    Route::get('/companies/{company}', [CompanyController::class, 'show']);
+    Route::post('/companies', [CompanyController::class, 'store']);
+
+    //Job
+    Route::post('/jobs', [JobController::class, 'store']);
+    Route::put('/jobs/{job}', [JobController::class, 'update']);
+    Route::delete('/jobs/{job}', [JobController::class, 'delete']);
+});
+

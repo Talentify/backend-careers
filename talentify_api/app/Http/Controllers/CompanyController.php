@@ -10,7 +10,8 @@ class CompanyController extends Controller
     
     public function getall()
     {   
-        return Company::all();
+        // return Company::all();
+        return auth()->user();
     }
 
     public function store()
