@@ -1,0 +1,40 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentação da API Restful para um sistema de futebol de Salão",
+        "description": "Implmentação da documentação",
+        "contact": {
+            "email": "admin@admin.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/api/v1",
+            "description": "API Restful Soccer"
+        }
+    ],
+    "paths": {
+        "/players": {
+            "get": {
+                "tags": [
+                    "ranking"
+                ],
+                "summary": "Add a new pet to the store",
+                "operationId": "rankingPlayers",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

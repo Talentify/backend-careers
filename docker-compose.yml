@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  backend-careers-db:
+    image: mysql:5.7
+    container_name: backend-careers-db
+    volumes:
+      - ./storage/docker/mysql:/var/lib/mysql
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 96430409
+      MYSQL_DATABASE: backend-careers
+      MYSQL_USER: backend
+      MYSQL_PASSWORD: careers
+
+  backend-careers-app:
+    image: ambientum/php:8.0-nginx
+    container_name: backend-careers-app
+    depends_on:
+      - backend-careers-db
+    ports:
+      - 8000:8080
+    volumes:
+      - .:/var/www/app
+
+

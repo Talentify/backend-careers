@@ -1,63 +1,89 @@
-## A vaga
-Estamos constante adicionando novas features e aperfeiçoando as já existentes. Como desenvolvedor sênior, voce será responsável por criar código limpo, testável, e de alta qualidade, além de auxiliar o restante da equipe a migrar código existente para a nova arquitetura orientada a domínio.Somos adeptos de desenvolvimento ágil, integração contínua, code review e testes automáticos. Com isso, nossa equipe busca constantemente desenvolver e aprimorar o produto para estarmos sempre a frente do mercado.
+<h4 align="center">
+  🚀 Before Soccer - API Resful para Futebol de Salão - Teste técnico
+</h4>
 
-<details>
-<summary>Detalhes da vaga</summary>
+<p align="center">
+ <img src="https://img.shields.io/static/v1?label=PRs&message=welcome&color=7159c1&labelColor=000000" alt="PRs welcome!" />
 
-## A empresa
-A Talentify.io nasceu da fusão de 3 empresas distintas em 3 áreas diferentes: Digital Media & Advertising, Mobile Technology e HR Consulting. Nossa plataforma de SaaS ajuda empresas a superar seus maiores desafios na  busca e contratação de talentos em grande escala.
+  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=7159c1&labelColor=000000">
+</p>
 
-## Beneficios
-- Home office (você pode trabalhar em casa ou em nosso escritório, em Alphaville/SP)
-- Horario flexivel
-- Assistencia medica e odontologica (apos 3 meses)
-- Vale refeicao e transporte
+<p align="center">
+  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-funcionalidades">Funcionalidades</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-requisitos">Requisitos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-instalação">Instalação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+</p>
 
-## Requisitos
-- PHP 7
-- Desenvolvimento de testes
-- Desenvolvimento Agil
-- Web Services (RESTful ou SOAP ou JSON-RPC, etc)
-- Algum dos frameworks PHP (Phalcon, Zend, Symfony, Laravel)
-- Familiaridade com as PHP Standards Recommendations (PSRs)
-- GIT
-- Banco de dados relacional (MySQL, PostgreSQL, etc)
+<br>
 
-## Desejável
-- Arquitetura hexagonal
-- DDD
-- Microserviços
-- Filas de mensagens (RabbitMQ, Apache Kafka, Amazon SQS, etc)
-- Elasticsearch
-- Linux
-- Amazon Web Services (AWS)
-- CI/CD
-- Inglês (leitura, escrita e conversação)
+## :rocket: Tecnologias
 
-</details>
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-## Talk is cheap. Show me the code!
+- [PHP 7.2](https://php.net)
+- [Laravel 7](https://laravel.com)
+- [MySQL 5.7](https://mysql.com)
+- [Docker](https://docker.com)
 
-Você deverá construir uma API RESTful com as seguintes funcionalidades:
-* Cadastro/Login de recrutadores, onde cada recrutador pertence a uma empresa diferente
-* CRUD de vagas pelos recrutadores
-   * Vagas possuem os campos: title, description, status, address, salary, company
-   * Um recrutador não pode modificar vagas criadas por outro
-* Listagem pública de vagas abertas
-* Busca pública de vagas abertas
-   * Critérios de busca que devem ser aceitos: keyword, address, salary, company
-  
- 
-#### Observações
-- É permitido utilizar qualquer biblioteca ou framework PHP, desde que a lógica de neǵocio seja escrita por você, em PHP;
-- Nesse contexto, um bom código é aquele que segue Clean Code, SOLID e padrões arquiteturais (como os descritos na seção [Desejável](#desejável));
-- Interface gráfica é opcional, desde que a comunicação com o back-end seja feita através dos endpoints RESTful desenvolvidos por você;
-- Testes automatizados (de unidade e/ou funcionais e/ou aceitação) são **obrigatórios**;
-- Um README.md deverá ser adicionado e conter, no mínimo, as instruções de setup e utilização da aplicação.
 
-#### Envio
-Para enviar o seu código, submeta uma pull request para este repositório com o título da PR contendo seu nome e sobrenome.
+## 💻 Projeto
 
-#### Disclaimer
-O código fonte que você produzir será utilizado somente para avaliar sua aptidão para a vaga. Não será feito nenhum uso comercial do código fonte, tampouco haverá a exigência de direitos de atribuição.
+Esse projeto é uma API Restful desenvolvida como teste técnico para o processo seletivo de Desenvolvedor Backend na Before TI.
 
+
+## 💻 Funcionalidades
+
+O sistema possui cadastros/listagem/exibição/alteração de jogadores, times, partidas, cartões e gols assim como autenticação em JWT e ranking de times e jogadores. A infraestrutura é toda configurada pelo docker/docker-compose.
+
+## 📄 Requisitos
+
+* PHP 7.2+, Laravel 7+, MySQL 5.7+ e Docker
+
+
+## ⚙️ Instalação e execução
+
+**Windows, OS X & Linux:**
+
+Baixe o arquivo zip e o descompacte ou baixe o projeto para sua máquina através do git clone [https://github.com/randercarlos/before-soccer.git](https://github.com/randercarlos/before-soccer.git)
+
+
+- Entre no prompt de comando e vá até a pasta do projeto:
+
+```sh
+cd ir-ate-a-pasta-do-projeto
+```
+
+- Crie o arquivo .env a partir do arquivo .env.example. As variáveis de ambiente relacionadas ao banco já estão configuradas.
+
+```sh
+copy .env.example .env
+```
+
+- Assumindo que tenha o docker instalado na máquina, para subir os containeres, execute o comando:
+
+```sh
+docker-compose up
+```
+
+- Após isso, execute o comando abaixo para instalar as dependências do laravel.
+
+```sh
+docker-compose exec before-soccer-app composer install
+```
+- Aguarde até que todas as dependências do laravel estejam instaladas. Após isso, rode o comando abaixo para instalar as migrações e os seeds:
+
+```sh
+docker-compose exec before-soccer-app php artisan migrate --seed
+``` 
+
+- Após rodar o comando acima, o sistema já estará pronto e acessível em [http://localhost:8000](http://localhost:8000).  
+
+- Para rodar e testar os endpoints, use a coleção de endpoints exportados do Insomnia que se encontra logo abaixo
+
+## 📝 Documentação
+
+- [Insomnia Endpoints Collection](before-soccer-endpoints-insomnia.json) (Para importar, clique no menu "Application" => Preferences => Data => Clique em "Import Data" => "From File" => selecione o arquivo e clique em "Import")
+
+Desenvolvido por Rander Carlos :wave: [Linkedin!](https://www.linkedin.com/in/rander-carlos-caetano-freitas-308a63a8/)
