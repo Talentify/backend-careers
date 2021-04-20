@@ -89,41 +89,56 @@ php artisan serve
 Para acessar os endpoints protegidos, é importante antes fazer o login
 e será retornado o token para acesso ao sistema.
 
+```
 POST http://localhost:8000/api/login
 form-data:
   login: admin
   password: talentify1
+```
 
 
-//-----------------------------------PUBLIC-----------------------------
-//Recruiter
+#### EndPoints PUBLICOS
+
+* Recruiter
+
 Efetuar Login
+```
 POST http://localhost:8000/api/login
 form-data:
   login: ???
   password: ???
+```
 
-//Job
+* Job
+
 Obter todas as vagas:
+```
 GET http://localhost:8000/api/jobs
+```
 
 Obter todas as vagas abertas:
+```
 GET http://localhost:8000/api/openjobs
+```
 
 Ver uma vaga específica:
+```
 GET http://localhost:8000/api/jobs/{#id}
-  
+```  
 
 Filtrar as vagas por keyword, address, salary, company:
+```
 POST http://localhost:8000/api/jobsfilter
 form-data:
   keyword: ???
   address: ???
   salary: ???
   company: ???
+```
 
 
-//-----------------------------------PROTECTED-----------------------------
+#### EndPoints PROTEGIDOS
+
 //Recruiter
 
 Registrar novo usuário (Recrutador):
