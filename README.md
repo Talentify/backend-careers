@@ -139,34 +139,46 @@ form-data:
 
 #### EndPoints PROTEGIDOS
 
-//Recruiter
+* Recruiter
 
 Registrar novo usuário (Recrutador):
+```
 POST http://localhost:8000/api/register
 form-data:
   id_company: #1
   name: ???
   login: ???
   password: ???
+```
 
 Deslogar da API:
+```
 POST http://localhost:8000/api/logout
+```
 
-//Company
+* Company
 
 Obter todas as empresas:
+```
 GET http://localhost:8000/api/companies
+```
 
 Ver uma empresa específica:
+```
 GET http://localhost:8000/api/companies/{#id}
+```
 
 Cadastrar uma empresa:
+```
 POST http://localhost:8000/api/companies
 form-data:
   name: ???
+```
 
-//Job
+*  Job
+
 Cadastrar uma nova vaga:
+```
 POST http://localhost:8000/api/jobs
 form-data:
   'title': ???
@@ -174,8 +186,10 @@ form-data:
   'address': ???
   'salary': ???
   'company': ???
+```
 
 Atualizar uma vaga:
+```
 PUT http://localhost:8000/api/jobs/{#id}
 form-data:
   'title': ???
@@ -183,9 +197,12 @@ form-data:
   'address': ???
   'salary': ???
   'company': ???
+```
 
 Remover uma vaga:
+```
 DELETE http://localhost:8000/api/jobs/{#id}
+```
 
 
 ### Arquivos de Model (talentify_api -> app -> Models)
