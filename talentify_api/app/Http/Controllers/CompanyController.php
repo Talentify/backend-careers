@@ -8,10 +8,18 @@ use Illuminate\Http\Response;
 
 class CompanyController extends Controller
 {
-
+    
     public function getall()
     {   
-        return Company::all();
+        $companies = Company::all();
+
+        $response = [
+            'status' => true,
+            'message' => 'Companies obtained!',
+            'data' => $companies
+        ];
+        
+        return response($response);
     }
     
     public function store(Request $request)
@@ -20,11 +28,22 @@ class CompanyController extends Controller
             'name' => $request->name
         ]);
         
-        return response()->json($company, 201);
+        $response = [
+            'status' => true,
+            'message' => 'Company Created!',
+            'data' => $company
+        ];
+
+        return response($response, 201);
     }
 
     public function show(Company $company)
     {   
-        return $company;
+        $response = [
+            'status' => true,
+            'data' => $company
+        ];
+
+        return response($response, 400);
     }
 }

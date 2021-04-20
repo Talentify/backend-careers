@@ -24,7 +24,7 @@ class RecruiterFactory extends Factory
         return [
             'id_company' => 1,
             'name' => $this->faker->name,
-            'login' => $this->faker->unique()->safeEmail,
+            'login' => $this->faker->unique()->username,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ];
     }

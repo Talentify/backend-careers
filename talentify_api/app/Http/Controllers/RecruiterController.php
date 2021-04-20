@@ -26,10 +26,16 @@ class RecruiterController extends Controller
         ]);
 
         $token = $recruiter->createToken('myapitoken')->plainTextToken;
-
-        $response = [
+        
+        $recruiterData = [
             'user' => $recruiter,
             'token' => $token
+        ];
+
+        $response = [
+            'status' => true,
+            'message' => 'A new recruiter created!',
+            'data' => $recruiterData
         ];
 
         return response($response, 201);
@@ -65,8 +71,11 @@ class RecruiterController extends Controller
         $recruiter = auth()->user();
 
         auth()->user()->tokens()->delete();
-        return [
+
+        $response = [
             'message' => 'Usuário: '.$recruiter->login.' Deslogado!'
         ];
+
+        return response($response, 201);
     }
 }
