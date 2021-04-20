@@ -80,35 +80,97 @@ php artisan test
 
 * api.php
 
+OBs.: Para acessar a API não esquecer de acionar o seguinte comando 
+
+```
+php artisan serve
+```
+
+Para acessar os endpoints protegidos, é importante antes fazer o login
+e será retornado o token para acesso ao sistema.
+
+POST http://localhost:8000/api/login
+form-data:
+  login: admin
+  password: talentify1
+
+
 //-----------------------------------PUBLIC-----------------------------
 //Recruiter
-[http://localhost:8000/api](http://localhost:8000/api/login)
-Route::post('/login', [RecruiterController::class, 'login']);
+Efetuar Login
+POST http://localhost:8000/api/login
+form-data:
+  login: ???
+  password: ???
 
 //Job
-Route::get('/jobs', [JobController::class, 'getall']);
-Route::get('/openjobs', [JobController::class, 'getopen']);
-Route::get('/jobs/{job}', [JobController::class, 'show']);
-Route::post('/jobsfilter', [JobController::class, 'filter']);
+Obter todas as vagas:
+GET http://localhost:8000/api/jobs
+
+Obter todas as vagas abertas:
+GET http://localhost:8000/api/openjobs
+
+Ver uma vaga específica:
+GET http://localhost:8000/api/jobs/{#id}
+  
+
+Filtrar as vagas por keyword, address, salary, company:
+POST http://localhost:8000/api/jobsfilter
+form-data:
+  keyword: ???
+  address: ???
+  salary: ???
+  company: ???
 
 
 //-----------------------------------PROTECTED-----------------------------
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    
-    //Recruiter
-    Route::post('/register', [RecruiterController::class, 'register']);
-    Route::post('/logout', [RecruiterController::class, 'logout']);
+//Recruiter
 
-    //Company
-    Route::get('/companies', [CompanyController::class, 'getall']);
-    Route::get('/companies/{company}', [CompanyController::class, 'show']);
-    Route::post('/companies', [CompanyController::class, 'store']);
+Registrar novo usuário (Recrutador):
+POST http://localhost:8000/api/register
+form-data:
+  id_company: #1
+  name: ???
+  login: ???
+  password: ???
 
-    //Job
-    Route::post('/jobs', [JobController::class, 'store']);
-    Route::put('/jobs/{job}', [JobController::class, 'update']);
-    Route::delete('/jobs/{job}', [JobController::class, 'delete']);
-});
+Deslogar da API:
+POST http://localhost:8000/api/logout
+
+//Company
+
+Obter todas as empresas:
+GET http://localhost:8000/api/companies
+
+Ver uma empresa específica:
+GET http://localhost:8000/api/companies/{#id}
+
+Cadastrar uma empresa:
+POST http://localhost:8000/api/companies
+form-data:
+  name: ???
+
+//Job
+Cadastrar uma nova vaga:
+POST http://localhost:8000/api/jobs
+form-data:
+  'title': ???
+  'description': ???
+  'address': ???
+  'salary': ???
+  'company': ???
+
+Atualizar uma vaga:
+PUT http://localhost:8000/api/jobs/{#id}
+form-data:
+  'title': ???
+  'description': ???
+  'address': ???
+  'salary': ???
+  'company': ???
+
+Remover uma vaga:
+DELETE http://localhost:8000/api/jobs/{#id}
 
 
 ### Arquivos de Model (talentify_api -> app -> Models)
