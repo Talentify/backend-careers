@@ -1,62 +1,224 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# TALENTIFY_API
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Implementação de uma API REST utilizando o framework LARAVEL
 
-## About Laravel
+### Começando
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Essas instruções fornecerão uma cópia do projeto em funcionamento em sua máquina local para fins de desenvolvimento e teste. Leia o conteúdo a seguir para fazer a instalação e permitir o funcionamento da aplicação
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Pré-requisitos
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Primeiramente você precisa ter o composer instalado em sua máquina: [https://getcomposer.org/download/](https://getcomposer.org/download/)
 
-## Learning Laravel
+Com o composer já instalado, faça o download do repositório: 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```
+git clone https://github.com/eidercarlos/backend-careers.git
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Em seguida, dentro do diretório backend-careers faça um chekout no branch eider_carlos
 
-## Laravel Sponsors
+```
+git checkout eider_carlos
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Instalando
 
-### Premium Partners
+Tenha já a instalação do Laravel em sua máquina:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+```
+  composer global require laravel/installer
+```
 
-## Contributing
+Entre na pasta talentify_api e faça a instalação/atualização das dependências:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+composer update
+```
 
-## Code of Conduct
+Em seguida, dentro da mesma pasta talentify_api, a partir do arquivo .env.example crie um novo arquivo com o nome .env e defina as configurações locais 
+do seu banco de dados MySQL
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+``` 
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=talentify_api_db
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## Security Vulnerabilities
+Não esqueça de também gerar uma KEY para a sua aplicação
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+php artisan key:generate
+```
 
-## License
+Se não houver nenhum problema ao acionar o comando abaixo, significa que a aplicação está OK
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+php artisan serve
+```
+
+Agora vamos fazer a migração das nossas tabelas do banco de dados e também vamos popular com alguns registros:
+
+```
+php artisan migrate:fresh --seed
+```
+
+Caso todos os passos acima tenha ocorridos com sucesso, temos a nossa API REST funcionando.
+
+Os testes unitários podem ser acionados com o seguinte comando:
+
+```
+php artisan test
+```
+
+## Principais Arquivos/Classes
+
+### EndPoints da API (talentify_api -> routes)
+
+* api.php
+
+OBs.: Para acessar a API não esquecer de acionar o seguinte comando 
+
+```
+php artisan serve
+```
+
+Para acessar os endpoints protegidos, é importante antes fazer o login
+e será retornado o token para acesso ao sistema.
+
+```
+POST http://localhost:8000/api/login
+form-data:
+  login: admin
+  password: talentify1
+```
+
+
+#### EndPoints PUBLICOS
+
+* Recruiter
+
+Efetuar Login
+```
+POST http://localhost:8000/api/login
+form-data:
+  login: ???
+  password: ???
+```
+
+* Job
+
+Obter todas as vagas:
+```
+GET http://localhost:8000/api/jobs
+```
+
+Obter todas as vagas abertas:
+```
+GET http://localhost:8000/api/openjobs
+```
+
+Ver uma vaga específica:
+```
+GET http://localhost:8000/api/jobs/{#id}
+```  
+
+Filtrar as vagas por keyword, address, salary, company:
+```
+POST http://localhost:8000/api/jobsfilter
+form-data:
+  keyword: ???
+  address: ???
+  salary: ???
+  company: ???
+```
+
+
+#### EndPoints PROTEGIDOS
+
+* Recruiter
+
+Registrar novo usuário (Recrutador):
+```
+POST http://localhost:8000/api/register
+form-data:
+  id_company: #1
+  name: ???
+  login: ???
+  password: ???
+```
+
+Deslogar da API:
+```
+POST http://localhost:8000/api/logout
+```
+
+* Company
+
+Obter todas as empresas:
+```
+GET http://localhost:8000/api/companies
+```
+
+Ver uma empresa específica:
+```
+GET http://localhost:8000/api/companies/{#id}
+```
+
+Cadastrar uma empresa:
+```
+POST http://localhost:8000/api/companies
+form-data:
+  name: ???
+```
+
+*  Job
+
+Cadastrar uma nova vaga:
+```
+POST http://localhost:8000/api/jobs
+form-data:
+  'title': ???
+  'description': ???
+  'address': ???
+  'salary': ???
+  'company': ???
+```
+
+Atualizar uma vaga:
+```
+PUT http://localhost:8000/api/jobs/{#id}
+form-data:
+  'title': ???
+  'description': ???
+  'address': ???
+  'salary': ???
+  'company': ???
+```
+
+Remover uma vaga:
+```
+DELETE http://localhost:8000/api/jobs/{#id}
+```
+
+
+### Arquivos de Model (talentify_api -> app -> Models)
+
+* Company.php
+* Job.php
+* Recruiter.php
+
+### Arquivos de Controller (talentify_api -> Http -> Controllers)
+
+* CompanyController.php
+* JobController.php
+* RecruiterController.php
+
+### Arquivos de Testes Unitários (talentify_api -> tests -> Feature)
+
+* CompanyApiTest.php
+* JobApiTest.php
+* RecruiterApiTest.php
