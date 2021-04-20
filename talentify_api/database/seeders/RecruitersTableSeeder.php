@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Company;
 use App\Models\Recruiter;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+
 
 class RecruitersTableSeeder extends Seeder
 {
@@ -14,29 +17,33 @@ class RecruitersTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        $faker = \Faker\Factory::create();
+    {   
 
-        $password = Hash::make('talentify123');
+        $companyIds = $this->get_companies_ids();
 
-        Recruiter::create([
-            'id_company' => 1,
-            'name' => 'Administrator',
-            'login' => 'admin',
-            'password' => $password,
-        ]);
-
-        $recruitersNames = ["Eider", "Carlos", "Adam"];
-        $recruitersLogin = ["eider", "carlos", "adam"];
+        $recruitersNames = ["Admin", "Eider", "Carlos"];
+        $recruitersLogin = ["admin", "eider", "carlos"];
         $recruitersPass = ["talentify1", "talentify2", "talentify3"];
 
         for ($i = 0; $i < count($recruitersNames); $i++) {
             Recruiter::create([
-                'id_company' => $i+1,
+                'id_company' => $companyIds[array_rand($companyIds)],
                 'name' => $recruitersNames[$i],
                 'login' => $recruitersLogin[$i],
                 'password' => Hash::make($recruitersPass[$i]),
             ]);
         }
+    }   
+    
+    public function get_companies_ids()
+    {   
+        $companies = Company::select('id')->limit(6)->get();
+        $companyIds = array();
+
+        foreach ($companies as $company) {
+            $companyIds[] = $company->id;
+        }
+
+        return $companyIds;
     }
 }

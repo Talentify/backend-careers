@@ -4,21 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CompanyController extends Controller
 {
-    
+
     public function getall()
     {   
-        // return Company::all();
-        return auth()->user();
+        return Company::all();
     }
-
-    public function store()
+    
+    public function store(Request $request)
     {   
-        return Company::create([
-            'name' => request('name')
+        $company = Company::create([
+            'name' => $request->name
         ]);
+        
+        return response()->json($company, 201);
     }
 
     public function show(Company $company)

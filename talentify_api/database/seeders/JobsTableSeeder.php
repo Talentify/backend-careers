@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Job;
+use App\Models\Recruiter;
 use Illuminate\Database\Seeder;
 
 class JobsTableSeeder extends Seeder
@@ -18,11 +19,11 @@ class JobsTableSeeder extends Seeder
         
         $jobStatus = ["O", "C"];
         $jobSalary = [7500, 9300, 11000, 5500, 3800, 10800, 8200, 6250];
-        $recruitersIds = [1,2,3,4];
+        $recruiterIds = $this->get_recruiter_ids();
         
         for ($i = 0; $i < count($jobSalary); $i++) {
             Job::create([
-                'id_recruiters_creator' => $recruitersIds[array_rand($recruitersIds)],
+                'id_recruiters_creator' => $recruiterIds[array_rand($recruiterIds)],
                 'title' => $faker->jobTitle,
                 'description' => $faker->bs,
                 'status' => $jobStatus[array_rand($jobStatus)],
@@ -31,5 +32,17 @@ class JobsTableSeeder extends Seeder
                 'company' => $faker->company,                
             ]);
         }
+    }
+
+    public function get_recruiter_ids()
+    {   
+        $recruiters = Recruiter::select('id')->limit(3)->get();
+        $recruiterIds = array();
+
+        foreach ($recruiters as $recruiter) {
+            $recruiterIds[] = $recruiter->id;
+        }
+
+        return $recruiterIds;
     }
 }
