@@ -96,6 +96,9 @@ form-data:
   password: talentify1
 ```
 
+Depois basta adicionar o token na seção Authorization -> Bearer Token do Postman por exemplo
+para poder testar as requisições que exigem autorização.
+
 
 #### EndPoints PUBLICOS
 
