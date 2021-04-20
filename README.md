@@ -8,28 +8,53 @@ Essas instruções fornecerão uma cópia do projeto em funcionamento em sua má
 
 ### Pré-requisitos
 
-Primeiramente você precisa ter o composer instalado em sua máquina.
-COMPOSER: [https://getcomposer.org/download/](https://getcomposer.org/download/)
+Primeiramente você precisa ter o composer instalado em sua máquina: [https://getcomposer.org/download/](https://getcomposer.org/download/)
+
+Com o composer já instalado, faça o download do repositório: 
 
 ```
-teste
+git clone https://github.com/eidercarlos/backend-careers.git
+```
+
+Em seguida, dentro do diretório backend-careers faça um chekout no branch eider_carlos
+
+```
+git checkout eider_carlos
 ```
 
 ### Instalando
 
-Uma série passo a passo de exemplos que lhe dizem que você deve ter um desenvolvimento env em execução
+Tenha já a instalação do Laravel em sua máquina:
 
-Diga o que o passo será
+```
+  composer global require laravel/installer
+```
+
+Entre na pasta talentify_api e faça a instalação/atualização das dependências:
+
+```
+composer update
+```
+
+Em seguida, dentro da mesma pasta talentify_api, a partir do arquivo .env.example crie um novo arquivo com o nome .env e defina as configurações locais 
+do seu banco de dados MySQL
 
 ``` 
-  Dê o exemplo
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=talentify_api_db
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
-E repita
+Não esqueça de também gerar uma KEY para a sua aplicação
 
 ```
-  Até terminar
+php artisan key:generate
 ```
+
+
 
 Termine com um exemplo de tirar alguns dados do sistema ou usá-lo para um pequeno demo
 
