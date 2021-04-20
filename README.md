@@ -1,63 +1,176 @@
-## A vaga
-Estamos constante adicionando novas features e aperfeiçoando as já existentes. Como desenvolvedor sênior, voce será responsável por criar código limpo, testável, e de alta qualidade, além de auxiliar o restante da equipe a migrar código existente para a nova arquitetura orientada a domínio.Somos adeptos de desenvolvimento ágil, integração contínua, code review e testes automáticos. Com isso, nossa equipe busca constantemente desenvolver e aprimorar o produto para estarmos sempre a frente do mercado.
+# TALENTIFY_API
 
-<details>
-<summary>Detalhes da vaga</summary>
+Implementação de uma API REST utilizando o framework LARAVEL
 
-## A empresa
-A Talentify.io nasceu da fusão de 3 empresas distintas em 3 áreas diferentes: Digital Media & Advertising, Mobile Technology e HR Consulting. Nossa plataforma de SaaS ajuda empresas a superar seus maiores desafios na  busca e contratação de talentos em grande escala.
+## Começando
 
-## Beneficios
-- Home office (você pode trabalhar em casa ou em nosso escritório, em Alphaville/SP)
-- Horario flexivel
-- Assistencia medica e odontologica (apos 3 meses)
-- Vale refeicao e transporte
+Essas instruções fornecerão uma cópia do projeto em funcionamento em sua máquina local para fins de desenvolvimento e teste. Leia o conteúdo a seguir para fazer a instalação e permitir o funcionamento da aplicação
 
-## Requisitos
-- PHP 7
-- Desenvolvimento de testes
-- Desenvolvimento Agil
-- Web Services (RESTful ou SOAP ou JSON-RPC, etc)
-- Algum dos frameworks PHP (Phalcon, Zend, Symfony, Laravel)
-- Familiaridade com as PHP Standards Recommendations (PSRs)
-- GIT
-- Banco de dados relacional (MySQL, PostgreSQL, etc)
+### Pré-requisitos
 
-## Desejável
-- Arquitetura hexagonal
-- DDD
-- Microserviços
-- Filas de mensagens (RabbitMQ, Apache Kafka, Amazon SQS, etc)
-- Elasticsearch
-- Linux
-- Amazon Web Services (AWS)
-- CI/CD
-- Inglês (leitura, escrita e conversação)
+Primeiramente você precisa ter o composer instalado em sua máquina.
 
-</details>
+```
+COMPOSER: [https://getcomposer.org/download/](https://getcomposer.org/download/)
+```
 
-## Talk is cheap. Show me the code!
+### Instalando
 
-Você deverá construir uma API RESTful com as seguintes funcionalidades:
-* Cadastro/Login de recrutadores, onde cada recrutador pertence a uma empresa diferente
-* CRUD de vagas pelos recrutadores
-   * Vagas possuem os campos: title, description, status, address, salary, company
-   * Um recrutador não pode modificar vagas criadas por outro
-* Listagem pública de vagas abertas
-* Busca pública de vagas abertas
-   * Critérios de busca que devem ser aceitos: keyword, address, salary, company
-  
- 
-#### Observações
-- É permitido utilizar qualquer biblioteca ou framework PHP, desde que a lógica de neǵocio seja escrita por você, em PHP;
-- Nesse contexto, um bom código é aquele que segue Clean Code, SOLID e padrões arquiteturais (como os descritos na seção [Desejável](#desejável));
-- Interface gráfica é opcional, desde que a comunicação com o back-end seja feita através dos endpoints RESTful desenvolvidos por você;
-- Testes automatizados (de unidade e/ou funcionais e/ou aceitação) são **obrigatórios**;
-- Um README.md deverá ser adicionado e conter, no mínimo, as instruções de setup e utilização da aplicação.
+Uma série passo a passo de exemplos que lhe dizem que você deve ter um desenvolvimento env em execução
 
-#### Envio
-Para enviar o seu código, submeta uma pull request para este repositório com o título da PR contendo seu nome e sobrenome.
+Diga o que o passo será
 
-#### Disclaimer
-O código fonte que você produzir será utilizado somente para avaliar sua aptidão para a vaga. Não será feito nenhum uso comercial do código fonte, tampouco haverá a exigência de direitos de atribuição.
+``` 
+  Dê o exemplo
+```
 
+E repita
+
+```
+  Até terminar
+```
+
+Termine com um exemplo de tirar alguns dados do sistema ou usá-lo para um pequeno demo
+
+## Executando os testes
+
+Explique como executar os testes automatizados para este sistema
+
+### Divulgue em testes de ponta a ponta
+
+Explique o que esses testes testam e por que
+
+```
+  Dê um exemplo
+```
+
+### E testes de estilo de codificação
+
+Explique o que esses testes testam e por que
+
+```
+  Dê um exemplo
+```
+
+## Desdobramento, desenvolvimento
+
+Adicione notas adicionais sobre como implantar isso em um sistema ao vivo
+
+## Built With
+
+* [Nome](#site) - Usada para algo...
+
+## Contribuindo
+
+Leia [CONTRIBUTING.md](https://gist.github.com/hi-hi-ray/a868081e2a63ee47fafa015353d05ae3) para obter detalhes sobre nosso código de conduta e o processo para enviar pedidos de extração para nós.
+
+## Versioning
+
+Usamos [SemVer](http://semver.org/) para versões. Para as versões disponíveis, veja [tags neste repositório](https://github.com/your/project/tags).
+
+## Autores
+
+* ** Billie Thompson ** - * Trabalho inicial * - [PurpleBooth](https://github.com/PurpleBooth)
+* ** Raysa Dutra ** - * Tradução Pt-Br * - [hi-hi-ray](https://github.com/hi-hi-ray)
+
+Veja também a lista de [contribuidores](https://github.com/your/project/contributors) que participaram deste projeto.
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE.md](LICENSE.md) para obter detalhes
+
+## Agradecimentos
+
+* Dica de um pessoa
+* Inspiração
+* Etc.
+
+-----------------------------------------------
+
+# Project Title
+
+One Paragraph of project description goes here
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+What things you need to install the software and how to install them
+
+```
+Give examples
+```
+
+### Installing
+
+A step by step series of examples that tell you have to get a development env running
+
+Say what the step will be
+
+```
+Give the example
+```
+
+And repeat
+
+```
+until finished
+```
+
+End with an example of getting some data out of the system or using it for a little demo
+
+## Running the tests
+
+Explain how to run the automated tests for this system
+
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone who's code was used
+* Inspiration
+* etc
