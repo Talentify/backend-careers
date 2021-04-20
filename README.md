@@ -9,9 +9,10 @@ Essas instruções fornecerão uma cópia do projeto em funcionamento em sua má
 ### Pré-requisitos
 
 Primeiramente você precisa ter o composer instalado em sua máquina.
+COMPOSER: [https://getcomposer.org/download/](https://getcomposer.org/download/)
 
 ```
-COMPOSER: [https://getcomposer.org/download/](https://getcomposer.org/download/)
+teste
 ```
 
 ### Instalando
