@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,9 +14,9 @@ class DatabaseSeeder extends Seeder
     {
         Schema::disableForeignKeyConstraints();
 
-        $this->call(UserSeeder::class);
-        $this->call(TeamSeeder::class);
-        $this->call(MatchSeeder::class);
+//        $this->call(UserSeeder::class);
+        $this->call(RecruiterSeeder::class);
+        $this->call(JobSeeder::class);
 
         Schema::enableForeignKeyConstraints();
     }
