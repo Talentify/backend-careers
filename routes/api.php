@@ -24,14 +24,7 @@ Route::group(['prefix' => 'v1'], function () {
     });
 
     Route::middleware('auth:api')->group(function () {
-        Route::apiResource('players', 'PlayerController')->except('destroy');
-        Route::apiResource('teams', 'TeamController')->except('destroy');
-        Route::apiResource('matches', 'MatchController')->except('destroy');
-        Route::apiResource('goals', 'GoalController')->except('destroy');
-        Route::apiResource('cards', 'CardController')->except('destroy');
-
-        Route::get('ranking/players', 'RankingController@players');
-        Route::get('ranking/teams', 'RankingController@teams');
+        Route::apiResource('jobs', 'JobController');
     });
 });
 
