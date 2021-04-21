@@ -47,7 +47,7 @@ abstract class AbstractService
         return $record;
     }
 
-    public function save(Request $request, Model $model = null): Model {
+    public function save(Request $request, Model $model = null) {
 
         $class = get_class($this->model);
 

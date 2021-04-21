@@ -2,12 +2,14 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\UnauthorizedException;
 use Illuminate\Validation\ValidationException;
 use Throwable;
 
@@ -60,6 +62,11 @@ class Handler extends ExceptionHandler
             return response()->json([
                 'msg' => 'Unauthenticated. It\'s necessary to be authenticated to access this endpoint'
             ], 401);
+
+        } else if ($exception instanceof UnauthorizedException) {
+            return response()->json([
+                'msg' => $exception->getMessage() ?? "This user doesn't have permission to perform this action."
+            ], 403);
 
         } else if ($exception instanceof ValidationException) {
             return response()->json([

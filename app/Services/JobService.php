@@ -2,9 +2,12 @@
 
 namespace App\Services;
 
+use App\Enums\JobStatus;
 use App\Models\Job;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Validation\UnauthorizedException;
 
 class JobService extends AbstractService
 {
@@ -19,7 +22,32 @@ class JobService extends AbstractService
         $query = Job::query();
         $query = $this->buildFilters($query, request());
 
-        return $query->paginate(request()->query('limit') ?? Job::RECORDS_PER_PAGE, ['*'], 'page', request()->query('page') ?? 1);
+        return $query->where('status', JobStatus::OPEN)
+            ->paginate(request()->query('limit') ?? Job::RECORDS_PER_PAGE, ['*'], 'page', request()->query('page') ?? 1);
+    }
+
+    public function save(Request $request, Model $job = null) {
+
+        if (!auth()->user()->can('update', $job)) {
+            throw new UnauthorizedException("Only the owner can update this job.");
+        }
+
+        if (!is_null($job) && !empty($job->id)) {
+
+            if (!$job->update($request->all())) {
+                throw new \Exception("Fail on update Job with values: "
+                    . collect($request->all())->toJson());
+            }
+
+        } else {
+            if (!$job = Job::create($request->all())) {
+                throw new \Exception("Fail on create Job with values: "
+                    . collect($request->all())->toJson());
+            }
+
+        }
+
+        return $job;
     }
 
     private function buildFilters(Builder $query, Request $request): Builder {
