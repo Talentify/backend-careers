@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Recruiter;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Http\Controllers\ApiResponseController as ApiResponseController;
+
 use Illuminate\Support\Facades\Hash;
 
-class RecruiterController extends Controller
+class RecruiterController extends ApiResponseController
 {
     public function register(Request $request)
     {           
@@ -24,21 +25,15 @@ class RecruiterController extends Controller
             'login' => $fields['login'],
             'password' => bcrypt($fields['password'])
         ]);
-
-        $token = $recruiter->createToken('myapitoken')->plainTextToken;
+        
+        $token = $recruiter->createToken('my_api_token')->plainTextToken;
         
         $recruiterData = [
             'user' => $recruiter,
             'token' => $token
         ];
 
-        $response = [
-            'status' => true,
-            'message' => 'A new recruiter created!',
-            'data' => $recruiterData
-        ];
-
-        return response($response, 201);
+        return $this->sendResponse($recruiterData, 'A new recruiter created successfully!', 201); 
     } 
     
     public function login(Request $request)
@@ -49,11 +44,9 @@ class RecruiterController extends Controller
         ]);
         
         $recruiter = Recruiter::where('login', $fields['login'])->first();
-
+        
         if(!$recruiter || !Hash::check($fields['password'], $recruiter->password)){
-            return response([
-                'message' => 'Credenciais incorretas!'
-            ], 401);
+            return $this->sendError('Incorrect credentials!');            
         }
         
         $token = $recruiter->createToken('myapitoken')->plainTextToken;
@@ -62,20 +55,14 @@ class RecruiterController extends Controller
             'user' => $recruiter,
             'token' => $token
         ];
-
-        return response($response, 201);
+                
+        return $this->sendResponse($response, 'Recruiter logged in successfully!'); 
     }
 
     public function logout()
-    {   
+    {           
         $recruiter = auth()->user();
-
         auth()->user()->tokens()->delete();
-
-        $response = [
-            'message' => 'Usuário: '.$recruiter->login.' Deslogado!'
-        ];
-
-        return response($response, 201);
+        return $this->sendResponse([],'User: '.$recruiter->login.' disconnected!'); 
     }
 }
