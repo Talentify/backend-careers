@@ -58,6 +58,7 @@ class CompanyApiTest extends TestCase
         
         $response = $this->get('/api/companies/'.$company2->id);
         $response->assertStatus(200);
+        $response->assertJsonCount(1, 'data');
         $response->assertJsonFragment(['name' => 'The Second Company']);  
         $response->assertJsonMissing(['name' => 'Some specific company']);  
         $response->assertJsonMissing(['name' => 'The Third Company']);  

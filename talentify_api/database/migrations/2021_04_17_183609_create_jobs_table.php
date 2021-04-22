@@ -21,7 +21,7 @@ class CreateJobsTable extends Migration
             $table->char('status', 1)->default('O');//O=Open, C=Closed
             $table->text('address');
             $table->decimal('salary', 10, 2);
-            $table->string('company')->nullable();
+            $table->string('company');
             $table->timestamps();
 
             $table->foreign('id_recruiters_creator')

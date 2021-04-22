@@ -4,42 +4,53 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Response;
+use App\Http\Controllers\ApiResponseController as ApiResponseController;
 
-class JobController extends Controller
+
+class JobController extends ApiResponseController
 {
     public function getall()
-    {
-        return Job::all();
+    {   
+        $jobs = Job::all();           
+        return $this->sendResponse($jobs, 'All jobs retrieved successfully!');
     }
 
     public function getopen()
-    {
-        return Job::where('status', 'O')
+    {   
+        $openJobs = Job::where('status', 'O')
         ->orderBy('created_at')
         ->get();
+
+        return $this->sendResponse($openJobs, 'All open jobs retrieved successfully!');
     }
 
     public function show(Job $job)
-    {   
-        return $job;
+    {                
+        return $this->sendResponse([$job], 'Job retrieved successfully!'); 
     }
 
     public function store(Request $request)
     {   
         $loggedRecruiter = auth()->user();
-
-        $job = Job::create([
-            'id_recruiters_creator' => $loggedRecruiter->id,
-            'title' => $request->title,
-            'description' => $request->description,
-            'address' => $request->address,
-            'salary' => $request->salary,
-            'company' => $request->company,     
+        
+        $fields = $request->validate([
+            'title' => 'required|string|max:100',
+            'description' => 'string',
+            'address' => 'string',
+            'salary' => 'required',
+            'company' => 'required',
         ]);
         
-        return response()->json($job, 201);
+        $job = Job::create([
+            'id_recruiters_creator' => $loggedRecruiter->id,
+            'title' => $fields['title'],
+            'description' => $fields['description'],
+            'address' => $fields['address'],
+            'salary' => $fields['salary'],
+            'company' => $fields['company'],
+        ]);
+        
+        return $this->sendResponse($job, 'Job created successfully!', 201);
     }   
     
     public function update(Request $request, Job $job)
@@ -47,20 +58,20 @@ class JobController extends Controller
         $loggedRecruiter = auth()->user();
 
         if($job->id_recruiters_creator != $loggedRecruiter->id){
-            return response([
-                'message' => 'Você não pode efetuar alterações nessa vaga!'
-            ], 401);
+            return $this->sendError('Unauthorized user',[], 401);            
         }
 
-        $job->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'address' => $request->address,
-            'salary' => $request->salary,
-            'company' => $request->company,
+        $request->validate([
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'address' => 'string',
+            'salary' => 'required',
+            'company' => 'required',
         ]);
         
-        return response()->json($job, 200);
+        $job->update($request->all());
+        
+        return $this->sendResponse($job, 'Job updated successfully!', 201);
     }
 
     public function delete(Job $job)
@@ -68,14 +79,12 @@ class JobController extends Controller
         $loggedRecruiter = auth()->user();
 
         if($job->id_recruiters_creator != $loggedRecruiter->id){
-            return response([
-                'message' => 'Você não pode remover esta vaga!'
-            ], 401);
+            return $this->sendError('Unauthorized user',[], 401);            
         }
 
         $job->delete();
         
-        return response()->json(null, 204);
+        return $this->sendResponse($job, 'Job deleted successfully!');
     }
 
     public function filter(Request $request)
@@ -103,7 +112,7 @@ class JobController extends Controller
                         ->orWhere('company', 'LIKE', '%'.$request->keyword.'%');
                 });
 
-            
-            return $jobList->get();            
+        
+        return $this->sendResponse($jobList->get(), 'All jobs retrieved successfully!');                
     }
 }

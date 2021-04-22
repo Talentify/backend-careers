@@ -30,7 +30,7 @@ class CompanyController extends ApiResponseController
     
     public function show(Company $company)
     {   
-        return $this->sendResponse($company, 'Company retrieved successfully!'); 
+        return $this->sendResponse([$company], 'Company retrieved successfully!'); 
     }    
 
 }
