@@ -28,7 +28,8 @@ class JobService extends AbstractService
 
     public function save(Request $request, Model $job = null) {
 
-        if (!auth()->user()->can('update', $job)) {
+        // only owner can update his post
+        if ($job && optional(auth()->user()->recruiter)->id === $job->recruiter_id) {
             throw new UnauthorizedException("Only the owner can update this job.");
         }
 

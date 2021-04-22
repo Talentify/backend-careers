@@ -36,14 +36,9 @@ class AuthFeatureTest extends TestCase
      */
     public function test_it_can_authenticate()
     {
-        // create a user
-        User::create([
-            'name' => 'admin',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('admin')
-        ]);
+        $this->createUser();
 
-        $response = $this->post('/api/auth/login', [
+        $response = $this->post('/api/v1/auth/login', [
             'email' => 'admin@admin.com',
             'password' => 'admin'
         ]);
@@ -57,13 +52,9 @@ class AuthFeatureTest extends TestCase
 
     public function test_it_cant_authenticate_with_invalid_email_or_password()
     {
-        User::create([
-            'name' => 'admin',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('admin')
-        ]);
+        $this->createUser();
 
-        $response = $this->post('/api/auth/login', [
+        $response = $this->post('/api/v1/auth/login', [
             'email' => 'testando@testando.com',
             'password' => 'não_existe'
         ]);
@@ -74,7 +65,7 @@ class AuthFeatureTest extends TestCase
 
     public function test_it_can_logout()
     {
-        $response = $this->post('/api/auth/logout', [], ['Authorization' => 'Bearer ' . $this->token]);
+        $response = $this->post('/api/v1/auth/logout', [], ['Authorization' => 'Bearer ' . $this->token]);
 
         $response
             ->assertOk()
@@ -85,14 +76,14 @@ class AuthFeatureTest extends TestCase
 
     public function test_it_cant_logout_without_authorization_bearer()
     {
-        $response = $this->post('/api/auth/logout');
+        $response = $this->post('/api/v1/auth/logout');
 
         $response->assertStatus(401);
     }
 
     public function test_it_can_refresh_token()
     {
-        $response = $this->post('/api/auth/refresh-token', [], ['Authorization' => 'Bearer ' . $this->token]);
+        $response = $this->post('/api/v1/auth/refresh-token', [], ['Authorization' => 'Bearer ' . $this->token]);
 
         $response
             ->assertOk()
@@ -106,30 +97,39 @@ class AuthFeatureTest extends TestCase
 
     public function test_it_cant_refresh_token_without_authorization_bearer()
     {
-        $response = $this->post('/api/auth/refresh-token');
+        $response = $this->post('/api/v1/auth/refresh-token');
 
         $response->assertStatus(401);
     }
 
     public function test_it_can_return_logged_user()
     {
-        $response = $this->post('/api/auth/logged-user', [], ['Authorization' => 'Bearer ' . $this->token]);
+        $response = $this->post('/api/v1/auth/logged-user', [], ['Authorization' => 'Bearer ' . $this->token]);
 
         $response
             ->assertOk()
             ->assertJsonStructure([
-                'id', 'name', 'email', 'email_verified_at', 'created_at', 'updated_at'
+                'id', 'username', 'email', 'email_verified_at', 'created_at', 'updated_at'
             ]);
     }
 
     public function test_it_cant_return_logged_user_without_authorization_bearer()
     {
-        $response = $this->post('/api/auth/logged-user', [], ['Authorization' => 'Bearer ' . $this->token]);
+        $response = $this->post('/api/v1/auth/logged-user', [], ['Authorization' => 'Bearer ' . $this->token]);
 
         $response
             ->assertOk()
             ->assertJsonStructure([
-                'id', 'name', 'email', 'email_verified_at', 'created_at', 'updated_at'
+                'id', 'username', 'email', 'email_verified_at', 'created_at', 'updated_at'
             ]);
+    }
+
+    private function createUser() {
+        // create a user
+        User::create([
+            'username' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('admin')
+        ]);
     }
 }

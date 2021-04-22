@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Job;
+use App\Models\Recruiter;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -32,7 +33,7 @@ class JobFormRequest extends FormRequest
             'address' => ['required', 'max:250'],
             'salary' => ['required', 'numeric', 'min:0'],
             'company' => ['required', 'max:60'],
-            'recruiter_id' => ['required', 'integer', 'exists:' . Job::class . ',id']
+            'recruiter_id' => ['required', 'exists:' . Recruiter::class . ',id']
         ];
     }
 }
