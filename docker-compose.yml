@@ -15,7 +15,7 @@ services:
       MYSQL_PASSWORD: careers
 
   backend-careers-app:
-    image: ambientum/php:8.0-nginx
+    image: ambientum/php:7.4-nginx
     container_name: backend-careers-app
     depends_on:
       - backend-careers-db

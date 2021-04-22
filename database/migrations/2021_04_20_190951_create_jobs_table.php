@@ -21,7 +21,7 @@ class CreateJobsTable extends Migration
             $table->string('address');
             $table->unsignedDecimal('salary', 8, 2);
             $table->string('company');
-            $table->unsignedInteger('recruiter_id');
+            $table->unsignedBigInteger('recruiter_id');
 
             $table->foreign('recruiter_id')->references('id')->on('recruiters')
                 ->onUpdate('cascade')->onDelete('cascade');
