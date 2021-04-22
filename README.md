@@ -1,63 +1,58 @@
-## A vaga
-Estamos constante adicionando novas features e aperfeiçoando as já existentes. Como desenvolvedor sênior, voce será responsável por criar código limpo, testável, e de alta qualidade, além de auxiliar o restante da equipe a migrar código existente para a nova arquitetura orientada a domínio.Somos adeptos de desenvolvimento ágil, integração contínua, code review e testes automáticos. Com isso, nossa equipe busca constantemente desenvolver e aprimorar o produto para estarmos sempre a frente do mercado.
+# Talentify - API RESTful
 
-<details>
-<summary>Detalhes da vaga</summary>
+## Rodar a Aplicação
+Clone o projeto para o seu ambiente.
+Para usá-lo, execute `docker-compose up` na pasta do projeto.
 
-## A empresa
-A Talentify.io nasceu da fusão de 3 empresas distintas em 3 áreas diferentes: Digital Media & Advertising, Mobile Technology e HR Consulting. Nossa plataforma de SaaS ajuda empresas a superar seus maiores desafios na  busca e contratação de talentos em grande escala.
+## Testes Automatizados
+Para executar os testes, entrar no contaner PHP, usando o comando `docker exec -it talentify-app sh`  
+Execute `vendor/bin/phpunit` para rodar os testes.
 
-## Beneficios
-- Home office (você pode trabalhar em casa ou em nosso escritório, em Alphaville/SP)
-- Horario flexivel
-- Assistencia medica e odontologica (apos 3 meses)
-- Vale refeicao e transporte
+## Acessar a Aplicação - http://localhost:8000/api/v1/auth/login
+Como se trata de uma API RESTful, acessar os endpoints através do Postman ou outro API Client.
+Os endereços dos Endpoints estão descritos na documentação.  
 
-## Requisitos
-- PHP 7
-- Desenvolvimento de testes
-- Desenvolvimento Agil
-- Web Services (RESTful ou SOAP ou JSON-RPC, etc)
-- Algum dos frameworks PHP (Phalcon, Zend, Symfony, Laravel)
-- Familiaridade com as PHP Standards Recommendations (PSRs)
-- GIT
-- Banco de dados relacional (MySQL, PostgreSQL, etc)
+Para acessá-los, primeiramente deve ser feita uma requisição para o endpoint de autenticação, enviando no corpo da requisição dados de email e senha do Recrutador cadastrado.
+Para fins de testes usar os dados abaixo:
+Endpoint de Autenticação: http://localhost:8000/api/v1/auth/login  
+email: recrutador@email.com  
+password: secret  
 
-## Desejável
-- Arquitetura hexagonal
-- DDD
-- Microserviços
-- Filas de mensagens (RabbitMQ, Apache Kafka, Amazon SQS, etc)
-- Elasticsearch
-- Linux
-- Amazon Web Services (AWS)
-- CI/CD
-- Inglês (leitura, escrita e conversação)
+De acordo com os requisitos, existem somente 2 endpoints abertos, cujo acesso não precisa de autenticação:
+- Listagem pública de vagas abertas - http://localhost:8000/api/v1/positions-open (GET)
+- Busca pública de vagas abertas - http://localhost:8000/api/v1/positions-open-search (POST)
 
-</details>
+A documentação apresenta detalhes dos endpoints.
 
-## Talk is cheap. Show me the code!
+## Documentação - http://localhost:8000/api/documentation
+A documentação que descreve a API RESTful desenvolvida neste projeto pode ser acessada em http://localhost:8000/api/documentation
+Esta documentação foi produzida utilizando o Swagger e apresenta em detalhes cada Endpoint, podendo inclusive consumí-los diretamente pela documentação para fazer alguma requisição.
 
-Você deverá construir uma API RESTful com as seguintes funcionalidades:
-* Cadastro/Login de recrutadores, onde cada recrutador pertence a uma empresa diferente
-* CRUD de vagas pelos recrutadores
-   * Vagas possuem os campos: title, description, status, address, salary, company
-   * Um recrutador não pode modificar vagas criadas por outro
-* Listagem pública de vagas abertas
-* Busca pública de vagas abertas
-   * Critérios de busca que devem ser aceitos: keyword, address, salary, company
-  
- 
-#### Observações
-- É permitido utilizar qualquer biblioteca ou framework PHP, desde que a lógica de neǵocio seja escrita por você, em PHP;
-- Nesse contexto, um bom código é aquele que segue Clean Code, SOLID e padrões arquiteturais (como os descritos na seção [Desejável](#desejável));
-- Interface gráfica é opcional, desde que a comunicação com o back-end seja feita através dos endpoints RESTful desenvolvidos por você;
-- Testes automatizados (de unidade e/ou funcionais e/ou aceitação) são **obrigatórios**;
-- Um README.md deverá ser adicionado e conter, no mínimo, as instruções de setup e utilização da aplicação.
+## Segurança
+Foi utilizado o pacote JWT-Auth para restringir o acesso aos endpoints.  
 
-#### Envio
-Para enviar o seu código, submeta uma pull request para este repositório com o título da PR contendo seu nome e sobrenome.
+## Funcionalidades do Laravel usadas nesta aplicação
+- Migrations, Factories, Seeders, Resources, Middlewares.
+- Para permitir consumir a API de imediato, sem ter que cadastrar Recrutadores, Empresas e Vagas, executando `docker-compose up`
+  pela primeira vez, o `docker-compose.yml` irá executar` php artisan migrate --seed` que criará as tabelas no banco de dados e as gerará com 1 Recrutador, 1 Empresa e 2 Vagas (1 Aberta e 1 Fechada).
 
-#### Disclaimer
-O código fonte que você produzir será utilizado somente para avaliar sua aptidão para a vaga. Não será feito nenhum uso comercial do código fonte, tampouco haverá a exigência de direitos de atribuição.
+## Base de dados
+- MySQL
+- Eloquent ORM para trabalhar com uma base de dados, onde as tabelas têm um "Modelo" correspondente que se utiliza para interagir com essa tabela.
+- O relacionamento é definido nos modelos.
 
+## Padrão de design
+- Repository Design Pattern para separar o acesso aos dados da lógica de negócios. Com este padrão temos uma divisão de responsabilidades, 
+  deixando cada camada da aplicação o mais simples possível, contribuindo para a aplicação ser escalável mais facilmente. 
+
+## Versionamento
+- Foi utilizado como prefixo nos endereços dos endpoints `/api/v1` para permitir o desenvolvimento e publicação de uma nova versão desta API através
+do endereço com prefixo `api/v2`, por exemplo, e não impedir o acesso a versão anterior até que seja seguro descontinuá-la.
+
+## Recursos da API
+A API RESTful permite:
+- Cadastro/Login de recrutadores, onde cada recrutador pertence a uma empresa diferente. De acordo com esse requitiso, a aplicação não permite o cadastro de mais de 1 recrutador em uma mesma empresa.
+- CRUD de vagas pelos recrutadores, onde um recrutador não pode editar/excluir vagas criadas por outro
+- Listagem pública de vagas abertas.
+- Busca pública de vagas abertas com os seguintes critérios: keyword, address, salary e company.  
+Com critério keyword a busca pelo termo digitado é feita nos campos address, salary, description, title.

@@ -1,0 +1,1459 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Talentify/backend-careers",
+        "description": "API Mannagement",
+        "contact": {
+            "email": "thiagoluna2@gmail.com"
+        },
+        "license": {
+            "name": "Thiago Luna",
+            "url": "https://github.com/Talentify/backend-careers"
+        },
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/api/v1/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Fazer Login e receber o Token",
+                "description": "Endpoint para fazer login na aplicação e retornar o Token para ter acesso aos outros endpoints.",
+                "operationId": "Token",
+                "requestBody": {
+                    "description": "Data required",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "{ 'error': 'Unauthorized' }"
+                    },
+                    "422": {
+                        "description": "Erro: O retorno será um array contendo a informação do(s) campo(s) obrigatório(s)",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "error1": {
+                                            "description": "O campo senha é obrigatório."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Fazer Logout",
+                "description": "Endpoint para fazer logout da aplicação.\n *  O token deverá ser enviado na requisição.",
+                "operationId": "token",
+                "responses": {
+                    "200": {
+                        "description": "Successfully logged out",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "{ 'error': 'Authorization Token not found.' }"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/companies": {
+            "get": {
+                "tags": [
+                    "Empresa"
+                ],
+                "summary": "Lista de Empresas",
+                "description": "Lista de Empresas\n * O token deverá ser enviado na requisição",
+                "operationId": "Lista de Empresas Cadastradas",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Talentify"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "links": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "first": {
+                                                        "type": "integer"
+                                                    },
+                                                    "last": {
+                                                        "type": "integer"
+                                                    },
+                                                    "prev": {
+                                                        "type": "integer"
+                                                    },
+                                                    "next": {
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "meta": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "current_page": {
+                                                        "type": "integer"
+                                                    },
+                                                    "from": {
+                                                        "type": "integer"
+                                                    },
+                                                    "last_page": {
+                                                        "type": "integer"
+                                                    },
+                                                    "path": {
+                                                        "type": "string"
+                                                    },
+                                                    "per_page": {
+                                                        "type": "integer"
+                                                    },
+                                                    "to": {
+                                                        "type": "integer"
+                                                    },
+                                                    "total": {
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "{'error': 'Token expired.}"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Empresa"
+                ],
+                "summary": "Cadastrar uma nova Empresa.",
+                "description": "Cadastrar uma nova Empresa.\n *  O token deverá ser enviado na requisição.\n *  Campos Obrigatóros: name.",
+                "operationId": "CadastrarEmpresa",
+                "requestBody": {
+                    "description": "Data required",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Talentify"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "{'success': 'Company Created!'}"
+                    },
+                    "422": {
+                        "description": "error: O retorno será um array contendo a informação do(s) campo(s) obrigatório(s)",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "O campo nome é obrigatório."
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/companies/{id}": {
+            "get": {
+                "tags": [
+                    "Empresa"
+                ],
+                "summary": "Retorna os dados de uma Empresa",
+                "description": "Retorna os dados de uma Empresa\n *  O token deverá ser enviado na requisição.",
+                "operationId": "OneCompany",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id da Empresa a ser vista",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Talentify"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "{'error': 'Token expired.}"
+                    },
+                    "404": {
+                        "description": "{'error': 'Company Not Found.'}"
+                    },
+                    "500": {
+                        "description": "{'error': 'ID must be a number.'}"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/positions": {
+            "get": {
+                "tags": [
+                    "Vagas"
+                ],
+                "summary": "Lista de Vagas",
+                "description": "Lista de Vagas\n * O token deverá ser enviado na requisição",
+                "operationId": "Lista de Vagas Cadastradas",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Senior Developer"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "Vaga para Senior Developer"
+                                                    },
+                                                    "address": {
+                                                        "type": "string",
+                                                        "example": "Remoto"
+                                                    },
+                                                    "salary": {
+                                                        "type": "string",
+                                                        "example": "15000.00"
+                                                    },
+                                                    "status": {
+                                                        "type": "string",
+                                                        "example": "true"
+                                                    },
+                                                    "company_id": {
+                                                        "type": "string",
+                                                        "example": "1"
+                                                    },
+                                                    "company_name": {
+                                                        "type": "string",
+                                                        "example": "Talentify"
+                                                    },
+                                                    "recruiter_id": {
+                                                        "type": "string",
+                                                        "example": "1"
+                                                    },
+                                                    "recruiter_name": {
+                                                        "type": "string",
+                                                        "example": "Vinicius"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "links": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "first": {
+                                                        "type": "integer"
+                                                    },
+                                                    "last": {
+                                                        "type": "integer"
+                                                    },
+                                                    "prev": {
+                                                        "type": "integer"
+                                                    },
+                                                    "next": {
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "meta": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "current_page": {
+                                                        "type": "integer"
+                                                    },
+                                                    "from": {
+                                                        "type": "integer"
+                                                    },
+                                                    "last_page": {
+                                                        "type": "integer"
+                                                    },
+                                                    "path": {
+                                                        "type": "string"
+                                                    },
+                                                    "per_page": {
+                                                        "type": "integer"
+                                                    },
+                                                    "to": {
+                                                        "type": "integer"
+                                                    },
+                                                    "total": {
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "{'error': 'Token expired.}"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Vagas"
+                ],
+                "summary": "Cadastrar uma nova Vaga.",
+                "description": "Cadastrar uma nova Vagas.\n *  O token deverá ser enviado na requisição\n *  Campos Obrigatóros: title, description, address, salary, status, company_id, recruiter_id.\n *  Para Vagas Abertas Status = 1\n *  Para Vagas Fechadas Status = 0",
+                "operationId": "CadastrarVagas",
+                "requestBody": {
+                    "description": "Data required",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Senior Software Developer"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Vaga para Senior Software Developer"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "Remoto"
+                                    },
+                                    "salary": {
+                                        "type": "string",
+                                        "example": "13000"
+                                    },
+                                    "status": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "company_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "recruiter_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "{'success': 'Recruiter Created!'}"
+                    },
+                    "422": {
+                        "description": "error: O retorno será um array contendo a informação do(s) campo(s) obrigatório(s)",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "The name field is required."
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/positions-open": {
+            "get": {
+                "tags": [
+                    "Vagas"
+                ],
+                "summary": "Lista Pública de Vagas Abertas",
+                "description": "Lista Pública de Vagas Abertas\n *     Esta requisição não precisa de Token.",
+                "operationId": "Lista Pública de Vagas Abertas",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Senior Developer"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "Vaga para Senior Developer"
+                                                    },
+                                                    "address": {
+                                                        "type": "string",
+                                                        "example": "Remoto"
+                                                    },
+                                                    "salary": {
+                                                        "type": "string",
+                                                        "example": "15000.00"
+                                                    },
+                                                    "status": {
+                                                        "type": "string",
+                                                        "example": "true"
+                                                    },
+                                                    "company_id": {
+                                                        "type": "string",
+                                                        "example": "1"
+                                                    },
+                                                    "company_name": {
+                                                        "type": "string",
+                                                        "example": "Talentify"
+                                                    },
+                                                    "recruiter_id": {
+                                                        "type": "string",
+                                                        "example": "1"
+                                                    },
+                                                    "recruiter_name": {
+                                                        "type": "string",
+                                                        "example": "Vinicius"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "links": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "first": {
+                                                        "type": "integer"
+                                                    },
+                                                    "last": {
+                                                        "type": "integer"
+                                                    },
+                                                    "prev": {
+                                                        "type": "integer"
+                                                    },
+                                                    "next": {
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "meta": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "current_page": {
+                                                        "type": "integer"
+                                                    },
+                                                    "from": {
+                                                        "type": "integer"
+                                                    },
+                                                    "last_page": {
+                                                        "type": "integer"
+                                                    },
+                                                    "path": {
+                                                        "type": "string"
+                                                    },
+                                                    "per_page": {
+                                                        "type": "integer"
+                                                    },
+                                                    "to": {
+                                                        "type": "integer"
+                                                    },
+                                                    "total": {
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/positions/{id}": {
+            "get": {
+                "tags": [
+                    "Vagas"
+                ],
+                "summary": "Retorna os dados de uma Vaga",
+                "description": "Retorna os dados de uma Vaga\n *  O token deverá ser enviado na requisição.",
+                "operationId": "OnePosition",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id da vaga a ser vista",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Senior Developer"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "Vaga para Senior Developer"
+                                                    },
+                                                    "address": {
+                                                        "type": "string",
+                                                        "example": "Remoto"
+                                                    },
+                                                    "salary": {
+                                                        "type": "string",
+                                                        "example": "15000.00"
+                                                    },
+                                                    "status": {
+                                                        "type": "string",
+                                                        "example": "true"
+                                                    },
+                                                    "company_id": {
+                                                        "type": "string",
+                                                        "example": "1"
+                                                    },
+                                                    "company_name": {
+                                                        "type": "string",
+                                                        "example": "Talentify"
+                                                    },
+                                                    "recruiter_id": {
+                                                        "type": "string",
+                                                        "example": "1"
+                                                    },
+                                                    "recruiter_name": {
+                                                        "type": "string",
+                                                        "example": "Vinicius"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "{'error': 'Token expired.}"
+                    },
+                    "404": {
+                        "description": "{'error': 'Position Not Found.'}"
+                    },
+                    "500": {
+                        "description": "{'error': 'ID must be a number.'}"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Vagas"
+                ],
+                "summary": "Atualizar os dados de uma Vaga",
+                "description": "Atualizar os dados de uma Vaga.\n *  Campos Obrigatóros: title, description, address, salary, status, company_id, recruiter_id.",
+                "operationId": "updateVaga",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da Vaga",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Data required",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Senior Software Developer"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Vaga para Senior Software Developer"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "Remoto"
+                                    },
+                                    "salary": {
+                                        "type": "string",
+                                        "example": "13000"
+                                    },
+                                    "status": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "company_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "recruiter_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "{'success': 'Position Updated.'}"
+                    },
+                    "400": {
+                        "description": "{'error': 'ID must be a number.}"
+                    },
+                    "401": {
+                        "description": "{'error': 'This Recruiter is Not Allowed to Update this Position.'}"
+                    },
+                    "404": {
+                        "description": "{'error': 'Position Not Found' }"
+                    },
+                    "500": {
+                        "description": "{'error': 'Position Not Updated' }"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Vagas"
+                ],
+                "summary": "Deletar uma Vaga",
+                "description": "Deletar uma Vaga\n *  O token deverá ser enviado na requisição\n *     Um Recrutador não pode editar/excluir vagas criadas por outro.\n *  Caso o usuário tente excluir uma vaga criada por outro receberá mensagem de erro e a vaga não será exccluída.",
+                "operationId": "deletePayableAccount",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da Vaga",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{'sucesso': 'Position Deleted.'}"
+                    },
+                    "400": {
+                        "description": "{'error': 'ID must be a number.}"
+                    },
+                    "401": {
+                        "description": "{'error': 'This Recruiter is Not Allowed to Delete this Position.'}"
+                    },
+                    "404": {
+                        "description": "{'error': 'Position Not Found' }"
+                    },
+                    "500": {
+                        "description": "{'error': 'Position Not Deleted' }"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/positions-open-search": {
+            "post": {
+                "tags": [
+                    "Vagas"
+                ],
+                "summary": "Busca Pública de Vagas Abertas.",
+                "description": "Busca Pública de Vagas Abertas.\n *     Esta requisição não precisa de Token.\n *  Critérios de busca aceitos: keyword, address, salary, company_name.\n *  keyword: enviando o termo pesquisado neste parâmetro a busca será feita nos campos address, title, description, salary.\n *  address: enviando o termo pesquisado neste parâmetro a busca será feita no campo address.\n *  salary: enviando o termo pesquisado neste parâmetro a busca será feita no campo salary.\n *  company_name: enviando o termo pesquisado neste parâmetro a busca será feita no campo name das Empresas que tem vagas abertas.",
+                "operationId": "BuscaVagas",
+                "requestBody": {
+                    "description": "Data required",
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "keyword": {
+                                        "type": "string",
+                                        "example": "developer"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "remoto"
+                                    },
+                                    "salary": {
+                                        "type": "string",
+                                        "example": "13000"
+                                    },
+                                    "company_name": {
+                                        "type": "integer",
+                                        "example": "Talentify"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Senior Developer"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "Vaga para Senior Developer"
+                                                    },
+                                                    "address": {
+                                                        "type": "string",
+                                                        "example": "Remoto"
+                                                    },
+                                                    "salary": {
+                                                        "type": "string",
+                                                        "example": "15000.00"
+                                                    },
+                                                    "status": {
+                                                        "type": "string",
+                                                        "example": "true"
+                                                    },
+                                                    "company_id": {
+                                                        "type": "string",
+                                                        "example": "1"
+                                                    },
+                                                    "company_name": {
+                                                        "type": "string",
+                                                        "example": "Talentify"
+                                                    },
+                                                    "recruiter_id": {
+                                                        "type": "string",
+                                                        "example": "1"
+                                                    },
+                                                    "recruiter_name": {
+                                                        "type": "string",
+                                                        "example": "Vinicius"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "links": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "first": {
+                                                        "type": "integer"
+                                                    },
+                                                    "last": {
+                                                        "type": "integer"
+                                                    },
+                                                    "prev": {
+                                                        "type": "integer"
+                                                    },
+                                                    "next": {
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "meta": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "current_page": {
+                                                        "type": "integer"
+                                                    },
+                                                    "from": {
+                                                        "type": "integer"
+                                                    },
+                                                    "last_page": {
+                                                        "type": "integer"
+                                                    },
+                                                    "path": {
+                                                        "type": "string"
+                                                    },
+                                                    "per_page": {
+                                                        "type": "integer"
+                                                    },
+                                                    "to": {
+                                                        "type": "integer"
+                                                    },
+                                                    "total": {
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/recruiters": {
+            "get": {
+                "tags": [
+                    "Recrutador"
+                ],
+                "summary": "Lista de Recrutadores",
+                "description": "Lista de Recrutadores\n * O token deverá ser enviado na requisição",
+                "operationId": "Lista de Recrutadores Cadastradas",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Vinicius"
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example": "vinicius@email.com"
+                                                    },
+                                                    "company_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "company_name": {
+                                                        "type": "integer",
+                                                        "example": "Talentify"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "links": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "first": {
+                                                        "type": "integer"
+                                                    },
+                                                    "last": {
+                                                        "type": "integer"
+                                                    },
+                                                    "prev": {
+                                                        "type": "integer"
+                                                    },
+                                                    "next": {
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "meta": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "current_page": {
+                                                        "type": "integer"
+                                                    },
+                                                    "from": {
+                                                        "type": "integer"
+                                                    },
+                                                    "last_page": {
+                                                        "type": "integer"
+                                                    },
+                                                    "path": {
+                                                        "type": "string"
+                                                    },
+                                                    "per_page": {
+                                                        "type": "integer"
+                                                    },
+                                                    "to": {
+                                                        "type": "integer"
+                                                    },
+                                                    "total": {
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "{'error': 'Token expired.}"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Recrutador"
+                ],
+                "summary": "Cadastrar uma nova Recrutador.",
+                "description": "Cadastrar uma nova Recrutador.\n *  O token deverá ser enviado na requisição.\n *  Campos Obrigatóros: name, email, password, company_id.\n *  Email é campo único.\n *     De acordo com o requisito, cada recrutador pertence a uma empresa diferente. Com isso, não pode existir mais de\n *     um Recrutador na mesma Empresa, ou seja, cada Empresa só pode ter 1 Recrutador cadastrado.\n * Caso seja feita a requisição para cadastrar um novo Recrutador em uma Empresa que já tenha outro Recrutador cadastrado\n * o retorno será de erro informando que o id da empresa selecionada já está sendo usado.",
+                "operationId": "CadastrarRecrutador\n * O token deverá ser enviado na requisição",
+                "requestBody": {
+                    "description": "Data required",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Pedro Campos"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "email@email.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "senha"
+                                    },
+                                    "company_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "{'success': 'Recruiter Created!'}"
+                    },
+                    "422": {
+                        "description": "error: O retorno será um array contendo a informação do(s) campo(s) obrigatório(s)",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "The name field is required."
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example": "The email field is required."
+                                                    },
+                                                    "company_id": {
+                                                        "type": "integer",
+                                                        "example": "The password field is required."
+                                                    },
+                                                    "company_name": {
+                                                        "type": "integer",
+                                                        "example": "The company id field is required."
+                                                    },
+                                                    "email ": {
+                                                        "type": "integer",
+                                                        "example": "The email has already been taken."
+                                                    },
+                                                    "company_id ": {
+                                                        "type": "integer",
+                                                        "example": "The company id has already been taken."
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/recruiters/{id}": {
+            "get": {
+                "tags": [
+                    "Recrutador"
+                ],
+                "summary": "Retorna os dados de um Recrutador",
+                "description": "Retorna os dados de um Recrutador\n *  O token deverá ser enviado na requisição.",
+                "operationId": "OneRecruiter",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id do Recrutador a ser visto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Vinicius"
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example": "vinicius@email.com"
+                                                    },
+                                                    "company_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "company_name": {
+                                                        "type": "integer",
+                                                        "example": "Talentify"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "{'error': 'Token expired.}"
+                    },
+                    "404": {
+                        "description": "{'error': 'Recruiter Not Found.'}"
+                    },
+                    "500": {
+                        "description": "{'error': 'ID must be a number.'}"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Company": {
+                "title": "Company",
+                "description": "Company Model",
+                "properties": {
+                    "idd": {
+                        "title": "id",
+                        "description": "id da Empresa",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "namee": {
+                        "title": "name",
+                        "description": "Name da Empresa",
+                        "type": "integer",
+                        "format": "string",
+                        "example": "Talentify"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Company"
+                }
+            },
+            "Position": {
+                "title": "Position",
+                "description": "Position Model",
+                "properties": {
+                    "idd": {
+                        "title": "id",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "titlee": {
+                        "title": "title",
+                        "description": "Título da Vaga",
+                        "type": "string",
+                        "example": "Senior Developer"
+                    },
+                    "descriptionn": {
+                        "title": "description",
+                        "description": "Descrição da Vaga",
+                        "type": "string",
+                        "example": "Vaga para Atuar no Densenvolvimento de Sistemas"
+                    },
+                    "adrresss": {
+                        "title": "address",
+                        "description": "Endereço da Vaga",
+                        "type": "string",
+                        "example": "Avenida São Paulo, 273 - SP"
+                    },
+                    "salaryy": {
+                        "title": "salary",
+                        "description": "Salario oferecido para a vaga",
+                        "type": "number",
+                        "format": "float",
+                        "example": "13000"
+                    },
+                    "statuss": {
+                        "title": "status",
+                        "description": "Status da Vaga",
+                        "type": "string",
+                        "example": "Aberta"
+                    },
+                    "company_idd": {
+                        "title": "company_id",
+                        "description": "Empresa que oferece a Vaga",
+                        "type": "string",
+                        "example": "Talentify"
+                    },
+                    "recruiter_idd": {
+                        "title": "recruiter_id",
+                        "description": "Recrutador que cadastrou a Vaga",
+                        "type": "string",
+                        "example": "Vinicius"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Position"
+                }
+            },
+            "Recruiter": {
+                "title": "Recruiter",
+                "description": "Recruiter Model",
+                "properties": {
+                    "idd": {
+                        "title": "id",
+                        "description": "id do Recrutador",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "namee": {
+                        "title": "name",
+                        "description": "Name do Recrutador",
+                        "type": "integer",
+                        "format": "string",
+                        "example": "Talentify"
+                    },
+                    "emaill": {
+                        "title": "email",
+                        "description": "Email do Recrutador",
+                        "type": "integer",
+                        "format": "string",
+                        "example": "contato@email.com"
+                    },
+                    "passwordd": {
+                        "title": "password",
+                        "description": "Senha do Recrutador",
+                        "type": "integer",
+                        "format": "string",
+                        "example": "123456"
+                    },
+                    "company_idd": {
+                        "title": "company_id",
+                        "description": "id da empresa onde o Recrutador trabalha",
+                        "type": "integer",
+                        "format": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Recruiter"
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Talentify Assignment",
+            "description": "API Endpoints of Project"
+        }
+    ]
+}
