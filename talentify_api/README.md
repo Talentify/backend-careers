@@ -27,7 +27,7 @@ git checkout eider_carlos
 Tenha já a instalação do Laravel em sua máquina:
 
 ```
-  composer global require laravel/installer
+composer global require laravel/installer
 ```
 
 Entre na pasta talentify_api e faça a instalação/atualização das dependências:
@@ -87,7 +87,9 @@ php artisan serve
 ```
 
 Para acessar os endpoints protegidos, é importante antes fazer o login
-e será retornado o token para acesso ao sistema.
+e será retornado o token para acesso ao sistema. 
+Se você acionou o comando para popular o banco de dados com alguns registros, é possível também usar os seguintes dados
+para login e senha na api:
 
 ```
 POST http://localhost:8000/api/login
@@ -95,6 +97,9 @@ form-data:
   login: admin
   password: talentify1
 ```
+
+Depois basta adicionar o token na seção Authorization -> Bearer Token do Postman por exemplo
+para poder testar as requisições que exigem autorização.
 
 
 #### EndPoints PUBLICOS
