@@ -56,7 +56,7 @@ class JobController extends ApiResponseController
     public function update(Request $request, Job $job)
     {   
         $loggedRecruiter = auth()->user();
-
+        
         if($job->id_recruiters_creator != $loggedRecruiter->id){
             return $this->sendError('Unauthorized user',[], 401);            
         }

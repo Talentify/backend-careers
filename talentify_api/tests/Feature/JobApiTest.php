@@ -170,7 +170,55 @@ class JobApiTest extends TestCase
         $response = $this->put('/api/jobs/'.$jobPHP->id, json_decode($jobPHP, true), $headers);
         $response->assertStatus(401);        
         $response->assertJsonFragment(['message' => 'Unauthorized user']);      
-    }      
+    }  
+    
+    public function test_should_delete_a_job()
+    {      
+        $headers = ['Accept' => 'application/json'];
+
+        $loggedInUser = Recruiter::factory()->create([
+            'id_company' => 1,
+            'name' => "Some User",
+            'login' => "userlogin",
+            'password' => bcrypt("pass123")
+        ]);
+        
+        Sanctum::actingAs($loggedInUser); 
+
+        $job2 = Job::factory()->create([
+            'title' => 'Programador JAVA',
+            'status' => 'C',
+        ]);
+        
+        $response = $this->delete('/api/jobs/'.$job2->id, $headers);
+        $response->assertStatus(200);        
+        $response->assertJsonFragment(['message' => 'Job deleted successfully!']);      
+        $response->assertJsonFragment(['title' => 'Programador JAVA']);      
+    }   
+    
+    public function test_different_recruiter_canot_delete_a_job()
+    {      
+        $headers = ['Accept' => 'application/json'];
+
+        $jobPHP = Job::factory()->create([
+            'id_recruiters_creator' => 99999,
+            'title' => 'Programador PHP',
+            'status' => 'O',
+        ]);
+
+        $loggedInUser = Recruiter::factory()->create([
+            'id_company' => 1,
+            'name' => "Some User",
+            'login' => "userlogin",
+            'password' => bcrypt("pass123")
+        ]);
+        
+        Sanctum::actingAs($loggedInUser); 
+                
+        $response = $this->delete('/api/jobs/'.$jobPHP->id, $headers);
+        $response->assertStatus(401);        
+        $response->assertJsonFragment(['message' => 'Unauthorized user']);      
+    }        
 
     public function test_should_filter_jobs_by_keyword()
     {
