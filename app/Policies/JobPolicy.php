@@ -54,7 +54,7 @@ class JobPolicy
      */
     public function update(User $user, Job $job)
     {
-        return optional($user->recruiter)->id === $job->recruiter_id;
+        return ((int) optional($user->recruiter)->id) === ((int) $job->recruiter_id);
     }
 
     /**

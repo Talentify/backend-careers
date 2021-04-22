@@ -29,7 +29,7 @@ class JobService extends AbstractService
     public function save(Request $request, Model $job = null) {
 
         // only owner can update his post
-        if ($job && optional(auth()->user()->recruiter)->id === $job->recruiter_id) {
+        if ($job && (int) optional(auth()->user()->recruiter)->id !== (int) $job->recruiter_id) {
             throw new UnauthorizedException("Only the owner can update this job.");
         }
 
@@ -67,11 +67,11 @@ class JobService extends AbstractService
         });
 
         $query->when($request->query('min_salary'), function ($q) use ($request) {
-            return $q->where('salary',  '>=', $request->query('min_salary'));
+            return $q->where('salary',  '>=', (float) $request->query('min_salary'));
         });
 
         $query->when($request->query('max_salary'), function ($q) use ($request) {
-            return $q->where('salary',  '<=', $request->query('max_salary'));
+            return $q->where('salary',  '<=', (float) $request->query('max_salary'));
         });
 
         $query->when($request->query('company'), function ($q) use ($request) {

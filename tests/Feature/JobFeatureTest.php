@@ -293,13 +293,13 @@ class JobFeatureTest extends TestCase
      */
     public function test_it_can_update_a_job()
     {
-        $recruiter = factory(Recruiter::class)->create();
-        $this->user->recruiter()->save($recruiter);
-
-        $job = factory(Job::class)->create([
-            'recruiter_id'=> $recruiter->id
+        $recruiter = factory(Recruiter::class)->create([
+            'user_id' => $this->user->id
         ]);
 
+        $job = factory(Job::class)->create([
+            'recruiter_id' => $recruiter->id
+        ]);
 
         $response = $this->put('api/v1/jobs/' . $job->id, [
             'title' => 'Vaga para desenvolvedor',
@@ -308,7 +308,7 @@ class JobFeatureTest extends TestCase
             'address' => 'endereço',
             'salary' => 4356.34,
             'company' => 'Empresa ABC 123',
-            'recruiter_id' => $recruiter->id,
+            'recruiter_id' => 1,
         ], ['Authorization' => 'Bearer ' . $this->token]);
 
         $response
@@ -321,7 +321,7 @@ class JobFeatureTest extends TestCase
                 'address' => 'endereço',
                 'salary' => 4356.34,
                 'company' => 'Empresa ABC 123',
-                'recruiter_id' => $recruiter->id
+                'recruiter_id' => 1
             ])
             ->assertJsonStructure([
                 'id', 'title', 'description', 'status', 'address', 'salary', 'company', 'recruiter_id', 'created_at',
@@ -338,7 +338,7 @@ class JobFeatureTest extends TestCase
             'address' => 'endereço',
             'salary' => 4356.34,
             'company' => 'Empresa ABC 123',
-            'recruiter_id' => $recruiter->id
+            'recruiter_id' => 1
         ]);
 
     }
