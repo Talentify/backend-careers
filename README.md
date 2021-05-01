@@ -1,63 +1,46 @@
-## A vaga
-Estamos constante adicionando novas features e aperfeiçoando as já existentes. Como desenvolvedor sênior, voce será responsável por criar código limpo, testável, e de alta qualidade, além de auxiliar o restante da equipe a migrar código existente para a nova arquitetura orientada a domínio.Somos adeptos de desenvolvimento ágil, integração contínua, code review e testes automáticos. Com isso, nossa equipe busca constantemente desenvolver e aprimorar o produto para estarmos sempre a frente do mercado.
+<h1>Testes</h1>
+<br/><br/>
+<p>Passos</p>
+<br>
 
-<details>
-<summary>Detalhes da vaga</summary>
+<ul>
+    <ol>Fazer download o repository</ol>
+    <ol>Dezipar o arquivo</ol>
+    <ol>Abrir o terminal/command prompt(cmd)</ol>
+    <ol>Executar: docker-compose up -d</ol>
+    <ol>Executar: docker exec app composer install --working-dir=/usr/share/nginx</ol>
+    <ol>Esperar o termino de processos </ol>
+    <ol>Executar: docker exec app php /usr/share/nginx/artisan migrate</ol>
+    <ol>Esperar o termino de processos </ol>
+    <ol>Executar: docker exec app php /usr/share/nginx/artisan passport:client --client</ol>
+    <ol>Esperar o termino de processos </ol>
+    <ol>Entrar no navegador: http:/localhost:8080</ol>
+</ul>
 
-## A empresa
-A Talentify.io nasceu da fusão de 3 empresas distintas em 3 áreas diferentes: Digital Media & Advertising, Mobile Technology e HR Consulting. Nossa plataforma de SaaS ajuda empresas a superar seus maiores desafios na  busca e contratação de talentos em grande escala.
+<br/>
 
-## Beneficios
-- Home office (você pode trabalhar em casa ou em nosso escritório, em Alphaville/SP)
-- Horario flexivel
-- Assistencia medica e odontologica (apos 3 meses)
-- Vale refeicao e transporte
+<p>APIS ROTAS</p>
+<br/>
+<ul>
+    <ol>http://localhost:8080/api/login (Apenas POST)</ol>
+    <ol>http://localhost:8080/api/companies (Todos POST e GET)</ol>
+    <ol>http://localhost:8080/api/recruiters (Todos POST e GET)</ol>
+    <ol>http://localhost:8080/api/vacancies (Todos métodos)</ol>
+</ul>
 
-## Requisitos
-- PHP 7
-- Desenvolvimento de testes
-- Desenvolvimento Agil
-- Web Services (RESTful ou SOAP ou JSON-RPC, etc)
-- Algum dos frameworks PHP (Phalcon, Zend, Symfony, Laravel)
-- Familiaridade com as PHP Standards Recommendations (PSRs)
-- GIT
-- Banco de dados relacional (MySQL, PostgreSQL, etc)
-
-## Desejável
-- Arquitetura hexagonal
-- DDD
-- Microserviços
-- Filas de mensagens (RabbitMQ, Apache Kafka, Amazon SQS, etc)
-- Elasticsearch
-- Linux
-- Amazon Web Services (AWS)
-- CI/CD
-- Inglês (leitura, escrita e conversação)
-
-</details>
-
-## Talk is cheap. Show me the code!
-
-Você deverá construir uma API RESTful com as seguintes funcionalidades:
-* Cadastro/Login de recrutadores, onde cada recrutador pertence a uma empresa diferente
-* CRUD de vagas pelos recrutadores
-   * Vagas possuem os campos: title, description, status, address, salary, company
-   * Um recrutador não pode modificar vagas criadas por outro
-* Listagem pública de vagas abertas
-* Busca pública de vagas abertas
-   * Critérios de busca que devem ser aceitos: keyword, address, salary, company
-  
- 
-#### Observações
-- É permitido utilizar qualquer biblioteca ou framework PHP, desde que a lógica de neǵocio seja escrita por você, em PHP;
-- Nesse contexto, um bom código é aquele que segue Clean Code, SOLID e padrões arquiteturais (como os descritos na seção [Desejável](#desejável));
-- Interface gráfica é opcional, desde que a comunicação com o back-end seja feita através dos endpoints RESTful desenvolvidos por você;
-- Testes automatizados (de unidade e/ou funcionais e/ou aceitação) são **obrigatórios**;
-- Um README.md deverá ser adicionado e conter, no mínimo, as instruções de setup e utilização da aplicação.
-
-#### Envio
-Para enviar o seu código, submeta uma pull request para este repositório com o título da PR contendo seu nome e sobrenome.
-
-#### Disclaimer
-O código fonte que você produzir será utilizado somente para avaliar sua aptidão para a vaga. Não será feito nenhum uso comercial do código fonte, tampouco haverá a exigência de direitos de atribuição.
-
+<p>SQLS/Banco Dados</p>
+<br/>
+<ul>
+    <ol>Host: postgres | User: postgres | DB: postgres | passowrd: gustavo</ol>
+    <ol>Dentro da pasta raiz, possuem uma pasta chamado SQLS | faça uma importação de dados, para terem dados</ol>
+</ul>
+<br/><br/>
+<h3>Para executar o php unitário: docker exec app /usr/share/nginx/vendor/bin/phpunit</h3>
+<br/><br/>
+<h3>Observação</h3>
+<br/>
+<p>Não consegui colocar o elasticsearch no docker, então coloquei direto no "Model", para não atrasar mais dias.
+<br>/
+Pois não tenho conhecimento no elasticsearch(pouco), somente o conceito, mas eu estou disposto a aprender, correr atrás
+</p><br/>
+<p>Obrigado, Gustavo!</p>

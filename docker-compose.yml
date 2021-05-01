@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+    laravelapp:
+        container_name: app
+        build: .
+        ports:
+            - "8080:80"
+        volumes:
+            - ./.docker/nginx/conf.d/default.conf/:/etc/nginx/conf.d/default.conf
+            - ./:/usr/share/nginx
+        depends_on:
+            - postgres
+        networks:
+            - networkis
+        links:
+            - postgres
+            
+    postgres:
+        container_name: db
+        image: 'postgres'
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_PASSWORD: "gustavo"
+        networks:
+            - networkis
+    
+    #elasticsearch:
+    #    image: 'elasticsearch:7.12.1'
+    #    ports:
+    #        - "9200:9200"
+    #    depends_on:
+    #        - laravelapp
+    #    networks:
+    #        - networkis
+            
+networks: 
+    networkis:
+        driver: bridge
